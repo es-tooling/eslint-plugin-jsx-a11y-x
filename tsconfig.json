@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "node16",
+    "moduleResolution": "node16",
+    "types": [],
+    "declaration": true,
+    "sourceMap": false,
+    "outDir": "./lib",
+    "importHelpers": false,
+    "isolatedModules": true,
+    "isolatedDeclarations": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}
