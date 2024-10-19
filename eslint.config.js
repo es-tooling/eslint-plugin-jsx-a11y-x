@@ -9,7 +9,6 @@ module.exports = [
   },
   {
     rules: {
-      'max-len': 'error'
     }
   },
   pluginRecommended,
