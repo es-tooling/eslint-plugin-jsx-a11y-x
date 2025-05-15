@@ -1,0 +1,8 @@
+[ignore]
+<PROJECT_ROOT>/node_modules/resolve/test/resolver/malformed_package_json/package.json
+<PROJECT_ROOT>/lib/.*
+<PROJECT_ROOT>/docs/.*
+<PROJECT_ROOT>/reports/.*
+<PROJECT_ROOT>/examples/.*
+[options]
+suppress_type=$FlowFixMe
