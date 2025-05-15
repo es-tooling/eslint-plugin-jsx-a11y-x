@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18.x, 20.x, 21.x]
+        node-version: [18.x, 20.x, 21.x, 23.x]
       fail-fast: false
     steps:
       - name: Checkout
@@ -23,8 +23,14 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
+      - name: Flow
+        run: npm run flow
+      - name: Post-Test
+        run: npm run posttest
       - name: Test
         run: npm run test
+      - name: Test examples
+        run: npm run test:examples
       - name: Report Test Coverage
         uses: coverallsapp/github-action@master
         with:
