@@ -46,18 +46,18 @@ const allRules = {
 };
 
 const recommendedRules = {
-  'jsx-a11y/alt-text': 'error',
-  'jsx-a11y/anchor-ambiguous-text': 'off', // TODO: error
-  'jsx-a11y/anchor-has-content': 'error',
-  'jsx-a11y/anchor-is-valid': 'error',
-  'jsx-a11y/aria-activedescendant-has-tabindex': 'error',
-  'jsx-a11y/aria-props': 'error',
-  'jsx-a11y/aria-proptypes': 'error',
-  'jsx-a11y/aria-role': 'error',
-  'jsx-a11y/aria-unsupported-elements': 'error',
-  'jsx-a11y/autocomplete-valid': 'error',
-  'jsx-a11y/click-events-have-key-events': 'error',
-  'jsx-a11y/control-has-associated-label': [
+  'jsx-a11y-x/alt-text': 'error',
+  'jsx-a11y-x/anchor-ambiguous-text': 'off', // TODO: error
+  'jsx-a11y-x/anchor-has-content': 'error',
+  'jsx-a11y-x/anchor-is-valid': 'error',
+  'jsx-a11y-x/aria-activedescendant-has-tabindex': 'error',
+  'jsx-a11y-x/aria-props': 'error',
+  'jsx-a11y-x/aria-proptypes': 'error',
+  'jsx-a11y-x/aria-role': 'error',
+  'jsx-a11y-x/aria-unsupported-elements': 'error',
+  'jsx-a11y-x/autocomplete-valid': 'error',
+  'jsx-a11y-x/click-events-have-key-events': 'error',
+  'jsx-a11y-x/control-has-associated-label': [
     'off',
     {
       ignoreElements: [
@@ -84,11 +84,11 @@ const recommendedRules = {
       includeRoles: ['alert', 'dialog'],
     },
   ],
-  'jsx-a11y/heading-has-content': 'error',
-  'jsx-a11y/html-has-lang': 'error',
-  'jsx-a11y/iframe-has-title': 'error',
-  'jsx-a11y/img-redundant-alt': 'error',
-  'jsx-a11y/interactive-supports-focus': [
+  'jsx-a11y-x/heading-has-content': 'error',
+  'jsx-a11y-x/html-has-lang': 'error',
+  'jsx-a11y-x/iframe-has-title': 'error',
+  'jsx-a11y-x/img-redundant-alt': 'error',
+  'jsx-a11y-x/interactive-supports-focus': [
     'error',
     {
       tabbable: [
@@ -102,21 +102,21 @@ const recommendedRules = {
       ],
     },
   ],
-  'jsx-a11y/label-has-associated-control': 'error',
-  'jsx-a11y/label-has-for': 'off',
-  'jsx-a11y/media-has-caption': 'error',
-  'jsx-a11y/mouse-events-have-key-events': 'error',
-  'jsx-a11y/no-access-key': 'error',
-  'jsx-a11y/no-autofocus': 'error',
-  'jsx-a11y/no-distracting-elements': 'error',
-  'jsx-a11y/no-interactive-element-to-noninteractive-role': [
+  'jsx-a11y-x/label-has-associated-control': 'error',
+  'jsx-a11y-x/label-has-for': 'off',
+  'jsx-a11y-x/media-has-caption': 'error',
+  'jsx-a11y-x/mouse-events-have-key-events': 'error',
+  'jsx-a11y-x/no-access-key': 'error',
+  'jsx-a11y-x/no-autofocus': 'error',
+  'jsx-a11y-x/no-distracting-elements': 'error',
+  'jsx-a11y-x/no-interactive-element-to-noninteractive-role': [
     'error',
     {
       tr: ['none', 'presentation'],
       canvas: ['img'],
     },
   ],
-  'jsx-a11y/no-noninteractive-element-interactions': [
+  'jsx-a11y-x/no-noninteractive-element-interactions': [
     'error',
     {
       handlers: [
@@ -136,7 +136,7 @@ const recommendedRules = {
       img: ['onError', 'onLoad'],
     },
   ],
-  'jsx-a11y/no-noninteractive-element-to-interactive-role': [
+  'jsx-a11y-x/no-noninteractive-element-to-interactive-role': [
     'error',
     {
       ul: [
@@ -171,7 +171,7 @@ const recommendedRules = {
       fieldset: ['radiogroup', 'presentation'],
     },
   ],
-  'jsx-a11y/no-noninteractive-tabindex': [
+  'jsx-a11y-x/no-noninteractive-tabindex': [
     'error',
     {
       tags: [],
@@ -179,8 +179,8 @@ const recommendedRules = {
       allowExpressionValues: true,
     },
   ],
-  'jsx-a11y/no-redundant-roles': 'error',
-  'jsx-a11y/no-static-element-interactions': [
+  'jsx-a11y-x/no-redundant-roles': 'error',
+  'jsx-a11y-x/no-static-element-interactions': [
     'error',
     {
       allowExpressionValues: true,
@@ -194,24 +194,24 @@ const recommendedRules = {
       ],
     },
   ],
-  'jsx-a11y/role-has-required-aria-props': 'error',
-  'jsx-a11y/role-supports-aria-props': 'error',
-  'jsx-a11y/scope': 'error',
-  'jsx-a11y/tabindex-no-positive': 'error',
+  'jsx-a11y-x/role-has-required-aria-props': 'error',
+  'jsx-a11y-x/role-supports-aria-props': 'error',
+  'jsx-a11y-x/scope': 'error',
+  'jsx-a11y-x/tabindex-no-positive': 'error',
 };
 
 const strictRules = {
-  'jsx-a11y/alt-text': 'error',
-  'jsx-a11y/anchor-has-content': 'error',
-  'jsx-a11y/anchor-is-valid': 'error',
-  'jsx-a11y/aria-activedescendant-has-tabindex': 'error',
-  'jsx-a11y/aria-props': 'error',
-  'jsx-a11y/aria-proptypes': 'error',
-  'jsx-a11y/aria-role': 'error',
-  'jsx-a11y/aria-unsupported-elements': 'error',
-  'jsx-a11y/autocomplete-valid': 'error',
-  'jsx-a11y/click-events-have-key-events': 'error',
-  'jsx-a11y/control-has-associated-label': [
+  'jsx-a11y-x/alt-text': 'error',
+  'jsx-a11y-x/anchor-has-content': 'error',
+  'jsx-a11y-x/anchor-is-valid': 'error',
+  'jsx-a11y-x/aria-activedescendant-has-tabindex': 'error',
+  'jsx-a11y-x/aria-props': 'error',
+  'jsx-a11y-x/aria-proptypes': 'error',
+  'jsx-a11y-x/aria-role': 'error',
+  'jsx-a11y-x/aria-unsupported-elements': 'error',
+  'jsx-a11y-x/autocomplete-valid': 'error',
+  'jsx-a11y-x/click-events-have-key-events': 'error',
+  'jsx-a11y-x/control-has-associated-label': [
     'off',
     {
       ignoreElements: [
@@ -238,11 +238,11 @@ const strictRules = {
       includeRoles: ['alert', 'dialog'],
     },
   ],
-  'jsx-a11y/heading-has-content': 'error',
-  'jsx-a11y/html-has-lang': 'error',
-  'jsx-a11y/iframe-has-title': 'error',
-  'jsx-a11y/img-redundant-alt': 'error',
-  'jsx-a11y/interactive-supports-focus': [
+  'jsx-a11y-x/heading-has-content': 'error',
+  'jsx-a11y-x/html-has-lang': 'error',
+  'jsx-a11y-x/iframe-has-title': 'error',
+  'jsx-a11y-x/img-redundant-alt': 'error',
+  'jsx-a11y-x/interactive-supports-focus': [
     'error',
     {
       tabbable: [
@@ -258,15 +258,15 @@ const strictRules = {
       ],
     },
   ],
-  'jsx-a11y/label-has-for': 'off',
-  'jsx-a11y/label-has-associated-control': 'error',
-  'jsx-a11y/media-has-caption': 'error',
-  'jsx-a11y/mouse-events-have-key-events': 'error',
-  'jsx-a11y/no-access-key': 'error',
-  'jsx-a11y/no-autofocus': 'error',
-  'jsx-a11y/no-distracting-elements': 'error',
-  'jsx-a11y/no-interactive-element-to-noninteractive-role': 'error',
-  'jsx-a11y/no-noninteractive-element-interactions': [
+  'jsx-a11y-x/label-has-for': 'off',
+  'jsx-a11y-x/label-has-associated-control': 'error',
+  'jsx-a11y-x/media-has-caption': 'error',
+  'jsx-a11y-x/mouse-events-have-key-events': 'error',
+  'jsx-a11y-x/no-access-key': 'error',
+  'jsx-a11y-x/no-autofocus': 'error',
+  'jsx-a11y-x/no-distracting-elements': 'error',
+  'jsx-a11y-x/no-interactive-element-to-noninteractive-role': 'error',
+  'jsx-a11y-x/no-noninteractive-element-interactions': [
     'error',
     {
       body: ['onError', 'onLoad'],
@@ -274,14 +274,14 @@ const strictRules = {
       img: ['onError', 'onLoad'],
     },
   ],
-  'jsx-a11y/no-noninteractive-element-to-interactive-role': 'error',
-  'jsx-a11y/no-noninteractive-tabindex': 'error',
-  'jsx-a11y/no-redundant-roles': 'error',
-  'jsx-a11y/no-static-element-interactions': 'error',
-  'jsx-a11y/role-has-required-aria-props': 'error',
-  'jsx-a11y/role-supports-aria-props': 'error',
-  'jsx-a11y/scope': 'error',
-  'jsx-a11y/tabindex-no-positive': 'error',
+  'jsx-a11y-x/no-noninteractive-element-to-interactive-role': 'error',
+  'jsx-a11y-x/no-noninteractive-tabindex': 'error',
+  'jsx-a11y-x/no-redundant-roles': 'error',
+  'jsx-a11y-x/no-static-element-interactions': 'error',
+  'jsx-a11y-x/role-has-required-aria-props': 'error',
+  'jsx-a11y-x/role-supports-aria-props': 'error',
+  'jsx-a11y-x/scope': 'error',
+  'jsx-a11y-x/tabindex-no-positive': 'error',
 };
 
 /** Base plugin object */
@@ -292,18 +292,19 @@ const jsxA11y = {
 
 /**
  * Given a ruleset and optionally a flat config name, generate a config.
- * @param {object} rules - ruleset for this config
- * @param {string} flatConfigName - name for the config if flat
+ *
+ * @param {object} rules - Ruleset for this config
+ * @param {string} flatConfigName - Name for the config if flat
  * @returns Config for this set of rules.
  */
 const createConfig = (rules, flatConfigName) => ({
   ...(flatConfigName
     ? {
-      ...flatConfigBase,
-      name: `jsx-a11y/${flatConfigName}`,
-      plugins: { 'jsx-a11y': jsxA11y },
-    }
-    : { ...legacyConfigBase, plugins: ['jsx-a11y'] }),
+        ...flatConfigBase,
+        name: `jsx-a11y-x/${flatConfigName}`,
+        plugins: { 'jsx-a11y-x': jsxA11y },
+      }
+    : { ...legacyConfigBase, plugins: ['jsx-a11y-x'] }),
   rules: { ...rules },
 });
 

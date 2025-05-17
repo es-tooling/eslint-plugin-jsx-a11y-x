@@ -1,4 +1,4 @@
-# jsx-a11y/mouse-events-have-key-events
+# jsx-a11y-x/mouse-events-have-key-events
 
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
@@ -34,9 +34,10 @@ By default, this rule checks that `onmouseover` is paired with `onfocus` and tha
 }
 ```
 
-Note that while `onmouseover` and `onmouseout` are checked by default if no arguments are passed in, those are *not* included by default if you *do* provide an argument, so remember to explicitly include them if you want to check them.
+Note that while `onmouseover` and `onmouseout` are checked by default if no arguments are passed in, those are _not_ included by default if you _do_ provide an argument, so remember to explicitly include them if you want to check them.
 
 ### Succeed
+
 ```jsx
 <div onMouseOver={ () => void 0 } onFocus={ () => void 0 } />
 <div onMouseOut={ () => void 0 } onBlur={ () => void 0 } />
@@ -45,6 +46,7 @@ Note that while `onmouseover` and `onmouseout` are checked by default if no argu
 ```
 
 ### Fail
+
 In example 3 and 4 below, even if otherProps contains onBlur and/or onFocus, this rule will still fail. Props should be passed down explicitly for rule to pass.
 
 ```jsx
@@ -55,4 +57,5 @@ In example 3 and 4 below, even if otherProps contains onBlur and/or onFocus, thi
 ```
 
 ## Accessibility guidelines
+
 - [WCAG 2.1.1](https://www.w3.org/WAI/WCAG21/Understanding/keyboard)

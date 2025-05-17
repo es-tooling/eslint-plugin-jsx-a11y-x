@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enforce html element has lang prop.
+ * @file Enforce html element has lang prop.
  * @author Ethan Cohen
  */
 
@@ -18,16 +18,16 @@ const schema = generateObjSchema();
 export default {
   meta: {
     docs: {
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/html-has-lang.md',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/html-has-lang.md',
       description: 'Enforce `<html>` element has `lang` prop.',
     },
     schema: [schema],
   },
 
-  create: (context) => {
+  create: context => {
     const elementType = getElementType(context);
     return {
-      JSXOpeningElement: (node) => {
+      JSXOpeningElement: node => {
         const type = elementType(node);
 
         if (type && type !== 'html') {

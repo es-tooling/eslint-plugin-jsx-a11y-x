@@ -1,10 +1,10 @@
 {
   "name": "flat-esm",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
+  "private": true,
   "scripts": {
-    "lint": "cross-env ESLINT_USE_FLAT_CONFIG=true eslint . --report-unused-disable-directives"
+    "lint": "ESLINT_USE_FLAT_CONFIG=true eslint . --report-unused-disable-directives"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -12,9 +12,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
-    "cross-env": "^7.0.3",
     "eslint": "^9.9.1",
-    "eslint-plugin-jsx-a11y": "file:../..",
+    "eslint-plugin-jsx-a11y-x": "portal:../..",
     "globals": "^15.6.0"
   }
 }

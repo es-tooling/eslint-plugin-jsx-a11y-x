@@ -1,8 +1,8 @@
 /**
- * @fileoverview Disallow inherently interactive elements to be assigned
- * non-interactive roles.
- * @author Jesse Beach
  * @flow
+ * @file Disallow inherently interactive elements to be assigned non-interactive
+ *   roles.
+ * @author Jesse Beach
  */
 
 // ----------------------------------------------------------------------------
@@ -10,39 +10,43 @@
 // ----------------------------------------------------------------------------
 
 import { dom } from 'aria-query';
-import {
-  getProp,
-  getLiteralPropValue,
-  propName,
-} from 'jsx-ast-utils';
+import { getProp, getLiteralPropValue, propName } from 'jsx-ast-utils';
 import type { JSXIdentifier } from 'ast-types-flow';
 import includes from 'array-includes';
 import hasOwn from 'hasown';
-import type { ESLintConfig, ESLintContext, ESLintVisitorSelectorConfig } from '../../flow/eslint';
+import type {
+  ESLintConfig,
+  ESLintContext,
+  ESLintVisitorSelectorConfig,
+} from '../../flow/eslint';
 import type { ESLintJSXAttribute } from '../../flow/eslint-jsx';
 import getElementType from '../util/getElementType';
 import isInteractiveElement from '../util/isInteractiveElement';
 import isNonInteractiveRole from '../util/isNonInteractiveRole';
 import isPresentationRole from '../util/isPresentationRole';
 
-const errorMessage = 'Interactive elements should not be assigned non-interactive roles.';
+const errorMessage =
+  'Interactive elements should not be assigned non-interactive roles.';
 
 export default ({
   meta: {
     docs: {
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/no-interactive-element-to-noninteractive-role.md',
-      description: 'Interactive elements should not be assigned non-interactive roles.',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/no-interactive-element-to-noninteractive-role.md',
+      description:
+        'Interactive elements should not be assigned non-interactive roles.',
     },
-    schema: [{
-      type: 'object',
-      additionalProperties: {
-        type: 'array',
-        items: {
-          type: 'string',
+    schema: [
+      {
+        type: 'object',
+        additionalProperties: {
+          type: 'array',
+          items: {
+            type: 'string',
+          },
+          uniqueItems: true,
         },
-        uniqueItems: true,
       },
-    }],
+    ],
   },
 
   create: (context: ESLintContext): ESLintVisitorSelectorConfig => {
@@ -67,16 +71,14 @@ export default ({
         }
         // Allow overrides from rule configuration for specific elements and
         // roles.
-        const allowedRoles = (options[0] || {});
+        const allowedRoles = options[0] || {};
         if (hasOwn(allowedRoles, type) && includes(allowedRoles[type], role)) {
           return;
         }
         if (
-          isInteractiveElement(type, attributes)
-          && (
-            isNonInteractiveRole(type, attributes)
-            || isPresentationRole(type, attributes)
-          )
+          isInteractiveElement(type, attributes) &&
+          (isNonInteractiveRole(type, attributes) ||
+            isPresentationRole(type, attributes))
         ) {
           // Visible, non-interactive elements should not have an interactive handler.
           context.report({

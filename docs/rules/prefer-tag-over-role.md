@@ -1,4 +1,4 @@
-# jsx-a11y/prefer-tag-over-role
+# jsx-a11y-x/prefer-tag-over-role
 
 <!-- end auto-generated rule header -->
 

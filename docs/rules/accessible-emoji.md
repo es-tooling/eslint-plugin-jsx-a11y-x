@@ -1,4 +1,4 @@
-# jsx-a11y/accessible-emoji
+# jsx-a11y-x/accessible-emoji
 
 ❌ This rule is deprecated.
 
@@ -11,6 +11,7 @@ Emoji have become a common way of communicating content to the end user. To a pe
 This rule takes no arguments.
 
 ### Succeed
+
 ```jsx
 <span role="img" aria-label="Snowman">&#9731;</span>
 <span role="img" aria-label="Panda">🐼</span>
@@ -18,13 +19,16 @@ This rule takes no arguments.
 ```
 
 ### Fail
+
 ```jsx
 <span>🐼</span>
 <i role="img" aria-label="Panda">🐼</i>
 ```
 
 ## Accessibility guidelines
+
 - [WCAG 1.1.1](https://www.w3.org/WAI/WCAG21/Understanding/non-text-content.html)
 
 ### Resources
+
 - [Léonie Watson, Accessible Emoji](https://tink.uk/accessible-emoji/)

@@ -1,8 +1,6 @@
 import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
 
-/**
- * Returns the implicit role for an input tag.
- */
+/** Returns the implicit role for an input tag. */
 export default function getImplicitRoleForInput(attributes) {
   const type = getProp(attributes, 'type');
 

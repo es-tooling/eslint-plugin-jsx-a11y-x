@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enforce static elements have no interactive handlers.
+ * @file Enforce static elements have no interactive handlers.
  * @author Ethan Cohen
  */
 
@@ -20,7 +20,8 @@ import ruleOptionsMapperFactory from '../../__util__/ruleOptionsMapperFactory';
 
 const ruleTester = new RuleTester();
 
-const errorMessage = 'Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element.';
+const errorMessage =
+  'Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element.';
 
 const expectedError = {
   message: errorMessage,
@@ -30,7 +31,7 @@ const expectedError = {
 const ruleName = 'no-static-element-interactions';
 
 const componentsSettings = {
-  'jsx-a11y': {
+  'jsx-a11y-x': {
     components: {
       Button: 'button',
       TestComponent: 'div',
@@ -287,13 +288,25 @@ const alwaysValid = [
 
 const neverValid = [
   { code: '<div onClick={() => void 0} />;', errors: [expectedError] },
-  { code: '<div onClick={() => void 0} role={undefined} />;', errors: [expectedError] },
-  { code: '<div onClick={() => void 0} {...props} />;', errors: [expectedError] },
-  { code: '<div onKeyUp={() => void 0} aria-hidden={false} />;', errors: [expectedError] },
+  {
+    code: '<div onClick={() => void 0} role={undefined} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div onClick={() => void 0} {...props} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div onKeyUp={() => void 0} aria-hidden={false} />;',
+    errors: [expectedError],
+  },
   /* Static elements; no inherent role */
   { code: '<a onClick={() => {}} />;', errors: [expectedError] },
   { code: '<a onClick={() => void 0} />', errors: [expectedError] },
-  { code: '<a tabIndex="0" onClick={() => void 0} />', errors: [expectedError] },
+  {
+    code: '<a tabIndex="0" onClick={() => void 0} />',
+    errors: [expectedError],
+  },
   { code: '<acronym onClick={() => {}} />;', errors: [expectedError] },
   { code: '<applet onClick={() => {}} />;', errors: [expectedError] },
   { code: '<area onClick={() => {}} />;', errors: [expectedError] },
@@ -355,147 +368,164 @@ const neverValid = [
   { code: '<div onMouseDown={() => {}} />;', errors: [expectedError] },
   { code: '<div onMouseUp={() => {}} />;', errors: [expectedError] },
   // Custom components
-  { code: '<TestComponent onClick={doFoo} />', settings: componentsSettings, errors: [expectedError] },
+  {
+    code: '<TestComponent onClick={doFoo} />',
+    settings: componentsSettings,
+    errors: [expectedError],
+  },
 ];
 
-const recommendedOptions = configs.recommended.rules[`jsx-a11y/${ruleName}`][1] || {};
+const recommendedOptions =
+  configs.recommended.rules[`jsx-a11y-x/${ruleName}`][1] || {};
 ruleTester.run(`${ruleName}:recommended`, rule, {
-  valid: parsers.all([].concat(
-    alwaysValid,
-    // All the possible handlers
-    { code: '<div onCopy={() => {}} />;' },
-    { code: '<div onCut={() => {}} />;' },
-    { code: '<div onPaste={() => {}} />;' },
-    { code: '<div onCompositionEnd={() => {}} />;' },
-    { code: '<div onCompositionStart={() => {}} />;' },
-    { code: '<div onCompositionUpdate={() => {}} />;' },
-    { code: '<div onFocus={() => {}} />;' },
-    { code: '<div onBlur={() => {}} />;' },
-    { code: '<div onChange={() => {}} />;' },
-    { code: '<div onInput={() => {}} />;' },
-    { code: '<div onSubmit={() => {}} />;' },
-    { code: '<div onContextMenu={() => {}} />;' },
-    { code: '<div onDblClick={() => {}} />;' },
-    { code: '<div onDoubleClick={() => {}} />;' },
-    { code: '<div onDrag={() => {}} />;' },
-    { code: '<div onDragEnd={() => {}} />;' },
-    { code: '<div onDragEnter={() => {}} />;' },
-    { code: '<div onDragExit={() => {}} />;' },
-    { code: '<div onDragLeave={() => {}} />;' },
-    { code: '<div onDragOver={() => {}} />;' },
-    { code: '<div onDragStart={() => {}} />;' },
-    { code: '<div onDrop={() => {}} />;' },
-    { code: '<div onMouseEnter={() => {}} />;' },
-    { code: '<div onMouseLeave={() => {}} />;' },
-    { code: '<div onMouseMove={() => {}} />;' },
-    { code: '<div onMouseOut={() => {}} />;' },
-    { code: '<div onMouseOver={() => {}} />;' },
-    { code: '<div onSelect={() => {}} />;' },
-    { code: '<div onTouchCancel={() => {}} />;' },
-    { code: '<div onTouchEnd={() => {}} />;' },
-    { code: '<div onTouchMove={() => {}} />;' },
-    { code: '<div onTouchStart={() => {}} />;' },
-    { code: '<div onScroll={() => {}} />;' },
-    { code: '<div onWheel={() => {}} />;' },
-    { code: '<div onAbort={() => {}} />;' },
-    { code: '<div onCanPlay={() => {}} />;' },
-    { code: '<div onCanPlayThrough={() => {}} />;' },
-    { code: '<div onDurationChange={() => {}} />;' },
-    { code: '<div onEmptied={() => {}} />;' },
-    { code: '<div onEncrypted={() => {}} />;' },
-    { code: '<div onEnded={() => {}} />;' },
-    { code: '<div onError={() => {}} />;' },
-    { code: '<div onLoadedData={() => {}} />;' },
-    { code: '<div onLoadedMetadata={() => {}} />;' },
-    { code: '<div onLoadStart={() => {}} />;' },
-    { code: '<div onPause={() => {}} />;' },
-    { code: '<div onPlay={() => {}} />;' },
-    { code: '<div onPlaying={() => {}} />;' },
-    { code: '<div onProgress={() => {}} />;' },
-    { code: '<div onRateChange={() => {}} />;' },
-    { code: '<div onSeeked={() => {}} />;' },
-    { code: '<div onSeeking={() => {}} />;' },
-    { code: '<div onStalled={() => {}} />;' },
-    { code: '<div onSuspend={() => {}} />;' },
-    { code: '<div onTimeUpdate={() => {}} />;' },
-    { code: '<div onVolumeChange={() => {}} />;' },
-    { code: '<div onWaiting={() => {}} />;' },
-    { code: '<div onLoad={() => {}} />;' },
-    { code: '<div onError={() => {}} />;' },
-    { code: '<div onAnimationStart={() => {}} />;' },
-    { code: '<div onAnimationEnd={() => {}} />;' },
-    { code: '<div onAnimationIteration={() => {}} />;' },
-    { code: '<div onTransitionEnd={() => {}} />;' },
-    // Expressions should pass in recommended mode
-    { code: '<div role={ROLE_BUTTON} onClick={() => {}} />;' },
-    { code: '<div  {...this.props} role={this.props.role} onKeyPress={e => this.handleKeyPress(e)}>{this.props.children}</div>' },
-    // Cases for allowExpressionValues set to true
-    {
-      code: '<div role={BUTTON} onClick={() => {}} />;',
-      options: [{ allowExpressionValues: true }],
-    },
-    // Specific case for ternary operator with literals on both side
-    {
-      code: '<div role={isButton ? "button" : "link"} onClick={() => {}} />;',
-      options: [{ allowExpressionValues: true }],
-    },
-    {
-      code: '<div role={isButton ? "button" : LINK} onClick={() => {}} />;',
-      options: [{ allowExpressionValues: true }],
-      errors: [expectedError],
-    },
-    {
-      code: '<div role={isButton ? BUTTON : LINK} onClick={() => {}} />;',
-      options: [{ allowExpressionValues: true }],
-      errors: [expectedError],
-    },
-  ))
+  valid: parsers
+    .all(
+      [].concat(
+        alwaysValid,
+        // All the possible handlers
+        { code: '<div onCopy={() => {}} />;' },
+        { code: '<div onCut={() => {}} />;' },
+        { code: '<div onPaste={() => {}} />;' },
+        { code: '<div onCompositionEnd={() => {}} />;' },
+        { code: '<div onCompositionStart={() => {}} />;' },
+        { code: '<div onCompositionUpdate={() => {}} />;' },
+        { code: '<div onFocus={() => {}} />;' },
+        { code: '<div onBlur={() => {}} />;' },
+        { code: '<div onChange={() => {}} />;' },
+        { code: '<div onInput={() => {}} />;' },
+        { code: '<div onSubmit={() => {}} />;' },
+        { code: '<div onContextMenu={() => {}} />;' },
+        { code: '<div onDblClick={() => {}} />;' },
+        { code: '<div onDoubleClick={() => {}} />;' },
+        { code: '<div onDrag={() => {}} />;' },
+        { code: '<div onDragEnd={() => {}} />;' },
+        { code: '<div onDragEnter={() => {}} />;' },
+        { code: '<div onDragExit={() => {}} />;' },
+        { code: '<div onDragLeave={() => {}} />;' },
+        { code: '<div onDragOver={() => {}} />;' },
+        { code: '<div onDragStart={() => {}} />;' },
+        { code: '<div onDrop={() => {}} />;' },
+        { code: '<div onMouseEnter={() => {}} />;' },
+        { code: '<div onMouseLeave={() => {}} />;' },
+        { code: '<div onMouseMove={() => {}} />;' },
+        { code: '<div onMouseOut={() => {}} />;' },
+        { code: '<div onMouseOver={() => {}} />;' },
+        { code: '<div onSelect={() => {}} />;' },
+        { code: '<div onTouchCancel={() => {}} />;' },
+        { code: '<div onTouchEnd={() => {}} />;' },
+        { code: '<div onTouchMove={() => {}} />;' },
+        { code: '<div onTouchStart={() => {}} />;' },
+        { code: '<div onScroll={() => {}} />;' },
+        { code: '<div onWheel={() => {}} />;' },
+        { code: '<div onAbort={() => {}} />;' },
+        { code: '<div onCanPlay={() => {}} />;' },
+        { code: '<div onCanPlayThrough={() => {}} />;' },
+        { code: '<div onDurationChange={() => {}} />;' },
+        { code: '<div onEmptied={() => {}} />;' },
+        { code: '<div onEncrypted={() => {}} />;' },
+        { code: '<div onEnded={() => {}} />;' },
+        { code: '<div onError={() => {}} />;' },
+        { code: '<div onLoadedData={() => {}} />;' },
+        { code: '<div onLoadedMetadata={() => {}} />;' },
+        { code: '<div onLoadStart={() => {}} />;' },
+        { code: '<div onPause={() => {}} />;' },
+        { code: '<div onPlay={() => {}} />;' },
+        { code: '<div onPlaying={() => {}} />;' },
+        { code: '<div onProgress={() => {}} />;' },
+        { code: '<div onRateChange={() => {}} />;' },
+        { code: '<div onSeeked={() => {}} />;' },
+        { code: '<div onSeeking={() => {}} />;' },
+        { code: '<div onStalled={() => {}} />;' },
+        { code: '<div onSuspend={() => {}} />;' },
+        { code: '<div onTimeUpdate={() => {}} />;' },
+        { code: '<div onVolumeChange={() => {}} />;' },
+        { code: '<div onWaiting={() => {}} />;' },
+        { code: '<div onLoad={() => {}} />;' },
+        { code: '<div onError={() => {}} />;' },
+        { code: '<div onAnimationStart={() => {}} />;' },
+        { code: '<div onAnimationEnd={() => {}} />;' },
+        { code: '<div onAnimationIteration={() => {}} />;' },
+        { code: '<div onTransitionEnd={() => {}} />;' },
+        // Expressions should pass in recommended mode
+        { code: '<div role={ROLE_BUTTON} onClick={() => {}} />;' },
+        {
+          code: '<div  {...this.props} role={this.props.role} onKeyPress={e => this.handleKeyPress(e)}>{this.props.children}</div>',
+        },
+        // Cases for allowExpressionValues set to true
+        {
+          code: '<div role={BUTTON} onClick={() => {}} />;',
+          options: [{ allowExpressionValues: true }],
+        },
+        // Specific case for ternary operator with literals on both side
+        {
+          code: '<div role={isButton ? "button" : "link"} onClick={() => {}} />;',
+          options: [{ allowExpressionValues: true }],
+        },
+        {
+          code: '<div role={isButton ? "button" : LINK} onClick={() => {}} />;',
+          options: [{ allowExpressionValues: true }],
+          errors: [expectedError],
+        },
+        {
+          code: '<div role={isButton ? BUTTON : LINK} onClick={() => {}} />;',
+          options: [{ allowExpressionValues: true }],
+          errors: [expectedError],
+        },
+      ),
+    )
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
-  invalid: parsers.all([].concat(
-    neverValid,
-  ))
+  invalid: parsers
+    .all([].concat(neverValid))
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
 });
 
 ruleTester.run(`${ruleName}:strict`, rule, {
-  valid: parsers.all([].concat(
-    alwaysValid,
-  )).map(parserOptionsMapper),
-  invalid: parsers.all([].concat(
-    neverValid,
-    // All the possible handlers
-    { code: '<div onContextMenu={() => {}} />;', errors: [expectedError] },
-    { code: '<div onDblClick={() => {}} />;', errors: [expectedError] },
-    { code: '<div onDoubleClick={() => {}} />;', errors: [expectedError] },
-    { code: '<div onDrag={() => {}} />;', errors: [expectedError] },
-    { code: '<div onDragEnd={() => {}} />;', errors: [expectedError] },
-    { code: '<div onDragEnter={() => {}} />;', errors: [expectedError] },
-    { code: '<div onDragExit={() => {}} />;', errors: [expectedError] },
-    { code: '<div onDragLeave={() => {}} />;', errors: [expectedError] },
-    { code: '<div onDragOver={() => {}} />;', errors: [expectedError] },
-    { code: '<div onDragStart={() => {}} />;', errors: [expectedError] },
-    { code: '<div onDrop={() => {}} />;', errors: [expectedError] },
-    { code: '<div onMouseEnter={() => {}} />;', errors: [expectedError] },
-    { code: '<div onMouseLeave={() => {}} />;', errors: [expectedError] },
-    { code: '<div onMouseMove={() => {}} />;', errors: [expectedError] },
-    { code: '<div onMouseOut={() => {}} />;', errors: [expectedError] },
-    { code: '<div onMouseOver={() => {}} />;', errors: [expectedError] },
-    // Expressions should fail in strict mode
-    { code: '<div role={ROLE_BUTTON} onClick={() => {}} />;', errors: [expectedError] },
-    { code: '<div  {...this.props} role={this.props.role} onKeyPress={e => this.handleKeyPress(e)}>{this.props.children}</div>', errors: [expectedError] },
-    // Cases for allowExpressionValues set to false
-    {
-      code: '<div role={BUTTON} onClick={() => {}} />;',
-      options: [{ allowExpressionValues: false }],
-      errors: [expectedError],
-    },
-    // Specific case for ternary operator with literals on both side
-    {
-      code: '<div role={isButton ? "button" : "link"} onClick={() => {}} />;',
-      options: [{ allowExpressionValues: false }],
-      errors: [expectedError],
-    },
-  )).map(parserOptionsMapper),
+  valid: parsers.all([].concat(alwaysValid)).map(parserOptionsMapper),
+  invalid: parsers
+    .all(
+      [].concat(
+        neverValid,
+        // All the possible handlers
+        { code: '<div onContextMenu={() => {}} />;', errors: [expectedError] },
+        { code: '<div onDblClick={() => {}} />;', errors: [expectedError] },
+        { code: '<div onDoubleClick={() => {}} />;', errors: [expectedError] },
+        { code: '<div onDrag={() => {}} />;', errors: [expectedError] },
+        { code: '<div onDragEnd={() => {}} />;', errors: [expectedError] },
+        { code: '<div onDragEnter={() => {}} />;', errors: [expectedError] },
+        { code: '<div onDragExit={() => {}} />;', errors: [expectedError] },
+        { code: '<div onDragLeave={() => {}} />;', errors: [expectedError] },
+        { code: '<div onDragOver={() => {}} />;', errors: [expectedError] },
+        { code: '<div onDragStart={() => {}} />;', errors: [expectedError] },
+        { code: '<div onDrop={() => {}} />;', errors: [expectedError] },
+        { code: '<div onMouseEnter={() => {}} />;', errors: [expectedError] },
+        { code: '<div onMouseLeave={() => {}} />;', errors: [expectedError] },
+        { code: '<div onMouseMove={() => {}} />;', errors: [expectedError] },
+        { code: '<div onMouseOut={() => {}} />;', errors: [expectedError] },
+        { code: '<div onMouseOver={() => {}} />;', errors: [expectedError] },
+        // Expressions should fail in strict mode
+        {
+          code: '<div role={ROLE_BUTTON} onClick={() => {}} />;',
+          errors: [expectedError],
+        },
+        {
+          code: '<div  {...this.props} role={this.props.role} onKeyPress={e => this.handleKeyPress(e)}>{this.props.children}</div>',
+          errors: [expectedError],
+        },
+        // Cases for allowExpressionValues set to false
+        {
+          code: '<div role={BUTTON} onClick={() => {}} />;',
+          options: [{ allowExpressionValues: false }],
+          errors: [expectedError],
+        },
+        // Specific case for ternary operator with literals on both side
+        {
+          code: '<div role={isButton ? "button" : "link"} onClick={() => {}} />;',
+          options: [{ allowExpressionValues: false }],
+          errors: [expectedError],
+        },
+      ),
+    )
+    .map(parserOptionsMapper),
 });

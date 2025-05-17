@@ -1,5 +1,6 @@
 /**
- * @fileoverview Enforce img alt attribute does not have the word image, picture, or photo.
+ * @file Enforce img alt attribute does not have the word image, picture, or
+ *   photo.
  * @author Ethan Cohen
  */
 
@@ -15,13 +16,10 @@ import { generateObjSchema, arraySchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
 import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader';
 
-const REDUNDANT_WORDS = [
-  'image',
-  'photo',
-  'picture',
-];
+const REDUNDANT_WORDS = ['image', 'photo', 'picture'];
 
-const errorMessage = 'Redundant alt attribute. Screen-readers already announce `img` tags as an image. You don’t need to use the words `image`, `photo,` or `picture` (or any specified custom words) in the alt prop.';
+const errorMessage =
+  'Redundant alt attribute. Screen-readers already announce `img` tags as an image. You don’t need to use the words `image`, `photo,` or `picture` (or any specified custom words) in the alt prop.';
 
 const schema = generateObjSchema({
   components: arraySchema,
@@ -31,27 +29,36 @@ const schema = generateObjSchema({
 const isASCII = safeRegexTest(/[\x20-\x7F]+/);
 
 function containsRedundantWord(value, redundantWords) {
-  const lowercaseRedundantWords = redundantWords.map((redundantWord) => redundantWord.toLowerCase());
+  const lowercaseRedundantWords = redundantWords.map(redundantWord =>
+    redundantWord.toLowerCase(),
+  );
 
   if (isASCII(value)) {
-    return value.split(/\s+/).some((valueWord) => includes(lowercaseRedundantWords, valueWord.toLowerCase()));
+    return value
+      .split(/\s+/)
+      .some(valueWord =>
+        includes(lowercaseRedundantWords, valueWord.toLowerCase()),
+      );
   }
-  return lowercaseRedundantWords.some((redundantWord) => stringIncludes(value.toLowerCase(), redundantWord));
+  return lowercaseRedundantWords.some(redundantWord =>
+    stringIncludes(value.toLowerCase(), redundantWord),
+  );
 }
 
 export default {
   meta: {
     docs: {
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/img-redundant-alt.md',
-      description: 'Enforce `<img>` alt prop does not contain the word "image", "picture", or "photo".',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/img-redundant-alt.md',
+      description:
+        'Enforce `<img>` alt prop does not contain the word "image", "picture", or "photo".',
     },
     schema: [schema],
   },
 
-  create: (context) => {
+  create: context => {
     const elementType = getElementType(context);
     return {
-      JSXOpeningElement: (node) => {
+      JSXOpeningElement: node => {
         const options = context.options[0] || {};
         const componentOptions = options.components || [];
         const typesToValidate = ['img'].concat(componentOptions);
@@ -69,11 +76,10 @@ export default {
         }
 
         const value = getLiteralPropValue(altProp);
-        const isVisible = isHiddenFromScreenReader(nodeType, node.attributes) === false;
+        const isVisible =
+          isHiddenFromScreenReader(nodeType, node.attributes) === false;
 
-        const {
-          words = [],
-        } = options;
+        const { words = [] } = options;
         const redundantWords = REDUNDANT_WORDS.concat(words);
 
         if (typeof value === 'string' && isVisible) {

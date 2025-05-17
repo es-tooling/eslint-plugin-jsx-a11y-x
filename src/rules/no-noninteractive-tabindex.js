@@ -1,7 +1,7 @@
 /**
- * @fileoverview Disallow tabindex on static and noninteractive elements
- * @author jessebeach
  * @flow
+ * @file Disallow tabindex on static and noninteractive elements
+ * @author jessebeach
  */
 
 // ----------------------------------------------------------------------------
@@ -10,12 +10,13 @@
 
 import { dom } from 'aria-query';
 import type { JSXOpeningElement } from 'ast-types-flow';
-import {
-  getProp,
-  getLiteralPropValue,
-} from 'jsx-ast-utils';
+import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
 import includes from 'array-includes';
-import type { ESLintConfig, ESLintContext, ESLintVisitorSelectorConfig } from '../../flow/eslint';
+import type {
+  ESLintConfig,
+  ESLintContext,
+  ESLintVisitorSelectorConfig,
+} from '../../flow/eslint';
 import getElementType from '../util/getElementType';
 import isInteractiveElement from '../util/isInteractiveElement';
 import isInteractiveRole from '../util/isInteractiveRole';
@@ -23,7 +24,8 @@ import isNonLiteralProperty from '../util/isNonLiteralProperty';
 import { generateObjSchema, arraySchema } from '../util/schemas';
 import getTabIndex from '../util/getTabIndex';
 
-const errorMessage = '`tabIndex` should only be declared on interactive elements.';
+const errorMessage =
+  '`tabIndex` should only be declared on interactive elements.';
 
 const schema = generateObjSchema({
   roles: {
@@ -39,8 +41,9 @@ const schema = generateObjSchema({
 export default ({
   meta: {
     docs: {
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/no-noninteractive-tabindex.md',
-      description: '`tabIndex` should only be declared on interactive elements.',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/no-noninteractive-tabindex.md',
+      description:
+        '`tabIndex` should only be declared on interactive elements.',
     },
     schema: [schema],
   },
@@ -66,11 +69,7 @@ export default ({
           return;
         }
         // Allow for configuration overrides.
-        const {
-          tags,
-          roles,
-          allowExpressionValues,
-        } = (options[0] || {});
+        const { tags, roles, allowExpressionValues } = options[0] || {};
         if (tags && includes(tags, type)) {
           return;
         }
@@ -78,16 +77,20 @@ export default ({
           return;
         }
         if (
-          allowExpressionValues === true
-          && isNonLiteralProperty(attributes, 'role')
+          allowExpressionValues === true &&
+          isNonLiteralProperty(attributes, 'role')
         ) {
           // Special case if role is assigned using ternary with literals on both side
           const roleProp = getProp(attributes, 'role');
-          if (roleProp && roleProp.type === 'JSXAttribute' && roleProp.value.type === 'JSXExpressionContainer') {
+          if (
+            roleProp &&
+            roleProp.type === 'JSXAttribute' &&
+            roleProp.value.type === 'JSXExpressionContainer'
+          ) {
             if (roleProp.value.expression.type === 'ConditionalExpression') {
               if (
-                roleProp.value.expression.consequent.type === 'Literal'
-                && roleProp.value.expression.alternate.type === 'Literal'
+                roleProp.value.expression.consequent.type === 'Literal' &&
+                roleProp.value.expression.alternate.type === 'Literal'
               ) {
                 return;
               }
@@ -96,14 +99,12 @@ export default ({
           return;
         }
         if (
-          isInteractiveElement(type, attributes)
-          || isInteractiveRole(type, attributes)
+          isInteractiveElement(type, attributes) ||
+          isInteractiveRole(type, attributes)
         ) {
           return;
         }
-        if (
-          tabIndex >= 0
-        ) {
+        if (tabIndex >= 0) {
           context.report({
             node: tabIndexProp,
             message: errorMessage,

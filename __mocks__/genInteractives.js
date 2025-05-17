@@ -1,6 +1,4 @@
-/**
- * @flow
- */
+/** @flow */
 
 import { dom, roles } from 'aria-query';
 import includes from 'array-includes';
@@ -59,7 +57,7 @@ const interactiveElementsMap = {
   video: [],
 };
 
-const nonInteractiveElementsMap: {[string]: Array<{[string]: string}>} = {
+const nonInteractiveElementsMap: { [string]: Array<{ [string]: string }> } = {
   abbr: [],
   address: [],
   article: [],
@@ -122,15 +120,16 @@ const nonInteractiveElementsMap: {[string]: Array<{[string]: string}>} = {
   ul: [],
 };
 
-const indeterminantInteractiveElementsMap: { [key: string]: Array<any> } = fromEntries(domElements.map((name) => [name, []]));
+const indeterminantInteractiveElementsMap: { [key: string]: Array<any> } =
+  fromEntries(domElements.map(name => [name, []]));
 
 Object.keys(interactiveElementsMap)
   .concat(Object.keys(nonInteractiveElementsMap))
-  .forEach((name) => delete indeterminantInteractiveElementsMap[name]);
+  .forEach(name => delete indeterminantInteractiveElementsMap[name]);
 
-const abstractRoles = roleNames.filter((role) => roles.get(role).abstract);
+const abstractRoles = roleNames.filter(role => roles.get(role).abstract);
 
-const nonAbstractRoles = roleNames.filter((role) => !roles.get(role).abstract);
+const nonAbstractRoles = roleNames.filter(role => !roles.get(role).abstract);
 
 const interactiveRoles = []
   .concat(
@@ -139,59 +138,68 @@ const interactiveRoles = []
     // aria-activedescendant, thus in practice we treat it as a widget.
     'toolbar',
   )
-  .filter((role) => (
-    !roles.get(role).abstract
-    && roles.get(role).superClass.some((klasses) => includes(klasses, 'widget'))
-  ));
+  .filter(
+    role =>
+      !roles.get(role).abstract &&
+      roles.get(role).superClass.some(klasses => includes(klasses, 'widget')),
+  );
 
-const nonInteractiveRoles = roleNames
-  .filter((role) => (
-    !roles.get(role).abstract
-    && !roles.get(role).superClass.some((klasses) => includes(klasses, 'widget'))
-
+const nonInteractiveRoles = roleNames.filter(
+  role =>
+    !roles.get(role).abstract &&
+    !roles.get(role).superClass.some(klasses => includes(klasses, 'widget')) &&
     // 'toolbar' does not descend from widget, but it does support
     // aria-activedescendant, thus in practice we treat it as a widget.
-    && !includes(['toolbar'], role)
-  ));
+    !includes(['toolbar'], role),
+);
 
 export function genElementSymbol(openingElement: Object): string {
   return (
-    openingElement.name.name + (openingElement.attributes.length > 0
-      ? `${openingElement.attributes.map((attr) => `[${attr.name.name}="${attr.value.value}"]`).join('')}`
-      : ''
-    )
+    openingElement.name.name +
+    (openingElement.attributes.length > 0
+      ? `${openingElement.attributes.map(attr => `[${attr.name.name}="${attr.value.value}"]`).join('')}`
+      : '')
   );
 }
 
 export function genInteractiveElements(): Array<JSXElementMockType> {
-  return Object.keys(interactiveElementsMap).map((elementSymbol: string): JSXElementMockType => {
-    const bracketIndex = elementSymbol.indexOf('[');
-    let name = elementSymbol;
-    if (bracketIndex > -1) {
-      name = elementSymbol.slice(0, bracketIndex);
-    }
-    const attributes = interactiveElementsMap[elementSymbol].map(({ prop, value }) => JSXAttributeMock(prop, value));
-    return JSXElementMock(name, attributes);
-  });
+  return Object.keys(interactiveElementsMap).map(
+    (elementSymbol: string): JSXElementMockType => {
+      const bracketIndex = elementSymbol.indexOf('[');
+      let name = elementSymbol;
+      if (bracketIndex > -1) {
+        name = elementSymbol.slice(0, bracketIndex);
+      }
+      const attributes = interactiveElementsMap[elementSymbol].map(
+        ({ prop, value }) => JSXAttributeMock(prop, value),
+      );
+      return JSXElementMock(name, attributes);
+    },
+  );
 }
 
 export function genInteractiveRoleElements(): Array<JSXElementMockType> {
-  return interactiveRoles.concat('button article', 'fakerole button article').map((value): JSXElementMockType => JSXElementMock(
-    'div',
-    [JSXAttributeMock('role', value)],
-  ));
+  return interactiveRoles
+    .concat('button article', 'fakerole button article')
+    .map((value): JSXElementMockType =>
+      JSXElementMock('div', [JSXAttributeMock('role', value)]),
+    );
 }
 
 export function genNonInteractiveElements(): Array<JSXElementMockType> {
-  return Object.keys(nonInteractiveElementsMap).map((elementSymbol): JSXElementMockType => {
-    const bracketIndex = elementSymbol.indexOf('[');
-    let name = elementSymbol;
-    if (bracketIndex > -1) {
-      name = elementSymbol.slice(0, bracketIndex);
-    }
-    const attributes = nonInteractiveElementsMap[elementSymbol].map(({ prop, value }) => JSXAttributeMock(prop, value));
-    return JSXElementMock(name, attributes);
-  });
+  return Object.keys(nonInteractiveElementsMap).map(
+    (elementSymbol): JSXElementMockType => {
+      const bracketIndex = elementSymbol.indexOf('[');
+      let name = elementSymbol;
+      if (bracketIndex > -1) {
+        name = elementSymbol.slice(0, bracketIndex);
+      }
+      const attributes = nonInteractiveElementsMap[elementSymbol].map(
+        ({ prop, value }) => JSXAttributeMock(prop, value),
+      );
+      return JSXElementMock(name, attributes);
+    },
+  );
 }
 
 export function genNonInteractiveRoleElements(): Array<JSXElementMockType> {
@@ -199,20 +207,26 @@ export function genNonInteractiveRoleElements(): Array<JSXElementMockType> {
     ...nonInteractiveRoles,
     'article button',
     'fakerole article button',
-  ].map((value) => JSXElementMock('div', [JSXAttributeMock('role', value)]));
+  ].map(value => JSXElementMock('div', [JSXAttributeMock('role', value)]));
 }
 
 export function genAbstractRoleElements(): Array<JSXElementMockType> {
-  return abstractRoles.map((value) => JSXElementMock('div', [JSXAttributeMock('role', value)]));
+  return abstractRoles.map(value =>
+    JSXElementMock('div', [JSXAttributeMock('role', value)]),
+  );
 }
 
 export function genNonAbstractRoleElements(): Array<JSXElementMockType> {
-  return nonAbstractRoles.map((value) => JSXElementMock('div', [JSXAttributeMock('role', value)]));
+  return nonAbstractRoles.map(value =>
+    JSXElementMock('div', [JSXAttributeMock('role', value)]),
+  );
 }
 
 export function genIndeterminantInteractiveElements(): Array<JSXElementMockType> {
-  return Object.keys(indeterminantInteractiveElementsMap).map((name) => {
-    const attributes = indeterminantInteractiveElementsMap[name].map(({ prop, value }): JSXAttributeMockType => JSXAttributeMock(prop, value));
+  return Object.keys(indeterminantInteractiveElementsMap).map(name => {
+    const attributes = indeterminantInteractiveElementsMap[name].map(
+      ({ prop, value }): JSXAttributeMockType => JSXAttributeMock(prop, value),
+    );
     return JSXElementMock(name, attributes);
   });
 }

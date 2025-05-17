@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enforce elements with aria-activedescendant are tabbable.
+ * @file Enforce elements with aria-activedescendant are tabbable.
  * @author Jesse Beach <@jessebeach>
  */
 
@@ -14,23 +14,24 @@ import isInteractiveElement from '../util/isInteractiveElement';
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-const errorMessage = 'An element that manages focus with `aria-activedescendant` must have a tabindex';
+const errorMessage =
+  'An element that manages focus with `aria-activedescendant` must have a tabindex';
 
 const schema = generateObjSchema();
 
 export default {
   meta: {
     docs: {
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/aria-activedescendant-has-tabindex.md',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/aria-activedescendant-has-tabindex.md',
       description: 'Enforce elements with aria-activedescendant are tabbable.',
     },
     schema: [schema],
   },
 
-  create: (context) => {
+  create: context => {
     const elementType = getElementType(context);
     return {
-      JSXOpeningElement: (node) => {
+      JSXOpeningElement: node => {
         const { attributes } = node;
 
         if (getProp(attributes, 'aria-activedescendant') === undefined) {
@@ -48,10 +49,7 @@ export default {
         // If this is an interactive element and the tabindex attribute is not specified,
         // or the tabIndex property was not mutated, then the tabIndex
         // property will be undefined.
-        if (
-          isInteractiveElement(type, attributes)
-          && tabIndex === undefined
-        ) {
+        if (isInteractiveElement(type, attributes) && tabIndex === undefined) {
           return;
         }
 

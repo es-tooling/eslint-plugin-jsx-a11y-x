@@ -1,4 +1,4 @@
-# jsx-a11y/control-has-associated-label
+# jsx-a11y-x/control-has-associated-label
 
 🚫 This rule is _disabled_ in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
@@ -34,7 +34,11 @@ Provide text content in the `button` element.
 Use the `aria-label` attribute and provide the text label as the value.
 
 ```jsx
-<button type="button" aria-label="Save" class="icon-save" />
+<button
+  type="button"
+  aria-label="Save"
+  class="icon-save"
+/>
 ```
 
 ### Case: The label for my element is already located on the page and I don't want to repeat the text in my source code.
@@ -51,7 +55,11 @@ Use the `aria-labelledby` attribute and point the IDREF value to an element with
 You can configure the rule to be aware of your custom components. Refer to the Rule Details below.
 
 ```jsx
-<CustomInput label="Surname" type="text" value={value} />
+<CustomInput
+  label="Surname"
+  type="text"
+  value={value}
+/>
 ```
 
 ## Rule options
@@ -61,32 +69,35 @@ This rule takes one optional object argument of type object:
 ```json
 {
   "rules": {
-    "jsx-a11y/control-has-associated-label": [ 2, {
-      "labelAttributes": ["label"],
-      "controlComponents": ["CustomComponent"],
-      "ignoreElements": [
-        "audio",
-        "canvas",
-        "embed",
-        "input",
-        "textarea",
-        "tr",
-        "video",
-      ],
-      "ignoreRoles": [
-        "grid",
-        "listbox",
-        "menu",
-        "menubar",
-        "radiogroup",
-        "row",
-        "tablist",
-        "toolbar",
-        "tree",
-        "treegrid",
-      ],
-      "depth": 3,
-    }],
+    "jsx-a11y/control-has-associated-label": [
+      2,
+      {
+        "labelAttributes": ["label"],
+        "controlComponents": ["CustomComponent"],
+        "ignoreElements": [
+          "audio",
+          "canvas",
+          "embed",
+          "input",
+          "textarea",
+          "tr",
+          "video"
+        ],
+        "ignoreRoles": [
+          "grid",
+          "listbox",
+          "menu",
+          "menubar",
+          "radiogroup",
+          "row",
+          "tablist",
+          "toolbar",
+          "tree",
+          "treegrid"
+        ],
+        "depth": 3
+      }
+    ]
   }
 }
 ```
@@ -98,16 +109,26 @@ This rule takes one optional object argument of type object:
 - `depth` (default 2, max 25) is an integer that determines how deep within a `JSXElement` the rule should look for text content or an element with a label to determine if the interactive element will have an accessible label.
 
 ### Succeed
+
 ```jsx
-<button type="button" aria-label="Save" class="icon-save" />
+<button
+  type="button"
+  aria-label="Save"
+  class="icon-save"
+/>
 ```
 
 ### Fail
+
 ```jsx
-<button type="button" class="icon-save" />
+<button
+  type="button"
+  class="icon-save"
+/>
 ```
 
 ## Accessibility guidelines
+
 - [WCAG 1.3.1](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships)
 - [WCAG 3.3.2](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions)
 - [WCAG 4.1.2](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value)

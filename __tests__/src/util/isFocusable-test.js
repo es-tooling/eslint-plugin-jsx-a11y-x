@@ -13,14 +13,11 @@ function mergeTabIndex(index, attributes) {
   return [].concat(attributes, JSXAttributeMock('tabIndex', index));
 }
 
-test('isFocusable', (t) => {
-  t.test('interactive elements', (st) => {
+test('isFocusable', t => {
+  t.test('interactive elements', st => {
     genInteractiveElements().forEach(({ openingElement }) => {
       st.equal(
-        isFocusable(
-          elementType(openingElement),
-          openingElement.attributes,
-        ),
+        isFocusable(elementType(openingElement), openingElement.attributes),
         true,
         `identifies \`${genElementSymbol(openingElement)}\` as a focusable element`,
       );
@@ -56,13 +53,10 @@ test('isFocusable', (t) => {
     st.end();
   });
 
-  t.test('non-interactive elements', (st) => {
+  t.test('non-interactive elements', st => {
     genNonInteractiveElements().forEach(({ openingElement }) => {
       st.equal(
-        isFocusable(
-          elementType(openingElement),
-          openingElement.attributes,
-        ),
+        isFocusable(elementType(openingElement), openingElement.attributes),
         false,
         `does NOT identify \`${genElementSymbol(openingElement)}\` as a focusable element`,
       );

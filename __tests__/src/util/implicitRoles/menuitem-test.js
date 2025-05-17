@@ -3,7 +3,7 @@ import test from 'tape';
 import JSXAttributeMock from '../../../../__mocks__/JSXAttributeMock';
 import getImplicitRoleForMenuitem from '../../../../src/util/implicitRoles/menuitem';
 
-test('isAbstractRole', (t) => {
+test('isAbstractRole', t => {
   t.equal(
     getImplicitRoleForMenuitem([JSXAttributeMock('type', 'command')]),
     'menuitem',

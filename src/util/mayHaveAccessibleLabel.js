@@ -1,15 +1,18 @@
 /**
- * Returns true if a labelling element is found or if it cannot determine if
- * a label is present because of expression containers or spread attributes.
- * A false return value means that the node definitely does not have a label,
- * but a true return return value means that the node may or may not have a
- * label.
+ * Returns true if a labelling element is found or if it cannot determine if a
+ * label is present because of expression containers or spread attributes. A
+ * false return value means that the node definitely does not have a label, but
+ * a true return return value means that the node may or may not have a label.
  *
  * @flow
  */
 
 import includes from 'array-includes';
-import { getPropValue, propName, elementType as rawElementType } from 'jsx-ast-utils';
+import {
+  getPropValue,
+  propName,
+  elementType as rawElementType,
+} from 'jsx-ast-utils';
 import type { JSXOpeningElement, Node } from 'ast-types-flow';
 import minimatch from 'minimatch';
 
@@ -34,8 +37,8 @@ function hasLabellingProp(
     }
     // Attribute matches.
     if (
-      includes(labellingProps, propName(attribute))
-      && !!tryTrim(getPropValue(attribute))
+      includes(labellingProps, propName(attribute)) &&
+      !!tryTrim(getPropValue(attribute))
     ) {
       return true;
     }
@@ -47,13 +50,10 @@ export default function mayHaveAccessibleLabel(
   root: Node,
   maxDepth: number = 1,
   additionalLabellingProps?: Array<string> = [],
-  getElementType: ((node: JSXOpeningElement) => string) = rawElementType,
+  getElementType: (node: JSXOpeningElement) => string = rawElementType,
   controlComponents: Array<string> = [],
 ): boolean {
-  function checkElement(
-    node: Node,
-    depth: number,
-  ): boolean {
+  function checkElement(node: Node, depth: number): boolean {
     // Bail when maxDepth is exceeded.
     if (depth > maxDepth) {
       return false;
@@ -74,21 +74,26 @@ export default function mayHaveAccessibleLabel(
     }
     // Check for labelling props.
     if (
-      node.openingElement
+      node.openingElement &&
       /* $FlowFixMe */
-      && hasLabellingProp(node.openingElement, additionalLabellingProps)
+      hasLabellingProp(node.openingElement, additionalLabellingProps)
     ) {
       return true;
     }
 
-    if (node.type === 'JSXElement' && node.children.length === 0 && node.openingElement) {
+    if (
+      node.type === 'JSXElement' &&
+      node.children.length === 0 &&
+      node.openingElement
+    ) {
       // $FlowFixMe `node.openingElement` has `unknown` type
       const name = getElementType(node.openingElement);
-      const isReactComponent = name.length > 0 && name[0] === name[0].toUpperCase();
+      const isReactComponent =
+        name.length > 0 && name[0] === name[0].toUpperCase();
 
       if (
-        isReactComponent
-        && !controlComponents.some((control) => minimatch(name, control))
+        isReactComponent &&
+        !controlComponents.some(control => minimatch(name, control))
       ) {
         return true;
       }

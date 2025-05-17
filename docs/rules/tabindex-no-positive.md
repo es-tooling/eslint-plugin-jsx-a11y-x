@@ -1,4 +1,4 @@
-# jsx-a11y/tabindex-no-positive
+# jsx-a11y-x/tabindex-no-positive
 
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
@@ -11,6 +11,7 @@ Avoid positive `tabIndex` property values to synchronize the flow of the page wi
 This rule takes no arguments.
 
 ### Succeed
+
 ```jsx
 <span tabIndex="0">foo</span>
 <span tabIndex="-1">bar</span>
@@ -18,6 +19,7 @@ This rule takes no arguments.
 ```
 
 ### Fail
+
 ```jsx
 <span tabIndex="5">foo</span>
 <span tabIndex="3">bar</span>
@@ -26,7 +28,9 @@ This rule takes no arguments.
 ```
 
 ## Accessibility guidelines
+
 - [WCAG 2.4.3](https://www.w3.org/WAI/WCAG21/Understanding/focus-order)
 
 ### Resources
+
 - [Chrome Audit Rules, AX_FOCUS_03](https://github.com/GoogleChrome/accessibility-developer-tools/wiki/Audit-Rules#ax_focus_03)

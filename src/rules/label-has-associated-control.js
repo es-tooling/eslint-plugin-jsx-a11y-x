@@ -1,8 +1,7 @@
 /**
- * @fileoverview Enforce label tags have an associated control.
- * @author Jesse Beach
- *
  * @flow
+ * @file Enforce label tags have an associated control.
+ * @author Jesse Beach
  */
 
 // ----------------------------------------------------------------------------
@@ -13,7 +12,11 @@ import { hasProp, getProp, getPropValue } from 'jsx-ast-utils';
 import type { JSXElement } from 'ast-types-flow';
 import minimatch from 'minimatch';
 import { generateObjSchema, arraySchema } from '../util/schemas';
-import type { ESLintConfig, ESLintContext, ESLintVisitorSelectorConfig } from '../../flow/eslint';
+import type {
+  ESLintConfig,
+  ESLintContext,
+  ESLintVisitorSelectorConfig,
+} from '../../flow/eslint';
 import getElementType from '../util/getElementType';
 import mayContainChildComponent from '../util/mayContainChildComponent';
 import mayHaveAccessibleLabel from '../util/mayHaveAccessibleLabel';
@@ -22,7 +25,8 @@ const errorMessages = {
   accessibleLabel: 'A form label must have accessible text.',
   htmlFor: 'A form label must have a valid htmlFor attribute.',
   nesting: 'A form label must have an associated control as a descendant.',
-  either: 'A form label must either have a valid htmlFor attribute or a control as a descendant.',
+  either:
+    'A form label must either have a valid htmlFor attribute or a control as a descendant.',
   both: 'A form label must have a valid htmlFor attribute and a control as a descendant.',
 };
 
@@ -31,7 +35,8 @@ const schema = generateObjSchema({
   labelAttributes: arraySchema,
   controlComponents: arraySchema,
   assert: {
-    description: 'Assert that the label has htmlFor, a nested label, both or either',
+    description:
+      'Assert that the label has htmlFor, a nested label, both or either',
     type: 'string',
     enum: ['htmlFor', 'nesting', 'both', 'either'],
   },
@@ -44,7 +49,9 @@ const schema = generateObjSchema({
 
 const validateHtmlFor = (node, context) => {
   const { settings } = context;
-  const htmlForAttributes = settings['jsx-a11y']?.attributes?.for ?? ['htmlFor'];
+  const htmlForAttributes = settings['jsx-a11y-x']?.attributes?.for ?? [
+    'htmlFor',
+  ];
 
   for (let i = 0; i < htmlForAttributes.length; i += 1) {
     const attribute = htmlForAttributes[i];
@@ -62,8 +69,9 @@ const validateHtmlFor = (node, context) => {
 export default ({
   meta: {
     docs: {
-      description: 'Enforce that a `label` tag has a text label and an associated control.',
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/label-has-associated-control.md',
+      description:
+        'Enforce that a `label` tag has a text label and an associated control.',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/blob/main/docs/rules/label-has-associated-control.md',
     },
     schema: [schema],
   },
@@ -76,7 +84,9 @@ export default ({
     const elementType = getElementType(context);
 
     const rule = (node: JSXElement) => {
-      const isLabelComponent = labelComponentNames.some((name) => minimatch(elementType(node.openingElement), name));
+      const isLabelComponent = labelComponentNames.some(name =>
+        minimatch(elementType(node.openingElement), name),
+      );
       if (!isLabelComponent) {
         return;
       }
@@ -97,12 +107,9 @@ export default ({
       );
       const hasHtmlFor = validateHtmlFor(node.openingElement, context);
       // Check for multiple control components.
-      const hasNestedControl = controlComponents.some((name) => mayContainChildComponent(
-        node,
-        name,
-        recursionDepth,
-        elementType,
-      ));
+      const hasNestedControl = controlComponents.some(name =>
+        mayContainChildComponent(node, name, recursionDepth, elementType),
+      );
       const hasAccessibleLabel = mayHaveAccessibleLabel(
         node,
         recursionDepth,

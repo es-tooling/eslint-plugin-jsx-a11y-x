@@ -1,6 +1,4 @@
-/**
- * @flow
- */
+/** @flow */
 
 import type { JSXOpeningElement } from 'ast-types-flow';
 import hasOwn from 'hasown';
@@ -9,20 +7,24 @@ import { elementType, getProp, getLiteralPropValue } from 'jsx-ast-utils';
 
 import type { ESLintContext } from '../../flow/eslint';
 
-const getElementType = (context: ESLintContext): ((node: JSXOpeningElement) => string) => {
+const getElementType = (
+  context: ESLintContext,
+): ((node: JSXOpeningElement) => string) => {
   const { settings } = context;
-  const polymorphicPropName = settings['jsx-a11y']?.polymorphicPropName;
-  const polymorphicAllowList = settings['jsx-a11y']?.polymorphicAllowList;
+  const polymorphicPropName = settings['jsx-a11y-x']?.polymorphicPropName;
+  const polymorphicAllowList = settings['jsx-a11y-x']?.polymorphicAllowList;
 
-  const componentMap = settings['jsx-a11y']?.components;
+  const componentMap = settings['jsx-a11y-x']?.components;
 
   return (node: JSXOpeningElement): string => {
-    const polymorphicProp = polymorphicPropName ? getLiteralPropValue(getProp(node.attributes, polymorphicPropName)) : undefined;
+    const polymorphicProp = polymorphicPropName
+      ? getLiteralPropValue(getProp(node.attributes, polymorphicPropName))
+      : undefined;
 
     let rawType = elementType(node);
     if (
-      polymorphicProp
-      && (!polymorphicAllowList || includes(polymorphicAllowList, rawType))
+      polymorphicProp &&
+      (!polymorphicAllowList || includes(polymorphicAllowList, rawType))
     ) {
       rawType = polymorphicProp;
     }

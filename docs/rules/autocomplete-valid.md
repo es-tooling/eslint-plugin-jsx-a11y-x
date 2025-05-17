@@ -1,4 +1,4 @@
-# jsx-a11y/autocomplete-valid
+# jsx-a11y-x/autocomplete-valid
 
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
@@ -21,6 +21,7 @@ This rule takes one optional object argument of type object:
 ```
 
 ### Succeed
+
 ```jsx
 <!-- Good: the autocomplete attribute is used according to the HTML specification -->
 <input type="text" autocomplete="name" />
@@ -30,6 +31,7 @@ This rule takes one optional object argument of type object:
 ```
 
 ### Fail
+
 ```jsx
 <!-- Bad: the autocomplete attribute has an invalid value -->
 <input type="text" autocomplete="incorrect" />
@@ -42,8 +44,10 @@ This rule takes one optional object argument of type object:
 ```
 
 ## Accessibility guidelines
+
 - [WCAG 1.3.5](https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose)
 
 ### Resources
+
 - [axe-core, autocomplete-valid](https://dequeuniversity.com/rules/axe/3.2/autocomplete-valid)
 - [HTML 5.2, Autocomplete requirements](https://www.w3.org/TR/html52/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute)

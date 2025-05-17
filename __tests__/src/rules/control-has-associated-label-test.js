@@ -1,5 +1,5 @@
 /**
- * @fileoverview Control elements must be associated with a text label
+ * @file Control elements must be associated with a text label
  * @author jessebeach
  */
 
@@ -20,7 +20,7 @@ import rule from '../../../src/rules/control-has-associated-label';
 
 const ruleTester = new RuleTester();
 
-const ruleName = 'jsx-a11y/control-has-associated-label';
+const ruleName = 'jsx-a11y-x/control-has-associated-label';
 
 const expectedError = {
   message: 'A control must be associated with a text label.',
@@ -29,21 +29,45 @@ const expectedError = {
 
 const alwaysValid = [
   // Custom Control Components
-  { code: '<CustomControl><span><span>Save</span></span></CustomControl>', options: [{ depth: 3, controlComponents: ['CustomControl'] }] },
-  { code: '<CustomControl><span><span label="Save"></span></span></CustomControl>', options: [{ depth: 3, controlComponents: ['CustomControl'], labelAttributes: ['label'] }] },
-  { code: '<CustomControl>Save</CustomControl>', settings: { 'jsx-a11y': { components: { CustomControl: 'button' } } } },
+  {
+    code: '<CustomControl><span><span>Save</span></span></CustomControl>',
+    options: [{ depth: 3, controlComponents: ['CustomControl'] }],
+  },
+  {
+    code: '<CustomControl><span><span label="Save"></span></span></CustomControl>',
+    options: [
+      {
+        depth: 3,
+        controlComponents: ['CustomControl'],
+        labelAttributes: ['label'],
+      },
+    ],
+  },
+  {
+    code: '<CustomControl>Save</CustomControl>',
+    settings: { 'jsx-a11y-x': { components: { CustomControl: 'button' } } },
+  },
   // Interactive Elements
   { code: '<button>Save</button>' },
   { code: '<button><span>Save</span></button>' },
-  { code: '<button><span><span>Save</span></span></button>', options: [{ depth: 3 }] },
-  { code: '<button><span><span><span><span><span><span><span><span>Save</span></span></span></span></span></span></span></span></button>', options: [{ depth: 9 }] },
+  {
+    code: '<button><span><span>Save</span></span></button>',
+    options: [{ depth: 3 }],
+  },
+  {
+    code: '<button><span><span><span><span><span><span><span><span>Save</span></span></span></span></span></span></span></span></button>',
+    options: [{ depth: 9 }],
+  },
   { code: '<button><img alt="Save" /></button>' },
   { code: '<button aria-label="Save" />' },
   { code: '<button><span aria-label="Save" /></button>' },
   { code: '<button aria-labelledby="js_1" />' },
   { code: '<button><span aria-labelledby="js_1" /></button>' },
   { code: '<button>{sureWhyNot}</button>' },
-  { code: '<button><span><span label="Save"></span></span></button>', options: [{ depth: 3, labelAttributes: ['label'] }] },
+  {
+    code: '<button><span><span label="Save"></span></span></button>',
+    options: [{ depth: 3, labelAttributes: ['label'] }],
+  },
   { code: '<a href="#">Save</a>' },
   { code: '<area href="#">Save</area>' },
   { code: '<link>Save</link>' },
@@ -225,7 +249,9 @@ const alwaysValid = [
   { code: '<input type="tel" />' },
   { code: '<input type="text" />' },
   { code: '<label>Foo <input type="text" /></label>' },
-  { code: '<input name={field.name} id="foo" type="text" value={field.value} disabled={isDisabled} onChange={changeText(field.onChange, field.name)} onBlur={field.onBlur} />' },
+  {
+    code: '<input name={field.name} id="foo" type="text" value={field.value} disabled={isDisabled} onChange={changeText(field.onChange, field.name)} onBlur={field.onBlur} />',
+  },
   { code: '<input type="time" />' },
   { code: '<input type="url" />' },
   { code: '<input type="week" />' },
@@ -253,10 +279,25 @@ const neverValid = [
   { code: '<button />', errors: [expectedError] },
   { code: '<button><span /></button>', errors: [expectedError] },
   { code: '<button><img /></button>', errors: [expectedError] },
-  { code: '<button><span title="This is not a real label" /></button>', errors: [expectedError] },
-  { code: '<button><span><span><span>Save</span></span></span></button>', options: [{ depth: 3 }], errors: [expectedError] },
-  { code: '<CustomControl><span><span></span></span></CustomControl>', options: [{ depth: 3, controlComponents: ['CustomControl'] }], errors: [expectedError] },
-  { code: '<CustomControl></CustomControl>', errors: [expectedError], settings: { 'jsx-a11y': { components: { CustomControl: 'button' } } } },
+  {
+    code: '<button><span title="This is not a real label" /></button>',
+    errors: [expectedError],
+  },
+  {
+    code: '<button><span><span><span>Save</span></span></span></button>',
+    options: [{ depth: 3 }],
+    errors: [expectedError],
+  },
+  {
+    code: '<CustomControl><span><span></span></span></CustomControl>',
+    options: [{ depth: 3, controlComponents: ['CustomControl'] }],
+    errors: [expectedError],
+  },
+  {
+    code: '<CustomControl></CustomControl>',
+    errors: [expectedError],
+    settings: { 'jsx-a11y-x': { components: { CustomControl: 'button' } } },
+  },
   { code: '<a href="#" />', errors: [expectedError] },
   { code: '<area href="#" />', errors: [expectedError] },
   { code: '<menuitem />', errors: [expectedError] },
@@ -286,42 +327,40 @@ const neverValid = [
   { code: '<div role="textbox" />', errors: [expectedError] },
 ];
 
-const recommendedOptions = (configs.recommended.rules[ruleName][1] || {});
+const recommendedOptions = configs.recommended.rules[ruleName][1] || {};
 ruleTester.run(`${ruleName}:recommended`, rule, {
-  valid: parsers.all([].concat(
-    ...alwaysValid,
-  ))
+  valid: parsers
+    .all([].concat(...alwaysValid))
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
-  invalid: parsers.all([].concat(
-    ...neverValid,
-  ))
+  invalid: parsers
+    .all([].concat(...neverValid))
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
 });
 
-const strictOptions = (configs.strict.rules[ruleName][1] || {});
+const strictOptions = configs.strict.rules[ruleName][1] || {};
 ruleTester.run(`${ruleName}:strict`, rule, {
-  valid: parsers.all([].concat(
-    ...alwaysValid,
-  ))
+  valid: parsers
+    .all([].concat(...alwaysValid))
     .map(ruleOptionsMapperFactory(strictOptions))
     .map(parserOptionsMapper),
-  invalid: parsers.all([].concat(
-    ...neverValid,
-  ))
+  invalid: parsers
+    .all([].concat(...neverValid))
     .map(ruleOptionsMapperFactory(strictOptions))
     .map(parserOptionsMapper),
 });
 
 ruleTester.run(`${ruleName}:no-config`, rule, {
-  valid: parsers.all([].concat(
-    { code: '<input type="hidden" />' },
-    { code: '<input type="text" aria-hidden="true" />' },
-  ))
+  valid: parsers
+    .all(
+      [].concat(
+        { code: '<input type="hidden" />' },
+        { code: '<input type="text" aria-hidden="true" />' },
+      ),
+    )
     .map(parserOptionsMapper),
-  invalid: parsers.all([].concat(
-    { code: '<input type="text" />', errors: [expectedError] },
-  ))
+  invalid: parsers
+    .all([].concat({ code: '<input type="text" />', errors: [expectedError] }))
     .map(parserOptionsMapper),
 });

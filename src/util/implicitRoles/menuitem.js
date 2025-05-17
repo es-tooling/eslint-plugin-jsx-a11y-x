@@ -1,8 +1,6 @@
 import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
 
-/**
- * Returns the implicit role for a menuitem tag.
- */
+/** Returns the implicit role for a menuitem tag. */
 export default function getImplicitRoleForMenuitem(attributes) {
   const type = getProp(attributes, 'type');
 

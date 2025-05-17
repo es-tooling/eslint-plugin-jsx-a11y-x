@@ -6,7 +6,7 @@ import JSXElementMock from '../../../__mocks__/JSXElementMock';
 import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
 import JSXExpressionContainerMock from '../../../__mocks__/JSXExpressionContainerMock';
 
-test('hasAccessibleChild', (t) => {
+test('hasAccessibleChild', t => {
   t.equal(
     hasAccessibleChild(JSXElementMock('div', []), elementType),
     false,
@@ -15,7 +15,11 @@ test('hasAccessibleChild', (t) => {
 
   t.equal(
     hasAccessibleChild(
-      JSXElementMock('div', [JSXAttributeMock('dangerouslySetInnerHTML', true)], []),
+      JSXElementMock(
+        'div',
+        [JSXAttributeMock('dangerouslySetInnerHTML', true)],
+        [],
+      ),
       elementType,
     ),
     true,
@@ -27,10 +31,12 @@ test('hasAccessibleChild', (t) => {
       JSXElementMock(
         'div',
         [],
-        [{
-          type: 'Literal',
-          value: 'foo',
-        }],
+        [
+          {
+            type: 'Literal',
+            value: 'foo',
+          },
+        ],
       ),
       elementType,
     ),
@@ -49,10 +55,16 @@ test('hasAccessibleChild', (t) => {
 
   t.equal(
     hasAccessibleChild(
-      JSXElementMock('div', [], [{
-        type: 'JSXText',
-        value: 'foo',
-      }]),
+      JSXElementMock(
+        'div',
+        [],
+        [
+          {
+            type: 'JSXText',
+            value: 'foo',
+          },
+        ],
+      ),
       elementType,
     ),
     true,
@@ -61,11 +73,11 @@ test('hasAccessibleChild', (t) => {
 
   t.equal(
     hasAccessibleChild(
-      JSXElementMock('div', [], [
-        JSXElementMock('div', [
-          JSXAttributeMock('aria-hidden', true),
-        ]),
-      ]),
+      JSXElementMock(
+        'div',
+        [],
+        [JSXElementMock('div', [JSXAttributeMock('aria-hidden', true)])],
+      ),
       elementType,
     ),
     false,
@@ -74,12 +86,16 @@ test('hasAccessibleChild', (t) => {
 
   t.equal(
     hasAccessibleChild(
-      JSXElementMock('div', [], [
-        JSXExpressionContainerMock({
-          type: 'Identifier',
-          name: 'foo',
-        }),
-      ]),
+      JSXElementMock(
+        'div',
+        [],
+        [
+          JSXExpressionContainerMock({
+            type: 'Identifier',
+            name: 'foo',
+          }),
+        ],
+      ),
       elementType,
     ),
     true,
@@ -88,12 +104,16 @@ test('hasAccessibleChild', (t) => {
 
   t.equal(
     hasAccessibleChild(
-      JSXElementMock('div', [], [
-        JSXExpressionContainerMock({
-          type: 'Identifier',
-          name: 'undefined',
-        }),
-      ]),
+      JSXElementMock(
+        'div',
+        [],
+        [
+          JSXExpressionContainerMock({
+            type: 'Identifier',
+            name: 'undefined',
+          }),
+        ],
+      ),
       elementType,
     ),
     false,
@@ -102,9 +122,15 @@ test('hasAccessibleChild', (t) => {
 
   t.equal(
     hasAccessibleChild(
-      JSXElementMock('div', [], [{
-        type: 'Unknown',
-      }]),
+      JSXElementMock(
+        'div',
+        [],
+        [
+          {
+            type: 'Unknown',
+          },
+        ],
+      ),
       elementType,
     ),
     false,
@@ -122,9 +148,11 @@ test('hasAccessibleChild', (t) => {
 
   t.equal(
     hasAccessibleChild(
-      JSXElementMock('div', [], [
-        JSXElementMock('input', [JSXAttributeMock('type', 'hidden')]),
-      ]),
+      JSXElementMock(
+        'div',
+        [],
+        [JSXElementMock('input', [JSXAttributeMock('type', 'hidden')])],
+      ),
       elementType,
     ),
     false,
@@ -133,9 +161,11 @@ test('hasAccessibleChild', (t) => {
 
   t.equal(
     hasAccessibleChild(
-      JSXElementMock('div', [], [
-        JSXElementMock('CustomInput', [JSXAttributeMock('type', 'hidden')]),
-      ]),
+      JSXElementMock(
+        'div',
+        [],
+        [JSXElementMock('CustomInput', [JSXAttributeMock('type', 'hidden')])],
+      ),
       elementType,
     ),
     true,
@@ -144,9 +174,11 @@ test('hasAccessibleChild', (t) => {
 
   t.equal(
     hasAccessibleChild(
-      JSXElementMock('div', [], [
-        JSXElementMock('CustomInput', [JSXAttributeMock('type', 'hidden')]),
-      ]),
+      JSXElementMock(
+        'div',
+        [],
+        [JSXElementMock('CustomInput', [JSXAttributeMock('type', 'hidden')])],
+      ),
       () => 'input',
     ),
     false,

@@ -6,24 +6,25 @@ import includes from 'array-includes';
 import flatMap from 'array.prototype.flatmap';
 
 const roles = rolesMap.keys();
-const interactiveRoles = roles.filter((name) => (
-  !rolesMap.get(name).abstract
-  && rolesMap.get(name).superClass.some((klasses) => includes(klasses, 'widget'))
-));
+const interactiveRoles = roles.filter(
+  name =>
+    !rolesMap.get(name).abstract &&
+    rolesMap.get(name).superClass.some(klasses => includes(klasses, 'widget')),
+);
 
 // 'toolbar' does not descend from widget, but it does support
 // aria-activedescendant, thus in practice we treat it as a widget.
 interactiveRoles.push('toolbar');
 /**
- * Returns boolean indicating whether the given element has a role
- * that is associated with an interactive component. Used when an element
- * has a dynamic handler on it and we need to discern whether or not
- * its intention is to be interacted with in the DOM.
+ * Returns boolean indicating whether the given element has a role that is
+ * associated with an interactive component. Used when an element has a dynamic
+ * handler on it and we need to discern whether or not its intention is to be
+ * interacted with in the DOM.
  *
- * isInteractiveRole is a Logical Disjunction:
- * https://en.wikipedia.org/wiki/Logical_disjunction
- * The JSX element does not have a tagName or it has a tagName and a role
- * attribute with a value in the set of non-interactive roles.
+ * IsInteractiveRole is a Logical Disjunction:
+ * https://en.wikipedia.org/wiki/Logical_disjunction The JSX element does not
+ * have a tagName or it has a tagName and a role attribute with a value in the
+ * set of non-interactive roles.
  */
 const isInteractiveRole = (
   tagName: string,
@@ -40,9 +41,8 @@ const isInteractiveRole = (
 
   let isInteractive = false;
   const normalizedValues = String(value).toLowerCase().split(' ');
-  const validRoles = flatMap(
-    normalizedValues,
-    (name: string) => (includes(roles, name) ? [name] : []),
+  const validRoles = flatMap(normalizedValues, (name: string) =>
+    includes(roles, name) ? [name] : [],
   );
   if (validRoles.length > 0) {
     // The first role value is a series takes precedence.

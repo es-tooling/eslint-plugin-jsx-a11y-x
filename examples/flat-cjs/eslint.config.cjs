@@ -1,10 +1,10 @@
 const globals = require('globals');
 const js = require('@eslint/js');
-const jsxA11y = require('eslint-plugin-jsx-a11y');
+const jsxA11yX = require('eslint-plugin-jsx-a11y-x');
 
 module.exports = [
   js.configs.recommended,
-  jsxA11y.flatConfigs.recommended,
+  jsxA11yX.flatConfigs.recommended,
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
     languageOptions: {
@@ -15,8 +15,8 @@ module.exports = [
     ignores: ['dist', 'eslint.config.cjs'],
     rules: {
       'no-unused-vars': 'off',
-      'jsx-a11y/anchor-ambiguous-text': 'warn',
-      'jsx-a11y/anchor-is-valid': 'warn',
+      'jsx-a11y-x/anchor-ambiguous-text': 'warn',
+      'jsx-a11y-x/anchor-is-valid': 'warn',
     },
   },
 ];

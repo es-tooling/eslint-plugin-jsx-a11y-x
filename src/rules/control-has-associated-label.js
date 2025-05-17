@@ -1,8 +1,7 @@
 /**
- * @fileoverview Enforce controls are associated with a text label.
- * @author Jesse Beach
- *
  * @flow
+ * @file Enforce controls are associated with a text label.
+ * @author Jesse Beach
  */
 
 // ----------------------------------------------------------------------------
@@ -13,7 +12,11 @@ import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
 import type { JSXElement } from 'ast-types-flow';
 import includes from 'array-includes';
 import { generateObjSchema, arraySchema } from '../util/schemas';
-import type { ESLintConfig, ESLintContext, ESLintVisitorSelectorConfig } from '../../flow/eslint';
+import type {
+  ESLintConfig,
+  ESLintContext,
+  ESLintVisitorSelectorConfig,
+} from '../../flow/eslint';
 import getElementType from '../util/getElementType';
 import isDOMElement from '../util/isDOMElement';
 import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader';
@@ -40,8 +43,9 @@ const schema = generateObjSchema({
 export default ({
   meta: {
     docs: {
-      description: 'Enforce that a control (an interactive element) has a text label.',
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/docs/rules/control-has-associated-label.md',
+      description:
+        'Enforce that a control (an interactive element) has a text label.',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/blob/main/docs/rules/control-has-associated-label.md',
     },
     schema: [schema],
   },
@@ -60,7 +64,9 @@ export default ({
 
     const rule = (node: JSXElement): void => {
       const tag = elementType(node.openingElement);
-      const role = getLiteralPropValue(getProp(node.openingElement.attributes, 'role'));
+      const role = getLiteralPropValue(
+        getProp(node.openingElement.attributes, 'role'),
+      );
       // Ignore interactive elements that might get their label from a source
       // that cannot be discerned from static analysis, like
       // <label><input />Save</label>
@@ -84,13 +90,9 @@ export default ({
 
       let hasAccessibleLabel = true;
       if (
-        nodeIsInteractiveElement
-        || (
-          nodeIsDOMElement
-          && nodeIsInteractiveRole
-        )
-        || nodeIsControlComponent
-
+        nodeIsInteractiveElement ||
+        (nodeIsDOMElement && nodeIsInteractiveRole) ||
+        nodeIsControlComponent
       ) {
         // Prevent crazy recursion.
         const recursionDepth = Math.min(

@@ -1,4 +1,4 @@
-# jsx-a11y/label-has-associated-control
+# jsx-a11y-x/label-has-associated-control
 
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
@@ -43,7 +43,10 @@ You can configure the rule to be aware of your custom components.
 
 ```jsx
 <CustomInputLabel label="Surname">
-  <CustomInput type="text" value={value} />
+  <CustomInput
+    type="text"
+    value={value}
+  />
 </CustomInputLabel>
 ```
 
@@ -52,12 +55,15 @@ And the configuration:
 ```json
 {
   "rules": {
-    "jsx-a11y/label-has-associated-control": [ 2, {
-      "labelComponents": ["CustomInputLabel"],
-      "labelAttributes": ["label"],
-      "controlComponents": ["CustomInput"],
-      "depth": 3,
-    }],
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelComponents": ["CustomInputLabel"],
+        "labelAttributes": ["label"],
+        "controlComponents": ["CustomInput"],
+        "depth": 3
+      }
+    ]
   }
 }
 ```
@@ -79,7 +85,7 @@ If the second `label` is in a different part of the HTML, then the second one ca
 
 ## How to manage IDs of `input`
 
-A common way to think of `id` with libraries like React is, `id`s should be avoided since it must be unique on the page, and components need to be reusable. Hence it is tempted to generate `id` during render-time if `id` is required. *However:*
+A common way to think of `id` with libraries like React is, `id`s should be avoided since it must be unique on the page, and components need to be reusable. Hence it is tempted to generate `id` during render-time if `id` is required. _However:_
 
 IDs shouldn't be generated in the browser, so that server and client rendering are deterministic. Render-time uuids aren't just a hack, they're actually broken and should never be used.
 
@@ -92,13 +98,16 @@ This rule takes one optional object argument of type object:
 ```json
 {
   "rules": {
-    "jsx-a11y/label-has-associated-control": [ 2, {
-      "labelComponents": ["CustomLabel"],
-      "labelAttributes": ["inputLabel"],
-      "controlComponents": ["CustomInput"],
-      "assert": "both",
-      "depth": 3,
-    }],
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelComponents": ["CustomLabel"],
+        "labelAttributes": ["inputLabel"],
+        "controlComponents": ["CustomInput"],
+        "assert": "both",
+        "depth": 3
+      }
+    ]
   }
 }
 ```
@@ -114,31 +123,37 @@ This rule takes one optional object argument of type object:
 `depth` (default 2, max 25) is an integer that determines how deep within a `JSXElement` label the rule should look for text content or an element with a label to determine if the `label` element will have an accessible label.
 
 ### Fail
+
 ```jsx
 function Foo(props) {
-  return <label {...props} />
+  return <label {...props} />;
 }
 ```
 
 ### Succeed
+
 ```jsx
 function Foo(props) {
-    const {
-        htmlFor,
-        ...otherProps
-    } = props;
+  const { htmlFor, ...otherProps } = props;
 
-   return <label htmlFor={htmlFor} {...otherProps} />
+  return (
+    <label
+      htmlFor={htmlFor}
+      {...otherProps}
+    />
+  );
 }
 ```
 
 ### Fail
+
 ```jsx
 <input type="text" />
 <label>Surname</label>
 ```
 
 ### Succeed
+
 ```jsx
 <label>
   <input type="text" />
@@ -147,6 +162,7 @@ function Foo(props) {
 ```
 
 ## Accessibility guidelines
+
 - [WCAG 1.3.1](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships)
 - [WCAG 3.3.2](https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions)
 - [WCAG 4.1.2](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value)

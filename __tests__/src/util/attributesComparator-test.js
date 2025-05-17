@@ -4,7 +4,7 @@ import attributesComparator from '../../../src/util/attributesComparator';
 import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
 import JSXElementMock from '../../../__mocks__/JSXElementMock';
 
-test('attributesComparator', (t) => {
+test('attributesComparator', t => {
   t.equal(
     attributesComparator(),
     true,
@@ -18,10 +18,10 @@ test('attributesComparator', (t) => {
   );
 
   t.equal(
-    attributesComparator([], [
-      JSXAttributeMock('foo', 0),
-      JSXAttributeMock('bar', 'baz'),
-    ]),
+    attributesComparator(
+      [],
+      [JSXAttributeMock('foo', 0), JSXAttributeMock('bar', 'baz')],
+    ),
     true,
     'baseAttributes are empty and attributes have values -> true',
   );
@@ -30,10 +30,12 @@ test('attributesComparator', (t) => {
     {
       name: 'biz',
       value: 1,
-    }, {
+    },
+    {
       name: 'fizz',
       value: 'pop',
-    }, {
+    },
+    {
       name: 'fuzz',
       value: 'lolz',
     },

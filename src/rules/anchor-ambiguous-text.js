@@ -1,7 +1,8 @@
 /**
- * @fileoverview Enforce anchor text to not exactly match 'click here', 'here', 'link', 'learn more', and user-specified words.
- * @author Matt Wang
  * @flow
+ * @file Enforce anchor text to not exactly match 'click here', 'here', 'link',
+ *   'learn more', and user-specified words.
+ * @author Matt Wang
  */
 
 // ----------------------------------------------------------------------------
@@ -28,8 +29,9 @@ const schema = generateObjSchema({
 export default ({
   meta: {
     docs: {
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/anchor-ambiguous-text.md',
-      description: 'Enforce `<a>` text to not exactly match "click here", "here", "link", or "a link".',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/anchor-ambiguous-text.md',
+      description:
+        'Enforce `<a>` text to not exactly match "click here", "here", "link", or "a link".',
     },
     schema: [schema],
   },
@@ -44,7 +46,7 @@ export default ({
     const ambiguousWords = new Set(words);
 
     return {
-      JSXOpeningElement: (node) => {
+      JSXOpeningElement: node => {
         const nodeType = elementType(node);
 
         // Only check anchor elements and custom types.
@@ -54,13 +56,15 @@ export default ({
 
         const nodeText = getAccessibleChildText(node.parent, elementType);
 
-        if (!ambiguousWords.has(nodeText)) { // check the value
+        if (!ambiguousWords.has(nodeText)) {
+          // check the value
           return;
         }
 
         context.report({
           node,
-          message: 'Ambiguous text within anchor. Screen reader users rely on link text for context; the words "{{wordsList}}" are ambiguous and do not provide enough context.',
+          message:
+            'Ambiguous text within anchor. Screen reader users rely on link text for context; the words "{{wordsList}}" are ambiguous and do not provide enough context.',
           data: {
             wordsList: words.join('", "'),
           },

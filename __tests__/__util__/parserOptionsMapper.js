@@ -31,23 +31,23 @@ export default function parserOptionsMapper({
 }) {
   return usingLegacy
     ? {
-      code,
-      errors,
-      options,
-      parserOptions: {
-        ...defaultLegacyParserOptions,
-        ...languageOptions,
-      },
-      settings,
-    }
+        code,
+        errors,
+        options,
+        parserOptions: {
+          ...defaultLegacyParserOptions,
+          ...languageOptions,
+        },
+        settings,
+      }
     : {
-      code,
-      errors,
-      options,
-      languageOptions: {
-        ...defaultLanguageOptions,
-        ...languageOptions,
-      },
-      settings,
-    };
+        code,
+        errors,
+        options,
+        languageOptions: {
+          ...defaultLanguageOptions,
+          ...languageOptions,
+        },
+        settings,
+      };
 }

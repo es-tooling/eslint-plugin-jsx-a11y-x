@@ -1,4 +1,4 @@
-# jsx-a11y/no-noninteractive-tabindex
+# jsx-a11y-x/no-noninteractive-tabindex
 
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
@@ -30,17 +30,17 @@ What this lint rule endeavors to do is apply the AX API understanding of the sem
 
 Common interactive roles include:
 
-  1. `button`
-  1. `link`
-  1. `checkbox`
-  1. `menuitem`
-  1. `menuitemcheckbox`
-  1. `menuitemradio`
-  1. `option`
-  1. `radio`
-  1. `searchbox`
-  1. `switch`
-  1. `textbox`
+1. `button`
+1. `link`
+1. `checkbox`
+1. `menuitem`
+1. `menuitemcheckbox`
+1. `menuitemradio`
+1. `option`
+1. `radio`
+1. `searchbox`
+1. `switch`
+1. `textbox`
 
 Endeavor to limit tabbable elements to those that a user can act upon.
 
@@ -77,9 +77,17 @@ The recommended options for this rule allow `tabIndex` on elements with the noni
 The `allowExpressionValues` option determines whether the `role` attribute is allowed to be assigned using an expression. For example, the following would pass in recommended mode if `allowExpressionValues` is set to be `true`:
 
 ```jsx
-<div role={ROLE_BUTTON} onClick={() => {}} tabIndex="0" />;
+<div
+  role={ROLE_BUTTON}
+  onClick={() => {}}
+  tabIndex="0"
+/>;
 // In case of a conditional expression, there should be literals on both sides of ternary operator
-<div role={isButton ? "button" : "link"} onClick={() => {}} tabIndex="0" />;
+<div
+  role={isButton ? 'button' : 'link'}
+  onClick={() => {}}
+  tabIndex="0"
+/>;
 ```
 
 ### Succeed

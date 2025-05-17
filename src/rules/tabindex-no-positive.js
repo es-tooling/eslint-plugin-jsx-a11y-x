@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enforce tabIndex value is not greater than zero.
+ * @file Enforce tabIndex value is not greater than zero.
  * @author Ethan Cohen
  */
 
@@ -17,14 +17,14 @@ const schema = generateObjSchema();
 export default {
   meta: {
     docs: {
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/tabindex-no-positive.md',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/tabindex-no-positive.md',
       description: 'Enforce `tabIndex` value is not greater than zero.',
     },
     schema: [schema],
   },
 
-  create: (context) => ({
-    JSXAttribute: (attribute) => {
+  create: context => ({
+    JSXAttribute: attribute => {
       const name = propName(attribute).toUpperCase();
 
       // Check if tabIndex is the attribute

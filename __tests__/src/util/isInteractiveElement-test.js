@@ -12,14 +12,14 @@ import {
   genNonInteractiveRoleElements,
 } from '../../../__mocks__/genInteractives';
 
-test('isInteractiveElement', (t) => {
+test('isInteractiveElement', t => {
   t.equal(
     isInteractiveElement(undefined, []),
     false,
     'identifies them as interactive elements',
   );
 
-  t.test('interactive elements', (st) => {
+  t.test('interactive elements', st => {
     genInteractiveElements().forEach(({ openingElement }) => {
       st.equal(
         isInteractiveElement(
@@ -34,7 +34,7 @@ test('isInteractiveElement', (t) => {
     st.end();
   });
 
-  t.test('interactive role elements', (st) => {
+  t.test('interactive role elements', st => {
     genInteractiveRoleElements().forEach(({ openingElement }) => {
       st.equal(
         isInteractiveElement(
@@ -49,7 +49,7 @@ test('isInteractiveElement', (t) => {
     st.end();
   });
 
-  t.test('non-interactive elements', (st) => {
+  t.test('non-interactive elements', st => {
     genNonInteractiveElements().forEach(({ openingElement }) => {
       st.equal(
         isInteractiveElement(
@@ -64,7 +64,7 @@ test('isInteractiveElement', (t) => {
     st.end();
   });
 
-  t.test('non-interactive role elements', (st) => {
+  t.test('non-interactive role elements', st => {
     genNonInteractiveRoleElements().forEach(({ openingElement }) => {
       st.equal(
         isInteractiveElement(
@@ -79,7 +79,7 @@ test('isInteractiveElement', (t) => {
     st.end();
   });
 
-  t.test('indeterminate elements', (st) => {
+  t.test('indeterminate elements', st => {
     genIndeterminantInteractiveElements().forEach(({ openingElement }) => {
       st.equal(
         isInteractiveElement(

@@ -1,18 +1,18 @@
 <p align="center">
-  <a href="https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/actions">
-    <img src="https://img.shields.io/endpoint?url=https://github-actions-badge-u3jn4tfpocch.runkit.sh/jsx-eslint/eslint-plugin-jsx-a11y"
+  <a href="https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/actions">
+    <img src="https://img.shields.io/endpoint?url=https://github-actions-badge-u3jn4tfpocch.runkit.sh/es-tooling/eslint-plugin-jsx-a11y-x"
          alt="CI status" />
   </a>
   <a href="https://npmjs.org/package/eslint-plugin-jsx-a11y">
     <img src="https://img.shields.io/npm/v/eslint-plugin-jsx-a11y.svg"
          alt="npm version">
   </a>
-  <a href="https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/HEAD/LICENSE.md">
+  <a href="https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/blob/HEAD/LICENSE.md">
     <img src="https://img.shields.io/npm/l/eslint-plugin-jsx-a11y.svg"
          alt="license">
   </a>
-  <a href='https://coveralls.io/github/jsx-eslint/eslint-plugin-jsx-a11y?branch=master'>
-    <img src='https://coveralls.io/repos/github/jsx-eslint/eslint-plugin-jsx-a11y/badge.svg?branch=master' alt='Coverage Status' />
+  <a href='https://coveralls.io/github/es-tooling/eslint-plugin-jsx-a11y-x?branch=master'>
+    <img src='https://coveralls.io/repos/github/es-tooling/eslint-plugin-jsx-a11y-x/badge.svg?branch=master' alt='Coverage Status' />
   </a>
   <a href='https://npmjs.org/package/eslint-plugin-jsx-a11y'>
     <img src='https://img.shields.io/npm/dt/eslint-plugin-jsx-a11y.svg'
@@ -20,23 +20,17 @@
   </a>
 </p>
 
-<a href='https://tidelift.com/subscription/pkg/npm-eslint-plugin-jsx-a11y?utm_source=npm-eslint-plugin-jsx-a11y&utm_medium=referral&utm_campaign=readme'>Get professional support for eslint-plugin-jsx-a11y on Tidelift</a>
+<a href='https://tidelift.com/lifter/search/npm/eslint-plugin-jsx-a11y-x'>Get professional support for eslint-plugin-jsx-a11y-x on Tidelift</a>
 
-# eslint-plugin-jsx-a11y
+# eslint-plugin-jsx-a11y-x
 
 Static AST checker for accessibility rules on JSX elements.
-
-#### _Read this in [other languages](https://github.com/ari-os310/eslint-plugin-jsx-a11y/blob/HEAD/translations/Translations.md)._
-
-[Mexican Spanish🇲🇽](https://github.com/ari-os310/eslint-plugin-jsx-a11y/blob/HEAD/translations/README.mx.md)
 
 ## Why?
 
 This plugin does a static evaluation of the JSX to spot accessibility issues in React apps. Because it only catches errors in static code, use it in combination with [@axe-core/react](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/react) to test the accessibility of the rendered DOM. Consider these tools just as one step of a larger a11y testing process and always test your apps with assistive technology.
 
 ## Installation
-
-**If you are installing this plugin via `eslint-config-airbnb`, please follow [these instructions](https://github.com/airbnb/javascript/tree/HEAD/packages/eslint-config-airbnb#eslint-config-airbnb-1).**
 
 You'll first need to install [ESLint](https://eslint.org/docs/latest/user-guide/getting-started):
 
@@ -48,26 +42,30 @@ npm install eslint --save-dev
 yarn add eslint --dev
 ```
 
-Next, install `eslint-plugin-jsx-a11y`:
+Next, install `eslint-plugin-jsx-a11y-x`:
 
 ```sh
 # npm
-npm install eslint-plugin-jsx-a11y --save-dev
+npm install -D eslint-plugin-jsx-a11y-x
 
 # yarn
-yarn add eslint-plugin-jsx-a11y --dev
+yarn add -D eslint-plugin-jsx-a11y-x
+
+# pnpm
+pnpm add -D eslint-plugin-jsx-a11y-x
 ```
 
 **Note:** If you installed ESLint globally (using the `-g` flag in npm, or the `global` prefix in yarn) then you must also install `eslint-plugin-jsx-a11y` globally.
 
 <a id="usage"></a>
+
 ## Usage - Legacy Config (`.eslintrc`)
 
-Add `jsx-a11y` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+Add `jsx-a11y-x` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
 
 ```json
 {
-  "plugins": ["jsx-a11y"]
+  "plugins": ["jsx-a11y-x"]
 }
 ```
 
@@ -76,28 +74,28 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
   "rules": {
-    "jsx-a11y/rule-name": 2
+    "jsx-a11y-x/rule-name": 2
   }
 }
 ```
 
 You can also enable all the recommended or strict rules at once.
-Add `plugin:jsx-a11y/recommended` or `plugin:jsx-a11y/strict` in `extends`:
+Add `plugin:jsx-a11y-x/recommended` or `plugin:jsx-a11y-x/strict` in `extends`:
 
 ```json
 {
-  "extends": ["plugin:jsx-a11y/recommended"]
+  "extends": ["plugin:jsx-a11y-x/recommended"]
 }
 ```
 
 ### Configurations
 
-> As you are extending our configuration, you can omit `"plugins": ["jsx-a11y"]` from your `.eslintrc` configuration file.
+> As you are extending our configuration, you can omit `"plugins": ["jsx-a11y-x"]` from your `.eslintrc` configuration file.
 
 ```json
 {
   "settings": {
-    "jsx-a11y": {
+    "jsx-a11y-x": {
       "polymorphicPropName": "as",
       "components": {
         "CityInput": "input",
@@ -115,17 +113,17 @@ Add `plugin:jsx-a11y/recommended` or `plugin:jsx-a11y/strict` in `extends`:
 
 ## Usage - Flat Config (`eslint.config.js`)
 
-The default export of `eslint-plugin-jsx-a11y` is a plugin object.
+The default export of `eslint-plugin-jsx-a11y-x` is a plugin object.
 
 ```js
-const jsxA11y = require('eslint-plugin-jsx-a11y');
+const jsxA11yX = require('eslint-plugin-jsx-a11y');
 
 module.exports = [
-  …
+  // …
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
     plugins: {
-      'jsx-a11y': jsxA11y,
+      'jsx-a11y-x': jsxA11yX,
     },
     languageOptions: {
       parserOptions: {
@@ -136,7 +134,7 @@ module.exports = [
     },
     rules: {
       // ... any rules you want
-      'jsx-a11y/alt-text': 'error',
+      'jsx-a11y-x/alt-text': 'error',
     },
     // ... others are omitted for brevity
   },
@@ -154,10 +152,10 @@ There are two shareable configs, provided by the plugin.
 #### CJS
 
 ```js
-const jsxA11y = require('eslint-plugin-jsx-a11y');
+const jsxA11yX = require('eslint-plugin-jsx-a11y');
 
 export default [
-  jsxA11y.flatConfigs.recommended,
+  jsxA11yX.flatConfigs.recommended,
   {
     // Your additional configs and overrides
   },
@@ -167,10 +165,10 @@ export default [
 #### ESM
 
 ```js
-import jsxA11y from 'eslint-plugin-jsx-a11y';
+import jsxA11yX from 'eslint-plugin-jsx-a11y';
 
 export default [
-  jsxA11y.flatConfigs.recommended,
+  jsxA11yX.flatConfigs.recommended,
   {
     // Your additional configs and overrides
   },
@@ -181,16 +179,16 @@ export default [
 For most of the cases, you probably want to configure some of these properties yourself.
 
 ```js
-const jsxA11y = require('eslint-plugin-jsx-a11y');
+const jsxA11yX = require('eslint-plugin-jsx-a11y');
 const globals = require('globals');
 
 module.exports = [
   …
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
-    ...jsxA11y.flatConfigs.recommended,
+    ...jsxA11yX.flatConfigs.recommended,
     languageOptions: {
-      ...jsxA11y.flatConfigs.recommended.languageOptions,
+      ...jsxA11yX.flatConfigs.recommended.languageOptions,
       globals: {
         ...globals.serviceworker,
         ...globals.browser,
@@ -236,47 +234,47 @@ To restrict polymorphic linting to specified components, additionally set `polym
 💡 Manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).\
 ❌ Deprecated.
 
-| Name                                                                                                         | Description                                                                                                                         | 💼    | 🚫    | 💡 | ❌  |
-| :----------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------- | :---- | :---- | :- | :- |
-| [accessible-emoji](docs/rules/accessible-emoji.md)                                                           | Enforce emojis are wrapped in `<span>` and provide screen reader access.                                                            |       |       |    | ❌  |
-| [alt-text](docs/rules/alt-text.md)                                                                           | Enforce all elements that require alternative text have meaningful information to relay back to end user.                           | ☑️ 🔒 |       |    |    |
-| [anchor-ambiguous-text](docs/rules/anchor-ambiguous-text.md)                                                 | Enforce `<a>` text to not exactly match "click here", "here", "link", or "a link".                                                  |       | ☑️    |    |    |
-| [anchor-has-content](docs/rules/anchor-has-content.md)                                                       | Enforce all anchors to contain accessible content.                                                                                  | ☑️ 🔒 |       |    |    |
-| [anchor-is-valid](docs/rules/anchor-is-valid.md)                                                             | Enforce all anchors are valid, navigable elements.                                                                                  | ☑️ 🔒 |       |    |    |
-| [aria-activedescendant-has-tabindex](docs/rules/aria-activedescendant-has-tabindex.md)                       | Enforce elements with aria-activedescendant are tabbable.                                                                           | ☑️ 🔒 |       |    |    |
-| [aria-props](docs/rules/aria-props.md)                                                                       | Enforce all `aria-*` props are valid.                                                                                               | ☑️ 🔒 |       |    |    |
-| [aria-proptypes](docs/rules/aria-proptypes.md)                                                               | Enforce ARIA state and property values are valid.                                                                                   | ☑️ 🔒 |       |    |    |
-| [aria-role](docs/rules/aria-role.md)                                                                         | Enforce that elements with ARIA roles must use a valid, non-abstract ARIA role.                                                     | ☑️ 🔒 |       |    |    |
-| [aria-unsupported-elements](docs/rules/aria-unsupported-elements.md)                                         | Enforce that elements that do not support ARIA roles, states, and properties do not have those attributes.                          | ☑️ 🔒 |       |    |    |
-| [autocomplete-valid](docs/rules/autocomplete-valid.md)                                                       | Enforce that autocomplete attributes are used correctly.                                                                            | ☑️ 🔒 |       |    |    |
-| [click-events-have-key-events](docs/rules/click-events-have-key-events.md)                                   | Enforce a clickable non-interactive element has at least one keyboard event listener.                                               | ☑️ 🔒 |       |    |    |
-| [control-has-associated-label](docs/rules/control-has-associated-label.md)                                   | Enforce that a control (an interactive element) has a text label.                                                                   |       | ☑️ 🔒 |    |    |
-| [heading-has-content](docs/rules/heading-has-content.md)                                                     | Enforce heading (`h1`, `h2`, etc) elements contain accessible content.                                                              | ☑️ 🔒 |       |    |    |
-| [html-has-lang](docs/rules/html-has-lang.md)                                                                 | Enforce `<html>` element has `lang` prop.                                                                                           | ☑️ 🔒 |       |    |    |
-| [iframe-has-title](docs/rules/iframe-has-title.md)                                                           | Enforce iframe elements have a title attribute.                                                                                     | ☑️ 🔒 |       |    |    |
-| [img-redundant-alt](docs/rules/img-redundant-alt.md)                                                         | Enforce `<img>` alt prop does not contain the word "image", "picture", or "photo".                                                  | ☑️ 🔒 |       |    |    |
-| [interactive-supports-focus](docs/rules/interactive-supports-focus.md)                                       | Enforce that elements with interactive handlers like `onClick` must be focusable.                                                   | ☑️ 🔒 |       | 💡 |    |
-| [label-has-associated-control](docs/rules/label-has-associated-control.md)                                   | Enforce that a `label` tag has a text label and an associated control.                                                              | ☑️ 🔒 |       |    |    |
-| [label-has-for](docs/rules/label-has-for.md)                                                                 | Enforce that `<label>` elements have the `htmlFor` prop.                                                                            |       | ☑️ 🔒 |    | ❌  |
-| [lang](docs/rules/lang.md)                                                                                   | Enforce lang attribute has a valid value.                                                                                           |       |       |    |    |
-| [media-has-caption](docs/rules/media-has-caption.md)                                                         | Enforces that `<audio>` and `<video>` elements must have a `<track>` for captions.                                                  | ☑️ 🔒 |       |    |    |
-| [mouse-events-have-key-events](docs/rules/mouse-events-have-key-events.md)                                   | Enforce that `onMouseOver`/`onMouseOut` are accompanied by `onFocus`/`onBlur` for keyboard-only users.                              | ☑️ 🔒 |       |    |    |
-| [no-access-key](docs/rules/no-access-key.md)                                                                 | Enforce that the `accessKey` prop is not used on any element to avoid complications with keyboard commands used by a screen reader. | ☑️ 🔒 |       |    |    |
-| [no-aria-hidden-on-focusable](docs/rules/no-aria-hidden-on-focusable.md)                                     | Disallow `aria-hidden="true"` from being set on focusable elements.                                                                 |       |       |    |    |
-| [no-autofocus](docs/rules/no-autofocus.md)                                                                   | Enforce autoFocus prop is not enabled.                                                                                              | ☑️ 🔒 |       |    |    |
-| [no-distracting-elements](docs/rules/no-distracting-elements.md)                                             | Enforce distracting elements are not used.                                                                                          | ☑️ 🔒 |       |    |    |
-| [no-interactive-element-to-noninteractive-role](docs/rules/no-interactive-element-to-noninteractive-role.md) | Interactive elements should not be assigned non-interactive roles.                                                                  | ☑️ 🔒 |       |    |    |
-| [no-noninteractive-element-interactions](docs/rules/no-noninteractive-element-interactions.md)               | Non-interactive elements should not be assigned mouse or keyboard event listeners.                                                  | ☑️ 🔒 |       |    |    |
-| [no-noninteractive-element-to-interactive-role](docs/rules/no-noninteractive-element-to-interactive-role.md) | Non-interactive elements should not be assigned interactive roles.                                                                  | ☑️ 🔒 |       |    |    |
-| [no-noninteractive-tabindex](docs/rules/no-noninteractive-tabindex.md)                                       | `tabIndex` should only be declared on interactive elements.                                                                         | ☑️ 🔒 |       |    |    |
-| [no-onchange](docs/rules/no-onchange.md)                                                                     | Enforce usage of `onBlur` over `onChange` on select menus for accessibility.                                                        |       |       |    | ❌  |
-| [no-redundant-roles](docs/rules/no-redundant-roles.md)                                                       | Enforce explicit role property is not the same as implicit/default role property on element.                                        | ☑️ 🔒 |       |    |    |
-| [no-static-element-interactions](docs/rules/no-static-element-interactions.md)                               | Enforce that non-interactive, visible elements (such as `<div>`) that have click handlers use the role attribute.                   | ☑️ 🔒 |       |    |    |
-| [prefer-tag-over-role](docs/rules/prefer-tag-over-role.md)                                                   | Enforces using semantic DOM elements over the ARIA `role` property.                                                                 |       |       |    |    |
-| [role-has-required-aria-props](docs/rules/role-has-required-aria-props.md)                                   | Enforce that elements with ARIA roles must have all required attributes for that role.                                              | ☑️ 🔒 |       |    |    |
-| [role-supports-aria-props](docs/rules/role-supports-aria-props.md)                                           | Enforce that elements with explicit or implicit roles defined contain only `aria-*` properties supported by that `role`.            | ☑️ 🔒 |       |    |    |
-| [scope](docs/rules/scope.md)                                                                                 | Enforce `scope` prop is only used on `<th>` elements.                                                                               | ☑️ 🔒 |       |    |    |
-| [tabindex-no-positive](docs/rules/tabindex-no-positive.md)                                                   | Enforce `tabIndex` value is not greater than zero.                                                                                  | ☑️ 🔒 |       |    |    |
+| Name                                                                                                         | Description                                                                                                                         | 💼    | 🚫    | 💡  | ❌  |
+| :----------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------- | :---- | :---- | :-- | :-- |
+| [accessible-emoji](docs/rules/accessible-emoji.md)                                                           | Enforce emojis are wrapped in `<span>` and provide screen reader access.                                                            |       |       |     | ❌  |
+| [alt-text](docs/rules/alt-text.md)                                                                           | Enforce all elements that require alternative text have meaningful information to relay back to end user.                           | ☑️ 🔒 |       |     |     |
+| [anchor-ambiguous-text](docs/rules/anchor-ambiguous-text.md)                                                 | Enforce `<a>` text to not exactly match "click here", "here", "link", or "a link".                                                  |       | ☑️    |     |     |
+| [anchor-has-content](docs/rules/anchor-has-content.md)                                                       | Enforce all anchors to contain accessible content.                                                                                  | ☑️ 🔒 |       |     |     |
+| [anchor-is-valid](docs/rules/anchor-is-valid.md)                                                             | Enforce all anchors are valid, navigable elements.                                                                                  | ☑️ 🔒 |       |     |     |
+| [aria-activedescendant-has-tabindex](docs/rules/aria-activedescendant-has-tabindex.md)                       | Enforce elements with aria-activedescendant are tabbable.                                                                           | ☑️ 🔒 |       |     |     |
+| [aria-props](docs/rules/aria-props.md)                                                                       | Enforce all `aria-*` props are valid.                                                                                               | ☑️ 🔒 |       |     |     |
+| [aria-proptypes](docs/rules/aria-proptypes.md)                                                               | Enforce ARIA state and property values are valid.                                                                                   | ☑️ 🔒 |       |     |     |
+| [aria-role](docs/rules/aria-role.md)                                                                         | Enforce that elements with ARIA roles must use a valid, non-abstract ARIA role.                                                     | ☑️ 🔒 |       |     |     |
+| [aria-unsupported-elements](docs/rules/aria-unsupported-elements.md)                                         | Enforce that elements that do not support ARIA roles, states, and properties do not have those attributes.                          | ☑️ 🔒 |       |     |     |
+| [autocomplete-valid](docs/rules/autocomplete-valid.md)                                                       | Enforce that autocomplete attributes are used correctly.                                                                            | ☑️ 🔒 |       |     |     |
+| [click-events-have-key-events](docs/rules/click-events-have-key-events.md)                                   | Enforce a clickable non-interactive element has at least one keyboard event listener.                                               | ☑️ 🔒 |       |     |     |
+| [control-has-associated-label](docs/rules/control-has-associated-label.md)                                   | Enforce that a control (an interactive element) has a text label.                                                                   |       | ☑️ 🔒 |     |     |
+| [heading-has-content](docs/rules/heading-has-content.md)                                                     | Enforce heading (`h1`, `h2`, etc) elements contain accessible content.                                                              | ☑️ 🔒 |       |     |     |
+| [html-has-lang](docs/rules/html-has-lang.md)                                                                 | Enforce `<html>` element has `lang` prop.                                                                                           | ☑️ 🔒 |       |     |     |
+| [iframe-has-title](docs/rules/iframe-has-title.md)                                                           | Enforce iframe elements have a title attribute.                                                                                     | ☑️ 🔒 |       |     |     |
+| [img-redundant-alt](docs/rules/img-redundant-alt.md)                                                         | Enforce `<img>` alt prop does not contain the word "image", "picture", or "photo".                                                  | ☑️ 🔒 |       |     |     |
+| [interactive-supports-focus](docs/rules/interactive-supports-focus.md)                                       | Enforce that elements with interactive handlers like `onClick` must be focusable.                                                   | ☑️ 🔒 |       | 💡  |     |
+| [label-has-associated-control](docs/rules/label-has-associated-control.md)                                   | Enforce that a `label` tag has a text label and an associated control.                                                              | ☑️ 🔒 |       |     |     |
+| [label-has-for](docs/rules/label-has-for.md)                                                                 | Enforce that `<label>` elements have the `htmlFor` prop.                                                                            |       | ☑️ 🔒 |     | ❌  |
+| [lang](docs/rules/lang.md)                                                                                   | Enforce lang attribute has a valid value.                                                                                           |       |       |     |     |
+| [media-has-caption](docs/rules/media-has-caption.md)                                                         | Enforces that `<audio>` and `<video>` elements must have a `<track>` for captions.                                                  | ☑️ 🔒 |       |     |     |
+| [mouse-events-have-key-events](docs/rules/mouse-events-have-key-events.md)                                   | Enforce that `onMouseOver`/`onMouseOut` are accompanied by `onFocus`/`onBlur` for keyboard-only users.                              | ☑️ 🔒 |       |     |     |
+| [no-access-key](docs/rules/no-access-key.md)                                                                 | Enforce that the `accessKey` prop is not used on any element to avoid complications with keyboard commands used by a screen reader. | ☑️ 🔒 |       |     |     |
+| [no-aria-hidden-on-focusable](docs/rules/no-aria-hidden-on-focusable.md)                                     | Disallow `aria-hidden="true"` from being set on focusable elements.                                                                 |       |       |     |     |
+| [no-autofocus](docs/rules/no-autofocus.md)                                                                   | Enforce autoFocus prop is not enabled.                                                                                              | ☑️ 🔒 |       |     |     |
+| [no-distracting-elements](docs/rules/no-distracting-elements.md)                                             | Enforce distracting elements are not used.                                                                                          | ☑️ 🔒 |       |     |     |
+| [no-interactive-element-to-noninteractive-role](docs/rules/no-interactive-element-to-noninteractive-role.md) | Interactive elements should not be assigned non-interactive roles.                                                                  | ☑️ 🔒 |       |     |     |
+| [no-noninteractive-element-interactions](docs/rules/no-noninteractive-element-interactions.md)               | Non-interactive elements should not be assigned mouse or keyboard event listeners.                                                  | ☑️ 🔒 |       |     |     |
+| [no-noninteractive-element-to-interactive-role](docs/rules/no-noninteractive-element-to-interactive-role.md) | Non-interactive elements should not be assigned interactive roles.                                                                  | ☑️ 🔒 |       |     |     |
+| [no-noninteractive-tabindex](docs/rules/no-noninteractive-tabindex.md)                                       | `tabIndex` should only be declared on interactive elements.                                                                         | ☑️ 🔒 |       |     |     |
+| [no-onchange](docs/rules/no-onchange.md)                                                                     | Enforce usage of `onBlur` over `onChange` on select menus for accessibility.                                                        |       |       |     | ❌  |
+| [no-redundant-roles](docs/rules/no-redundant-roles.md)                                                       | Enforce explicit role property is not the same as implicit/default role property on element.                                        | ☑️ 🔒 |       |     |     |
+| [no-static-element-interactions](docs/rules/no-static-element-interactions.md)                               | Enforce that non-interactive, visible elements (such as `<div>`) that have click handlers use the role attribute.                   | ☑️ 🔒 |       |     |     |
+| [prefer-tag-over-role](docs/rules/prefer-tag-over-role.md)                                                   | Enforces using semantic DOM elements over the ARIA `role` property.                                                                 |       |       |     |     |
+| [role-has-required-aria-props](docs/rules/role-has-required-aria-props.md)                                   | Enforce that elements with ARIA roles must have all required attributes for that role.                                              | ☑️ 🔒 |       |     |     |
+| [role-supports-aria-props](docs/rules/role-supports-aria-props.md)                                           | Enforce that elements with explicit or implicit roles defined contain only `aria-*` properties supported by that `role`.            | ☑️ 🔒 |       |     |     |
+| [scope](docs/rules/scope.md)                                                                                 | Enforce `scope` prop is only used on `<th>` elements.                                                                               | ☑️ 🔒 |       |     |     |
+| [tabindex-no-positive](docs/rules/tabindex-no-positive.md)                                                   | Enforce `tabIndex` value is not greater than zero.                                                                                  | ☑️ 🔒 |       |     |     |
 
 <!-- end auto-generated rules list -->
 
@@ -284,92 +282,102 @@ The following rules have extra options when in _recommended_ mode:
 
 ### no-interactive-element-to-noninteractive-role
 
-```js
-'jsx-a11y/no-interactive-element-to-noninteractive-role': [
-  'error',
-  {
-    tr: ['none', 'presentation'],
-  },
-]
+```json
+{
+  "jsx-a11y-x/no-interactive-element-to-noninteractive-role": [
+    "error",
+    {
+      "tr": ["none", "presentation"]
+    }
+  ]
+}
 ```
 
 ### no-noninteractive-element-interactions
 
-```js
-'jsx-a11y/no-noninteractive-element-interactions': [
-  'error',
-  {
-    handlers: [
-      'onClick',
-      'onMouseDown',
-      'onMouseUp',
-      'onKeyPress',
-      'onKeyDown',
-      'onKeyUp',
-    ],
-  },
-]
+```json
+{
+  "jsx-a11y-x/no-noninteractive-element-interactions": [
+    "error",
+    {
+      "handlers": [
+        "onClick",
+        "onMouseDown",
+        "onMouseUp",
+        "onKeyPress",
+        "onKeyDown",
+        "onKeyUp"
+      ]
+    }
+  ]
+}
 ```
 
 ### no-noninteractive-element-to-interactive-role
 
-```js
-'jsx-a11y/no-noninteractive-element-to-interactive-role': [
-  'error',
-  {
-    ul: [
-      'listbox',
-      'menu',
-      'menubar',
-      'radiogroup',
-      'tablist',
-      'tree',
-      'treegrid',
-    ],
-    ol: [
-      'listbox',
-      'menu',
-      'menubar',
-      'radiogroup',
-      'tablist',
-      'tree',
-      'treegrid',
-    ],
-    li: ['menuitem', 'option', 'row', 'tab', 'treeitem'],
-    table: ['grid'],
-    td: ['gridcell'],
-  },
-]
+```json
+{
+  "jsx-a11y-x/no-noninteractive-element-to-interactive-role": [
+    "error",
+    {
+      "ul": [
+        "listbox",
+        "menu",
+        "menubar",
+        "radiogroup",
+        "tablist",
+        "tree",
+        "treegrid"
+      ],
+      "ol": [
+        "listbox",
+        "menu",
+        "menubar",
+        "radiogroup",
+        "tablist",
+        "tree",
+        "treegrid"
+      ],
+      "li": ["menuitem", "option", "row", "tab", "treeitem"],
+      "table": ["grid"],
+      "td": ["gridcell"]
+    }
+  ]
+}
 ```
 
 ### no-noninteractive-tabindex
 
-```js
-'jsx-a11y/no-noninteractive-tabindex': [
-  'error',
-  {
-    tags: [],
-    roles: ['tabpanel'],
-  },
-]
+```json
+{
+  "jsx-a11y-x/no-noninteractive-tabindex": [
+    "error",
+    {
+      "tags": [],
+      "roles": ["tabpanel"]
+    }
+  ]
+}
 ```
 
 ### no-static-element-interactions
 
-```js
-'jsx-a11y/no-noninteractive-element-interactions': [
-  'error',
-  {
-    handlers: [
-      'onClick',
-      'onMouseDown',
-      'onMouseUp',
-      'onKeyPress',
-      'onKeyDown',
-      'onKeyUp',
-    ],
-  },
-]
+```json
+{
+  "jsx-a11y-x/no-noninteractive-element-interactions": [
+    "error",
+    {
+      "handlers": [
+        "onClick",
+        "onMouseDown",
+        "onMouseUp",
+        "onKeyPress",
+        "onKeyDown",
+        "onKeyUp"
+      ]
+    }
+  ]
+}
 ```
 
 ## Creating a new rule
@@ -421,4 +429,4 @@ We model ARIA in the [aria-query](https://github.com/a11yance/aria-query) projec
 
 ## License
 
-eslint-plugin-jsx-a11y is licensed under the [MIT License](LICENSE.md).
+eslint-plugin-jsx-a11y-x is licensed under the [MIT License](LICENSE).

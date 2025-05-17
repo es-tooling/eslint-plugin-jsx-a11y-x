@@ -1,4 +1,4 @@
-# jsx-a11y/no-aria-hidden-on-focusable
+# jsx-a11y-x/no-aria-hidden-on-focusable
 
 <!-- end auto-generated rule header -->
 
@@ -9,6 +9,7 @@ Enforce that `aria-hidden="true"` is not set on focusable elements.
 ## Rule details
 
 ### Succeed
+
 ```jsx
   <div aria-hidden="true" />
   <img aria-hidden="true" />
@@ -19,6 +20,7 @@ Enforce that `aria-hidden="true"` is not set on focusable elements.
 ```
 
 ### Fail
+
 ```jsx
   <div aria-hidden="true" tabIndex="0" />
   <input aria-hidden="true" />
@@ -28,6 +30,7 @@ Enforce that `aria-hidden="true"` is not set on focusable elements.
 ```
 
 ## Accessibility guidelines
+
 General best practice (reference resources)
 
 ### Resources

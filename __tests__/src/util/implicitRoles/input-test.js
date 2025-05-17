@@ -3,8 +3,8 @@ import test from 'tape';
 import JSXAttributeMock from '../../../../__mocks__/JSXAttributeMock';
 import getImplicitRoleForInput from '../../../../src/util/implicitRoles/input';
 
-test('isAbstractRole', (t) => {
-  t.test('works for buttons', (st) => {
+test('isAbstractRole', t => {
+  t.test('works for buttons', st => {
     st.equal(
       getImplicitRoleForInput([JSXAttributeMock('type', 'button')]),
       'button',
@@ -46,7 +46,7 @@ test('isAbstractRole', (t) => {
     'works for ranges',
   );
 
-  t.test('works for textboxes', (st) => {
+  t.test('works for textboxes', st => {
     st.equal(
       getImplicitRoleForInput([JSXAttributeMock('type', 'email')]),
       'textbox',

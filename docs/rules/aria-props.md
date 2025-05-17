@@ -1,4 +1,4 @@
-# jsx-a11y/aria-props
+# jsx-a11y-x/aria-props
 
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
@@ -11,6 +11,7 @@ Elements cannot use an invalid ARIA attribute. This will fail if it finds an `ar
 This rule takes no arguments.
 
 ### Succeed
+
 ```jsx
 <!-- Good: Labeled using correctly spelled aria-labelledby -->
 <div id="address_label">Enter your address</div>
@@ -26,4 +27,5 @@ This rule takes no arguments.
 ```
 
 ## Accessibility guidelines
+
 - [WCAG 4.1.2](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value)

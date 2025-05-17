@@ -3,7 +3,7 @@ import test from 'tape';
 import isContentEditable from '../../../src/util/isContentEditable';
 import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
 
-test('isContentEditable - HTML5', (t) => {
+test('isContentEditable - HTML5', t => {
   t.equal(
     isContentEditable('some tag', [
       JSXAttributeMock('contentEditable', 'true'),
@@ -12,7 +12,7 @@ test('isContentEditable - HTML5', (t) => {
     'identifies HTML5 contentEditable elements',
   );
 
-  t.test('not content editable', (st) => {
+  t.test('not content editable', st => {
     st.equal(
       isContentEditable('some tag', [
         JSXAttributeMock('contentEditable', null),

@@ -1,5 +1,5 @@
 /**
- * @fileoverview Disallow tabindex on static and noninteractive elements
+ * @file Disallow tabindex on static and noninteractive elements
  * @author jessebeach
  */
 
@@ -28,7 +28,7 @@ const expectedError = {
 };
 
 const componentsSettings = {
-  'jsx-a11y': {
+  'jsx-a11y-x': {
     components: {
       Article: 'article',
       MyButton: 'button',
@@ -55,69 +55,82 @@ const neverValid = [
   { code: '<div role="article" tabIndex="0" />', errors: [expectedError] },
   { code: '<article tabIndex="0" />', errors: [expectedError] },
   { code: '<article tabIndex={0} />', errors: [expectedError] },
-  { code: '<Article tabIndex={0} />', errors: [expectedError], settings: componentsSettings },
+  {
+    code: '<Article tabIndex={0} />',
+    errors: [expectedError],
+    settings: componentsSettings,
+  },
 ];
 
-const recommendedOptions = (
-  configs.recommended.rules[`jsx-a11y/${ruleName}`][1] || {}
-);
+const recommendedOptions =
+  configs.recommended.rules[`jsx-a11y-x/${ruleName}`][1] || {};
 
 ruleTester.run(`${ruleName}:recommended`, rule, {
-  valid: parsers.all([].concat(
-    ...alwaysValid,
-    { code: '<div role="tabpanel" tabIndex="0" />' },
-    // Expressions should pass in recommended mode
-    { code: '<div role={ROLE_BUTTON} onClick={() => {}} tabIndex="0" />;' },
-    // Cases for allowExpressionValues set to true
-    {
-      code: '<div role={BUTTON} onClick={() => {}} tabIndex="0" />;',
-      options: [{ allowExpressionValues: true }],
-    },
-    // Specific case for ternary operator with literals on both side
-    {
-      code: '<div role={isButton ? "button" : "link"} onClick={() => {}} tabIndex="0" />;',
-      options: [{ allowExpressionValues: true }],
-    },
-    {
-      code: '<div role={isButton ? "button" : LINK} onClick={() => {}} tabIndex="0" />;',
-      options: [{ allowExpressionValues: true }],
-      errors: [expectedError],
-    },
-    {
-      code: '<div role={isButton ? BUTTON : LINK} onClick={() => {}} tabIndex="0"/>;',
-      options: [{ allowExpressionValues: true }],
-      errors: [expectedError],
-    },
-  ))
+  valid: parsers
+    .all(
+      [].concat(
+        ...alwaysValid,
+        { code: '<div role="tabpanel" tabIndex="0" />' },
+        // Expressions should pass in recommended mode
+        { code: '<div role={ROLE_BUTTON} onClick={() => {}} tabIndex="0" />;' },
+        // Cases for allowExpressionValues set to true
+        {
+          code: '<div role={BUTTON} onClick={() => {}} tabIndex="0" />;',
+          options: [{ allowExpressionValues: true }],
+        },
+        // Specific case for ternary operator with literals on both side
+        {
+          code: '<div role={isButton ? "button" : "link"} onClick={() => {}} tabIndex="0" />;',
+          options: [{ allowExpressionValues: true }],
+        },
+        {
+          code: '<div role={isButton ? "button" : LINK} onClick={() => {}} tabIndex="0" />;',
+          options: [{ allowExpressionValues: true }],
+          errors: [expectedError],
+        },
+        {
+          code: '<div role={isButton ? BUTTON : LINK} onClick={() => {}} tabIndex="0"/>;',
+          options: [{ allowExpressionValues: true }],
+          errors: [expectedError],
+        },
+      ),
+    )
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
-  invalid: parsers.all([].concat(
-    ...neverValid,
-  ))
+  invalid: parsers
+    .all([].concat(...neverValid))
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
 });
 
 ruleTester.run(`${ruleName}:strict`, rule, {
-  valid: parsers.all([].concat(
-    ...alwaysValid,
-  )).map(parserOptionsMapper),
-  invalid: parsers.all([].concat(
-    ...neverValid,
-    { code: '<div role="tabpanel" tabIndex="0" />', errors: [expectedError] },
-    // Expressions should fail in strict mode
-    { code: '<div role={ROLE_BUTTON} onClick={() => {}} tabIndex="0" />;', errors: [expectedError] },
-    // Cases for allowExpressionValues set to false
-    {
-      code: '<div role={BUTTON} onClick={() => {}} tabIndex="0" />;',
-      options: [{ allowExpressionValues: false }],
-      errors: [expectedError],
-    },
-    // Specific case for ternary operator with literals on both side
-    {
-      code: '<div role={isButton ? "button" : "link"} onClick={() => {}} tabIndex="0" />;',
-      options: [{ allowExpressionValues: false }],
-      errors: [expectedError],
-    },
-  )).map(parserOptionsMapper),
+  valid: parsers.all([].concat(...alwaysValid)).map(parserOptionsMapper),
+  invalid: parsers
+    .all(
+      [].concat(
+        ...neverValid,
+        {
+          code: '<div role="tabpanel" tabIndex="0" />',
+          errors: [expectedError],
+        },
+        // Expressions should fail in strict mode
+        {
+          code: '<div role={ROLE_BUTTON} onClick={() => {}} tabIndex="0" />;',
+          errors: [expectedError],
+        },
+        // Cases for allowExpressionValues set to false
+        {
+          code: '<div role={BUTTON} onClick={() => {}} tabIndex="0" />;',
+          options: [{ allowExpressionValues: false }],
+          errors: [expectedError],
+        },
+        // Specific case for ternary operator with literals on both side
+        {
+          code: '<div role={isButton ? "button" : "link"} onClick={() => {}} tabIndex="0" />;',
+          options: [{ allowExpressionValues: false }],
+          errors: [expectedError],
+        },
+      ),
+    )
+    .map(parserOptionsMapper),
 });

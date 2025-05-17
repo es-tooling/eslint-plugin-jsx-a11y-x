@@ -3,13 +3,9 @@ import test from 'tape';
 import JSXAttributeMock from '../../../../__mocks__/JSXAttributeMock';
 import getImplicitRoleForSelect from '../../../../src/util/implicitRoles/select';
 
-test('isAbstractRole', (t) => {
-  t.test('works for combobox', (st) => {
-    st.equal(
-      getImplicitRoleForSelect([]),
-      'combobox',
-      'defaults to combobox',
-    );
+test('isAbstractRole', t => {
+  t.test('works for combobox', st => {
+    st.equal(getImplicitRoleForSelect([]), 'combobox', 'defaults to combobox');
 
     st.equal(
       getImplicitRoleForSelect([JSXAttributeMock('multiple', null)]),
@@ -110,7 +106,7 @@ test('isAbstractRole', (t) => {
     st.end();
   });
 
-  t.test('works for listbox based on multiple attribute', (st) => {
+  t.test('works for listbox based on multiple attribute', st => {
     st.equal(
       getImplicitRoleForSelect([JSXAttributeMock('multiple', true)]),
       'listbox',
@@ -132,7 +128,7 @@ test('isAbstractRole', (t) => {
     st.end();
   });
 
-  t.test('works for listbox based on size attribute', (st) => {
+  t.test('works for listbox based on size attribute', st => {
     st.equal(
       getImplicitRoleForSelect([JSXAttributeMock('size', 2)]),
       'listbox',

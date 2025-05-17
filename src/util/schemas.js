@@ -1,6 +1,4 @@
-/**
- * JSON schema to accept an array of unique strings
- */
+/** JSON schema to accept an array of unique strings */
 export const arraySchema = {
   type: 'array',
   items: {
@@ -10,9 +8,7 @@ export const arraySchema = {
   additionalItems: false,
 };
 
-/**
- * JSON schema to accept an array of unique strings from an enumerated list.
- */
+/** JSON schema to accept an array of unique strings from an enumerated list. */
 export const enumArraySchema = (enumeratedList = [], minItems = 0) => ({
   ...arraySchema,
   items: {
@@ -23,8 +19,8 @@ export const enumArraySchema = (enumeratedList = [], minItems = 0) => ({
 });
 
 /**
- * Factory function to generate an object schema
- * with specified properties object
+ * Factory function to generate an object schema with specified properties
+ * object
  */
 export const generateObjSchema = (properties = {}, required = undefined) => ({
   type: 'object',

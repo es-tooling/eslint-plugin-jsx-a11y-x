@@ -14,18 +14,18 @@ export type ESLintSettings = {
     polymorphicPropName?: string,
     polymorphicAllowList?: Array<string>,
   },
-}
+};
 
 export type ESLintContext = {
   options: Array<Object>,
-  report: (ESLintReport) => void,
+  report: ESLintReport => void,
   settings: ESLintSettings,
 };
 
 export type ESLintConfig = {
-  meta?: {[string]: mixed},
+  meta?: { [string]: mixed },
   create: (context: ESLintContext) => mixed,
-}
+};
 
 export type ESLintVisitorSelectorConfig = {
   [string]: mixed,
