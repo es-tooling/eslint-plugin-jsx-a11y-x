@@ -4,7 +4,7 @@ import getTabIndex from '../../../src/util/getTabIndex';
 import IdentifierMock from '../../../__mocks__/IdentifierMock';
 import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
 
-test('getTabIndex', (t) => {
+test('getTabIndex', t => {
   t.equal(
     getTabIndex(JSXAttributeMock('tabIndex', 0)),
     0,
@@ -66,11 +66,7 @@ test('getTabIndex', (t) => {
 
   const name = 'identName';
   t.equal(
-    getTabIndex(JSXAttributeMock(
-      'tabIndex',
-      IdentifierMock(name),
-      true,
-    )),
+    getTabIndex(JSXAttributeMock('tabIndex', IdentifierMock(name), true)),
     name,
     'tabIndex is defined as a variable expression -> returns the Identifier name',
   );

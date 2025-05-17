@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enforce non-interactive elements have no interactive handlers.
+ * @file Enforce non-interactive elements have no interactive handlers.
  * @author Ethan Cohen
  */
 
@@ -20,7 +20,8 @@ import ruleOptionsMapperFactory from '../../__util__/ruleOptionsMapperFactory';
 
 const ruleTester = new RuleTester();
 
-const errorMessage = 'Non-interactive elements should not be assigned mouse or keyboard event listeners.';
+const errorMessage =
+  'Non-interactive elements should not be assigned mouse or keyboard event listeners.';
 
 const expectedError = {
   message: errorMessage,
@@ -35,7 +36,7 @@ const alwaysValid = [
   { code: '<Image onClick={() => void 0} />;' },
   {
     code: '<Button onClick={() => void 0} />;',
-    settings: { 'jsx-a11y': { components: { Button: 'button' } } },
+    settings: { 'jsx-a11y-x': { components: { Button: 'button' } } },
   },
   /* All flavors of input */
   { code: '<input onClick={() => void 0} />' },
@@ -137,7 +138,9 @@ const alwaysValid = [
   },
   { code: '<img {...props} onError={() => {}} />;' },
   { code: '<img onLoad={() => {}} />;' },
-  { code: '<img src={currentPhoto.imageUrl} onLoad={this.handleImageLoad} alt="for review" />' },
+  {
+    code: '<img src={currentPhoto.imageUrl} onLoad={this.handleImageLoad} alt="for review" />',
+  },
   {
     code: `
         <img
@@ -326,8 +329,14 @@ const neverValid = [
   { code: '<pre onClick={() => {}} />;', errors: [expectedError] },
   { code: '<progress onClick={() => {}} />;', errors: [expectedError] },
   { code: '<ruby onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<section onClick={() => {}} aria-label="Aardvark" />;', errors: [expectedError] },
-  { code: '<section onClick={() => {}} aria-labelledby="js_1" />;', errors: [expectedError] },
+  {
+    code: '<section onClick={() => {}} aria-label="Aardvark" />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<section onClick={() => {}} aria-labelledby="js_1" />;',
+    errors: [expectedError],
+  },
   { code: '<strong onClick={() => {}} />;', errors: [expectedError] },
   { code: '<sub onClick={() => {}} />;', errors: [expectedError] },
   { code: '<sup onClick={() => {}} />;', errors: [expectedError] },
@@ -337,166 +346,321 @@ const neverValid = [
   { code: '<thead onClick={() => {}} />;', errors: [expectedError] },
   { code: '<time onClick={() => {}} />;', errors: [expectedError] },
   { code: '<ul onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<ul contentEditable="false" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<article contentEditable onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div contentEditable role="article" onKeyDown={() => {}} />;', errors: [expectedError] },
+  {
+    code: '<ul contentEditable="false" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<article contentEditable onClick={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div contentEditable role="article" onKeyDown={() => {}} />;',
+    errors: [expectedError],
+  },
   /* HTML elements attributed with a non-interactive role */
   { code: '<div role="alert" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="alertdialog" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="application" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="banner" onClick={() => {}} />;', errors: [expectedError] },
+  {
+    code: '<div role="alertdialog" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div role="application" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div role="banner" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
   { code: '<div role="cell" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="complementary" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="contentinfo" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="definition" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="dialog" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="directory" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="document" onClick={() => {}} />;', errors: [expectedError] },
+  {
+    code: '<div role="complementary" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div role="contentinfo" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div role="definition" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div role="dialog" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div role="directory" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div role="document" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
   { code: '<div role="feed" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="figure" onClick={() => {}} />;', errors: [expectedError] },
+  {
+    code: '<div role="figure" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
   { code: '<div role="form" onClick={() => {}} />;', errors: [expectedError] },
   { code: '<div role="group" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="heading" onClick={() => {}} />;', errors: [expectedError] },
+  {
+    code: '<div role="heading" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
   { code: '<div role="img" onClick={() => {}} />;', errors: [expectedError] },
   { code: '<div role="list" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="listitem" onClick={() => {}} />;', errors: [expectedError] },
+  {
+    code: '<div role="listitem" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
   { code: '<div role="log" onClick={() => {}} />;', errors: [expectedError] },
   { code: '<div role="main" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="marquee" onClick={() => {}} />;', errors: [expectedError] },
+  {
+    code: '<div role="marquee" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
   { code: '<div role="math" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="navigation" onClick={() => {}} />;', errors: [expectedError] },
+  {
+    code: '<div role="navigation" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
   { code: '<div role="note" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="region" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="rowgroup" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="search" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="separator" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="status" onClick={() => {}} />;', errors: [expectedError] },
+  {
+    code: '<div role="region" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div role="rowgroup" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div role="search" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div role="separator" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div role="status" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
   { code: '<div role="table" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="tabpanel" onClick={() => {}} />;', errors: [expectedError] },
+  {
+    code: '<div role="tabpanel" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
   { code: '<div role="term" onClick={() => {}} />;', errors: [expectedError] },
   { code: '<div role="timer" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="tooltip" onClick={() => {}} />;', errors: [expectedError] },
+  {
+    code: '<div role="tooltip" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
   // Handlers
-  { code: '<div role="article" onKeyDown={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="article" onKeyPress={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="article" onKeyUp={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="article" onClick={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="article" onLoad={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="article" onError={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="article" onMouseDown={() => {}} />;', errors: [expectedError] },
-  { code: '<div role="article" onMouseUp={() => {}} />;', errors: [expectedError] },
+  {
+    code: '<div role="article" onKeyDown={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div role="article" onKeyPress={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div role="article" onKeyUp={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div role="article" onClick={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div role="article" onLoad={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div role="article" onError={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div role="article" onMouseDown={() => {}} />;',
+    errors: [expectedError],
+  },
+  {
+    code: '<div role="article" onMouseUp={() => {}} />;',
+    errors: [expectedError],
+  },
   // Custom component
   {
     code: '<Image onClick={() => void 0} />;',
     errors: [expectedError],
-    settings: { 'jsx-a11y': { components: { Image: 'img' } } },
+    settings: { 'jsx-a11y-x': { components: { Image: 'img' } } },
   },
 ];
 
-const recommendedOptions = configs.recommended.rules[`jsx-a11y/${ruleName}`][1] || {};
+const recommendedOptions =
+  configs.recommended.rules[`jsx-a11y-x/${ruleName}`][1] || {};
 ruleTester.run(`${ruleName}:recommended`, rule, {
-  valid: parsers.all([].concat(
-    ...alwaysValid,
-    // All the possible handlers
-    { code: '<div role="article" onCopy={() => {}} />;' },
-    { code: '<div role="article" onCut={() => {}} />;' },
-    { code: '<div role="article" onPaste={() => {}} />;' },
-    { code: '<div role="article" onCompositionEnd={() => {}} />;' },
-    { code: '<div role="article" onCompositionStart={() => {}} />;' },
-    { code: '<div role="article" onCompositionUpdate={() => {}} />;' },
-    { code: '<div role="article" onFocus={() => {}} />;' },
-    { code: '<div role="article" onBlur={() => {}} />;' },
-    { code: '<div role="article" onChange={() => {}} />;' },
-    { code: '<div role="article" onInput={() => {}} />;' },
-    { code: '<div role="article" onSubmit={() => {}} />;' },
-    { code: '<div role="article" onContextMenu={() => {}} />;' },
-    { code: '<div role="article" onDblClick={() => {}} />;' },
-    { code: '<div role="article" onDoubleClick={() => {}} />;' },
-    { code: '<div role="article" onDrag={() => {}} />;' },
-    { code: '<div role="article" onDragEnd={() => {}} />;' },
-    { code: '<div role="article" onDragEnter={() => {}} />;' },
-    { code: '<div role="article" onDragExit={() => {}} />;' },
-    { code: '<div role="article" onDragLeave={() => {}} />;' },
-    { code: '<div role="article" onDragOver={() => {}} />;' },
-    { code: '<div role="article" onDragStart={() => {}} />;' },
-    { code: '<div role="article" onDrop={() => {}} />;' },
-    { code: '<div role="article" onMouseEnter={() => {}} />;' },
-    { code: '<div role="article" onMouseLeave={() => {}} />;' },
-    { code: '<div role="article" onMouseMove={() => {}} />;' },
-    { code: '<div role="article" onMouseOut={() => {}} />;' },
-    { code: '<div role="article" onMouseOver={() => {}} />;' },
-    { code: '<div role="article" onSelect={() => {}} />;' },
-    { code: '<div role="article" onTouchCancel={() => {}} />;' },
-    { code: '<div role="article" onTouchEnd={() => {}} />;' },
-    { code: '<div role="article" onTouchMove={() => {}} />;' },
-    { code: '<div role="article" onTouchStart={() => {}} />;' },
-    { code: '<div role="article" onScroll={() => {}} />;' },
-    { code: '<div role="article" onWheel={() => {}} />;' },
-    { code: '<div role="article" onAbort={() => {}} />;' },
-    { code: '<div role="article" onCanPlay={() => {}} />;' },
-    { code: '<div role="article" onCanPlayThrough={() => {}} />;' },
-    { code: '<div role="article" onDurationChange={() => {}} />;' },
-    { code: '<div role="article" onEmptied={() => {}} />;' },
-    { code: '<div role="article" onEncrypted={() => {}} />;' },
-    { code: '<div role="article" onEnded={() => {}} />;' },
-    { code: '<div role="article" onLoadedData={() => {}} />;' },
-    { code: '<div role="article" onLoadedMetadata={() => {}} />;' },
-    { code: '<div role="article" onLoadStart={() => {}} />;' },
-    { code: '<div role="article" onPause={() => {}} />;' },
-    { code: '<div role="article" onPlay={() => {}} />;' },
-    { code: '<div role="article" onPlaying={() => {}} />;' },
-    { code: '<div role="article" onProgress={() => {}} />;' },
-    { code: '<div role="article" onRateChange={() => {}} />;' },
-    { code: '<div role="article" onSeeked={() => {}} />;' },
-    { code: '<div role="article" onSeeking={() => {}} />;' },
-    { code: '<div role="article" onStalled={() => {}} />;' },
-    { code: '<div role="article" onSuspend={() => {}} />;' },
-    { code: '<div role="article" onTimeUpdate={() => {}} />;' },
-    { code: '<div role="article" onVolumeChange={() => {}} />;' },
-    { code: '<div role="article" onWaiting={() => {}} />;' },
-    { code: '<div role="article" onAnimationStart={() => {}} />;' },
-    { code: '<div role="article" onAnimationEnd={() => {}} />;' },
-    { code: '<div role="article" onAnimationIteration={() => {}} />;' },
-    { code: '<div role="article" onTransitionEnd={() => {}} />;' },
-  ))
+  valid: parsers
+    .all(
+      [].concat(
+        ...alwaysValid,
+        // All the possible handlers
+        { code: '<div role="article" onCopy={() => {}} />;' },
+        { code: '<div role="article" onCut={() => {}} />;' },
+        { code: '<div role="article" onPaste={() => {}} />;' },
+        { code: '<div role="article" onCompositionEnd={() => {}} />;' },
+        { code: '<div role="article" onCompositionStart={() => {}} />;' },
+        { code: '<div role="article" onCompositionUpdate={() => {}} />;' },
+        { code: '<div role="article" onFocus={() => {}} />;' },
+        { code: '<div role="article" onBlur={() => {}} />;' },
+        { code: '<div role="article" onChange={() => {}} />;' },
+        { code: '<div role="article" onInput={() => {}} />;' },
+        { code: '<div role="article" onSubmit={() => {}} />;' },
+        { code: '<div role="article" onContextMenu={() => {}} />;' },
+        { code: '<div role="article" onDblClick={() => {}} />;' },
+        { code: '<div role="article" onDoubleClick={() => {}} />;' },
+        { code: '<div role="article" onDrag={() => {}} />;' },
+        { code: '<div role="article" onDragEnd={() => {}} />;' },
+        { code: '<div role="article" onDragEnter={() => {}} />;' },
+        { code: '<div role="article" onDragExit={() => {}} />;' },
+        { code: '<div role="article" onDragLeave={() => {}} />;' },
+        { code: '<div role="article" onDragOver={() => {}} />;' },
+        { code: '<div role="article" onDragStart={() => {}} />;' },
+        { code: '<div role="article" onDrop={() => {}} />;' },
+        { code: '<div role="article" onMouseEnter={() => {}} />;' },
+        { code: '<div role="article" onMouseLeave={() => {}} />;' },
+        { code: '<div role="article" onMouseMove={() => {}} />;' },
+        { code: '<div role="article" onMouseOut={() => {}} />;' },
+        { code: '<div role="article" onMouseOver={() => {}} />;' },
+        { code: '<div role="article" onSelect={() => {}} />;' },
+        { code: '<div role="article" onTouchCancel={() => {}} />;' },
+        { code: '<div role="article" onTouchEnd={() => {}} />;' },
+        { code: '<div role="article" onTouchMove={() => {}} />;' },
+        { code: '<div role="article" onTouchStart={() => {}} />;' },
+        { code: '<div role="article" onScroll={() => {}} />;' },
+        { code: '<div role="article" onWheel={() => {}} />;' },
+        { code: '<div role="article" onAbort={() => {}} />;' },
+        { code: '<div role="article" onCanPlay={() => {}} />;' },
+        { code: '<div role="article" onCanPlayThrough={() => {}} />;' },
+        { code: '<div role="article" onDurationChange={() => {}} />;' },
+        { code: '<div role="article" onEmptied={() => {}} />;' },
+        { code: '<div role="article" onEncrypted={() => {}} />;' },
+        { code: '<div role="article" onEnded={() => {}} />;' },
+        { code: '<div role="article" onLoadedData={() => {}} />;' },
+        { code: '<div role="article" onLoadedMetadata={() => {}} />;' },
+        { code: '<div role="article" onLoadStart={() => {}} />;' },
+        { code: '<div role="article" onPause={() => {}} />;' },
+        { code: '<div role="article" onPlay={() => {}} />;' },
+        { code: '<div role="article" onPlaying={() => {}} />;' },
+        { code: '<div role="article" onProgress={() => {}} />;' },
+        { code: '<div role="article" onRateChange={() => {}} />;' },
+        { code: '<div role="article" onSeeked={() => {}} />;' },
+        { code: '<div role="article" onSeeking={() => {}} />;' },
+        { code: '<div role="article" onStalled={() => {}} />;' },
+        { code: '<div role="article" onSuspend={() => {}} />;' },
+        { code: '<div role="article" onTimeUpdate={() => {}} />;' },
+        { code: '<div role="article" onVolumeChange={() => {}} />;' },
+        { code: '<div role="article" onWaiting={() => {}} />;' },
+        { code: '<div role="article" onAnimationStart={() => {}} />;' },
+        { code: '<div role="article" onAnimationEnd={() => {}} />;' },
+        { code: '<div role="article" onAnimationIteration={() => {}} />;' },
+        { code: '<div role="article" onTransitionEnd={() => {}} />;' },
+      ),
+    )
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
-  invalid: parsers.all([].concat(
-    ...neverValid,
-  ))
+  invalid: parsers
+    .all([].concat(...neverValid))
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
 });
 
-const strictOptions = configs.strict.rules[`jsx-a11y/${ruleName}`][1] || {};
+const strictOptions = configs.strict.rules[`jsx-a11y-x/${ruleName}`][1] || {};
 ruleTester.run(`${ruleName}:strict`, rule, {
-  valid: parsers.all([].concat(
-    ...alwaysValid,
-  ))
+  valid: parsers
+    .all([].concat(...alwaysValid))
     .map(ruleOptionsMapperFactory(strictOptions))
     .map(parserOptionsMapper),
-  invalid: parsers.all([].concat(
-    ...neverValid,
-    // All the possible handlers
-    { code: '<div role="article" onFocus={() => {}} />;', errors: [expectedError] },
-    { code: '<div role="article" onBlur={() => {}} />;', errors: [expectedError] },
-    { code: '<div role="article" onContextMenu={() => {}} />;', errors: [expectedError] },
-    { code: '<div role="article" onDblClick={() => {}} />;', errors: [expectedError] },
-    { code: '<div role="article" onDoubleClick={() => {}} />;', errors: [expectedError] },
-    { code: '<div role="article" onDrag={() => {}} />;', errors: [expectedError] },
-    { code: '<div role="article" onDragEnd={() => {}} />;', errors: [expectedError] },
-    { code: '<div role="article" onDragEnter={() => {}} />;', errors: [expectedError] },
-    { code: '<div role="article" onDragExit={() => {}} />;', errors: [expectedError] },
-    { code: '<div role="article" onDragLeave={() => {}} />;', errors: [expectedError] },
-    { code: '<div role="article" onDragOver={() => {}} />;', errors: [expectedError] },
-    { code: '<div role="article" onDragStart={() => {}} />;', errors: [expectedError] },
-    { code: '<div role="article" onDrop={() => {}} />;', errors: [expectedError] },
-    { code: '<div role="article" onMouseEnter={() => {}} />;', errors: [expectedError] },
-    { code: '<div role="article" onMouseLeave={() => {}} />;', errors: [expectedError] },
-    { code: '<div role="article" onMouseMove={() => {}} />;', errors: [expectedError] },
-    { code: '<div role="article" onMouseOut={() => {}} />;', errors: [expectedError] },
-    { code: '<div role="article" onMouseOver={() => {}} />;', errors: [expectedError] },
-  ))
+  invalid: parsers
+    .all(
+      [].concat(
+        ...neverValid,
+        // All the possible handlers
+        {
+          code: '<div role="article" onFocus={() => {}} />;',
+          errors: [expectedError],
+        },
+        {
+          code: '<div role="article" onBlur={() => {}} />;',
+          errors: [expectedError],
+        },
+        {
+          code: '<div role="article" onContextMenu={() => {}} />;',
+          errors: [expectedError],
+        },
+        {
+          code: '<div role="article" onDblClick={() => {}} />;',
+          errors: [expectedError],
+        },
+        {
+          code: '<div role="article" onDoubleClick={() => {}} />;',
+          errors: [expectedError],
+        },
+        {
+          code: '<div role="article" onDrag={() => {}} />;',
+          errors: [expectedError],
+        },
+        {
+          code: '<div role="article" onDragEnd={() => {}} />;',
+          errors: [expectedError],
+        },
+        {
+          code: '<div role="article" onDragEnter={() => {}} />;',
+          errors: [expectedError],
+        },
+        {
+          code: '<div role="article" onDragExit={() => {}} />;',
+          errors: [expectedError],
+        },
+        {
+          code: '<div role="article" onDragLeave={() => {}} />;',
+          errors: [expectedError],
+        },
+        {
+          code: '<div role="article" onDragOver={() => {}} />;',
+          errors: [expectedError],
+        },
+        {
+          code: '<div role="article" onDragStart={() => {}} />;',
+          errors: [expectedError],
+        },
+        {
+          code: '<div role="article" onDrop={() => {}} />;',
+          errors: [expectedError],
+        },
+        {
+          code: '<div role="article" onMouseEnter={() => {}} />;',
+          errors: [expectedError],
+        },
+        {
+          code: '<div role="article" onMouseLeave={() => {}} />;',
+          errors: [expectedError],
+        },
+        {
+          code: '<div role="article" onMouseMove={() => {}} />;',
+          errors: [expectedError],
+        },
+        {
+          code: '<div role="article" onMouseOut={() => {}} />;',
+          errors: [expectedError],
+        },
+        {
+          code: '<div role="article" onMouseOver={() => {}} />;',
+          errors: [expectedError],
+        },
+      ),
+    )
     .map(ruleOptionsMapperFactory(strictOptions))
     .map(parserOptionsMapper),
 });

@@ -1,10 +1,10 @@
 import globals from 'globals';
 import js from '@eslint/js';
-import jsxA11y from 'eslint-plugin-jsx-a11y';
+import jsxA11yX from 'eslint-plugin-jsx-a11y-x';
 
 export default [
   js.configs.recommended,
-  jsxA11y.flatConfigs.recommended,
+  jsxA11yX.flatConfigs.recommended,
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
     languageOptions: {
@@ -15,8 +15,8 @@ export default [
     ignores: ['dist', 'eslint.config.js'],
     rules: {
       'no-unused-vars': 'off',
-      'jsx-a11y/anchor-ambiguous-text': 'warn',
-      'jsx-a11y/anchor-is-valid': 'warn',
+      'jsx-a11y-x/anchor-ambiguous-text': 'warn',
+      'jsx-a11y-x/anchor-is-valid': 'warn',
     },
   },
 ];

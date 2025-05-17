@@ -1,6 +1,4 @@
-/**
- * Returns the implicit role for a meter tag.
- */
+/** Returns the implicit role for a meter tag. */
 export default function getImplicitRoleForMeter() {
   return 'progressbar';
 }

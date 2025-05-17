@@ -1,6 +1,6 @@
 /**
- * @fileoverview Disallow inherently interactive elements to be assigned
- * non-interactive roles.
+ * @file Disallow inherently interactive elements to be assigned non-interactive
+ *   roles.
  * @author Jesse Beach
  */
 
@@ -20,17 +20,18 @@ import ruleOptionsMapperFactory from '../../__util__/ruleOptionsMapperFactory';
 // -----------------------------------------------------------------------------
 const ruleTester = new RuleTester();
 
-const errorMessage = 'Interactive elements should not be assigned non-interactive roles.';
+const errorMessage =
+  'Interactive elements should not be assigned non-interactive roles.';
 
 const expectedError = {
   message: errorMessage,
   type: 'JSXAttribute',
 };
 
-const ruleName = 'jsx-a11y/no-interactive-element-to-noninteractive-role';
+const ruleName = 'jsx-a11y-x/no-interactive-element-to-noninteractive-role';
 
 const componentsSettings = {
-  'jsx-a11y': {
+  'jsx-a11y-x': {
     components: {
       Button: 'button',
       Link: 'a',
@@ -307,7 +308,10 @@ const alwaysValid = [
 const neverValid = [
   /* Interactive elements */
   { code: '<a href="http://x.y.z" role="img" />', errors: [expectedError] },
-  { code: '<a href="http://x.y.z" tabIndex="0" role="img" />', errors: [expectedError] },
+  {
+    code: '<a href="http://x.y.z" tabIndex="0" role="img" />',
+    errors: [expectedError],
+  },
   /* All flavors of input */
   { code: '<input role="img" />', errors: [expectedError] },
   { code: '<input type="img" role="img" />', errors: [expectedError] },
@@ -315,7 +319,10 @@ const neverValid = [
   { code: '<input type="color" role="img" />', errors: [expectedError] },
   { code: '<input type="date" role="img" />', errors: [expectedError] },
   { code: '<input type="datetime" role="img" />', errors: [expectedError] },
-  { code: '<input type="datetime-local" role="img" />', errors: [expectedError] },
+  {
+    code: '<input type="datetime-local" role="img" />',
+    errors: [expectedError],
+  },
   { code: '<input type="email" role="img" />', errors: [expectedError] },
   { code: '<input type="file" role="img" />', errors: [expectedError] },
   { code: '<input type="hidden" role="img" />', errors: [expectedError] },
@@ -340,22 +347,43 @@ const neverValid = [
   { code: '<textarea className="foo" role="img" />', errors: [expectedError] },
   { code: '<tr role="img" />;', errors: [expectedError] },
   /* Interactive elements */
-  { code: '<a href="http://x.y.z" role="listitem" />', errors: [expectedError] },
-  { code: '<a href="http://x.y.z" tabIndex="0" role="listitem" />', errors: [expectedError] },
+  {
+    code: '<a href="http://x.y.z" role="listitem" />',
+    errors: [expectedError],
+  },
+  {
+    code: '<a href="http://x.y.z" tabIndex="0" role="listitem" />',
+    errors: [expectedError],
+  },
   /* All flavors of input */
   { code: '<input role="listitem" />', errors: [expectedError] },
-  { code: '<input type="listitem" role="listitem" />', errors: [expectedError] },
-  { code: '<input type="checkbox" role="listitem" />', errors: [expectedError] },
+  {
+    code: '<input type="listitem" role="listitem" />',
+    errors: [expectedError],
+  },
+  {
+    code: '<input type="checkbox" role="listitem" />',
+    errors: [expectedError],
+  },
   { code: '<input type="color" role="listitem" />', errors: [expectedError] },
   { code: '<input type="date" role="listitem" />', errors: [expectedError] },
-  { code: '<input type="datetime" role="listitem" />', errors: [expectedError] },
-  { code: '<input type="datetime-local" role="listitem" />', errors: [expectedError] },
+  {
+    code: '<input type="datetime" role="listitem" />',
+    errors: [expectedError],
+  },
+  {
+    code: '<input type="datetime-local" role="listitem" />',
+    errors: [expectedError],
+  },
   { code: '<input type="email" role="listitem" />', errors: [expectedError] },
   { code: '<input type="file" role="listitem" />', errors: [expectedError] },
   { code: '<input type="image" role="listitem" />', errors: [expectedError] },
   { code: '<input type="month" role="listitem" />', errors: [expectedError] },
   { code: '<input type="number" role="listitem" />', errors: [expectedError] },
-  { code: '<input type="password" role="listitem" />', errors: [expectedError] },
+  {
+    code: '<input type="password" role="listitem" />',
+    errors: [expectedError],
+  },
   { code: '<input type="radio" role="listitem" />', errors: [expectedError] },
   { code: '<input type="range" role="listitem" />', errors: [expectedError] },
   { code: '<input type="reset" role="listitem" />', errors: [expectedError] },
@@ -368,38 +396,55 @@ const neverValid = [
   { code: '<input type="week" role="listitem" />', errors: [expectedError] },
   /* End all flavors of input */
   { code: '<menuitem role="listitem" />;', errors: [expectedError] },
-  { code: '<option className="foo" role="listitem" />', errors: [expectedError] },
-  { code: '<select className="foo" role="listitem" />', errors: [expectedError] },
-  { code: '<textarea className="foo" role="listitem" />', errors: [expectedError] },
+  {
+    code: '<option className="foo" role="listitem" />',
+    errors: [expectedError],
+  },
+  {
+    code: '<select className="foo" role="listitem" />',
+    errors: [expectedError],
+  },
+  {
+    code: '<textarea className="foo" role="listitem" />',
+    errors: [expectedError],
+  },
   { code: '<tr role="listitem" />;', errors: [expectedError] },
   /* Custom elements */
-  { code: '<Link href="http://x.y.z" role="img" />', errors: [expectedError], settings: componentsSettings },
+  {
+    code: '<Link href="http://x.y.z" role="img" />',
+    errors: [expectedError],
+    settings: componentsSettings,
+  },
 ];
 
-const recommendedOptions = (configs.recommended.rules[ruleName][1] || {});
+const recommendedOptions = configs.recommended.rules[ruleName][1] || {};
 ruleTester.run(`${ruleName}:recommended`, rule, {
-  valid: parsers.all([].concat(
-    ...alwaysValid,
-    { code: '<tr role="presentation" />;' },
-    { code: '<canvas role="img" />;' },
-    { code: '<Component role="presentation" />;' },
-  ))
+  valid: parsers
+    .all(
+      [].concat(
+        ...alwaysValid,
+        { code: '<tr role="presentation" />;' },
+        { code: '<canvas role="img" />;' },
+        { code: '<Component role="presentation" />;' },
+      ),
+    )
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
-  invalid: parsers.all([].concat(
-    ...neverValid,
-  ))
+  invalid: parsers
+    .all([].concat(...neverValid))
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
 });
 
 ruleTester.run(`${ruleName}:strict`, rule, {
-  valid: parsers.all([].concat(
-    ...alwaysValid,
-  )).map(parserOptionsMapper),
-  invalid: parsers.all([].concat(
-    ...neverValid,
-    { code: '<tr role="presentation" />;', errors: [expectedError] },
-    { code: '<canvas role="img" />;', errors: [expectedError] },
-  )).map(parserOptionsMapper),
+  valid: parsers.all([].concat(...alwaysValid)).map(parserOptionsMapper),
+  invalid: parsers
+    .all(
+      [].concat(
+        ...neverValid,
+        { code: '<tr role="presentation" />;', errors: [expectedError] },
+        { code: '<canvas role="img" />;', errors: [expectedError] },
+      ),
+    )
+    .map(parserOptionsMapper),
 });

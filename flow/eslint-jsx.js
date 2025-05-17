@@ -1,11 +1,8 @@
 /*
  * @flow
  */
-import type {
-  JSXAttribute,
-  JSXOpeningElement,
-} from 'ast-types-flow';
+import type { JSXAttribute, JSXOpeningElement } from 'ast-types-flow';
 
 export type ESLintJSXAttribute = {
-  parent: JSXOpeningElement
+  parent: JSXOpeningElement,
 } & JSXAttribute;

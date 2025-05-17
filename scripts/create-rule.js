@@ -2,8 +2,8 @@
 const path = require('path');
 const fs = require('fs');
 const { exec } = require('child_process');
-const argv = require('minimist')(process.argv.slice(2)); // eslint-disable-line import/no-extraneous-dependencies
-const jscodeshiftJSON = require('jscodeshift/package.json'); // eslint-disable-line import/no-extraneous-dependencies
+const argv = require('minimist')(process.argv.slice(2)); // eslint-disable-line import-x/no-extraneous-dependencies
+const jscodeshiftJSON = require('jscodeshift/package.json'); // eslint-disable-line import-x/no-extraneous-dependencies
 
 const ruleBoilerplateGenerator = require('./boilerplate/rule');
 const testBoilerplateGenerator = require('./boilerplate/test');
@@ -19,7 +19,10 @@ const docsPath = path.resolve(`docs/rules/${ruleName}.md`);
 
 const jscodeshiftMain = jscodeshiftJSON.main;
 const jscodeshiftPath = require.resolve('jscodeshift');
-const jscodeshiftRoot = jscodeshiftPath.slice(0, jscodeshiftPath.indexOf(jscodeshiftMain));
+const jscodeshiftRoot = jscodeshiftPath.slice(
+  0,
+  jscodeshiftPath.indexOf(jscodeshiftMain),
+);
 
 // Validate
 if (!ruleName) {
@@ -49,7 +52,7 @@ exec(
     `--ruleName=${ruleName}`,
     `--rulePath=${rulePath}`,
   ].join(' '),
-  (error) => {
+  error => {
     if (error) {
       console.error(`exec error: ${error}`); // eslint-disable-line no-console
     }

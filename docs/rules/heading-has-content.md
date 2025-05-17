@@ -1,4 +1,4 @@
-# jsx-a11y/heading-has-content
+# jsx-a11y-x/heading-has-content
 
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
@@ -12,16 +12,18 @@ This rule takes one optional object argument of type object:
 
 ```json
 {
-    "rules": {
-        "jsx-a11y/heading-has-content": [ 2, {
-            "components": [ "MyHeading" ],
-          }],
-    }
+  "rules": {
+    "jsx-a11y/heading-has-content": [
+      2,
+      {
+        "components": ["MyHeading"]
+      }
+    ]
+  }
 }
 ```
 
 For the `components` option, these strings determine which JSX elements (**always including** `<h1>` thru `<h6>`) should be checked for having content. This is a good use case when you have a wrapper component that simply renders an `h1` element (like in React):
-
 
 ```js
 // Header.js
@@ -41,13 +43,15 @@ return (
 ```
 
 #### Bad
+
 ```jsx
 function Foo(props) {
-  return <label {...props} />
+  return <label {...props} />;
 }
 ```
 
 ### Succeed
+
 ```jsx
 <h1>Heading Content!</h1>
 <h1><TextWrapper /><h1>
@@ -55,13 +59,16 @@ function Foo(props) {
 ```
 
 ### Fail
+
 ```jsx
 <h1 />
 <h1><TextWrapper aria-hidden />
 ```
 
 ## Accessibility guidelines
+
 - [WCAG 2.4.6](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-descriptive.html)
 
 ### Resources
+
 - [axe-core, empty-heading](https://dequeuniversity.com/rules/axe/3.2/empty-heading)

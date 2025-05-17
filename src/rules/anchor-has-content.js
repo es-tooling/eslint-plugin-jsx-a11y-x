@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enforce anchor elements to contain accessible content.
+ * @file Enforce anchor elements to contain accessible content.
  * @author Lisa Ring & Niklas Holmberg
  */
 
@@ -13,23 +13,24 @@ import getElementType from '../util/getElementType';
 import { arraySchema, generateObjSchema } from '../util/schemas';
 import hasAccessibleChild from '../util/hasAccessibleChild';
 
-const errorMessage = 'Anchors must have content and the content must be accessible by a screen reader.';
+const errorMessage =
+  'Anchors must have content and the content must be accessible by a screen reader.';
 
 const schema = generateObjSchema({ components: arraySchema });
 
 export default {
   meta: {
     docs: {
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/anchor-has-content.md',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/anchor-has-content.md',
       description: 'Enforce all anchors to contain accessible content.',
     },
     schema: [schema],
   },
 
-  create: (context) => {
+  create: context => {
     const elementType = getElementType(context);
     return {
-      JSXOpeningElement: (node) => {
+      JSXOpeningElement: node => {
         const options = context.options[0] || {};
         const componentOptions = options.components || [];
         const typeCheck = ['a'].concat(componentOptions);

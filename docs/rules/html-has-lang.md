@@ -1,4 +1,4 @@
-# jsx-a11y/html-has-lang
+# jsx-a11y-x/html-has-lang
 
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
@@ -11,6 +11,7 @@
 This rule takes no arguments.
 
 ### Succeed
+
 ```jsx
 <html lang="en">
 <html lang="en-US">
@@ -24,8 +25,10 @@ This rule takes no arguments.
 ```
 
 ## Accessibility guidelines
+
 - [WCAG 3.1.1](https://www.w3.org/WAI/WCAG21/Understanding/language-of-page)
 
 ### Resources
+
 - [axe-core, html-has-lang](https://dequeuniversity.com/rules/axe/3.2/html-has-lang)
 - [axe-core, html-lang-valid](https://dequeuniversity.com/rules/axe/3.2/html-lang-valid)

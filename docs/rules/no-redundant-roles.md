@@ -1,4 +1,4 @@
-# jsx-a11y/no-redundant-roles
+# jsx-a11y-x/no-redundant-roles
 
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 

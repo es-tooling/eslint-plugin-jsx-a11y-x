@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enforce iframe elements have a title attribute.
+ * @file Enforce iframe elements have a title attribute.
  * @author Ethan Cohen
  */
 
@@ -18,16 +18,16 @@ const schema = generateObjSchema();
 export default {
   meta: {
     docs: {
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/iframe-has-title.md',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/iframe-has-title.md',
       description: 'Enforce iframe elements have a title attribute.',
     },
     schema: [schema],
   },
 
-  create: (context) => {
+  create: context => {
     const elementType = getElementType(context);
     return {
-      JSXOpeningElement: (node) => {
+      JSXOpeningElement: node => {
         const type = elementType(node);
 
         if (type && type !== 'iframe') {

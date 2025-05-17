@@ -1,6 +1,4 @@
-/**
- * @flow
- */
+/** @flow */
 
 import { getProp, getLiteralPropValue, getPropValue } from 'jsx-ast-utils';
 import type { Node } from 'ast-types-flow';
@@ -16,9 +14,9 @@ const isDisabledElement = (attributes: Array<Node>): boolean => {
   const ariaDisabledAttrValue = getLiteralPropValue(ariaDisabledAttr);
 
   if (
-    ariaDisabledAttr
-    && ariaDisabledAttrValue !== undefined
-    && ariaDisabledAttrValue === true
+    ariaDisabledAttr &&
+    ariaDisabledAttrValue !== undefined &&
+    ariaDisabledAttrValue === true
   ) {
     return true;
   }

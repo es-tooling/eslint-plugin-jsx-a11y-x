@@ -1,4 +1,4 @@
-# jsx-a11y/no-interactive-element-to-noninteractive-role
+# jsx-a11y-x/no-interactive-element-to-noninteractive-role
 
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
@@ -31,8 +31,12 @@ Put the content inside your interactive element.
   role="button"
   onClick={() => {}}
   onKeyPress={() => {}}
-  tabIndex="0">
-  <div role="img" aria-label="Save" />
+  tabIndex="0"
+>
+  <div
+    role="img"
+    aria-label="Save"
+  />
 </div>
 ```
 

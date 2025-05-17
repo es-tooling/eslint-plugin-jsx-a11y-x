@@ -1,4 +1,4 @@
-# jsx-a11y/scope
+# jsx-a11y-x/scope
 
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
@@ -11,6 +11,7 @@ The `scope` prop should be used only on `<th>` elements.
 This rule takes no arguments.
 
 ### Succeed
+
 ```jsx
 <th scope="col" />
 <th scope={scope} />
@@ -23,8 +24,10 @@ This rule takes no arguments.
 ```
 
 ## Accessibility guidelines
+
 - [WCAG 1.3.1](https://www.w3.org/WAI/WCAG21/Understanding/info-and-relationships)
 - [WCAG 4.1.1](https://www.w3.org/WAI/WCAG21/Understanding/parsing)
 
 ### Resources
+
 - [axe-core, scope-attr-valid](https://dequeuniversity.com/rules/axe/3.5/scope-attr-valid)

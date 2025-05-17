@@ -2,8 +2,12 @@ import test from 'tape';
 
 import getSuggestion from '../../../src/util/getSuggestion';
 
-test('spell check suggestion API', (t) => {
-  t.deepEqual([], getSuggestion('foo'), 'returns no suggestions given empty word and no dictionary');
+test('spell check suggestion API', t => {
+  t.deepEqual(
+    [],
+    getSuggestion('foo'),
+    'returns no suggestions given empty word and no dictionary',
+  );
 
   t.deepEqual(
     getSuggestion('foo'),

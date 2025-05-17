@@ -1,8 +1,8 @@
 /**
- * @fileoverview Enforce explicit role property is not the
- * same as implicit/default role property on element.
- * @author Ethan Cohen <@evcohen>
  * @flow
+ * @file Enforce explicit role property is not the same as implicit/default role
+ *   property on element.
+ * @author Ethan Cohen <@evcohen>
  */
 
 // ----------------------------------------------------------------------------
@@ -12,33 +12,39 @@
 import includes from 'array-includes';
 import hasOwn from 'hasown';
 import type { JSXOpeningElement } from 'ast-types-flow';
-import type { ESLintConfig, ESLintContext, ESLintVisitorSelectorConfig } from '../../flow/eslint';
+import type {
+  ESLintConfig,
+  ESLintContext,
+  ESLintVisitorSelectorConfig,
+} from '../../flow/eslint';
 import getElementType from '../util/getElementType';
 import getExplicitRole from '../util/getExplicitRole';
 import getImplicitRole from '../util/getImplicitRole';
 
-const errorMessage = (element, implicitRole) => (
-  `The element ${element} has an implicit role of ${implicitRole}. Defining this explicitly is redundant and should be avoided.`
-);
+const errorMessage = (element, implicitRole) =>
+  `The element ${element} has an implicit role of ${implicitRole}. Defining this explicitly is redundant and should be avoided.`;
 
 const DEFAULT_ROLE_EXCEPTIONS = { nav: ['navigation'] };
 
 export default ({
   meta: {
     docs: {
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/no-redundant-roles.md',
-      description: 'Enforce explicit role property is not the same as implicit/default role property on element.',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/no-redundant-roles.md',
+      description:
+        'Enforce explicit role property is not the same as implicit/default role property on element.',
     },
-    schema: [{
-      type: 'object',
-      additionalProperties: {
-        type: 'array',
-        items: {
-          type: 'string',
+    schema: [
+      {
+        type: 'object',
+        additionalProperties: {
+          type: 'array',
+          items: {
+            type: 'string',
+          },
+          uniqueItems: true,
         },
-        uniqueItems: true,
       },
-    }],
+    ],
   },
 
   create: (context: ESLintContext): ESLintVisitorSelectorConfig => {
@@ -55,7 +61,7 @@ export default ({
         }
 
         if (implicitRole === explicitRole) {
-          const allowedRedundantRoles = (options[0] || {});
+          const allowedRedundantRoles = options[0] || {};
           let redundantRolesForElement;
 
           if (hasOwn(allowedRedundantRoles, type)) {

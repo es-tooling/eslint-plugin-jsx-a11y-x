@@ -1,4 +1,4 @@
-# jsx-a11y/iframe-has-title
+# jsx-a11y-x/iframe-has-title
 
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
@@ -11,12 +11,14 @@
 This rule takes no arguments.
 
 ### Succeed
+
 ```jsx
 <iframe title="This is a unique title" />
 <iframe title={uniqueTitle} />
 ```
 
 ### Fail
+
 ```jsx
 <iframe />
 <iframe {...props} />
@@ -30,8 +32,10 @@ This rule takes no arguments.
 ```
 
 ## Accessibility guidelines
+
 - [WCAG 2.4.1](https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks)
 - [WCAG 4.1.2](https://www.w3.org/WAI/WCAG21/Understanding/name-role-value)
 
 ### Resources
+
 - [axe-core, frame-title](https://dequeuniversity.com/rules/axe/3.2/frame-title)

@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enforce that elements with onClick handlers must be focusable.
+ * @file Enforce that elements with onClick handlers must be focusable.
  * @author Ethan Cohen
  */
 
@@ -9,10 +9,7 @@
 
 import includes from 'array-includes';
 import { RuleTester } from 'eslint';
-import {
-  eventHandlers,
-  eventHandlersByType,
-} from 'jsx-ast-utils';
+import { eventHandlers, eventHandlersByType } from 'jsx-ast-utils';
 import { configs } from '../../../src/index';
 import parserOptionsMapper from '../../__util__/parserOptionsMapper';
 import parsers from '../../__util__/helpers/parsers';
@@ -26,10 +23,11 @@ import ruleOptionsMapperFactory from '../../__util__/ruleOptionsMapperFactory';
 const ruleTester = new RuleTester();
 
 function template(strings, ...keys) {
-  return (...values) => keys.reduce(
-    (acc, k, i) => acc + (values[k] || '') + strings[i + 1],
-    strings[0],
-  );
+  return (...values) =>
+    keys.reduce(
+      (acc, k, i) => acc + (values[k] || '') + strings[i + 1],
+      strings[0],
+    );
 }
 
 const ruleName = 'interactive-supports-focus';
@@ -41,7 +39,7 @@ const tabbableTemplate = template`Elements with the '${0}' interactive role must
 const focusableTemplate = template`Elements with the '${0}' interactive role must be focusable.`;
 
 const componentsSettings = {
-  'jsx-a11y': {
+  'jsx-a11y-x': {
     components: {
       Div: 'div',
     },
@@ -50,16 +48,19 @@ const componentsSettings = {
 
 const buttonError = {
   message: tabbableTemplate('button'),
-  suggestions: [{
-    desc: 'Add `tabIndex={0}` to make the element focusable in sequential keyboard navigation.',
-    output: '<Div tabIndex={0} onClick={() => void 0} role="button" />',
-  }],
+  suggestions: [
+    {
+      desc: 'Add `tabIndex={0}` to make the element focusable in sequential keyboard navigation.',
+      output: '<Div tabIndex={0} onClick={() => void 0} role="button" />',
+    },
+  ],
   type,
 };
 
-const recommendedOptions = configs.recommended.rules[`jsx-a11y/${ruleName}`][1] || {};
+const recommendedOptions =
+  configs.recommended.rules[`jsx-a11y-x/${ruleName}`][1] || {};
 
-const strictOptions = configs.strict.rules[`jsx-a11y/${ruleName}`][1] || {};
+const strictOptions = configs.strict.rules[`jsx-a11y-x/${ruleName}`][1] || {};
 
 const alwaysValid = [
   { code: '<div />' },
@@ -123,7 +124,9 @@ const alwaysValid = [
   { code: '<div role="checkbox" tabIndex="0" onClick={() => void 0} />' },
   { code: '<div role="link" tabIndex="0" onClick={() => void 0} />' },
   { code: '<div role="menuitem" tabIndex="0" onClick={() => void 0} />' },
-  { code: '<div role="menuitemcheckbox" tabIndex="0" onClick={() => void 0} />' },
+  {
+    code: '<div role="menuitemcheckbox" tabIndex="0" onClick={() => void 0} />',
+  },
   { code: '<div role="menuitemradio" tabIndex="0" onClick={() => void 0} />' },
   { code: '<div role="option" tabIndex="0" onClick={() => void 0} />' },
   { code: '<div role="radio" tabIndex="0" onClick={() => void 0} />' },
@@ -132,14 +135,23 @@ const alwaysValid = [
   { code: '<div role="tablist" tabIndex="0" onClick={() => void 0} />' },
   { code: '<div role="tab" tabIndex="0" onClick={() => void 0} />' },
   { code: '<div role="textbox" tabIndex="0" onClick={() => void 0} />' },
-  { code: '<div role="textbox" aria-disabled="true" onClick={() => void 0} />' },
+  {
+    code: '<div role="textbox" aria-disabled="true" onClick={() => void 0} />',
+  },
   { code: '<Foo.Bar onClick={() => void 0} aria-hidden={false} />;' },
   { code: '<Input onClick={() => void 0} type="hidden" />;' },
-  { code: '<Div onClick={() => void 0} role="button" tabIndex="0" />', settings: componentsSettings },
+  {
+    code: '<Div onClick={() => void 0} role="button" tabIndex="0" />',
+    settings: componentsSettings,
+  },
 ];
 
 const neverValid = [
-  { code: '<Div onClick={() => void 0} role="button" />', errors: [buttonError], settings: componentsSettings },
+  {
+    code: '<Div onClick={() => void 0} role="button" />',
+    errors: [buttonError],
+    settings: componentsSettings,
+  },
 ];
 
 const interactiveRoles = [
@@ -183,100 +195,147 @@ const strictRoles = [
   'textbox',
 ];
 
-const staticElements = [
-  'div',
-];
+const staticElements = ['div'];
 
 const triggeringHandlers = [
   ...eventHandlersByType.mouse,
   ...eventHandlersByType.keyboard,
 ];
 
-const passReducer = (roles, handlers, messageTemplate) => (
-  staticElements.reduce((elementAcc, element) => (
-    elementAcc.concat(roles.reduce((roleAcc, role) => (
-      roleAcc.concat(handlers.map((handler) => ({
-        code: messageTemplate(element, role, handler),
-      })))
-    ), []))
-  ), [])
-);
+const passReducer = (roles, handlers, messageTemplate) =>
+  staticElements.reduce(
+    (elementAcc, element) =>
+      elementAcc.concat(
+        roles.reduce(
+          (roleAcc, role) =>
+            roleAcc.concat(
+              handlers.map(handler => ({
+                code: messageTemplate(element, role, handler),
+              })),
+            ),
+          [],
+        ),
+      ),
+    [],
+  );
 
-const failReducer = (roles, handlers, messageTemplate) => (
-  staticElements.reduce((elementAcc, element) => (
-    elementAcc.concat(roles.reduce((roleAcc, role) => (
-      roleAcc.concat(handlers.map((handler) => ({
-        code: codeTemplate(element, role, handler),
-        errors: [{
-          type,
-          message: messageTemplate(role),
-          suggestions: [{
-            desc: 'Add `tabIndex={0}` to make the element focusable in sequential keyboard navigation.',
-            output: fixedTemplate(element, '0', role, handler),
-          }].concat(messageTemplate === focusableTemplate ? [{
-            desc: 'Add `tabIndex={-1}` to make the element focusable but not reachable via sequential keyboard navigation.',
-            output: fixedTemplate(element, '-1', role, handler),
-          }] : []),
-        }],
-      })))
-    ), []))
-  ), [])
-);
+const failReducer = (roles, handlers, messageTemplate) =>
+  staticElements.reduce(
+    (elementAcc, element) =>
+      elementAcc.concat(
+        roles.reduce(
+          (roleAcc, role) =>
+            roleAcc.concat(
+              handlers.map(handler => ({
+                code: codeTemplate(element, role, handler),
+                errors: [
+                  {
+                    type,
+                    message: messageTemplate(role),
+                    suggestions: [
+                      {
+                        desc: 'Add `tabIndex={0}` to make the element focusable in sequential keyboard navigation.',
+                        output: fixedTemplate(element, '0', role, handler),
+                      },
+                    ].concat(
+                      messageTemplate === focusableTemplate
+                        ? [
+                            {
+                              desc: 'Add `tabIndex={-1}` to make the element focusable but not reachable via sequential keyboard navigation.',
+                              output: fixedTemplate(
+                                element,
+                                '-1',
+                                role,
+                                handler,
+                              ),
+                            },
+                          ]
+                        : [],
+                    ),
+                  },
+                ],
+              })),
+            ),
+          [],
+        ),
+      ),
+    [],
+  );
 
 ruleTester.run(`${ruleName}:recommended`, rule, {
-  valid: parsers.all([].concat(
-    ...alwaysValid,
-    ...passReducer(
-      interactiveRoles,
-      eventHandlers.filter((handler) => !includes(triggeringHandlers, handler)),
-      codeTemplate,
-    ),
-    ...passReducer(
-      interactiveRoles.filter((role) => !includes(recommendedRoles, role)),
-      eventHandlers.filter((handler) => includes(triggeringHandlers, handler)),
-      tabindexTemplate,
-    ),
-  ))
+  valid: parsers
+    .all(
+      [].concat(
+        ...alwaysValid,
+        ...passReducer(
+          interactiveRoles,
+          eventHandlers.filter(
+            handler => !includes(triggeringHandlers, handler),
+          ),
+          codeTemplate,
+        ),
+        ...passReducer(
+          interactiveRoles.filter(role => !includes(recommendedRoles, role)),
+          eventHandlers.filter(handler =>
+            includes(triggeringHandlers, handler),
+          ),
+          tabindexTemplate,
+        ),
+      ),
+    )
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
-  invalid: parsers.all([].concat(
-    ...neverValid,
-    ...failReducer(recommendedRoles, triggeringHandlers, tabbableTemplate),
-    ...failReducer(
-      interactiveRoles.filter((role) => !includes(recommendedRoles, role)),
-      triggeringHandlers,
-      focusableTemplate,
-    ),
-  ))
+  invalid: parsers
+    .all(
+      [].concat(
+        ...neverValid,
+        ...failReducer(recommendedRoles, triggeringHandlers, tabbableTemplate),
+        ...failReducer(
+          interactiveRoles.filter(role => !includes(recommendedRoles, role)),
+          triggeringHandlers,
+          focusableTemplate,
+        ),
+      ),
+    )
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
 });
 
 ruleTester.run(`${ruleName}:strict`, rule, {
-  valid: parsers.all([].concat(
-    ...alwaysValid,
-    ...passReducer(
-      interactiveRoles,
-      eventHandlers.filter((handler) => !includes(triggeringHandlers, handler)),
-      codeTemplate,
-    ),
-    ...passReducer(
-      interactiveRoles.filter((role) => !includes(strictRoles, role)),
-      eventHandlers.filter((handler) => includes(triggeringHandlers, handler)),
-      tabindexTemplate,
-    ),
-  ))
+  valid: parsers
+    .all(
+      [].concat(
+        ...alwaysValid,
+        ...passReducer(
+          interactiveRoles,
+          eventHandlers.filter(
+            handler => !includes(triggeringHandlers, handler),
+          ),
+          codeTemplate,
+        ),
+        ...passReducer(
+          interactiveRoles.filter(role => !includes(strictRoles, role)),
+          eventHandlers.filter(handler =>
+            includes(triggeringHandlers, handler),
+          ),
+          tabindexTemplate,
+        ),
+      ),
+    )
     .map(ruleOptionsMapperFactory(strictOptions))
     .map(parserOptionsMapper),
-  invalid: parsers.all([].concat(
-    ...neverValid,
-    ...failReducer(strictRoles, triggeringHandlers, tabbableTemplate),
-    ...failReducer(
-      interactiveRoles.filter((role) => !includes(strictRoles, role)),
-      triggeringHandlers,
-      focusableTemplate,
-    ),
-  ))
+  invalid: parsers
+    .all(
+      [].concat(
+        ...neverValid,
+        ...failReducer(strictRoles, triggeringHandlers, tabbableTemplate),
+        ...failReducer(
+          interactiveRoles.filter(role => !includes(strictRoles, role)),
+          triggeringHandlers,
+          focusableTemplate,
+        ),
+      ),
+    )
     .map(ruleOptionsMapperFactory(strictOptions))
     .map(parserOptionsMapper),
 });

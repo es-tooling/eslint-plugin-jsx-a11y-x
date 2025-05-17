@@ -1,8 +1,7 @@
 /**
- * @fileoverview Enforce onmouseover/onmouseout are
- *  accompanied by onfocus/onblur.
- * @author Ethan Cohen
  * @flow
+ * @file Enforce onmouseover/onmouseout are accompanied by onfocus/onblur.
+ * @author Ethan Cohen
  */
 
 // ----------------------------------------------------------------------------
@@ -33,14 +32,15 @@ const DEFAULT_HOVER_OUT_HANDLERS = ['onMouseOut'];
 export default ({
   meta: {
     docs: {
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/mouse-events-have-key-events.md',
-      description: 'Enforce that `onMouseOver`/`onMouseOut` are accompanied by `onFocus`/`onBlur` for keyboard-only users.',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/mouse-events-have-key-events.md',
+      description:
+        'Enforce that `onMouseOver`/`onMouseOut` are accompanied by `onFocus`/`onBlur` for keyboard-only users.',
     },
     schema: [schema],
   },
 
   create: (context: ESLintContext) => ({
-    JSXOpeningElement: (node) => {
+    JSXOpeningElement: node => {
       const { name } = node.name;
 
       if (!dom.get(name)) {
@@ -49,13 +49,15 @@ export default ({
 
       const { options } = context;
 
-      const hoverInHandlers: string[] = options[0]?.hoverInHandlers ?? DEFAULT_HOVER_IN_HANDLERS;
-      const hoverOutHandlers: string[] = options[0]?.hoverOutHandlers ?? DEFAULT_HOVER_OUT_HANDLERS;
+      const hoverInHandlers: string[] =
+        options[0]?.hoverInHandlers ?? DEFAULT_HOVER_IN_HANDLERS;
+      const hoverOutHandlers: string[] =
+        options[0]?.hoverOutHandlers ?? DEFAULT_HOVER_OUT_HANDLERS;
 
       const { attributes } = node;
 
       // Check hover in / onfocus pairing
-      const firstHoverInHandlerWithValue = hoverInHandlers.find((handler) => {
+      const firstHoverInHandlerWithValue = hoverInHandlers.find(handler => {
         const prop = getProp(attributes, handler);
         const propValue = getPropValue(prop);
         return propValue != null;
@@ -65,7 +67,11 @@ export default ({
         const hasOnFocus = getProp(attributes, 'onFocus');
         const onFocusValue = getPropValue(hasOnFocus);
 
-        if (hasOnFocus === false || onFocusValue === null || onFocusValue === undefined) {
+        if (
+          hasOnFocus === false ||
+          onFocusValue === null ||
+          onFocusValue === undefined
+        ) {
           context.report({
             node: getProp(attributes, firstHoverInHandlerWithValue),
             message: `${firstHoverInHandlerWithValue} must be accompanied by onFocus for accessibility.`,
@@ -74,7 +80,7 @@ export default ({
       }
 
       // Check hover out / onblur pairing
-      const firstHoverOutHandlerWithValue = hoverOutHandlers.find((handler) => {
+      const firstHoverOutHandlerWithValue = hoverOutHandlers.find(handler => {
         const prop = getProp(attributes, handler);
         const propValue = getPropValue(prop);
         return propValue != null;
@@ -84,7 +90,11 @@ export default ({
         const hasOnBlur = getProp(attributes, 'onBlur');
         const onBlurValue = getPropValue(hasOnBlur);
 
-        if (hasOnBlur === false || onBlurValue === null || onBlurValue === undefined) {
+        if (
+          hasOnBlur === false ||
+          onBlurValue === null ||
+          onBlurValue === undefined
+        ) {
           context.report({
             node: getProp(attributes, firstHoverOutHandlerWithValue),
             message: `${firstHoverOutHandlerWithValue} must be accompanied by onBlur for accessibility.`,

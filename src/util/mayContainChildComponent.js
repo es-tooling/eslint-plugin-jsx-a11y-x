@@ -15,12 +15,9 @@ export default function mayContainChildComponent(
   root: Node,
   componentName: string,
   maxDepth: number = 1,
-  elementType: ((node: JSXOpeningElement) => string) = rawElementType,
+  elementType: (node: JSXOpeningElement) => string = rawElementType,
 ): boolean {
-  function traverseChildren(
-    node: Node,
-    depth: number,
-  ): boolean {
+  function traverseChildren(node: Node, depth: number): boolean {
     // Bail when maxDepth is exceeded.
     if (depth > maxDepth) {
       return false;
@@ -37,9 +34,9 @@ export default function mayContainChildComponent(
         }
         // Check for components with the provided name.
         if (
-          childNode.type === 'JSXElement'
-          && childNode.openingElement
-          && minimatch(elementType(childNode.openingElement), componentName)
+          childNode.type === 'JSXElement' &&
+          childNode.openingElement &&
+          minimatch(elementType(childNode.openingElement), componentName)
         ) {
           return true;
         }

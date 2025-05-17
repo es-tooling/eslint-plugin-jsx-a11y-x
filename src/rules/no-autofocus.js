@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enforce autoFocus prop is not used.
+ * @file Enforce autoFocus prop is not used.
  * @author Ethan Cohen <@evcohen>
  */
 
@@ -12,7 +12,8 @@ import { dom } from 'aria-query';
 import { generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
 
-const errorMessage = 'The autoFocus prop should not be enabled, as it can reduce usability and accessibility for users.';
+const errorMessage =
+  'The autoFocus prop should not be enabled, as it can reduce usability and accessibility for users.';
 
 const schema = generateObjSchema({
   ignoreNonDOM: {
@@ -24,16 +25,16 @@ const schema = generateObjSchema({
 export default {
   meta: {
     docs: {
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/no-autofocus.md',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/no-autofocus.md',
       description: 'Enforce autoFocus prop is not enabled.',
     },
     schema: [schema],
   },
 
-  create: (context) => {
+  create: context => {
     const elementType = getElementType(context);
     return {
-      JSXAttribute: (attribute) => {
+      JSXAttribute: attribute => {
         // Determine if ignoreNonDOM is set to true
         // If true, then do not run rule.
         const options = context.options[0] || {};
@@ -47,7 +48,11 @@ export default {
         }
 
         // Fail if autoFocus is used and the value is anything other than false (either via an expression or string literal).
-        if (propName(attribute) === 'autoFocus' && getPropValue(attribute) !== false && getPropValue(attribute) !== 'false') {
+        if (
+          propName(attribute) === 'autoFocus' &&
+          getPropValue(attribute) !== false &&
+          getPropValue(attribute) !== 'false'
+        ) {
           context.report({
             node: attribute,
             message: errorMessage,

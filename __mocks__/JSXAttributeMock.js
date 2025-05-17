@@ -1,8 +1,6 @@
-/**
- * @flow
- */
+/** @flow */
 
-import toAST from 'to-ast'; // eslint-disable-line import/no-extraneous-dependencies
+import toAST from 'to-ast'; // eslint-disable-line import-x/no-extraneous-dependencies
 import JSXExpressionContainerMock from './JSXExpressionContainerMock';
 
 export type JSXAttributeMockType = {
@@ -14,7 +12,11 @@ export type JSXAttributeMockType = {
   value: mixed,
 };
 
-export default function JSXAttributeMock(prop: string, value: mixed, isExpressionContainer?: boolean = false): JSXAttributeMockType {
+export default function JSXAttributeMock(
+  prop: string,
+  value: mixed,
+  isExpressionContainer?: boolean = false,
+): JSXAttributeMockType {
   let astValue;
   if (value && value.type !== undefined) {
     astValue = value;
@@ -24,7 +26,10 @@ export default function JSXAttributeMock(prop: string, value: mixed, isExpressio
   let attributeValue = astValue;
   if (isExpressionContainer || astValue.type !== 'Literal') {
     attributeValue = JSXExpressionContainerMock(astValue);
-  } else if (attributeValue.type === 'Literal' && !('raw' in (attributeValue: any))) {
+  } else if (
+    attributeValue.type === 'Literal' &&
+    !('raw' in (attributeValue: any))
+  ) {
     (attributeValue: any).raw = JSON.stringify((attributeValue: any).value);
   }
 

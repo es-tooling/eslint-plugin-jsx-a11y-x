@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enforce scope prop is only used on <th> elements.
+ * @file Enforce scope prop is only used on <th> elements.
  * @author Ethan Cohen
  */
 
@@ -19,16 +19,16 @@ const schema = generateObjSchema();
 export default {
   meta: {
     docs: {
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/scope.md',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/scope.md',
       description: 'Enforce `scope` prop is only used on `<th>` elements.',
     },
     schema: [schema],
   },
 
-  create: (context) => {
+  create: context => {
     const elementType = getElementType(context);
     return {
-      JSXAttribute: (node) => {
+      JSXAttribute: node => {
         const name = propName(node);
         if (name && name.toUpperCase() !== 'SCOPE') {
           return;

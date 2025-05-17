@@ -1,6 +1,6 @@
-# jsx-a11y/label-has-for
+# jsx-a11y-x/label-has-for
 
-❌ This rule is deprecated. It was replaced by [`jsx-a11y/label-has-associated-control`](label-has-associated-control.md).
+❌ This rule is deprecated. It was replaced by [`jsx-a11y-x/label-has-associated-control`](label-has-associated-control.md).
 
 🚫 This rule is _disabled_ in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
@@ -23,15 +23,18 @@ This rule takes one optional object argument of type object:
 
 ```json
 {
-    "rules": {
-        "jsx-a11y/label-has-for": [ 2, {
-            "components": [ "Label" ],
-            "required": {
-                "every": [ "nesting", "id" ]
-            },
-            "allowChildren": false
-        }]
-    }
+  "rules": {
+    "jsx-a11y/label-has-for": [
+      2,
+      {
+        "components": ["Label"],
+        "required": {
+          "every": ["nesting", "id"]
+        },
+        "allowChildren": false
+      }
+    ]
+  }
 }
 ```
 
@@ -84,26 +87,33 @@ Note that passing props as spread attribute without `htmlFor` explicitly defined
 
 ```jsx
 function Foo(props) {
-  return <label {...props} />
+  return <label {...props} />;
 }
 ```
 
 #### Good
 
 ```jsx
-function Foo({ htmlFor, ...props}) {
-    return <label htmlFor={htmlFor} {...props} />
+function Foo({ htmlFor, ...props }) {
+  return (
+    <label
+      htmlFor={htmlFor}
+      {...props}
+    />
+  );
 }
 
 // OR
 
 function Foo(props) {
-    const {
-        htmlFor,
-        ...otherProps
-    } = props;
+  const { htmlFor, ...otherProps } = props;
 
-   return <label htmlFor={htmlFor} {...otherProps} />
+  return (
+    <label
+      htmlFor={htmlFor}
+      {...otherProps}
+    />
+  );
 }
 ```
 
@@ -111,7 +121,10 @@ function Foo(props) {
 
 ```jsx
 <label htmlFor="firstName">
-  <input type="text" id="firstName" />
+  <input
+    type="text"
+    id="firstName"
+  />
   First Name
 </label>
 ```

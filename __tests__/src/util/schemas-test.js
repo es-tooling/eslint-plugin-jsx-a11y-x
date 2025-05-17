@@ -1,9 +1,13 @@
 import test from 'tape';
 
-import { generateObjSchema, arraySchema, enumArraySchema } from '../../../src/util/schemas';
+import {
+  generateObjSchema,
+  arraySchema,
+  enumArraySchema,
+} from '../../../src/util/schemas';
 
-test('schemas', (t) => {
-  t.test('should generate an object schema with correct properties', (st) => {
+test('schemas', t => {
+  t.test('should generate an object schema with correct properties', st => {
     const schema = generateObjSchema({
       foo: 'bar',
       baz: arraySchema,

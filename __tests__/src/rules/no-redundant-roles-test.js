@@ -1,6 +1,6 @@
 /**
- * @fileoverview Enforce explicit role property is not the
- * same as implicit default role property on element.
+ * @file Enforce explicit role property is not the same as implicit default role
+ *   property on element.
  * @author Ethan Cohen <@evcohen>
  */
 
@@ -25,10 +25,10 @@ const expectedError = (element, implicitRole) => ({
   type: 'JSXOpeningElement',
 });
 
-const ruleName = 'jsx-a11y/no-redundant-roles';
+const ruleName = 'jsx-a11y-x/no-redundant-roles';
 
 const componentsSettings = {
-  'jsx-a11y': {
+  'jsx-a11y-x': {
     components: {
       Button: 'button',
     },
@@ -42,76 +42,138 @@ const alwaysValid = [
   { code: '<button role={`${foo}button`} />' },
   { code: '<Button role={`${foo}button`} />', settings: componentsSettings },
   { code: '<select role="menu"><option>1</option><option>2</option></select>' },
-  { code: '<select role="menu" size={2}><option>1</option><option>2</option></select>' },
-  { code: '<select role="menu" multiple><option>1</option><option>2</option></select>' },
+  {
+    code: '<select role="menu" size={2}><option>1</option><option>2</option></select>',
+  },
+  {
+    code: '<select role="menu" multiple><option>1</option><option>2</option></select>',
+  },
 ];
 
 const neverValid = [
-  { code: '<body role="DOCUMENT" />', errors: [expectedError('body', 'document')] },
+  {
+    code: '<body role="DOCUMENT" />',
+    errors: [expectedError('body', 'document')],
+  },
   // button - treated as button by default
-  { code: '<button role="button" />', errors: [expectedError('button', 'button')] },
-  { code: '<Button role="button" />', settings: componentsSettings, errors: [expectedError('button', 'button')] },
+  {
+    code: '<button role="button" />',
+    errors: [expectedError('button', 'button')],
+  },
+  {
+    code: '<Button role="button" />',
+    settings: componentsSettings,
+    errors: [expectedError('button', 'button')],
+  },
   // select - treated as combobox by default
-  { code: '<select role="combobox"><option>1</option><option>2</option></select>', errors: [expectedError('select', 'combobox')] },
-  { code: '<select role="combobox" size="" />', errors: [expectedError('select', 'combobox')] },
-  { code: '<select role="combobox" size={1} />', errors: [expectedError('select', 'combobox')] },
-  { code: '<select role="combobox" size="1" />', errors: [expectedError('select', 'combobox')] },
-  { code: '<select role="combobox" size={null}></select>', errors: [expectedError('select', 'combobox')] },
-  { code: '<select role="combobox" size={undefined}></select>', errors: [expectedError('select', 'combobox')] },
-  { code: '<select role="combobox" multiple={undefined}></select>', errors: [expectedError('select', 'combobox')] },
-  { code: '<select role="combobox" multiple={false}></select>', errors: [expectedError('select', 'combobox')] },
-  { code: '<select role="combobox" multiple=""></select>', errors: [expectedError('select', 'combobox')] },
+  {
+    code: '<select role="combobox"><option>1</option><option>2</option></select>',
+    errors: [expectedError('select', 'combobox')],
+  },
+  {
+    code: '<select role="combobox" size="" />',
+    errors: [expectedError('select', 'combobox')],
+  },
+  {
+    code: '<select role="combobox" size={1} />',
+    errors: [expectedError('select', 'combobox')],
+  },
+  {
+    code: '<select role="combobox" size="1" />',
+    errors: [expectedError('select', 'combobox')],
+  },
+  {
+    code: '<select role="combobox" size={null}></select>',
+    errors: [expectedError('select', 'combobox')],
+  },
+  {
+    code: '<select role="combobox" size={undefined}></select>',
+    errors: [expectedError('select', 'combobox')],
+  },
+  {
+    code: '<select role="combobox" multiple={undefined}></select>',
+    errors: [expectedError('select', 'combobox')],
+  },
+  {
+    code: '<select role="combobox" multiple={false}></select>',
+    errors: [expectedError('select', 'combobox')],
+  },
+  {
+    code: '<select role="combobox" multiple=""></select>',
+    errors: [expectedError('select', 'combobox')],
+  },
   // select - treated as listbox when multiple OR size > 1
-  { code: '<select role="listbox" size="3" />', errors: [expectedError('select', 'listbox')] },
-  { code: '<select role="listbox" size={2} />', errors: [expectedError('select', 'listbox')] },
-  { code: '<select role="listbox" multiple><option>1</option><option>2</option></select>', errors: [expectedError('select', 'listbox')] },
-  { code: '<select role="listbox" multiple={true}></select>', errors: [expectedError('select', 'listbox')] },
+  {
+    code: '<select role="listbox" size="3" />',
+    errors: [expectedError('select', 'listbox')],
+  },
+  {
+    code: '<select role="listbox" size={2} />',
+    errors: [expectedError('select', 'listbox')],
+  },
+  {
+    code: '<select role="listbox" multiple><option>1</option><option>2</option></select>',
+    errors: [expectedError('select', 'listbox')],
+  },
+  {
+    code: '<select role="listbox" multiple={true}></select>',
+    errors: [expectedError('select', 'listbox')],
+  },
 ];
 
 ruleTester.run(`${ruleName}:recommended`, rule, {
-  valid: parsers.all([].concat(
-    ...alwaysValid,
-    { code: '<nav role="navigation" />' },
-  ))
+  valid: parsers
+    .all([].concat(...alwaysValid, { code: '<nav role="navigation" />' }))
     .map(parserOptionsMapper),
-  invalid: parsers.all([].concat(
-    neverValid,
-  ))
-    .map(parserOptionsMapper),
+  invalid: parsers.all([].concat(neverValid)).map(parserOptionsMapper),
 });
 
 const noNavExceptionsOptions = { nav: [] };
 const listException = { ul: ['list'], ol: ['list'] };
 
 ruleTester.run(`${ruleName}:recommended`, rule, {
-  valid: parsers.all([].concat(
-    alwaysValid
-      .map(ruleOptionsMapperFactory(noNavExceptionsOptions)),
-  ))
+  valid: parsers
+    .all(
+      [].concat(
+        alwaysValid.map(ruleOptionsMapperFactory(noNavExceptionsOptions)),
+      ),
+    )
     .map(parserOptionsMapper),
-  invalid: parsers.all([].concat(
-    ...neverValid,
-    { code: '<nav role="navigation" />', errors: [expectedError('nav', 'navigation')] },
-  ))
+  invalid: parsers
+    .all(
+      [].concat(...neverValid, {
+        code: '<nav role="navigation" />',
+        errors: [expectedError('nav', 'navigation')],
+      }),
+    )
     .map(ruleOptionsMapperFactory(noNavExceptionsOptions))
     .map(parserOptionsMapper),
 });
 
 ruleTester.run(`${ruleName}:recommended (valid list role override)`, rule, {
-  valid: parsers.all([].concat(
-    { code: '<ul role="list" />' },
-    { code: '<ol role="list" />' },
-    { code: '<dl role="list" />' },
-    { code: '<img src="example.svg" role="img" />' },
-    { code: '<svg role="img" />' },
-  ))
+  valid: parsers
+    .all(
+      [].concat(
+        { code: '<ul role="list" />' },
+        { code: '<ol role="list" />' },
+        { code: '<dl role="list" />' },
+        { code: '<img src="example.svg" role="img" />' },
+        { code: '<svg role="img" />' },
+      ),
+    )
     .map(ruleOptionsMapperFactory(listException))
     .map(parserOptionsMapper),
-  invalid: parsers.all([].concat(
-    { code: '<ul role="list" />', errors: [expectedError('ul', 'list')] },
-    { code: '<ol role="list" />', errors: [expectedError('ol', 'list')] },
-    { code: '<img role="img" />', errors: [expectedError('img', 'img')] },
-    { code: '<img src={someVariable} role="img" />', errors: [expectedError('img', 'img')] },
-  ))
+  invalid: parsers
+    .all(
+      [].concat(
+        { code: '<ul role="list" />', errors: [expectedError('ul', 'list')] },
+        { code: '<ol role="list" />', errors: [expectedError('ol', 'list')] },
+        { code: '<img role="img" />', errors: [expectedError('img', 'img')] },
+        {
+          code: '<img src={someVariable} role="img" />',
+          errors: [expectedError('img', 'img')],
+        },
+      ),
+    )
     .map(parserOptionsMapper),
 });

@@ -5,24 +5,32 @@ import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
 import JSXElementMock from '../../../__mocks__/JSXElementMock';
 import JSXExpressionContainerMock from '../../../__mocks__/JSXExpressionContainerMock';
 
-test('mayContainChildComponent', (t) => {
+test('mayContainChildComponent', t => {
   t.equal(
     mayContainChildComponent(
-      JSXElementMock('div', [], [
-        JSXElementMock('div', [], [
-          JSXElementMock('span', [], []),
-          JSXElementMock('span', [], [
-            JSXElementMock('span', [], []),
-            JSXElementMock('span', [], [
+      JSXElementMock(
+        'div',
+        [],
+        [
+          JSXElementMock(
+            'div',
+            [],
+            [
               JSXElementMock('span', [], []),
-            ]),
-          ]),
-        ]),
-        JSXElementMock('span', [], []),
-        JSXElementMock('img', [
-          JSXAttributeMock('src', 'some/path'),
-        ]),
-      ]),
+              JSXElementMock(
+                'span',
+                [],
+                [
+                  JSXElementMock('span', [], []),
+                  JSXElementMock('span', [], [JSXElementMock('span', [], [])]),
+                ],
+              ),
+            ],
+          ),
+          JSXElementMock('span', [], []),
+          JSXElementMock('img', [JSXAttributeMock('src', 'some/path')]),
+        ],
+      ),
       'FancyComponent',
       5,
     ),
@@ -30,12 +38,10 @@ test('mayContainChildComponent', (t) => {
     'no FancyComponent returns false',
   );
 
-  t.test('contains an indicated component', (st) => {
+  t.test('contains an indicated component', st => {
     st.equal(
       mayContainChildComponent(
-        JSXElementMock('div', [], [
-          JSXElementMock('input'),
-        ]),
+        JSXElementMock('div', [], [JSXElementMock('input')]),
         'input',
       ),
       true,
@@ -44,9 +50,7 @@ test('mayContainChildComponent', (t) => {
 
     st.equal(
       mayContainChildComponent(
-        JSXElementMock('div', [], [
-          JSXElementMock('FancyComponent'),
-        ]),
+        JSXElementMock('div', [], [JSXElementMock('FancyComponent')]),
         'FancyComponent',
       ),
       true,
@@ -55,11 +59,11 @@ test('mayContainChildComponent', (t) => {
 
     st.equal(
       mayContainChildComponent(
-        JSXElementMock('div', [], [
-          JSXElementMock('div', [], [
-            JSXElementMock('FancyComponent'),
-          ]),
-        ]),
+        JSXElementMock(
+          'div',
+          [],
+          [JSXElementMock('div', [], [JSXElementMock('FancyComponent')])],
+        ),
         'FancyComponent',
       ),
       false,
@@ -68,11 +72,11 @@ test('mayContainChildComponent', (t) => {
 
     st.equal(
       mayContainChildComponent(
-        JSXElementMock('div', [], [
-          JSXElementMock('div', [], [
-            JSXElementMock('FancyComponent'),
-          ]),
-        ]),
+        JSXElementMock(
+          'div',
+          [],
+          [JSXElementMock('div', [], [JSXElementMock('FancyComponent')])],
+        ),
         'FancyComponent',
         2,
       ),
@@ -82,25 +86,45 @@ test('mayContainChildComponent', (t) => {
 
     st.equal(
       mayContainChildComponent(
-        JSXElementMock('div', [], [
-          JSXElementMock('div', [], [
+        JSXElementMock(
+          'div',
+          [],
+          [
+            JSXElementMock(
+              'div',
+              [],
+              [
+                JSXElementMock('span', [], []),
+                JSXElementMock(
+                  'span',
+                  [],
+                  [
+                    JSXElementMock('span', [], []),
+                    JSXElementMock(
+                      'span',
+                      [],
+                      [
+                        JSXElementMock(
+                          'span',
+                          [],
+                          [
+                            JSXElementMock(
+                              'span',
+                              [],
+                              [JSXElementMock('FancyComponent')],
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
             JSXElementMock('span', [], []),
-            JSXElementMock('span', [], [
-              JSXElementMock('span', [], []),
-              JSXElementMock('span', [], [
-                JSXElementMock('span', [], [
-                  JSXElementMock('span', [], [
-                    JSXElementMock('FancyComponent'),
-                  ]),
-                ]),
-              ]),
-            ]),
-          ]),
-          JSXElementMock('span', [], []),
-          JSXElementMock('img', [
-            JSXAttributeMock('src', 'some/path'),
-          ]),
-        ]),
+            JSXElementMock('img', [JSXAttributeMock('src', 'some/path')]),
+          ],
+        ),
         'FancyComponent',
         6,
       ),
@@ -113,84 +137,76 @@ test('mayContainChildComponent', (t) => {
 
   t.equal(
     mayContainChildComponent(
-      JSXElementMock('div', [], [
-        JSXExpressionContainerMock('mysteryBox'),
-      ]),
+      JSXElementMock('div', [], [JSXExpressionContainerMock('mysteryBox')]),
       'FancyComponent',
     ),
     true,
     'Intederminate situations + expression container children - returns true',
   );
 
-  t.test('Glob name matching - component name contains question mark ? - match any single character', (st) => {
-    st.equal(
-      mayContainChildComponent(
-        JSXElementMock('div', [], [
-          JSXElementMock('FancyComponent'),
-        ]),
-        'Fanc?Co??onent',
-      ),
-      true,
-      'returns true',
-    );
-
-    st.equal(
-      mayContainChildComponent(
-        JSXElementMock('div', [], [
-          JSXElementMock('FancyComponent'),
-        ]),
-        'FancyComponent?',
-      ),
-      false,
-      'returns false',
-    );
-
-    st.test('component name contains asterisk * - match zero or more characters', (s2t) => {
-      s2t.equal(
+  t.test(
+    'Glob name matching - component name contains question mark ? - match any single character',
+    st => {
+      st.equal(
         mayContainChildComponent(
-          JSXElementMock('div', [], [
-            JSXElementMock('FancyComponent'),
-          ]),
-          'Fancy*',
+          JSXElementMock('div', [], [JSXElementMock('FancyComponent')]),
+          'Fanc?Co??onent',
         ),
         true,
         'returns true',
       );
 
-      s2t.equal(
+      st.equal(
         mayContainChildComponent(
-          JSXElementMock('div', [], [
-            JSXElementMock('FancyComponent'),
-          ]),
-          '*Component',
+          JSXElementMock('div', [], [JSXElementMock('FancyComponent')]),
+          'FancyComponent?',
         ),
-        true,
-        'returns true',
+        false,
+        'returns false',
       );
 
-      s2t.equal(
-        mayContainChildComponent(
-          JSXElementMock('div', [], [
-            JSXElementMock('FancyComponent'),
-          ]),
-          'Fancy*C*t',
-        ),
-        true,
-        'returns true',
+      st.test(
+        'component name contains asterisk * - match zero or more characters',
+        s2t => {
+          s2t.equal(
+            mayContainChildComponent(
+              JSXElementMock('div', [], [JSXElementMock('FancyComponent')]),
+              'Fancy*',
+            ),
+            true,
+            'returns true',
+          );
+
+          s2t.equal(
+            mayContainChildComponent(
+              JSXElementMock('div', [], [JSXElementMock('FancyComponent')]),
+              '*Component',
+            ),
+            true,
+            'returns true',
+          );
+
+          s2t.equal(
+            mayContainChildComponent(
+              JSXElementMock('div', [], [JSXElementMock('FancyComponent')]),
+              'Fancy*C*t',
+            ),
+            true,
+            'returns true',
+          );
+
+          s2t.end();
+        },
       );
 
-      s2t.end();
-    });
+      st.end();
+    },
+  );
 
-    st.end();
-  });
-
-  t.test('using a custom elementType function', (st) => {
+  t.test('using a custom elementType function', st => {
     st.equal(
       mayContainChildComponent(
-        JSXElementMock('div', [], [
-          JSXElementMock('CustomInput'),
-        ]),
+        JSXElementMock('div', [], [JSXElementMock('CustomInput')]),
         'input',
         2,
         () => 'input',
@@ -201,9 +217,7 @@ test('mayContainChildComponent', (t) => {
 
     st.equal(
       mayContainChildComponent(
-        JSXElementMock('div', [], [
-          JSXElementMock('CustomInput'),
-        ]),
+        JSXElementMock('div', [], [JSXElementMock('CustomInput')]),
         'input',
         2,
         () => 'button',

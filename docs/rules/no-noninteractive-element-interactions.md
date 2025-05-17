@@ -1,4 +1,4 @@
-# jsx-a11y/no-noninteractive-element-interactions
+# jsx-a11y-x/no-noninteractive-element-interactions
 
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
@@ -14,17 +14,17 @@ Move the event handler function to an inner element that is either a semanticall
 
 Common interactive roles include:
 
-  1. `button`
-  1. `link`
-  1. `checkbox`
-  1. `menuitem`
-  1. `menuitemcheckbox`
-  1. `menuitemradio`
-  1. `option`
-  1. `radio`
-  1. `searchbox`
-  1. `switch`
-  1. `textbox`
+1. `button`
+1. `link`
+1. `checkbox`
+1. `menuitem`
+1. `menuitemcheckbox`
+1. `menuitemradio`
+1. `option`
+1. `radio`
+1. `searchbox`
+1. `switch`
+1. `textbox`
 
 Note: Adding a role to your element does **not** add behavior. When a semantic HTML element like `<button>` is used, then it will also respond to Enter key presses when it has focus. The developer is responsible for providing the expected behavior of an element that the role suggests it would have: focusability and key press support.
 see [WAI-ARIA Authoring Practices Guide - Design Patterns and Widgets](https://www.w3.org/TR/wai-aria-practices-1.1/#aria_ex).
@@ -38,7 +38,8 @@ Move the event handler function to an inner element like `<div>` and give that e
   <div
     onClick="onClickHandler"
     onKeyPress={onKeyPressHandler}
-    role="presentation">
+    role="presentation"
+  >
     {this.props.children}
   </div>
 </div>
@@ -72,7 +73,9 @@ For instance, move the button inside the cell:
 ```jsx
 <table>
   <tr>
-    <td><button>Sort</button></td>
+    <td>
+      <button>Sort</button>
+    </td>
   </tr>
 </table>
 ```
@@ -86,7 +89,12 @@ If your user interface has a table-like layout, but is filled with interactive c
 ```jsx
 <table role="grid">
   <tr>
-    <td role="gridcell" onClick={this.sort}>Sort</td>
+    <td
+      role="gridcell"
+      onClick={this.sort}
+    >
+      Sort
+    </td>
   </tr>
 </table>
 ```

@@ -1,4 +1,4 @@
-# jsx-a11y/anchor-is-valid
+# jsx-a11y-x/anchor-is-valid
 
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
@@ -112,6 +112,7 @@ Until the Next.js API can be updated to a more performant and standard setup, yo
 1. If you have only a few `Link`s, or they're clustered in just a few files like `nav.tsx`, you can use disable macros like `{/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}` to turn off validation of this rule for those usages.
 
 2. You can use the `Link` component's `passHref` prop to override a dummy `href` on the `<a>`:
+
 ```typescript
 <Link href="/my-amazing-page" passHref>
   <a href="replace">Go to my amazing page</a>
@@ -119,6 +120,7 @@ Until the Next.js API can be updated to a more performant and standard setup, yo
 ```
 
 3. You can invest in a custom component that wraps the creation of the `Link` and `a`. You can then add your new custom component to the list of components to validate to ensure that your links are all created with a navigable href. A sample custom component is shared [here](https://gist.github.com/zackdotcomputer/d7af9901e7db87364aad7fbfadb5c99b) and it would be used like this:
+
 ```typescript
 // Internally, LinkTo handles the making of the Link and A, collecting the
 // need for a lint workaround into a single file.

@@ -1,5 +1,6 @@
 /**
- * @fileoverview Enforce a clickable non-interactive element has at least 1 keyboard event listener.
+ * @file Enforce a clickable non-interactive element has at least 1 keyboard
+ *   event listener.
  * @author Ethan Cohen
  */
 
@@ -15,23 +16,25 @@ import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader';
 import isInteractiveElement from '../util/isInteractiveElement';
 import isPresentationRole from '../util/isPresentationRole';
 
-const errorMessage = 'Visible, non-interactive elements with click handlers must have at least one keyboard listener.';
+const errorMessage =
+  'Visible, non-interactive elements with click handlers must have at least one keyboard listener.';
 
 const schema = generateObjSchema();
 
 export default {
   meta: {
     docs: {
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/click-events-have-key-events.md',
-      description: 'Enforce a clickable non-interactive element has at least one keyboard event listener.',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/click-events-have-key-events.md',
+      description:
+        'Enforce a clickable non-interactive element has at least one keyboard event listener.',
     },
     schema: [schema],
   },
 
-  create: (context) => {
+  create: context => {
     const elementType = getElementType(context);
     return {
-      JSXOpeningElement: (node) => {
+      JSXOpeningElement: node => {
         const props = node.attributes;
         if (getProp(props, 'onclick') === undefined) {
           return;
@@ -46,8 +49,8 @@ export default {
           return;
         }
         if (
-          isHiddenFromScreenReader(type, props)
-          || isPresentationRole(type, props)
+          isHiddenFromScreenReader(type, props) ||
+          isPresentationRole(type, props)
         ) {
           return;
         }

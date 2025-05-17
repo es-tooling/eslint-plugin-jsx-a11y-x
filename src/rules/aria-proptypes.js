@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enforce ARIA state and property values are valid.
+ * @file Enforce ARIA state and property values are valid.
  * @author Ethan Cohen
  */
 
@@ -48,13 +48,23 @@ const validityCheck = (value, expectedType, permittedValues) => {
       // eslint-disable-next-line no-restricted-globals
       return typeof value !== 'boolean' && isNaN(Number(value)) === false;
     case 'token':
-      return permittedValues.indexOf(typeof value === 'string' ? value.toLowerCase() : value) > -1;
+      return (
+        permittedValues.indexOf(
+          typeof value === 'string' ? value.toLowerCase() : value,
+        ) > -1
+      );
     case 'idlist':
-      return typeof value === 'string'
-        && value.split(' ').every((token) => validityCheck(token, 'id', []));
+      return (
+        typeof value === 'string' &&
+        value.split(' ').every(token => validityCheck(token, 'id', []))
+      );
     case 'tokenlist':
-      return typeof value === 'string'
-        && value.split(' ').every((token) => permittedValues.indexOf(token.toLowerCase()) > -1);
+      return (
+        typeof value === 'string' &&
+        value
+          .split(' ')
+          .every(token => permittedValues.indexOf(token.toLowerCase()) > -1)
+      );
     default:
       return false;
   }
@@ -66,19 +76,22 @@ export default {
   validityCheck,
   meta: {
     docs: {
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/aria-proptypes.md',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/aria-proptypes.md',
       description: 'Enforce ARIA state and property values are valid.',
     },
     schema: [schema],
   },
 
-  create: (context) => ({
-    JSXAttribute: (attribute) => {
+  create: context => ({
+    JSXAttribute: attribute => {
       const name = propName(attribute);
       const normalizedName = name.toLowerCase();
 
       // Not a valid aria-* state or property.
-      if (normalizedName.indexOf('aria-') !== 0 || aria.get(normalizedName) === undefined) {
+      if (
+        normalizedName.indexOf('aria-') !== 0 ||
+        aria.get(normalizedName) === undefined
+      ) {
         return;
       }
 
@@ -98,7 +111,9 @@ export default {
       const allowUndefined = attributes.allowUndefined || false;
       const permittedValues = attributes.values || [];
 
-      const isValid = validityCheck(value, permittedType, permittedValues) || (allowUndefined && value === undefined);
+      const isValid =
+        validityCheck(value, permittedType, permittedValues) ||
+        (allowUndefined && value === undefined);
 
       if (isValid) {
         return;

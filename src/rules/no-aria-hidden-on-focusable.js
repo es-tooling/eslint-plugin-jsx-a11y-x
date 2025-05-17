@@ -1,5 +1,6 @@
 /**
- * @fileoverview Enforce aria-hidden is not used on interactive elements or contain interactive elements.
+ * @file Enforce aria-hidden is not used on interactive elements or contain
+ *   interactive elements.
  * @author Kate Higa
  */
 
@@ -17,8 +18,9 @@ const schema = generateObjSchema();
 export default {
   meta: {
     docs: {
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/no-aria-hidden-on-focusable.md',
-      description: 'Disallow `aria-hidden="true"` from being set on focusable elements.',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/no-aria-hidden-on-focusable.md',
+      description:
+        'Disallow `aria-hidden="true"` from being set on focusable elements.',
     },
     schema: [schema],
   },
@@ -29,12 +31,14 @@ export default {
       JSXOpeningElement(node) {
         const { attributes } = node;
         const type = elementType(node);
-        const isAriaHidden = getPropValue(getProp(attributes, 'aria-hidden')) === true;
+        const isAriaHidden =
+          getPropValue(getProp(attributes, 'aria-hidden')) === true;
 
         if (isAriaHidden && isFocusable(type, attributes)) {
           context.report({
             node,
-            message: 'aria-hidden="true" must not be set on focusable elements.',
+            message:
+              'aria-hidden="true" must not be set on focusable elements.',
           });
         }
       },

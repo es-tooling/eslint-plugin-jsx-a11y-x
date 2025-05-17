@@ -1,4 +1,4 @@
-# jsx-a11y/anchor-ambiguous-text
+# jsx-a11y-x/anchor-ambiguous-text
 
 🚫 This rule is _disabled_ in the ☑️ `recommended` config.
 
@@ -13,9 +13,12 @@ This rule takes one optional object argument with the parameter `words`.
 ```json
 {
   "rules": {
-    "jsx-a11y/anchor-ambiguous-text": [2, {
-      "words": ["click this"],
-    }],
+    "jsx-a11y/anchor-ambiguous-text": [
+      2,
+      {
+        "words": ["click this"]
+      }
+    ]
   }
 }
 ```
@@ -23,7 +26,13 @@ This rule takes one optional object argument with the parameter `words`.
 The `words` option allows users to modify the strings that can be checked for in the anchor text. Useful for specifying other words in other languages. The default value is set by `DEFAULT_AMBIGUOUS_WORDS`:
 
 ```js
-const DEFAULT_AMBIGUOUS_WORDS = ['click here', 'here', 'link', 'a link', 'learn more'];
+const DEFAULT_AMBIGUOUS_WORDS = [
+  'click here',
+  'here',
+  'link',
+  'a link',
+  'learn more',
+];
 ```
 
 The logic to calculate the inner text of an anchor is as follows:
@@ -76,13 +85,17 @@ Ensure anchor tags describe the content of the link, opposed to simply describin
 Compare
 
 ```jsx
-<p><a href="#">click here</a> to read a tutorial by Foo Bar</p>
+<p>
+  <a href="#">click here</a> to read a tutorial by Foo Bar
+</p>
 ```
 
 which can be more concise and accessible with
 
 ```jsx
-<p>read <a href="#">a tutorial by Foo Bar</a></p>
+<p>
+  read <a href="#">a tutorial by Foo Bar</a>
+</p>
 ```
 
 ### Resources

@@ -1,4 +1,4 @@
-# jsx-a11y/no-noninteractive-element-to-interactive-role
+# jsx-a11y-x/no-noninteractive-element-to-interactive-role
 
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
@@ -21,7 +21,8 @@ Put the control inside the non-interactive container element.
   <div
     role="button"
     onClick={() => {}}
-    onKeyPress={() => {}}>
+    onKeyPress={() => {}}
+  >
     Save
   </div>
 </li>
@@ -34,8 +35,12 @@ Or wrap the content inside your interactive element.
   role="button"
   onClick={() => {}}
   onKeyPress={() => {}}
-  tabIndex="0">
-  <img src="some/file.png" alt="Save" />
+  tabIndex="0"
+>
+  <img
+    src="some/file.png"
+    alt="Save"
+  />
 </div>
 ```
 

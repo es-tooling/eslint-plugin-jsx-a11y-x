@@ -1,4 +1,4 @@
-# jsx-a11y/interactive-supports-focus
+# jsx-a11y-x/interactive-supports-focus
 
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
@@ -19,7 +19,8 @@ Add the `tabIndex` property to your component. A value of zero indicates that th
 ```jsx
 <div
   role="button"
-  tabIndex={0} />
+  tabIndex={0}
+/>
 ```
 
 -- or --
@@ -34,9 +35,24 @@ This element is part of a group of buttons, links, menu items, etc. Or this elem
 
 ```jsx
 <div role="menu">
-  <div role="menuitem" tabIndex="0">Open</div>
-  <div role="menuitem" tabIndex="-1">Save</div>
-  <div role="menuitem" tabIndex="-1">Close</div>
+  <div
+    role="menuitem"
+    tabIndex="0"
+  >
+    Open
+  </div>
+  <div
+    role="menuitem"
+    tabIndex="-1"
+  >
+    Save
+  </div>
+  <div
+    role="menuitem"
+    tabIndex="-1"
+  >
+    Close
+  </div>
 </div>
 ```
 
@@ -49,7 +65,8 @@ If your element is catching bubbled click or key events from descendant elements
 ```jsx
 <div
   onClick={onClickHandler}
-  role="presentation">
+  role="presentation"
+>
   <button>Save</button>
 </div>
 ```
@@ -119,7 +136,7 @@ The list of possible values includes:
   'doc-biblioref',
   'doc-glossref',
   'doc-noteref',
-]
+];
 ```
 
 ### Succeed

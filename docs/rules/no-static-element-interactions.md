@@ -1,4 +1,4 @@
-# jsx-a11y/no-static-element-interactions
+# jsx-a11y-x/no-static-element-interactions
 
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
@@ -21,24 +21,25 @@ Indicate the element's role with the `role` attribute:
   onClick={onClickHandler}
   onKeyPress={onKeyPressHandler}
   role="button"
-  tabindex="0">
+  tabindex="0"
+>
   Save
 </div>
 ```
 
 Common interactive roles include:
 
-  1. `button`
-  1. `link`
-  1. `checkbox`
-  1. `menuitem`
-  1. `menuitemcheckbox`
-  1. `menuitemradio`
-  1. `option`
-  1. `radio`
-  1. `searchbox`
-  1. `switch`
-  1. `textbox`
+1. `button`
+1. `link`
+1. `checkbox`
+1. `menuitem`
+1. `menuitemcheckbox`
+1. `menuitemradio`
+1. `option`
+1. `radio`
+1. `searchbox`
+1. `switch`
+1. `textbox`
 
 Note: Adding a role to your element does **not** add behavior. When a semantic HTML element like `<button>` is used, then it will also respond to Enter key presses when it has focus. The developer is responsible for providing the expected behavior of an element that the role suggests it would have: focusability and key press support.
 
@@ -47,12 +48,16 @@ Note: Adding a role to your element does **not** add behavior. When a semantic H
 If your element is catching bubbled click or key events from descendant elements, there are no appropriate roles for your element: you will have to deactivate the rule. Consider explaining the reason for disabling the rule as well.
 
 ```jsx
-{/* The <div> element has a child <button> element that allows keyboard interaction */}
-{/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
+{
+  /* The <div> element has a child <button> element that allows keyboard interaction */
+}
+{
+  /* eslint-disable-next-line jsx-a11y/no-static-element-interactions */
+}
 <div onClick={this.handleButtonClick}>
   <button>Save</button>
   <button>Cancel</button>
-</div>
+</div>;
 ```
 
 Do not use the role `presentation` on the element: it removes the element's semantics, and may also remove its children's semantics, creating big issues with assistive technology.
@@ -83,9 +88,15 @@ Adjust the list of handler prop names in the handlers array to increase or decre
 The `allowExpressionValues` option determines whether the `role` attribute is allowed to be assigned using an expression. For example, the following would pass in recommended mode if `allowExpressionValues` is set to be `true`:
 
 ```jsx
-<div role={ROLE_BUTTON} onClick={() => {}} />;
+<div
+  role={ROLE_BUTTON}
+  onClick={() => {}}
+/>;
 // In case of a conditional expression, there should be literals on both sides of ternary operator
-<div role={isButton ? "button" : "link"} onClick={() => {}} />;
+<div
+  role={isButton ? 'button' : 'link'}
+  onClick={() => {}}
+/>;
 ```
 
 ### Succeed

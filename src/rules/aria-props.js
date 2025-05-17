@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enforce all aria-* properties are valid.
+ * @file Enforce all aria-* properties are valid.
  * @author Ethan Cohen
  */
 
@@ -14,7 +14,7 @@ import getSuggestion from '../util/getSuggestion';
 
 const ariaAttributes = aria.keys();
 
-const errorMessage = (name) => {
+const errorMessage = name => {
   const suggestions = getSuggestion(name, ariaAttributes);
   const message = `${name}: This attribute is an invalid ARIA attribute.`;
 
@@ -30,14 +30,14 @@ const schema = generateObjSchema();
 export default {
   meta: {
     docs: {
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/aria-props.md',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/aria-props.md',
       description: 'Enforce all `aria-*` props are valid.',
     },
     schema: [schema],
   },
 
-  create: (context) => ({
-    JSXAttribute: (attribute) => {
+  create: context => ({
+    JSXAttribute: attribute => {
       const name = propName(attribute);
 
       // `aria` needs to be prefix of property.

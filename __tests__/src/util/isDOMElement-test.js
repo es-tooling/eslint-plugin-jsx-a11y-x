@@ -5,8 +5,8 @@ import { elementType } from 'jsx-ast-utils';
 import isDOMElement from '../../../src/util/isDOMElement';
 import JSXElementMock from '../../../__mocks__/JSXElementMock';
 
-test('isDOMElement', (t) => {
-  t.test('DOM elements', (st) => {
+test('isDOMElement', t => {
+  t.test('DOM elements', st => {
     dom.forEach((_, el) => {
       const element = JSXElementMock(el);
 

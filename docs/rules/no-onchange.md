@@ -1,4 +1,4 @@
-# jsx-a11y/no-onchange
+# jsx-a11y-x/no-onchange
 
 ❌ This rule is deprecated.
 
@@ -13,6 +13,7 @@ Enforce usage of `onBlur` over/in parallel with `onChange` on select menu elemen
 This rule takes no arguments.
 
 ### Succeed
+
 ```jsx
 <select onBlur={updateModel}>
   <option/>
@@ -24,13 +25,16 @@ This rule takes no arguments.
 ```
 
 ### Fail
+
 ```jsx
 <select onChange={updateModel} />
 ```
 
 ## Accessibility guidelines
+
 - [WCAG 3.2.2](https://www.w3.org/WAI/WCAG21/Understanding/on-input)
 
 ### Resources
+
 - [onChange Event Accessibility Issues](https://web.archive.org/web/20191207202425/http://cita.disability.uiuc.edu/html-best-practices/auto/onchange.php)
 - [onChange Select Menu](https://www.themaninblue.com/writing/perspective/2004/10/19/)

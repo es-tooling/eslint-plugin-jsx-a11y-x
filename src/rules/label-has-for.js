@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enforce label tags have htmlFor attribute.
+ * @file Enforce label tags have htmlFor attribute.
  * @author Ethan Cohen
  */
 
@@ -8,7 +8,11 @@
 // ----------------------------------------------------------------------------
 
 import { hasProp, getProp, getPropValue } from 'jsx-ast-utils';
-import { generateObjSchema, arraySchema, enumArraySchema } from '../util/schemas';
+import {
+  generateObjSchema,
+  arraySchema,
+  enumArraySchema,
+} from '../util/schemas';
 import getElementType from '../util/getElementType';
 import hasAccessibleChild from '../util/hasAccessibleChild';
 
@@ -35,7 +39,13 @@ function validateNesting(node) {
   while (queue.length) {
     child = queue.shift();
     opener = child.openingElement;
-    if (child.type === 'JSXElement' && opener && (opener.name.name === 'input' || opener.name.name === 'textarea' || opener.name.name === 'select')) {
+    if (
+      child.type === 'JSXElement' &&
+      opener &&
+      (opener.name.name === 'input' ||
+        opener.name.name === 'textarea' ||
+        opener.name.name === 'select')
+    ) {
       return true;
     }
     if (child.children) {
@@ -47,7 +57,9 @@ function validateNesting(node) {
 
 function validateID({ attributes }, context) {
   const { settings } = context;
-  const htmlForAttributes = settings['jsx-a11y']?.attributes?.for ?? ['htmlFor'];
+  const htmlForAttributes = settings['jsx-a11y-x']?.attributes?.for ?? [
+    'htmlFor',
+  ];
 
   for (let i = 0; i < htmlForAttributes.length; i += 1) {
     const attribute = htmlForAttributes[i];
@@ -72,16 +84,26 @@ function validate(node, required, allowChildren, elementType, context) {
   return validateID(node, context);
 }
 
-function getValidityStatus(node, required, allowChildren, elementType, context) {
+function getValidityStatus(
+  node,
+  required,
+  allowChildren,
+  elementType,
+  context,
+) {
   if (Array.isArray(required.some)) {
-    const isValid = required.some.some((rule) => validate(node, rule, allowChildren, elementType, context));
+    const isValid = required.some.some(rule =>
+      validate(node, rule, allowChildren, elementType, context),
+    );
     const message = !isValid
       ? `Form label must have ANY of the following types of associated control: ${required.some.join(', ')}`
       : null;
     return { isValid, message };
   }
   if (Array.isArray(required.every)) {
-    const isValid = required.every.every((rule) => validate(node, rule, allowChildren, elementType, context));
+    const isValid = required.every.every(rule =>
+      validate(node, rule, allowChildren, elementType, context),
+    );
     const message = !isValid
       ? `Form label must have ALL of the following types of associated control: ${required.every.join(', ')}`
       : null;
@@ -101,12 +123,12 @@ export default {
     replacedBy: ['label-has-associated-control'],
     docs: {
       description: 'Enforce that `<label>` elements have the `htmlFor` prop.',
-      url: 'https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/tree/HEAD/docs/rules/label-has-for.md',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/label-has-for.md',
     },
     schema: [schema],
   },
 
-  create: (context) => {
+  create: context => {
     const elementType = getElementType(context);
     return {
       JSXOpeningElement(node) {
@@ -123,7 +145,13 @@ export default {
         const required = options.required || { every: ['nesting', 'id'] };
         const allowChildren = options.allowChildren || false;
 
-        const { isValid, message } = getValidityStatus(node, required, allowChildren, elementType, context);
+        const { isValid, message } = getValidityStatus(
+          node,
+          required,
+          allowChildren,
+          elementType,
+          context,
+        );
         if (!isValid) {
           context.report({
             node,
