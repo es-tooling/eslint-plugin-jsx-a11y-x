@@ -10,7 +10,6 @@
 // ----------------------------------------------------------------------------
 
 import includes from 'array-includes';
-import hasOwn from 'hasown';
 import type { JSXOpeningElement } from 'ast-types-flow';
 import type {
   ESLintConfig,
@@ -64,7 +63,7 @@ export default ({
           const allowedRedundantRoles = options[0] || {};
           let redundantRolesForElement;
 
-          if (hasOwn(allowedRedundantRoles, type)) {
+          if (Object.hasOwn(allowedRedundantRoles, type)) {
             redundantRolesForElement = allowedRedundantRoles[type];
           } else {
             redundantRolesForElement = DEFAULT_ROLE_EXCEPTIONS[type] || [];

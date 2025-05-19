@@ -3828,7 +3828,6 @@ __metadata:
     eslint-plugin-import-x: "npm:^4.11.1"
     estraverse: "npm:^5.3.0"
     flow-bin: "npm:^0.147.0"
-    hasown: "npm:^2.0.2"
     hermes-eslint: "npm:^0.28.1"
     in-publish: "npm:^2.0.1"
     jackspeak: "npm:=2.1.1"
