@@ -3,7 +3,6 @@
 import { dom, roles as rolesMap } from 'aria-query';
 import type { Node } from 'ast-types-flow';
 import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
-import includes from 'array-includes';
 import flatMap from 'array.prototype.flatmap';
 
 const nonInteractiveRoles = rolesMap
@@ -13,7 +12,7 @@ const nonInteractiveRoles = rolesMap
       !rolesMap.get(name).abstract &&
       !rolesMap
         .get(name)
-        .superClass.some(klasses => includes(klasses, 'widget')),
+        .superClass.some(klasses => klasses.includes('widget')),
   );
 
 /**
@@ -53,7 +52,7 @@ const isNonInteractiveRole = (
   );
   if (validRoles.length > 0) {
     // The first role value is a series takes precedence.
-    isNonInteractive = includes(nonInteractiveRoles, validRoles[0]);
+    isNonInteractive = nonInteractiveRoles.includes(validRoles[0]);
   }
 
   return isNonInteractive;

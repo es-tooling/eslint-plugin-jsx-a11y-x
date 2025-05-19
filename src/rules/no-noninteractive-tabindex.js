@@ -11,7 +11,6 @@
 import { dom } from 'aria-query';
 import type { JSXOpeningElement } from 'ast-types-flow';
 import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
-import includes from 'array-includes';
 import type {
   ESLintConfig,
   ESLintContext,
@@ -70,10 +69,10 @@ export default ({
         }
         // Allow for configuration overrides.
         const { tags, roles, allowExpressionValues } = options[0] || {};
-        if (tags && includes(tags, type)) {
+        if (tags && tags.includes(type)) {
           return;
         }
-        if (roles && includes(roles, role)) {
+        if (roles && roles.includes(role)) {
           return;
         }
         if (

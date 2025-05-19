@@ -12,7 +12,6 @@ import {
   hasAnyProp,
 } from 'jsx-ast-utils';
 import type { JSXOpeningElement } from 'ast-types-flow';
-import includes from 'array-includes';
 import type {
   ESLintConfig,
   ESLintContext,
@@ -42,7 +41,7 @@ const schema = generateObjSchema({
           !roles.get(name).abstract &&
           roles
             .get(name)
-            .superClass.some(klasses => includes(klasses, 'widget')),
+            .superClass.some(klasses => klasses.includes('widget')),
       ),
   ),
 });
@@ -110,7 +109,7 @@ export default ({
           !hasTabindex
         ) {
           const role = getLiteralPropValue(getProp(attributes, 'role'));
-          if (includes(tabbable, role)) {
+          if (tabbable.includes(role)) {
             // Always tabbable, tabIndex = 0
             context.report({
               node,
