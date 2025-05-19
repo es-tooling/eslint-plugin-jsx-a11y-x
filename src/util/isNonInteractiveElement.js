@@ -3,7 +3,6 @@
 import { dom, elementRoles, roles } from 'aria-query';
 import { AXObjects, elementAXObjects } from 'axobject-query';
 import type { Node } from 'ast-types-flow';
-import flatMap from 'array.prototype.flatmap';
 
 import attributesComparator from './attributesComparator';
 
@@ -54,16 +53,14 @@ const interactiveRoles = new Set(
     ),
 );
 
-const interactiveElementRoleSchemas = flatMap(
-  elementRoleEntries,
+const interactiveElementRoleSchemas = elementRoleEntries.flatMap(
   ([elementSchema, rolesArr]) =>
     rolesArr.some((role): boolean => interactiveRoles.has(role))
       ? [elementSchema]
       : [],
 );
 
-const nonInteractiveElementRoleSchemas = flatMap(
-  elementRoleEntries,
+const nonInteractiveElementRoleSchemas = elementRoleEntries.flatMap(
   ([elementSchema, rolesArr]) =>
     rolesArr.every((role): boolean => nonInteractiveRoles.has(role))
       ? [elementSchema]
@@ -76,8 +73,7 @@ const nonInteractiveAXObjects = new Set(
   ),
 );
 
-const nonInteractiveElementAXObjectSchemas = flatMap(
-  [...elementAXObjects],
+const nonInteractiveElementAXObjectSchemas = [...elementAXObjects].flatMap(
   ([elementSchema, AXObjectsArr]) =>
     AXObjectsArr.every((role): boolean => nonInteractiveAXObjects.has(role))
       ? [elementSchema]

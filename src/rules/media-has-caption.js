@@ -10,7 +10,6 @@
 
 import type { JSXElement, JSXOpeningElement, Node } from 'ast-types-flow';
 import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
-import flatMap from 'array.prototype.flatmap';
 
 import type {
   ESLintConfig,
@@ -34,7 +33,7 @@ const schema = generateObjSchema({
 const isMediaType = (context, type) => {
   const options = context.options[0] || {};
   return MEDIA_TYPES.concat(
-    flatMap(MEDIA_TYPES, mediaType => options[mediaType]),
+    MEDIA_TYPES.flatMap(mediaType => options[mediaType]),
   ).some(typeToCheck => typeToCheck === type);
 };
 
