@@ -1,7 +1,6 @@
 /** @flow */
 
 import type { JSXOpeningElement } from 'ast-types-flow';
-import hasOwn from 'hasown';
 import includes from 'array-includes';
 import { elementType, getProp, getLiteralPropValue } from 'jsx-ast-utils';
 
@@ -33,7 +32,9 @@ const getElementType = (
       return rawType;
     }
 
-    return hasOwn(componentMap, rawType) ? componentMap[rawType] : rawType;
+    return Object.hasOwn(componentMap, rawType)
+      ? componentMap[rawType]
+      : rawType;
   };
 };
 
