@@ -3,7 +3,6 @@
 import { dom, elementRoles, roles } from 'aria-query';
 import { AXObjects, elementAXObjects } from 'axobject-query';
 import type { Node } from 'ast-types-flow';
-import includes from 'array-includes';
 import flatMap from 'array.prototype.flatmap';
 
 import attributesComparator from './attributesComparator';
@@ -23,7 +22,7 @@ const nonInteractiveRoles = new Set(
         // This role is meant to have no semantic value.
         // @see https://www.w3.org/TR/wai-aria-1.2/#generic
         name !== 'generic' &&
-        !role.superClass.some(classes => includes(classes, 'widget'))
+        !role.superClass.some(classes => classes.includes('widget'))
       );
     })
     .concat(
@@ -45,7 +44,7 @@ const interactiveRoles = new Set(
         // This role is meant to have no semantic value.
         // @see https://www.w3.org/TR/wai-aria-1.2/#generic
         name !== 'generic' &&
-        role.superClass.some(classes => includes(classes, 'widget'))
+        role.superClass.some(classes => classes.includes('widget'))
       );
     })
     .concat(
@@ -73,7 +72,7 @@ const nonInteractiveElementRoleSchemas = flatMap(
 
 const nonInteractiveAXObjects = new Set(
   AXObjects.keys().filter(name =>
-    includes(['window', 'structure'], AXObjects.get(name).type),
+    ['window', 'structure'].includes(AXObjects.get(name).type),
   ),
 );
 

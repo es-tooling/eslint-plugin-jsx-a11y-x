@@ -12,7 +12,6 @@
 import { dom } from 'aria-query';
 import { propName } from 'jsx-ast-utils';
 import type { JSXIdentifier } from 'ast-types-flow';
-import includes from 'array-includes';
 import type {
   ESLintConfig,
   ESLintContext,
@@ -73,7 +72,7 @@ export default ({
         const allowedRoles = options[0] || {};
         if (
           Object.hasOwn(allowedRoles, type) &&
-          includes(allowedRoles[type], role)
+          allowedRoles[type].includes(role)
         ) {
           return;
         }

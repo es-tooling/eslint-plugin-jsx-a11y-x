@@ -7,7 +7,6 @@
  * @flow
  */
 
-import includes from 'array-includes';
 import {
   getPropValue,
   propName,
@@ -37,7 +36,7 @@ function hasLabellingProp(
     }
     // Attribute matches.
     if (
-      includes(labellingProps, propName(attribute)) &&
+      labellingProps.includes(propName(attribute)) &&
       !!tryTrim(getPropValue(attribute))
     ) {
       return true;

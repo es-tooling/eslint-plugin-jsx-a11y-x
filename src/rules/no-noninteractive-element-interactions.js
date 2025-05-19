@@ -16,7 +16,6 @@ import {
   propName,
 } from 'jsx-ast-utils';
 import type { JSXOpeningElement } from 'ast-types-flow';
-import includes from 'array-includes';
 import type {
   ESLintConfig,
   ESLintContext,
@@ -70,7 +69,7 @@ export default ({
           attributes = attributes.filter(
             attr =>
               attr.type !== 'JSXSpreadAttribute' &&
-              !includes(config[type], propName(attr)),
+              !config[type].includes(propName(attr)),
           );
         }
 

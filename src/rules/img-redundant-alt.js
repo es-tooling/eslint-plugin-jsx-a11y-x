@@ -9,7 +9,6 @@
 // ----------------------------------------------------------------------------
 
 import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
-import includes from 'array-includes';
 import stringIncludes from 'string.prototype.includes';
 import safeRegexTest from 'safe-regex-test';
 import { generateObjSchema, arraySchema } from '../util/schemas';
@@ -37,7 +36,7 @@ function containsRedundantWord(value, redundantWords) {
     return value
       .split(/\s+/)
       .some(valueWord =>
-        includes(lowercaseRedundantWords, valueWord.toLowerCase()),
+        lowercaseRedundantWords.includes(valueWord.toLowerCase()),
       );
   }
   return lowercaseRedundantWords.some(redundantWord =>
