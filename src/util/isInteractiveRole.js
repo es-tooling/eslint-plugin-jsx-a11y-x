@@ -2,7 +2,6 @@
 import { roles as rolesMap } from 'aria-query';
 import type { Node } from 'ast-types-flow';
 import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
-import flatMap from 'array.prototype.flatmap';
 
 const roles = rolesMap.keys();
 const interactiveRoles = roles.filter(
@@ -40,7 +39,7 @@ const isInteractiveRole = (
 
   let isInteractive = false;
   const normalizedValues = String(value).toLowerCase().split(' ');
-  const validRoles = flatMap(normalizedValues, (name: string) =>
+  const validRoles = normalizedValues.flatMap((name: string) =>
     roles.includes(name) ? [name] : [],
   );
   if (validRoles.length > 0) {
