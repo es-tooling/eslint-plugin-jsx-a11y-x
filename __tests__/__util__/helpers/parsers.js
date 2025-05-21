@@ -1,11 +1,9 @@
 import path from 'path';
 import semver from 'semver';
-import entries from 'object.entries';
 import { version } from 'eslint/package.json';
 
 let tsParserVersion;
 try {
-  // eslint-disable-next-line import-x/no-unresolved, global-require
   tsParserVersion = require('@typescript-eslint/parser/package.json').version;
 } catch {
   //
@@ -25,7 +23,7 @@ function minEcmaVersion(features, parserOptions) {
     ...[]
       .concat(
         (parserOptions && parserOptions.ecmaVersion) || [],
-        entries(minEcmaVersionForFeatures).flatMap(entry => {
+        Object.entries(minEcmaVersionForFeatures).flatMap(entry => {
           const f = entry[0];
           const y = entry[1];
           return features.has(f) ? y : [];

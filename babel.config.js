@@ -1,12 +1,11 @@
 module.exports = {
   presets: [
     [
-      'airbnb',
+      '@babel/env',
       {
         targets: {
           node: 18,
         },
-        transformRuntime: false,
       },
     ],
   ],
