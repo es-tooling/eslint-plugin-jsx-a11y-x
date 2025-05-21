@@ -8,7 +8,7 @@
 // -----------------------------------------------------------------------------
 
 import { RuleTester } from 'eslint';
-import { eventHandlers, eventHandlersByType } from 'jsx-ast-utils';
+import { eventHandlers, eventHandlersByType } from 'jsx-ast-utils-x';
 import { configs } from '../../../src/index';
 import parserOptionsMapper from '../../__util__/parserOptionsMapper';
 import parsers from '../../__util__/helpers/parsers';

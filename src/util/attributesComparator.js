@@ -1,6 +1,6 @@
 /** @flow */
 
-import { getLiteralPropValue, propName } from 'jsx-ast-utils';
+import { getLiteralPropValue, propName } from 'jsx-ast-utils-x';
 import type { Node } from 'ast-types-flow';
 
 /**

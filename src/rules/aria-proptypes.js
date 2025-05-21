@@ -8,7 +8,7 @@
 // ----------------------------------------------------------------------------
 
 import { aria } from 'aria-query';
-import { getLiteralPropValue, getPropValue, propName } from 'jsx-ast-utils';
+import { getLiteralPropValue, getPropValue, propName } from 'jsx-ast-utils-x';
 import { generateObjSchema } from '../util/schemas';
 
 const errorMessage = (name, type, permittedValues) => {

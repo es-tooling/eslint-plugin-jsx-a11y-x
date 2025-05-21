@@ -1,7 +1,7 @@
 /** @flow */
 
 import type { Node } from 'ast-types-flow';
-import { getProp } from 'jsx-ast-utils';
+import { getProp } from 'jsx-ast-utils-x';
 
 /**
  * Returns boolean indicating whether the given element has been specified with

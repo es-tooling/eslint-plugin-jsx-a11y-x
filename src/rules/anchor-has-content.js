@@ -7,7 +7,7 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { hasAnyProp } from 'jsx-ast-utils';
+import { hasAnyProp } from 'jsx-ast-utils-x';
 
 import getElementType from '../util/getElementType';
 import { arraySchema, generateObjSchema } from '../util/schemas';

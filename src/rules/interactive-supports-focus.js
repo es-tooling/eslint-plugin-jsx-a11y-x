@@ -10,7 +10,7 @@ import {
   eventHandlersByType,
   getLiteralPropValue,
   hasAnyProp,
-} from 'jsx-ast-utils';
+} from 'jsx-ast-utils-x';
 import type { JSXOpeningElement } from 'ast-types-flow';
 import type {
   ESLintConfig,

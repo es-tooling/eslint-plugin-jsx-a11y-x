@@ -7,7 +7,7 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 import { runVirtualRule } from 'axe-core';
-import { getLiteralPropValue, getProp } from 'jsx-ast-utils';
+import { getLiteralPropValue, getProp } from 'jsx-ast-utils-x';
 import { generateObjSchema, arraySchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
 

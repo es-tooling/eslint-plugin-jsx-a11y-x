@@ -10,7 +10,7 @@
 
 import { dom } from 'aria-query';
 import type { JSXOpeningElement } from 'ast-types-flow';
-import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
+import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
 import type {
   ESLintConfig,
   ESLintContext,

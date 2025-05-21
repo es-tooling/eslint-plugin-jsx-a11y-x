@@ -9,7 +9,7 @@
 // ----------------------------------------------------------------------------
 
 import { dom, roles } from 'aria-query';
-import { getProp, getLiteralPropValue, propName } from 'jsx-ast-utils';
+import { getProp, getLiteralPropValue, propName } from 'jsx-ast-utils-x';
 import { generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
 import isSemanticRoleElement from '../util/isSemanticRoleElement';

@@ -9,7 +9,7 @@
 // ----------------------------------------------------------------------------
 
 import { dom } from 'aria-query';
-import { getProp, getPropValue } from 'jsx-ast-utils';
+import { getProp, getPropValue } from 'jsx-ast-utils-x';
 import { arraySchema, generateObjSchema } from '../util/schemas';
 import type { ESLintConfig, ESLintContext } from '../../flow/eslint';
 

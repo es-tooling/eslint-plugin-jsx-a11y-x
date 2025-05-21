@@ -2,7 +2,7 @@
 
 import type { JSXElement, JSXOpeningElement, Node } from 'ast-types-flow';
 
-import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
+import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
 
 import isHiddenFromScreenReader from './isHiddenFromScreenReader';
 

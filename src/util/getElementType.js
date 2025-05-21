@@ -1,7 +1,7 @@
 /** @flow */
 
 import type { JSXOpeningElement } from 'ast-types-flow';
-import { elementType, getProp, getLiteralPropValue } from 'jsx-ast-utils';
+import { elementType, getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
 
 import type { ESLintContext } from '../../flow/eslint';
 

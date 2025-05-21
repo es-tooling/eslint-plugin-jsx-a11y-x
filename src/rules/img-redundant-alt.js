@@ -8,7 +8,7 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
+import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
 import stringIncludes from 'string.prototype.includes';
 import safeRegexTest from 'safe-regex-test';
 import { generateObjSchema, arraySchema } from '../util/schemas';

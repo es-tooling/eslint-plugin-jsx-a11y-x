@@ -2,7 +2,7 @@
 
 import { dom, roles as rolesMap } from 'aria-query';
 import type { Node } from 'ast-types-flow';
-import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
+import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
 
 const nonInteractiveRoles = rolesMap
   .keys()

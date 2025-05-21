@@ -1,5 +1,5 @@
 import { roleElements } from 'aria-query';
-import { getProp, getPropValue } from 'jsx-ast-utils';
+import { getProp, getPropValue } from 'jsx-ast-utils-x';
 
 import getElementType from '../util/getElementType';
 import { generateObjSchema } from '../util/schemas';

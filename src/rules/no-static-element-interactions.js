@@ -14,7 +14,7 @@ import {
   getPropValue,
   getProp,
   hasProp,
-} from 'jsx-ast-utils';
+} from 'jsx-ast-utils-x';
 import type { JSXOpeningElement } from 'ast-types-flow';
 import type {
   ESLintConfig,

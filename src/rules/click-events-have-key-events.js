@@ -9,7 +9,7 @@
 // ----------------------------------------------------------------------------
 
 import { dom } from 'aria-query';
-import { getProp, hasAnyProp } from 'jsx-ast-utils';
+import { getProp, hasAnyProp } from 'jsx-ast-utils-x';
 import { generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
 import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader';

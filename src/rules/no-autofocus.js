@@ -7,7 +7,7 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { propName, getPropValue } from 'jsx-ast-utils';
+import { propName, getPropValue } from 'jsx-ast-utils-x';
 import { dom } from 'aria-query';
 import { generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
