@@ -8,7 +8,7 @@
 // ----------------------------------------------------------------------------
 
 import { aria } from 'aria-query';
-import { propName } from 'jsx-ast-utils';
+import { propName } from 'jsx-ast-utils-x';
 import { generateObjSchema } from '../util/schemas';
 import getSuggestion from '../util/getSuggestion';
 

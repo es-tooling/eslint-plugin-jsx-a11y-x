@@ -10,7 +10,7 @@
 // ----------------------------------------------------------------------------
 
 import { dom } from 'aria-query';
-import { propName } from 'jsx-ast-utils';
+import { propName } from 'jsx-ast-utils-x';
 import type { JSXIdentifier } from 'ast-types-flow';
 import type {
   ESLintConfig,

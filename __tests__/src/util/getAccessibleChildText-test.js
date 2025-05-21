@@ -1,5 +1,5 @@
 import test from 'tape';
-import { elementType } from 'jsx-ast-utils';
+import { elementType } from 'jsx-ast-utils-x';
 
 import getAccessibleChildText from '../../../src/util/getAccessibleChildText';
 import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';

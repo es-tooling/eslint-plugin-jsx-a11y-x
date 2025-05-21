@@ -1,4 +1,4 @@
-import { getPropValue, getLiteralPropValue } from 'jsx-ast-utils';
+import { getPropValue, getLiteralPropValue } from 'jsx-ast-utils-x';
 
 /** Returns the tabIndex value. */
 export default function getTabIndex(tabIndex) {

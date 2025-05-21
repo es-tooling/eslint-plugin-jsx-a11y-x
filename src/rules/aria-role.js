@@ -8,7 +8,7 @@
 // ----------------------------------------------------------------------------
 
 import { dom, roles } from 'aria-query';
-import { getLiteralPropValue, propName } from 'jsx-ast-utils';
+import { getLiteralPropValue, propName } from 'jsx-ast-utils-x';
 
 import getElementType from '../util/getElementType';
 import { generateObjSchema } from '../util/schemas';

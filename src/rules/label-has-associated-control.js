@@ -8,7 +8,7 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { hasProp, getProp, getPropValue } from 'jsx-ast-utils';
+import { hasProp, getProp, getPropValue } from 'jsx-ast-utils-x';
 import type { JSXElement } from 'ast-types-flow';
 import minimatch from 'minimatch';
 import { generateObjSchema, arraySchema } from '../util/schemas';

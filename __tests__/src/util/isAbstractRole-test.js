@@ -1,5 +1,5 @@
 import test from 'tape';
-import { elementType } from 'jsx-ast-utils';
+import { elementType } from 'jsx-ast-utils-x';
 
 import isAbstractRole from '../../../src/util/isAbstractRole';
 import {

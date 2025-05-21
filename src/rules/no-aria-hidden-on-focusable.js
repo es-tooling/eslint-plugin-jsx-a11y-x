@@ -8,7 +8,7 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { getProp, getPropValue } from 'jsx-ast-utils';
+import { getProp, getPropValue } from 'jsx-ast-utils-x';
 import getElementType from '../util/getElementType';
 import isFocusable from '../util/isFocusable';
 import { generateObjSchema } from '../util/schemas';

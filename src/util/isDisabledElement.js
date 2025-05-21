@@ -1,6 +1,6 @@
 /** @flow */
 
-import { getProp, getLiteralPropValue, getPropValue } from 'jsx-ast-utils';
+import { getProp, getLiteralPropValue, getPropValue } from 'jsx-ast-utils-x';
 import type { Node } from 'ast-types-flow';
 
 const isDisabledElement = (attributes: Array<Node>): boolean => {

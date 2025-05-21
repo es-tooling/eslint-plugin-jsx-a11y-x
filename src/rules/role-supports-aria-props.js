@@ -14,7 +14,7 @@ import {
   getLiteralPropValue,
   getPropValue,
   propName,
-} from 'jsx-ast-utils';
+} from 'jsx-ast-utils-x';
 
 import { generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';

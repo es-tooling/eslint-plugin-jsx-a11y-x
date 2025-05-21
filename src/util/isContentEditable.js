@@ -1,4 +1,4 @@
-import { getProp } from 'jsx-ast-utils';
+import { getProp } from 'jsx-ast-utils-x';
 
 export default function isContentEditable(tagName, attributes) {
   const prop = getProp(attributes, 'contentEditable');

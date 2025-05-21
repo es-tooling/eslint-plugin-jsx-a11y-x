@@ -8,7 +8,7 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
+import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
 import type { JSXElement } from 'ast-types-flow';
 import { generateObjSchema, arraySchema } from '../util/schemas';
 import type {

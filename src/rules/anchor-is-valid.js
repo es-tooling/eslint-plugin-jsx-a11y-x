@@ -9,7 +9,7 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { getProp, getPropValue } from 'jsx-ast-utils';
+import { getProp, getPropValue } from 'jsx-ast-utils-x';
 import type { JSXOpeningElement } from 'ast-types-flow';
 import safeRegexTest from 'safe-regex-test';
 import type {

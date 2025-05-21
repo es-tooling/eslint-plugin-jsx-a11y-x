@@ -1,6 +1,6 @@
 import test from 'tape';
 import { dom } from 'aria-query';
-import { elementType } from 'jsx-ast-utils';
+import { elementType } from 'jsx-ast-utils-x';
 
 import isDOMElement from '../../../src/util/isDOMElement';
 import JSXElementMock from '../../../__mocks__/JSXElementMock';

@@ -11,7 +11,7 @@ import {
   getPropValue,
   propName,
   elementType as rawElementType,
-} from 'jsx-ast-utils';
+} from 'jsx-ast-utils-x';
 import type { JSXOpeningElement, Node } from 'ast-types-flow';
 import minimatch from 'minimatch';
 

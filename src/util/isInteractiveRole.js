@@ -1,7 +1,7 @@
 // @flow
 import { roles as rolesMap } from 'aria-query';
 import type { Node } from 'ast-types-flow';
-import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
+import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
 
 const roles = rolesMap.keys();
 const interactiveRoles = roles.filter(

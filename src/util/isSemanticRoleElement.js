@@ -2,7 +2,7 @@
 
 import type { JSXAttribute } from 'ast-types-flow';
 import { AXObjectRoles, elementAXObjects } from 'axobject-query';
-import { getLiteralPropValue, getProp, propName } from 'jsx-ast-utils';
+import { getLiteralPropValue, getProp, propName } from 'jsx-ast-utils-x';
 
 const isSemanticRoleElement = (
   elementType: string,

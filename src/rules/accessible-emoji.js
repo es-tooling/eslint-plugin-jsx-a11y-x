@@ -8,7 +8,7 @@
 // ----------------------------------------------------------------------------
 
 import emojiRegex from 'emoji-regex';
-import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
+import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
 import safeRegexTest from 'safe-regex-test';
 import { generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';

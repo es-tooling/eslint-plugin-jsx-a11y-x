@@ -1,5 +1,5 @@
 import test from 'tape';
-import { elementType } from 'jsx-ast-utils';
+import { elementType } from 'jsx-ast-utils-x';
 
 import isInteractiveElement from '../../../src/util/isInteractiveElement';
 import JSXElementMock from '../../../__mocks__/JSXElementMock';

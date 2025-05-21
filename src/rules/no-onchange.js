@@ -7,7 +7,7 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { getProp } from 'jsx-ast-utils';
+import { getProp } from 'jsx-ast-utils-x';
 import { generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
 

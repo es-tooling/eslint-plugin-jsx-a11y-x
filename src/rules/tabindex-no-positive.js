@@ -7,7 +7,7 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { getLiteralPropValue, propName } from 'jsx-ast-utils';
+import { getLiteralPropValue, propName } from 'jsx-ast-utils-x';
 import { generateObjSchema } from '../util/schemas';
 
 const errorMessage = 'Avoid positive integer values for tabIndex.';

@@ -1,6 +1,6 @@
 // @flow
 import { roles as rolesMap } from 'aria-query';
-import { getProp, getLiteralPropValue } from 'jsx-ast-utils';
+import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
 import type { Node } from 'ast-types-flow';
 /**
  * Returns an element's computed role, which is

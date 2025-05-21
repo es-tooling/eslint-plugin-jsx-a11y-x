@@ -7,7 +7,7 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { propName, getLiteralPropValue } from 'jsx-ast-utils';
+import { propName, getLiteralPropValue } from 'jsx-ast-utils-x';
 import tags from 'language-tags';
 import { generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';

@@ -1,4 +1,4 @@
-import { getProp } from 'jsx-ast-utils';
+import { getProp } from 'jsx-ast-utils-x';
 import getTabIndex from './getTabIndex';
 import isInteractiveElement from './isInteractiveElement';
 

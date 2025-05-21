@@ -1,6 +1,6 @@
 // @flow
 
-import { hasAnyProp } from 'jsx-ast-utils';
+import { hasAnyProp } from 'jsx-ast-utils-x';
 import type { JSXElement, Node, JSXOpeningElement } from 'ast-types-flow';
 import isHiddenFromScreenReader from './isHiddenFromScreenReader';
 
