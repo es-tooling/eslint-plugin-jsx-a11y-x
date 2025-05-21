@@ -1,52 +1,42 @@
-import test from 'tape';
-
 import isSemanticRoleElement from '../../../src/util/isSemanticRoleElement';
 import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
 
-test('isSemanticRoleElement', t => {
-  t.equal(
+describe('isSemanticRoleElement', () => {
+  expect(
     isSemanticRoleElement('input', [
       JSXAttributeMock('type', 'checkbox'),
       JSXAttributeMock('role', 'switch'),
     ]),
-    true,
-    'identifies semantic role elements',
-  );
+  ).toBe(true);
 
-  t.test('rejects non-semantics role elements', st => {
-    st.equal(
+  test('rejects non-semantics role elements', () => {
+    expect(
       isSemanticRoleElement('input', [
         JSXAttributeMock('type', 'radio'),
         JSXAttributeMock('role', 'switch'),
       ]),
-      false,
-    );
+    ).toBe(false);
 
-    st.equal(
+    expect(
       isSemanticRoleElement('input', [
         JSXAttributeMock('type', 'text'),
         JSXAttributeMock('role', 'combobox'),
       ]),
-      false,
-    );
+    ).toBe(false);
 
-    st.equal(
+    expect(
       isSemanticRoleElement('button', [
         JSXAttributeMock('role', 'switch'),
         JSXAttributeMock('aria-pressed', 'true'),
       ]),
-      false,
-    );
+    ).toBe(false);
 
-    st.equal(
+    expect(
       isSemanticRoleElement('input', [JSXAttributeMock('role', 'switch')]),
-      false,
-    );
-
-    st.end();
+    ).toBe(false);
   });
 
-  t.doesNotThrow(() => {
+  expect(() => {
     isSemanticRoleElement('input', [
       JSXAttributeMock('type', 'checkbox'),
       JSXAttributeMock('role', 'checkbox'),
@@ -61,7 +51,5 @@ test('isSemanticRoleElement', t => {
         },
       },
     ]);
-  }, 'does not throw on JSXSpreadAttribute');
-
-  t.end();
+  }).not.toThrow();
 });

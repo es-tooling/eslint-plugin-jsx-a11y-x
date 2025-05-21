@@ -1,4 +1,3 @@
-import test from 'tape';
 import { elementType } from 'jsx-ast-utils-x';
 
 import isInteractiveElement from '../../../src/util/isInteractiveElement';
@@ -12,93 +11,78 @@ import {
   genNonInteractiveRoleElements,
 } from '../../../__mocks__/genInteractives';
 
-test('isInteractiveElement', t => {
-  t.equal(
-    isInteractiveElement(undefined, []),
-    false,
-    'identifies them as interactive elements',
-  );
+describe('isInteractiveElement', () => {
+  expect(isInteractiveElement(undefined, [])).toBe(false);
 
-  t.test('interactive elements', st => {
+  test('interactive elements', () => {
     genInteractiveElements().forEach(({ openingElement }) => {
-      st.equal(
+      expect(
         isInteractiveElement(
           elementType(openingElement),
           openingElement.attributes,
         ),
+      ).toBe(
         true,
         `identifies \`${genElementSymbol(openingElement)}\` as an interactive element`,
       );
     });
-
-    st.end();
   });
 
-  t.test('interactive role elements', st => {
+  test('interactive role elements', () => {
     genInteractiveRoleElements().forEach(({ openingElement }) => {
-      st.equal(
+      expect(
         isInteractiveElement(
           elementType(openingElement),
           openingElement.attributes,
         ),
+      ).toBe(
         false,
         `identifies \`${genElementSymbol(openingElement)}\` as an interactive element`,
       );
     });
-
-    st.end();
   });
 
-  t.test('non-interactive elements', st => {
+  test('non-interactive elements', () => {
     genNonInteractiveElements().forEach(({ openingElement }) => {
-      st.equal(
+      expect(
         isInteractiveElement(
           elementType(openingElement),
           openingElement.attributes,
         ),
+      ).toBe(
         false,
         `identifies \`${genElementSymbol(openingElement)}\` as an interactive element`,
       );
     });
-
-    st.end();
   });
 
-  t.test('non-interactive role elements', st => {
+  test('non-interactive role elements', () => {
     genNonInteractiveRoleElements().forEach(({ openingElement }) => {
-      st.equal(
+      expect(
         isInteractiveElement(
           elementType(openingElement),
           openingElement.attributes,
         ),
+      ).toBe(
         false,
         `identifies \`${genElementSymbol(openingElement)}\` as an interactive element`,
       );
     });
-
-    st.end();
   });
 
-  t.test('indeterminate elements', st => {
+  test('indeterminate elements', () => {
     genIndeterminantInteractiveElements().forEach(({ openingElement }) => {
-      st.equal(
+      expect(
         isInteractiveElement(
           elementType(openingElement),
           openingElement.attributes,
         ),
+      ).toBe(
         false,
         `identifies \`${genElementSymbol(openingElement)}\` as an interactive element`,
       );
     });
-
-    st.end();
   });
 
-  t.equal(
-    isInteractiveElement('CustomComponent', JSXElementMock()),
-    false,
-    'JSX elements are not interactive',
-  );
-
-  t.end();
+  expect(isInteractiveElement('CustomComponent', JSXElementMock())).toBe(false);
 });

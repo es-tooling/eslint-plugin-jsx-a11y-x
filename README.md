@@ -1,30 +1,21 @@
-<p align="center">
-  <a href="https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/actions">
-    <img src="https://img.shields.io/endpoint?url=https://github-actions-badge-u3jn4tfpocch.runkit.sh/es-tooling/eslint-plugin-jsx-a11y-x"
-         alt="CI status" />
-  </a>
-  <a href="https://npmjs.org/package/eslint-plugin-jsx-a11y">
-    <img src="https://img.shields.io/npm/v/eslint-plugin-jsx-a11y.svg"
-         alt="npm version">
-  </a>
-  <a href="https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/blob/HEAD/LICENSE.md">
-    <img src="https://img.shields.io/npm/l/eslint-plugin-jsx-a11y.svg"
-         alt="license">
-  </a>
-  <a href='https://coveralls.io/github/es-tooling/eslint-plugin-jsx-a11y-x?branch=master'>
-    <img src='https://coveralls.io/repos/github/es-tooling/eslint-plugin-jsx-a11y-x/badge.svg?branch=master' alt='Coverage Status' />
-  </a>
-  <a href='https://npmjs.org/package/eslint-plugin-jsx-a11y'>
-    <img src='https://img.shields.io/npm/dt/eslint-plugin-jsx-a11y.svg'
-    alt='Total npm downloads' />
-  </a>
-</p>
-
-<a href='https://tidelift.com/lifter/search/npm/eslint-plugin-jsx-a11y-x'>Get professional support for eslint-plugin-jsx-a11y-x on Tidelift</a>
-
 # eslint-plugin-jsx-a11y-x
 
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/es-tooling/eslint-plugin-jsx-a11y-x/ci.yml?branch=main)](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/actions/workflows/ci.yml?query=branch%3Amain)
+[![Codecov](https://img.shields.io/codecov/c/github/es-tooling/eslint-plugin-jsx-a11y-x.svg)](https://codecov.io/gh/es-tooling/eslint-plugin-jsx-a11y-x)
+[![type-coverage](https://img.shields.io/badge/dynamic/json.svg?label=type-coverage&prefix=%E2%89%A5&suffix=%&query=$.typeCoverage.atLeast&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fes-tooling%2Feslint-plugin-jsx-a11y-x%2Fmain%2Fpackage.json)](https://github.com/plantain-00/type-coverage)
+[![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/es-tooling/eslint-plugin-jsx-a11y-x)](https://coderabbit.ai)
+[![npm](https://img.shields.io/npm/v/eslint-plugin-jsx-a11y-x.svg)](https://www.npmjs.com/package/eslint-plugin-jsx-a11y-x)
+[![GitHub Release](https://img.shields.io/github/release/es-tooling/eslint-plugin-jsx-a11y-x)](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/releases)
+
+[![Conventional Commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Code Style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+[![changesets](https://img.shields.io/badge/maintained%20with-changesets-176de3.svg)](https://github.com/changesets/changesets)
+
 Static AST checker for accessibility rules on JSX elements.
+
+<a href='https://tidelift.com/lifter/search/npm/eslint-plugin-jsx-a11y-x'>Get professional support for eslint-plugin-jsx-a11y-x on Tidelift</a>
 
 ## Why?
 

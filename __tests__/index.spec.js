@@ -2,7 +2,6 @@
 
 import fs from 'fs';
 import path from 'path';
-import test from 'tape';
 
 import plugin from '../src';
 
@@ -10,49 +9,32 @@ const rules = fs
   .readdirSync(path.resolve(__dirname, '../src/rules/'))
   .map(f => path.basename(f, '.js'));
 
-test('all rule files should be exported by the plugin', t => {
+test('all rule files should be exported by the plugin', () => {
   rules.forEach(ruleName => {
-    t.equal(
-      plugin.rules[ruleName],
+    expect(plugin.rules[ruleName]).toBe(
       require(path.join('../src/rules', ruleName)),
-      `exports ${ruleName}`,
     );
   });
-
-  t.end();
 });
 
-test('configurations', t => {
-  t.notEqual(
-    plugin.configs.recommended,
-    undefined,
-    "exports a 'recommended' configuration",
-  );
-
-  t.end();
+test('configurations', () => {
+  expect(plugin.configs.recommended).not.toBe(undefined);
 });
 
-test('schemas', t => {
+test('schemas', () => {
   rules.forEach(ruleName => {
     const rule = require(path.join('../src/rules', ruleName));
     const schema = rule.meta && rule.meta.schema && rule.meta.schema[0];
     const { type } = schema;
 
-    t.equal(type, 'object', `${ruleName} exports a schema with type object`);
+    expect(type).toBe('object');
   });
-
-  t.end();
 });
 
-test('plugin referentially equal to prevent flat config issues', t => {
+test('plugin referentially equal to prevent flat config issues', () => {
   const keys = Object.keys(plugin.flatConfigs);
   for (let i = 0; i < keys.length; i += 1) {
     const config = plugin.flatConfigs[keys[i]];
-    t.equal(
-      plugin,
-      config.plugins['jsx-a11y-x'],
-      `${config.name}'s plugin reference is referentially equal to the top-level export`,
-    );
+    expect(plugin).toBe(config.plugins['jsx-a11y-x']);
   }
-  t.end();
 });

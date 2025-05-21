@@ -1,4 +1,3 @@
-import test from 'tape';
 import { elementType } from 'jsx-ast-utils-x';
 
 import hasAccessibleChild from '../../../src/util/hasAccessibleChild';
@@ -6,14 +5,12 @@ import JSXElementMock from '../../../__mocks__/JSXElementMock';
 import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
 import JSXExpressionContainerMock from '../../../__mocks__/JSXExpressionContainerMock';
 
-test('hasAccessibleChild', t => {
-  t.equal(
-    hasAccessibleChild(JSXElementMock('div', []), elementType),
+test('hasAccessibleChild', () => {
+  expect(hasAccessibleChild(JSXElementMock('div', []), elementType)).toBe(
     false,
-    'has no children and does not set dangerouslySetInnerHTML -> false',
   );
 
-  t.equal(
+  expect(
     hasAccessibleChild(
       JSXElementMock(
         'div',
@@ -22,11 +19,9 @@ test('hasAccessibleChild', t => {
       ),
       elementType,
     ),
-    true,
-    'has no children and sets dangerouslySetInnerHTML -> true',
-  );
+  ).toBe(true);
 
-  t.equal(
+  expect(
     hasAccessibleChild(
       JSXElementMock(
         'div',
@@ -40,20 +35,16 @@ test('hasAccessibleChild', t => {
       ),
       elementType,
     ),
-    true,
-    'has children + Literal child -> true',
-  );
+  ).toBe(true);
 
-  t.equal(
+  expect(
     hasAccessibleChild(
       JSXElementMock('div', [], [JSXElementMock('div', [])]),
       elementType,
     ),
-    true,
-    'has children + visible JSXElement child -> true',
-  );
+  ).toBe(true);
 
-  t.equal(
+  expect(
     hasAccessibleChild(
       JSXElementMock(
         'div',
@@ -67,11 +58,9 @@ test('hasAccessibleChild', t => {
       ),
       elementType,
     ),
-    true,
-    'has children + JSText element -> true',
-  );
+  ).toBe(true);
 
-  t.equal(
+  expect(
     hasAccessibleChild(
       JSXElementMock(
         'div',
@@ -80,11 +69,9 @@ test('hasAccessibleChild', t => {
       ),
       elementType,
     ),
-    false,
-    'has children + hidden child JSXElement -> false',
-  );
+  ).toBe(false);
 
-  t.equal(
+  expect(
     hasAccessibleChild(
       JSXElementMock(
         'div',
@@ -98,11 +85,9 @@ test('hasAccessibleChild', t => {
       ),
       elementType,
     ),
-    true,
-    'defined JSXExpressionContainer -> true',
-  );
+  ).toBe(true);
 
-  t.equal(
+  expect(
     hasAccessibleChild(
       JSXElementMock(
         'div',
@@ -116,11 +101,9 @@ test('hasAccessibleChild', t => {
       ),
       elementType,
     ),
-    false,
-    'has children + undefined JSXExpressionContainer -> false',
-  );
+  ).toBe(false);
 
-  t.equal(
+  expect(
     hasAccessibleChild(
       JSXElementMock(
         'div',
@@ -133,20 +116,16 @@ test('hasAccessibleChild', t => {
       ),
       elementType,
     ),
-    false,
-    'unknown child type -> false',
-  );
+  ).toBe(false);
 
-  t.equal(
+  expect(
     hasAccessibleChild(
       JSXElementMock('div', [JSXAttributeMock('children', true)], []),
       elementType,
     ),
-    true,
-    'children passed as a prop -> true',
-  );
+  ).toBe(true);
 
-  t.equal(
+  expect(
     hasAccessibleChild(
       JSXElementMock(
         'div',
@@ -155,11 +134,9 @@ test('hasAccessibleChild', t => {
       ),
       elementType,
     ),
-    false,
-    'has chidren -> hidden child input JSXElement -> false',
-  );
+  ).toBe(false);
 
-  t.equal(
+  expect(
     hasAccessibleChild(
       JSXElementMock(
         'div',
@@ -168,11 +145,9 @@ test('hasAccessibleChild', t => {
       ),
       elementType,
     ),
-    true,
-    'has children + custom JSXElement of type hidden -> true',
-  );
+  ).toBe(true);
 
-  t.equal(
+  expect(
     hasAccessibleChild(
       JSXElementMock(
         'div',
@@ -181,9 +156,5 @@ test('hasAccessibleChild', t => {
       ),
       () => 'input',
     ),
-    false,
-    'custom JSXElement mapped to input if type is hidden -> false',
-  );
-
-  t.end();
+  ).toBe(false);
 });
