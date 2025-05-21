@@ -1,4 +1,4 @@
-#!/usr/bin/env node --harmony
+#!/usr/bin/env node
 const path = require('path');
 const fs = require('fs');
 const { exec } = require('child_process');

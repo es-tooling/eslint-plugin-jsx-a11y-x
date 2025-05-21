@@ -1,21 +1,18 @@
-import test from 'tape';
 import { elementType } from 'jsx-ast-utils-x';
 
 import getAccessibleChildText from '../../../src/util/getAccessibleChildText';
 import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
 import JSXElementMock from '../../../__mocks__/JSXElementMock';
 
-test('getAccessibleChildText', t => {
-  t.equal(
+test('getAccessibleChildText', () => {
+  expect(
     getAccessibleChildText(
       JSXElementMock('a', [JSXAttributeMock('aria-label', 'foo')]),
       elementType,
     ),
-    'foo',
-    'returns the aria-label when present',
-  );
+  ).toBe('foo');
 
-  t.equal(
+  expect(
     getAccessibleChildText(
       JSXElementMock(
         'a',
@@ -24,29 +21,23 @@ test('getAccessibleChildText', t => {
       ),
       elementType,
     ),
-    'foo',
-    'returns the aria-label instead of children',
-  );
+  ).toBe('foo');
 
-  t.equal(
+  expect(
     getAccessibleChildText(
       JSXElementMock('a', [JSXAttributeMock('aria-hidden', 'true')]),
       elementType,
     ),
-    '',
-    'skips elements with aria-hidden=true',
-  );
+  ).toBe('');
 
-  t.equal(
+  expect(
     getAccessibleChildText(
       JSXElementMock('a', [], [{ type: 'JSXText', value: 'bar' }]),
       elementType,
     ),
-    'bar',
-    'returns literal value for JSXText child',
-  );
+  ).toBe('bar');
 
-  t.equal(
+  expect(
     getAccessibleChildText(
       JSXElementMock(
         'a',
@@ -60,11 +51,9 @@ test('getAccessibleChildText', t => {
       ),
       elementType,
     ),
-    'a sensible label',
-    'returns alt text for img child',
-  );
+  ).toBe('a sensible label');
 
-  t.equal(
+  expect(
     getAccessibleChildText(
       JSXElementMock(
         'a',
@@ -73,38 +62,30 @@ test('getAccessibleChildText', t => {
       ),
       elementType,
     ),
-    '',
-    'returns blank when alt tag is used on arbitrary element',
-  );
+  ).toBe('');
 
-  t.equal(
+  expect(
     getAccessibleChildText(
       JSXElementMock('a', [], [{ type: 'Literal', value: 'bar' }]),
       elementType,
     ),
-    'bar',
-    'returns literal value for JSXText child',
-  );
+  ).toBe('bar');
 
-  t.equal(
+  expect(
     getAccessibleChildText(
       JSXElementMock('a', [], [{ type: 'Literal', value: ' bar   ' }]),
       elementType,
     ),
-    'bar',
-    'returns trimmed literal value for JSXText child',
-  );
+  ).toBe('bar');
 
-  t.equal(
+  expect(
     getAccessibleChildText(
       JSXElementMock('a', [], [{ type: 'Literal', value: 'foo         bar' }]),
       elementType,
     ),
-    'foo bar',
-    'returns space-collapsed literal value for JSXText child',
-  );
+  ).toBe('foo bar');
 
-  t.equal(
+  expect(
     getAccessibleChildText(
       JSXElementMock(
         'a',
@@ -113,11 +94,9 @@ test('getAccessibleChildText', t => {
       ),
       elementType,
     ),
-    'foo bar baz foo bar',
-    'returns punctuation-stripped literal value for JSXText child',
-  );
+  ).toBe('foo bar baz foo bar');
 
-  t.equal(
+  expect(
     getAccessibleChildText(
       JSXElementMock(
         'a',
@@ -126,11 +105,9 @@ test('getAccessibleChildText', t => {
       ),
       elementType,
     ),
-    'bar',
-    'returns recursive value for JSXElement child',
-  );
+  ).toBe('bar');
 
-  t.equal(
+  expect(
     getAccessibleChildText(
       JSXElementMock(
         'a',
@@ -145,11 +122,9 @@ test('getAccessibleChildText', t => {
       ),
       elementType,
     ),
-    '',
-    'skips children with aria-hidden-true',
-  );
+  ).toBe('');
 
-  t.equal(
+  expect(
     getAccessibleChildText(
       JSXElementMock(
         'a',
@@ -161,11 +136,9 @@ test('getAccessibleChildText', t => {
       ),
       elementType,
     ),
-    'foo bar',
-    'joins multiple children properly - no spacing',
-  );
+  ).toBe('foo bar');
 
-  t.equal(
+  expect(
     getAccessibleChildText(
       JSXElementMock(
         'a',
@@ -177,11 +150,9 @@ test('getAccessibleChildText', t => {
       ),
       elementType,
     ),
-    'foo bar',
-    'joins multiple children properly - with spacing',
-  );
+  ).toBe('foo bar');
 
-  t.equal(
+  expect(
     getAccessibleChildText(
       JSXElementMock(
         'a',
@@ -194,9 +165,5 @@ test('getAccessibleChildText', t => {
       ),
       elementType,
     ),
-    'foo bar',
-    'skips unknown elements',
-  );
-
-  t.end();
+  ).toBe('foo bar');
 });

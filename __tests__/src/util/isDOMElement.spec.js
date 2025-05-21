@@ -1,30 +1,20 @@
-import test from 'tape';
 import { dom } from 'aria-query';
 import { elementType } from 'jsx-ast-utils-x';
 
 import isDOMElement from '../../../src/util/isDOMElement';
 import JSXElementMock from '../../../__mocks__/JSXElementMock';
 
-test('isDOMElement', t => {
-  t.test('DOM elements', st => {
+describe('isDOMElement', () => {
+  test('DOM elements', () => {
     dom.forEach((_, el) => {
       const element = JSXElementMock(el);
 
-      st.equal(
-        isDOMElement(elementType(element.openingElement)),
+      expect(isDOMElement(elementType(element.openingElement))).toBe(
         true,
         `identifies ${el} as a DOM element`,
       );
     });
-
-    st.end();
   });
 
-  t.equal(
-    isDOMElement(JSXElementMock('CustomElement')),
-    false,
-    'does not identify a custom element',
-  );
-
-  t.end();
+  expect(isDOMElement(JSXElementMock('CustomElement'))).toBe(false);
 });

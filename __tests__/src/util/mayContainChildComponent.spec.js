@@ -1,12 +1,10 @@
-import test from 'tape';
-
 import mayContainChildComponent from '../../../src/util/mayContainChildComponent';
 import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
 import JSXElementMock from '../../../__mocks__/JSXElementMock';
 import JSXExpressionContainerMock from '../../../__mocks__/JSXExpressionContainerMock';
 
-test('mayContainChildComponent', t => {
-  t.equal(
+describe('mayContainChildComponent', () => {
+  expect(
     mayContainChildComponent(
       JSXElementMock(
         'div',
@@ -34,30 +32,24 @@ test('mayContainChildComponent', t => {
       'FancyComponent',
       5,
     ),
-    false,
-    'no FancyComponent returns false',
-  );
+  ).toBe(false);
 
-  t.test('contains an indicated component', st => {
-    st.equal(
+  test('contains an indicated component', () => {
+    expect(
       mayContainChildComponent(
         JSXElementMock('div', [], [JSXElementMock('input')]),
         'input',
       ),
-      true,
-      'returns true',
-    );
+    ).toBe(true, 'returns true');
 
-    st.equal(
+    expect(
       mayContainChildComponent(
         JSXElementMock('div', [], [JSXElementMock('FancyComponent')]),
         'FancyComponent',
       ),
-      true,
-      'returns true',
-    );
+    ).toBe(true, 'returns true');
 
-    st.equal(
+    expect(
       mayContainChildComponent(
         JSXElementMock(
           'div',
@@ -66,11 +58,12 @@ test('mayContainChildComponent', t => {
         ),
         'FancyComponent',
       ),
+    ).toBe(
       false,
       'FancyComponent is outside of default depth, should return false',
     );
 
-    st.equal(
+    expect(
       mayContainChildComponent(
         JSXElementMock(
           'div',
@@ -80,11 +73,12 @@ test('mayContainChildComponent', t => {
         'FancyComponent',
         2,
       ),
+    ).toBe(
       true,
       'FancyComponent is inside of custom depth, should return true',
     );
 
-    st.equal(
+    expect(
       mayContainChildComponent(
         JSXElementMock(
           'div',
@@ -128,106 +122,78 @@ test('mayContainChildComponent', t => {
         'FancyComponent',
         6,
       ),
-      true,
-      'deep nesting, returns true',
-    );
-
-    st.end();
+    ).toBe(true, 'deep nesting, returns true');
   });
 
-  t.equal(
+  expect(
     mayContainChildComponent(
       JSXElementMock('div', [], [JSXExpressionContainerMock('mysteryBox')]),
       'FancyComponent',
     ),
-    true,
-    'Intederminate situations + expression container children - returns true',
-  );
+  ).toBe(true);
 
-  t.test(
-    'Glob name matching - component name contains question mark ? - match any single character',
-    st => {
-      st.equal(
+  describe('Glob name matching - component name contains question mark ? - match any single character', () => {
+    expect(
+      mayContainChildComponent(
+        JSXElementMock('div', [], [JSXElementMock('FancyComponent')]),
+        'Fanc?Co??onent',
+      ),
+    ).toBe(true, 'returns true');
+
+    expect(
+      mayContainChildComponent(
+        JSXElementMock('div', [], [JSXElementMock('FancyComponent')]),
+        'FancyComponent?',
+      ),
+    ).toBe(false, 'returns false');
+
+    test('component name contains asterisk * - match zero or more characters', () => {
+      expect(
         mayContainChildComponent(
           JSXElementMock('div', [], [JSXElementMock('FancyComponent')]),
-          'Fanc?Co??onent',
+          'Fancy*',
         ),
-        true,
-        'returns true',
-      );
+      ).toBe(true, 'returns true');
 
-      st.equal(
+      expect(
         mayContainChildComponent(
           JSXElementMock('div', [], [JSXElementMock('FancyComponent')]),
-          'FancyComponent?',
+          '*Component',
         ),
-        false,
-        'returns false',
-      );
+      ).toBe(true, 'returns true');
 
-      st.test(
-        'component name contains asterisk * - match zero or more characters',
-        s2t => {
-          s2t.equal(
-            mayContainChildComponent(
-              JSXElementMock('div', [], [JSXElementMock('FancyComponent')]),
-              'Fancy*',
-            ),
-            true,
-            'returns true',
-          );
+      expect(
+        mayContainChildComponent(
+          JSXElementMock('div', [], [JSXElementMock('FancyComponent')]),
+          'Fancy*C*t',
+        ),
+      ).toBe(true, 'returns true');
+    });
+  });
 
-          s2t.equal(
-            mayContainChildComponent(
-              JSXElementMock('div', [], [JSXElementMock('FancyComponent')]),
-              '*Component',
-            ),
-            true,
-            'returns true',
-          );
-
-          s2t.equal(
-            mayContainChildComponent(
-              JSXElementMock('div', [], [JSXElementMock('FancyComponent')]),
-              'Fancy*C*t',
-            ),
-            true,
-            'returns true',
-          );
-
-          s2t.end();
-        },
-      );
-
-      st.end();
-    },
-  );
-
-  t.test('using a custom elementType function', st => {
-    st.equal(
+  test('using a custom elementType function', () => {
+    expect(
       mayContainChildComponent(
         JSXElementMock('div', [], [JSXElementMock('CustomInput')]),
         'input',
         2,
         () => 'input',
       ),
+    ).toBe(
       true,
       'returns true when the custom elementType returns the proper name',
     );
 
-    st.equal(
+    expect(
       mayContainChildComponent(
         JSXElementMock('div', [], [JSXElementMock('CustomInput')]),
         'input',
         2,
         () => 'button',
       ),
+    ).toBe(
       false,
       'returns false when the custom elementType returns a wrong name',
     );
-
-    st.end();
   });
-
-  t.end();
 });

@@ -1,12 +1,11 @@
 import { version as eslintVersion } from 'eslint/package.json';
-import test from 'tape';
 import semver from 'semver';
 
 import parserOptionsMapper from '../../__util__/parserOptionsMapper';
 
 const usingLegacy = semver.major(eslintVersion) < 9;
 
-test('parserOptionsMapper', t => {
+test('parserOptionsMapper', () => {
   const expectedResult = usingLegacy
     ? {
         code: '<div />',
@@ -37,15 +36,13 @@ test('parserOptionsMapper', t => {
         settings: {},
       };
 
-  t.deepEqual(
+  expect(
     parserOptionsMapper({
       code: '<div />',
       errors: [],
       options: {},
     }),
-    expectedResult,
-    'returns a test case object',
-  );
+  ).toEqual(expectedResult);
 
   const expectedResult2 = usingLegacy
     ? {
@@ -76,7 +73,7 @@ test('parserOptionsMapper', t => {
         },
         settings: {},
       };
-  t.deepEqual(
+  expect(
     parserOptionsMapper({
       code: '<div />',
       errors: [],
@@ -85,9 +82,5 @@ test('parserOptionsMapper', t => {
         ecmaVersion: 5,
       },
     }),
-    expectedResult2,
-    'allows for overriding parserOptions',
-  );
-
-  t.end();
+  ).toEqual(expectedResult2);
 });

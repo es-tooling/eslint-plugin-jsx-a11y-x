@@ -1,4 +1,3 @@
-import test from 'tape';
 import { elementType } from 'jsx-ast-utils-x';
 
 import isAbstractRole from '../../../src/util/isAbstractRole';
@@ -8,38 +7,26 @@ import {
   genNonAbstractRoleElements,
 } from '../../../__mocks__/genInteractives';
 
-test('isAbstractRole', t => {
-  t.equal(
-    isAbstractRole(undefined, []),
-    false,
-    'does NOT identify JSX Components (no tagName) as abstract role elements',
-  );
+describe('isAbstractRole', () => {
+  expect(isAbstractRole(undefined, [])).toBe(false);
 
-  t.test('elements with an abstract role', st => {
+  test('elements with an abstract role', () => {
     genAbstractRoleElements().forEach(({ openingElement }) => {
       const { attributes } = openingElement;
-      st.equal(
-        isAbstractRole(elementType(openingElement), attributes),
+      expect(isAbstractRole(elementType(openingElement), attributes)).toBe(
         true,
         `identifies \`${genElementSymbol(openingElement)}\` as an abstract role element`,
       );
     });
-
-    st.end();
   });
 
-  t.test('elements with a non-abstract role', st => {
+  test('elements with a non-abstract role', () => {
     genNonAbstractRoleElements().forEach(({ openingElement }) => {
       const { attributes } = openingElement;
-      st.equal(
-        isAbstractRole(elementType(openingElement), attributes),
+      expect(isAbstractRole(elementType(openingElement), attributes)).toBe(
         false,
         `does NOT identify \`${genElementSymbol(openingElement)}\` as an abstract role element`,
       );
     });
-
-    st.end();
   });
-
-  t.end();
 });
