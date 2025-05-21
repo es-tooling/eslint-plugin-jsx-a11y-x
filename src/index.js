@@ -1,4 +1,3 @@
-/* eslint-disable global-require */
 const flatConfigBase = require('./configs/flat-config-base');
 const legacyConfigBase = require('./configs/legacy-config-base');
 const { name, version } = require('../package.json');

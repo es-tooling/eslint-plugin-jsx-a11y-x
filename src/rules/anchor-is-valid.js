@@ -11,7 +11,6 @@
 
 import { getProp, getPropValue } from 'jsx-ast-utils-x';
 import type { JSXOpeningElement } from 'ast-types-flow';
-import safeRegexTest from 'safe-regex-test';
 import type {
   ESLintConfig,
   ESLintContext,
@@ -52,7 +51,7 @@ export default ({
 
   create: (context: ESLintContext): ESLintVisitorSelectorConfig => {
     const elementType = getElementType(context);
-    const testJShref = safeRegexTest(/^\W*?javascript:/);
+    const jsHrefRegexp = /^\W*?javascript:/;
 
     return {
       JSXOpeningElement: (node: JSXOpeningElement): void => {
@@ -120,7 +119,7 @@ export default ({
           value =>
             value != null &&
             typeof value === 'string' &&
-            (!value.length || value === '#' || testJShref(value)),
+            (!value.length || value === '#' || jsHrefRegexp.test(value)),
         );
         if (invalidHrefValues.length !== 0) {
           // If an onClick is found it should be a button, otherwise it is an invalid link.

@@ -14,7 +14,7 @@ test('all rule files should be exported by the plugin', t => {
   rules.forEach(ruleName => {
     t.equal(
       plugin.rules[ruleName],
-      require(path.join('../src/rules', ruleName)), // eslint-disable-line import-x/no-dynamic-require
+      require(path.join('../src/rules', ruleName)),
       `exports ${ruleName}`,
     );
   });
@@ -34,7 +34,7 @@ test('configurations', t => {
 
 test('schemas', t => {
   rules.forEach(ruleName => {
-    const rule = require(path.join('../src/rules', ruleName)); // eslint-disable-line import-x/no-dynamic-require
+    const rule = require(path.join('../src/rules', ruleName));
     const schema = rule.meta && rule.meta.schema && rule.meta.schema[0];
     const { type } = schema;
 

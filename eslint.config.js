@@ -7,6 +7,9 @@ const flowPlugin = require('eslint-plugin-ft-flow');
 const { FlatCompat } = require('@eslint/eslintrc');
 const babelParser = require('@babel/eslint-parser');
 const prettierConfig = require('eslint-config-prettier');
+const {
+  createTypeScriptImportResolver,
+} = require('eslint-import-resolver-typescript');
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
@@ -14,7 +17,7 @@ const compat = new FlatCompat({
 
 module.exports = defineConfig([
   {
-    ignores: ['lib', 'reports', 'examples'],
+    ignores: ['.yarn', 'lib', 'reports', 'examples'],
   },
   {
     files: [
@@ -30,9 +33,7 @@ module.exports = defineConfig([
       'import-x': importPlugin.flatConfigs.recommended.plugins['import-x'],
     },
     languageOptions: {
-      globals: {
-        ...globals.node,
-      },
+      globals: globals.node,
       parser: babelParser,
     },
     extends: [
@@ -45,7 +46,7 @@ module.exports = defineConfig([
       'import-x/no-extraneous-dependencies': 'error',
     },
     settings: {
-      'import-x/resolver': 'typescript',
+      'import-x/resolver-next': createTypeScriptImportResolver(),
     },
   },
   ...compat.config(flowPlugin.configs.recommended).map(config => ({
@@ -86,9 +87,7 @@ module.exports = defineConfig([
   {
     files: ['__tests__/**/*'],
     languageOptions: {
-      globals: {
-        jest: true,
-      },
+      globals: globals.jest,
     },
   },
 ]);

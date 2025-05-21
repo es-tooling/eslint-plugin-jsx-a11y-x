@@ -1,6 +1,6 @@
 /** @flow */
 
-import toAST from 'to-ast'; // eslint-disable-line import-x/no-extraneous-dependencies
+import toAST from 'to-ast';
 import JSXExpressionContainerMock from './JSXExpressionContainerMock';
 
 export type JSXAttributeMockType = {
