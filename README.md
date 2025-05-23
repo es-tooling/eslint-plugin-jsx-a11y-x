@@ -107,7 +107,7 @@ Add `plugin:jsx-a11y-x/recommended` or `plugin:jsx-a11y-x/strict` in `extends`:
 The default export of `eslint-plugin-jsx-a11y-x` is a plugin object.
 
 ```js
-const jsxA11yX = require('eslint-plugin-jsx-a11y');
+const jsxA11yX = require('eslint-plugin-jsx-a11y-x');
 
 module.exports = [
   // …
@@ -143,7 +143,7 @@ There are two shareable configs, provided by the plugin.
 #### CJS
 
 ```js
-const jsxA11yX = require('eslint-plugin-jsx-a11y');
+const jsxA11yX = require('eslint-plugin-jsx-a11y-x');
 
 export default [
   jsxA11yX.flatConfigs.recommended,
@@ -156,7 +156,7 @@ export default [
 #### ESM
 
 ```js
-import jsxA11yX from 'eslint-plugin-jsx-a11y';
+import jsxA11yX from 'eslint-plugin-jsx-a11y-x';
 
 export default [
   jsxA11yX.flatConfigs.recommended,
@@ -170,7 +170,7 @@ export default [
 For most of the cases, you probably want to configure some of these properties yourself.
 
 ```js
-const jsxA11yX = require('eslint-plugin-jsx-a11y');
+const jsxA11yX = require('eslint-plugin-jsx-a11y-x');
 const globals = require('globals');
 
 module.exports = [
