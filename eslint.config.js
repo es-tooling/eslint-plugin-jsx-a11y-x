@@ -1,9 +1,9 @@
-const eslintjs = require('@eslint/js');
+const js = require('@eslint/js');
 const { defineConfig } = require('eslint/config');
 const globals = require('globals');
 const eslintPlugin = require('eslint-plugin-eslint-plugin');
-const importPlugin = require('eslint-plugin-import-x');
-const flowPlugin = require('eslint-plugin-ft-flow');
+const importX = require('eslint-plugin-import-x');
+const ftFlow = require('eslint-plugin-ft-flow');
 const { FlatCompat } = require('@eslint/eslintrc');
 const babelParser = require('@babel/eslint-parser');
 const prettierConfig = require('eslint-config-prettier');
@@ -17,7 +17,7 @@ const compat = new FlatCompat({
 
 module.exports = defineConfig([
   {
-    ignores: ['.yarn', 'lib', 'reports', 'examples'],
+    ignores: ['.yarn', 'coverage', 'lib', 'reports', 'examples'],
   },
   {
     files: [
@@ -26,20 +26,11 @@ module.exports = defineConfig([
       '__tests__/**/*.js',
       '__mocks__/**/*.js',
     ],
-    plugins: {
-      eslint: eslintjs,
-      'eslint-plugin': eslintPlugin,
-      'ft-flow': flowPlugin,
-      'import-x': importPlugin.flatConfigs.recommended.plugins['import-x'],
-    },
     languageOptions: {
       globals: globals.node,
       parser: babelParser,
     },
-    extends: [
-      eslintjs.configs.recommended,
-      importPlugin.flatConfigs.recommended,
-    ],
+    extends: [js.configs.recommended, importX.flatConfigs.recommended],
     rules: {
       ...prettierConfig.rules,
       'no-template-curly-in-string': 'off',
@@ -49,7 +40,7 @@ module.exports = defineConfig([
       'import-x/resolver-next': createTypeScriptImportResolver(),
     },
   },
-  ...compat.config(flowPlugin.configs.recommended).map(config => ({
+  ...compat.config(ftFlow.configs.recommended).map(config => ({
     ...config,
     files: [
       'src/**/*.js',
