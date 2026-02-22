@@ -57,7 +57,7 @@
     "emoji-regex": "^9.2.2",
     "jsx-ast-utils-x": "^0.1.0",
     "language-tags": "^1.0.9",
-    "minimatch": "^3.1.2"
+    "minimatch": "^10.2.1"
   },
   "devDependencies": {
     "@1stg/prettier-config": "^5.2.0",
