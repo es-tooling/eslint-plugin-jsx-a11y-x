@@ -10,8 +10,8 @@ try {
 }
 
 const disableNewTS = semver.satisfies(tsParserVersion, '>= 4.1') // this rule is not useful on v4.1+ of the TS parser
-  ? x => ({ ...x, features: [].concat(x.features, 'no-ts-new') })
-  : x => x;
+  ? (x) => ({ ...x, features: [].concat(x.features, 'no-ts-new') })
+  : (x) => x;
 
 function minEcmaVersion(features, parserOptions) {
   const minEcmaVersionForFeatures = {
@@ -23,13 +23,13 @@ function minEcmaVersion(features, parserOptions) {
     ...[]
       .concat(
         (parserOptions && parserOptions.ecmaVersion) || [],
-        Object.entries(minEcmaVersionForFeatures).flatMap(entry => {
+        Object.entries(minEcmaVersionForFeatures).flatMap((entry) => {
           const f = entry[0];
           const y = entry[1];
           return features.has(f) ? y : [];
-        }),
+        })
       )
-      .map(y => (y > 5 && y < 2015 ? y + 2009 : y)), // normalize editions to years
+      .map((y) => (y > 5 && y < 2015 ? y + 2009 : y)) // normalize editions to years
   );
   return Number.isFinite(result) ? result : undefined;
 }
@@ -42,12 +42,12 @@ const parsers = {
   TYPESCRIPT_ESLINT: path.join(
     __dirname,
     NODE_MODULES,
-    'typescript-eslint-parser',
+    'typescript-eslint-parser'
   ),
   '@TYPESCRIPT_ESLINT': path.join(
     __dirname,
     NODE_MODULES,
-    '@typescript-eslint/parser',
+    '@typescript-eslint/parser'
   ),
   disableNewTS,
   babelParserOptions: function parserOptions(test, features) {
@@ -75,7 +75,7 @@ const parsers = {
     };
   },
   all: function all(tests) {
-    const t = tests.flatMap(test => {
+    const t = tests.flatMap((test) => {
       /* eslint no-param-reassign: 0 */
       if (typeof test === 'string') {
         test = { code: test };
@@ -101,7 +101,7 @@ const parsers = {
             : [],
           testObject.settings
             ? `settings: ${JSON.stringify(testObject.settings)}`
-            : [],
+            : []
         );
 
         const extraComment = `\n// ${extras.join(', ')}`;
@@ -117,9 +117,9 @@ const parsers = {
         // error objects.
         const nextErrors = testObject.errors &&
           typeof testObject.errors !== 'number' && {
-            errors: testObject.errors.map(errorObject => {
+            errors: testObject.errors.map((errorObject) => {
               const nextSuggestions = errorObject.suggestions && {
-                suggestions: errorObject.suggestions.map(suggestion => ({
+                suggestions: errorObject.suggestions.map((suggestion) => ({
                   ...suggestion,
                   output: suggestion.output + extraComment,
                 })),
@@ -182,7 +182,7 @@ const parsers = {
                   parserOptions: { ...test.parserOptions, ecmaVersion: es },
                 }),
               },
-              'default',
+              'default'
             ),
         skipOldBabel
           ? []
@@ -192,7 +192,7 @@ const parsers = {
                 parser: parsers.BABEL_ESLINT,
                 parserOptions: parsers.babelParserOptions(test, features),
               },
-              'babel-eslint',
+              'babel-eslint'
             ),
         skipNewBabel
           ? []
@@ -202,20 +202,20 @@ const parsers = {
                 parser: parsers['@BABEL_ESLINT'],
                 parserOptions: parsers.babelParserOptions(test, features),
               },
-              '@babel/eslint-parser',
+              '@babel/eslint-parser'
             ),
         tsOld
           ? addComment(
               { ...test, parser: parsers.TYPESCRIPT_ESLINT },
-              'typescript-eslint',
+              'typescript-eslint'
             )
           : [],
         tsNew
           ? addComment(
               { ...test, parser: parsers['@TYPESCRIPT_ESLINT'] },
-              '@typescript-eslint/parser',
+              '@typescript-eslint/parser'
             )
-          : [],
+          : []
       );
     });
     return t;

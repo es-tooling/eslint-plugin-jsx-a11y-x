@@ -18,7 +18,7 @@ export type ESLintSettings = {
 
 export type ESLintContext = {
   options: Array<Object>,
-  report: ESLintReport => void,
+  report: (ESLintReport) => void,
   settings: ESLintSettings,
 };
 

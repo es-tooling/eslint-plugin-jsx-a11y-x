@@ -45,36 +45,36 @@ const componentsSettings = {
 
 const nonAbstractRoles = roles
   .keys()
-  .filter(role => roles.get(role).abstract === false);
+  .filter((role) => roles.get(role).abstract === false);
 
-const createTests = rolesNames =>
+const createTests = (rolesNames) =>
   rolesNames.reduce(
     (tests, role) => {
       const { props: propKeyValues } = roles.get(role);
       const validPropsForRole = Object.keys(propKeyValues);
       const invalidPropsForRole = aria
         .keys()
-        .map(attribute => attribute.toLowerCase())
-        .filter(attribute => validPropsForRole.indexOf(attribute) === -1);
+        .map((attribute) => attribute.toLowerCase())
+        .filter((attribute) => validPropsForRole.indexOf(attribute) === -1);
       const normalRole = role.toLowerCase();
 
       return [
         tests[0].concat(
-          validPropsForRole.map(prop => ({
+          validPropsForRole.map((prop) => ({
             code: `<div role="${normalRole}" ${prop.toLowerCase()} />`,
-          })),
+          }))
         ),
         tests[1].concat(
-          invalidPropsForRole.map(prop => ({
+          invalidPropsForRole.map((prop) => ({
             code: `<div role="${normalRole}" ${prop.toLowerCase()} />`,
             errors: [
               errorMessage(prop.toLowerCase(), normalRole, 'div', false),
             ],
-          })),
+          }))
         ),
       ];
     },
-    [[], []],
+    [[], []]
   );
 
 const [validTests, invalidTests] = createTests(nonAbstractRoles);
@@ -424,8 +424,8 @@ ruleTester.run('role-supports-aria-props', rule, {
       `,
             }
           : [],
-        validTests,
-      ),
+        validTests
+      )
     )
     .map(parserOptionsMapper),
 
@@ -587,8 +587,8 @@ ruleTester.run('role-supports-aria-props', rule, {
           code: '<Link href="#" aria-checked />',
           errors: [errorMessage('aria-checked', 'link', 'a', true)],
           settings: componentsSettings,
-        },
-      ),
+        }
+      )
     )
     .concat(invalidTests)
     .map(parserOptionsMapper),

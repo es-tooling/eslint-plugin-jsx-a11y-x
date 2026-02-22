@@ -26,16 +26,20 @@ const errorMessage = {
 
 const roleKeys = roles.keys();
 
-const validRoles = roleKeys.filter(role => roles.get(role).abstract === false);
-const invalidRoles = roleKeys.filter(role => roles.get(role).abstract === true);
+const validRoles = roleKeys.filter(
+  (role) => roles.get(role).abstract === false
+);
+const invalidRoles = roleKeys.filter(
+  (role) => roles.get(role).abstract === true
+);
 
-const createTests = roleNames =>
-  roleNames.map(role => ({
+const createTests = (roleNames) =>
+  roleNames.map((role) => ({
     code: `<div role="${role.toLowerCase()}" />`,
   }));
 
 const validTests = createTests(validRoles);
-const invalidTests = createTests(invalidRoles).map(test => {
+const invalidTests = createTests(invalidRoles).map((test) => {
   const invalidTest = { ...test };
   invalidTest.errors = [errorMessage];
   return invalidTest;
@@ -98,8 +102,8 @@ ruleTester.run('aria-role', rule, {
           settings: customDivSettings,
         },
         { code: '<svg role="graphics-document document" />' },
-        { code: '<svg role="img" />' },
-      ),
+        { code: '<svg role="img" />' }
+      )
     )
     .concat(validTests)
     .map(parserOptionsMapper),
@@ -148,8 +152,8 @@ ruleTester.run('aria-role', rule, {
           code: '<Box asChild="div" role="Button" />',
           settings: customDivSettings,
           errors: [errorMessage],
-        },
-      ),
+        }
+      )
     )
     .concat(invalidTests)
     .map(parserOptionsMapper),

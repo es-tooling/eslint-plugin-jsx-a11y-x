@@ -15,7 +15,7 @@ export default function mayContainChildComponent(
   root: Node,
   componentName: string,
   maxDepth: number = 1,
-  elementType: (node: JSXOpeningElement) => string = rawElementType,
+  elementType: (node: JSXOpeningElement) => string = rawElementType
 ): boolean {
   function traverseChildren(node: Node, depth: number): boolean {
     // Bail when maxDepth is exceeded.

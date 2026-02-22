@@ -40,7 +40,7 @@ module.exports = defineConfig([
       'import-x/resolver-next': createTypeScriptImportResolver(),
     },
   },
-  ...compat.config(ftFlow.configs.recommended).map(config => ({
+  ...compat.config(ftFlow.configs.recommended).map((config) => ({
     ...config,
     files: [
       'src/**/*.js',

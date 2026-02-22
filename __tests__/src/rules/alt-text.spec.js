@@ -18,12 +18,12 @@ import rule from '../../../src/rules/alt-text';
 
 const ruleTester = new RuleTester();
 
-const missingPropError = type => ({
+const missingPropError = (type) => ({
   message: `${type} elements must have an alt prop, either with meaningful text, or an empty string for decorative images.`,
   type: 'JSXOpeningElement',
 });
 
-const altValueError = type => ({
+const altValueError = (type) => ({
   message: `Invalid alt value for ${type}. \
 Use alt="" for presentational images.`,
   type: 'JSXOpeningElement',
@@ -197,8 +197,8 @@ ruleTester.run('alt-text', rule, {
         { code: '<InputImage aria-labelledby="id1" />', options: array },
         { code: '<InputImage alt="" />', options: array },
         { code: '<InputImage alt="This is descriptive!" />', options: array },
-        { code: '<InputImage alt={altText} />', options: array },
-      ),
+        { code: '<InputImage alt={altText} />', options: array }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -396,8 +396,8 @@ ruleTester.run('alt-text', rule, {
           code: '<Input type="image" />',
           errors: [inputImageError],
           settings: componentsSettings,
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

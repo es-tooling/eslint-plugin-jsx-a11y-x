@@ -37,18 +37,18 @@ const schema = generateObjSchema({
     roles
       .keys()
       .filter(
-        name =>
+        (name) =>
           !roles.get(name).abstract &&
           roles
             .get(name)
-            .superClass.some(klasses => klasses.includes('widget')),
-      ),
+            .superClass.some((klasses) => klasses.includes('widget'))
+      )
   ),
 });
 
 const interactiveProps = [].concat(
   eventHandlersByType.mouse,
-  eventHandlersByType.keyboard,
+  eventHandlersByType.keyboard
 );
 
 export default ({

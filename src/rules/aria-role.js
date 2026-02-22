@@ -31,7 +31,7 @@ const schema = generateObjSchema({
 });
 
 const validRoles = new Set(
-  roles.keys().filter(role => roles.get(role).abstract === false),
+  roles.keys().filter((role) => roles.get(role).abstract === false)
 );
 
 export default {
@@ -44,14 +44,14 @@ export default {
     schema: [schema],
   },
 
-  create: context => {
+  create: (context) => {
     const options = context.options[0] || {};
     const ignoreNonDOM = !!options.ignoreNonDOM;
     const allowedInvalidRoles = new Set(options.allowedInvalidRoles || []);
     const elementType = getElementType(context);
 
     return {
-      JSXAttribute: attribute => {
+      JSXAttribute: (attribute) => {
         // If ignoreNonDOM and the parent isn't DOM, don't run rule.
         if (ignoreNonDOM) {
           const type = elementType(attribute.parent);
@@ -78,7 +78,7 @@ export default {
 
         const values = String(value).split(' ');
         const isValid = values.every(
-          val => allowedInvalidRoles.has(val) || validRoles.has(val),
+          (val) => allowedInvalidRoles.has(val) || validRoles.has(val)
         );
 
         if (isValid === true) {

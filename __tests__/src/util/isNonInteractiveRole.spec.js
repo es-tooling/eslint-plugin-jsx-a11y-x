@@ -15,10 +15,10 @@ describe('isNonInteractiveRole', () => {
       const { attributes } = openingElement;
 
       expect(
-        isNonInteractiveRole(elementType(openingElement), attributes),
+        isNonInteractiveRole(elementType(openingElement), attributes)
       ).toBe(
         true,
-        `identifies \`${genElementSymbol(openingElement)}\` as a non-interactive role element`,
+        `identifies \`${genElementSymbol(openingElement)}\` as a non-interactive role element`
       );
     });
   });
@@ -30,10 +30,10 @@ describe('isNonInteractiveRole', () => {
       const { attributes } = openingElement;
 
       expect(
-        isNonInteractiveRole(elementType(openingElement), attributes),
+        isNonInteractiveRole(elementType(openingElement), attributes)
       ).toBe(
         false,
-        `does NOT identify \`${genElementSymbol(openingElement)}\` as a non-interactive role element`,
+        `does NOT identify \`${genElementSymbol(openingElement)}\` as a non-interactive role element`
       );
     });
   });

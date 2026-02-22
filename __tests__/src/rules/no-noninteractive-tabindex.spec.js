@@ -92,8 +92,8 @@ ruleTester.run(`${ruleName}:recommended`, rule, {
           code: '<div role={isButton ? BUTTON : LINK} onClick={() => {}} tabIndex="0"/>;',
           options: [{ allowExpressionValues: true }],
           errors: [expectedError],
-        },
-      ),
+        }
+      )
     )
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
@@ -129,8 +129,8 @@ ruleTester.run(`${ruleName}:strict`, rule, {
           code: '<div role={isButton ? "button" : "link"} onClick={() => {}} tabIndex="0" />;',
           options: [{ allowExpressionValues: false }],
           errors: [expectedError],
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

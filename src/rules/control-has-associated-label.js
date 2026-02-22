@@ -64,7 +64,7 @@ export default ({
     const rule = (node: JSXElement): void => {
       const tag = elementType(node.openingElement);
       const role = getLiteralPropValue(
-        getProp(node.openingElement.attributes, 'role'),
+        getProp(node.openingElement.attributes, 'role')
       );
       // Ignore interactive elements that might get their label from a source
       // that cannot be discerned from static analysis, like
@@ -96,14 +96,14 @@ export default ({
         // Prevent crazy recursion.
         const recursionDepth = Math.min(
           options.depth === undefined ? 2 : options.depth,
-          25,
+          25
         );
         hasAccessibleLabel = mayHaveAccessibleLabel(
           node,
           recursionDepth,
           labelAttributes,
           elementType,
-          controlComponents,
+          controlComponents
         );
       }
 

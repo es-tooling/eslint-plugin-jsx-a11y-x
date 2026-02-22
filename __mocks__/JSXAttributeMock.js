@@ -15,7 +15,7 @@ export type JSXAttributeMockType = {
 export default function JSXAttributeMock(
   prop: string,
   value: mixed,
-  isExpressionContainer?: boolean = false,
+  isExpressionContainer?: boolean = false
 ): JSXAttributeMockType {
   let astValue;
   if (value && value.type !== undefined) {

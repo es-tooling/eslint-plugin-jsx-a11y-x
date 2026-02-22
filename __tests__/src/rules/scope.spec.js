@@ -43,8 +43,8 @@ ruleTester.run('scope', rule, {
         { code: '<th scope={foo} />' },
         { code: '<th scope={"col"} {...props} />' },
         { code: '<Foo scope="bar" {...props} />' },
-        { code: '<TableHeader scope="row" />', settings: componentsSettings },
-      ),
+        { code: '<TableHeader scope="row" />', settings: componentsSettings }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -55,8 +55,8 @@ ruleTester.run('scope', rule, {
           code: '<Foo scope="bar" />',
           settings: componentsSettings,
           errors: [expectedError],
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

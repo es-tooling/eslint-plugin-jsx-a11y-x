@@ -41,7 +41,7 @@ test('parserOptionsMapper', () => {
       code: '<div />',
       errors: [],
       options: {},
-    }),
+    })
   ).toEqual(expectedResult);
 
   const expectedResult2 = usingLegacy
@@ -81,6 +81,6 @@ test('parserOptionsMapper', () => {
       languageOptions: {
         ecmaVersion: 5,
       },
-    }),
+    })
   ).toEqual(expectedResult2);
 });

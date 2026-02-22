@@ -40,7 +40,7 @@ export default ({
   },
 
   create: (context: ESLintContext) => ({
-    JSXOpeningElement: node => {
+    JSXOpeningElement: (node) => {
       const { name } = node.name;
 
       if (!dom.get(name)) {
@@ -57,7 +57,7 @@ export default ({
       const { attributes } = node;
 
       // Check hover in / onfocus pairing
-      const firstHoverInHandlerWithValue = hoverInHandlers.find(handler => {
+      const firstHoverInHandlerWithValue = hoverInHandlers.find((handler) => {
         const prop = getProp(attributes, handler);
         const propValue = getPropValue(prop);
         return propValue != null;
@@ -80,7 +80,7 @@ export default ({
       }
 
       // Check hover out / onblur pairing
-      const firstHoverOutHandlerWithValue = hoverOutHandlers.find(handler => {
+      const firstHoverOutHandlerWithValue = hoverOutHandlers.find((handler) => {
         const prop = getProp(attributes, handler);
         const propValue = getPropValue(prop);
         return propValue != null;

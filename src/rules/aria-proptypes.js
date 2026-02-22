@@ -50,20 +50,20 @@ const validityCheck = (value, expectedType, permittedValues) => {
     case 'token':
       return (
         permittedValues.indexOf(
-          typeof value === 'string' ? value.toLowerCase() : value,
+          typeof value === 'string' ? value.toLowerCase() : value
         ) > -1
       );
     case 'idlist':
       return (
         typeof value === 'string' &&
-        value.split(' ').every(token => validityCheck(token, 'id', []))
+        value.split(' ').every((token) => validityCheck(token, 'id', []))
       );
     case 'tokenlist':
       return (
         typeof value === 'string' &&
         value
           .split(' ')
-          .every(token => permittedValues.indexOf(token.toLowerCase()) > -1)
+          .every((token) => permittedValues.indexOf(token.toLowerCase()) > -1)
       );
     default:
       return false;
@@ -82,8 +82,8 @@ export default {
     schema: [schema],
   },
 
-  create: context => ({
-    JSXAttribute: attribute => {
+  create: (context) => ({
+    JSXAttribute: (attribute) => {
       const name = propName(attribute);
       const normalizedName = name.toLowerCase();
 

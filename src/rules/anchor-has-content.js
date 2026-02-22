@@ -27,10 +27,10 @@ export default {
     schema: [schema],
   },
 
-  create: context => {
+  create: (context) => {
     const elementType = getElementType(context);
     return {
-      JSXOpeningElement: node => {
+      JSXOpeningElement: (node) => {
         const options = context.options[0] || {};
         const componentOptions = options.components || [];
         const typeCheck = ['a'].concat(componentOptions);

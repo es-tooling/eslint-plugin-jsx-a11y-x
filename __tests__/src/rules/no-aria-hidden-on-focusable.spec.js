@@ -33,8 +33,8 @@ ruleTester.run('no-aria-hidden-on-focusable', rule, {
         { code: '<a aria-hidden="false" href="#" />' },
         { code: '<button aria-hidden="true" tabIndex="-1" />' },
         { code: '<button />' },
-        { code: '<a href="/" />' },
-      ),
+        { code: '<a href="/" />' }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -51,8 +51,8 @@ ruleTester.run('no-aria-hidden-on-focusable', rule, {
         {
           code: '<p tabindex="0" aria-hidden="true">text</p>;',
           errors: [expectedError],
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

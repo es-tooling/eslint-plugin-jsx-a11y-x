@@ -151,8 +151,8 @@ ruleTester.run('media-has-caption', rule, {
         {
           code: '<Box as="audio" muted={true}></Box>',
           settings: componentsSettings,
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -238,8 +238,8 @@ ruleTester.run('media-has-caption', rule, {
           code: '<Box as="audio"><Track kind="subtitles" /></Box>',
           settings: componentsSettings,
           errors: [expectedError],
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

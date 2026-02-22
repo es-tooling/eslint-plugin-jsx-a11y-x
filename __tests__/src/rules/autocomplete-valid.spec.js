@@ -91,8 +91,8 @@ ruleTester.run('autocomplete-valid', rule, {
           code: '<Foo type="month" autocomplete="tel"></Foo>;',
           errors: inappropriateAutocomplete,
           options: [{ inputComponents: ['Foo'] }],
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -124,8 +124,8 @@ ruleTester.run('autocomplete-valid', rule, {
           code: '<Input type="text" autocomplete="baz" />',
           errors: invalidAutocomplete,
           settings: componentsSettings,
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

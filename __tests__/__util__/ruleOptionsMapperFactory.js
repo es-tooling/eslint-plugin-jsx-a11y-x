@@ -9,11 +9,11 @@ type ESLintTestRunnerTestCase = {
 };
 
 type RuleOptionsMapperFactoryType = (
-  params: ESLintTestRunnerTestCase,
+  params: ESLintTestRunnerTestCase
 ) => ESLintTestRunnerTestCase;
 
 export default function ruleOptionsMapperFactory(
-  ruleOptions: Array<mixed> = [],
+  ruleOptions: Array<mixed> = []
 ): RuleOptionsMapperFactoryType {
   return ({
     code,
@@ -30,7 +30,7 @@ export default function ruleOptionsMapperFactory(
         Object.fromEntries(
           (options || [])
             .concat(ruleOptions)
-            .flatMap(item => Object.entries(item)),
+            .flatMap((item) => Object.entries(item))
         ),
       ],
       parserOptions,

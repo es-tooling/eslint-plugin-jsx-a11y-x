@@ -10,7 +10,7 @@ import getImplicitRole from './getImplicitRole';
  */
 export default function getComputedRole(
   tag: string,
-  attributes: Array<Node>,
+  attributes: Array<Node>
 ): ?string {
   return getExplicitRole(tag, attributes) || getImplicitRole(tag, attributes);
 }

@@ -3,15 +3,15 @@ import getImplicitRoleForMenuitem from '../../../../src/util/implicitRoles/menui
 
 test('isAbstractRole', () => {
   expect(
-    getImplicitRoleForMenuitem([JSXAttributeMock('type', 'command')]),
+    getImplicitRoleForMenuitem([JSXAttributeMock('type', 'command')])
   ).toBe('menuitem');
 
   expect(
-    getImplicitRoleForMenuitem([JSXAttributeMock('type', 'checkbox')]),
+    getImplicitRoleForMenuitem([JSXAttributeMock('type', 'checkbox')])
   ).toBe('menuitemcheckbox');
 
   expect(getImplicitRoleForMenuitem([JSXAttributeMock('type', 'radio')])).toBe(
-    'menuitemradio',
+    'menuitemradio'
   );
 
   expect(getImplicitRoleForMenuitem([JSXAttributeMock('type', '')])).toBe('');

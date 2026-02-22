@@ -7,11 +7,11 @@ import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
 const nonInteractiveRoles = rolesMap
   .keys()
   .filter(
-    name =>
+    (name) =>
       !rolesMap.get(name).abstract &&
       !rolesMap
         .get(name)
-        .superClass.some(klasses => klasses.includes('widget')),
+        .superClass.some((klasses) => klasses.includes('widget'))
   );
 
 /**
@@ -34,7 +34,7 @@ const nonInteractiveRoles = rolesMap
 
 const isNonInteractiveRole = (
   tagName: string,
-  attributes: Array<Node>,
+  attributes: Array<Node>
 ): boolean => {
   // Do not test higher level JSX components, as we do not know what
   // low-level DOM element this maps to.
@@ -47,7 +47,7 @@ const isNonInteractiveRole = (
   let isNonInteractive = false;
   const normalizedValues = String(role).toLowerCase().split(' ');
   const validRoles = normalizedValues.flatMap((name: string) =>
-    rolesMap.has(name) ? [name] : [],
+    rolesMap.has(name) ? [name] : []
   );
   if (validRoles.length > 0) {
     // The first role value is a series takes precedence.

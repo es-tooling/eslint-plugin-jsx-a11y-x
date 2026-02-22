@@ -4,57 +4,57 @@ import getImplicitRoleForInput from '../../../../src/util/implicitRoles/input';
 describe('isAbstractRole', () => {
   test('works for buttons', () => {
     expect(getImplicitRoleForInput([JSXAttributeMock('type', 'button')])).toBe(
-      'button',
+      'button'
     );
 
     expect(getImplicitRoleForInput([JSXAttributeMock('type', 'image')])).toBe(
-      'button',
+      'button'
     );
 
     expect(getImplicitRoleForInput([JSXAttributeMock('type', 'reset')])).toBe(
-      'button',
+      'button'
     );
 
     expect(getImplicitRoleForInput([JSXAttributeMock('type', 'submit')])).toBe(
-      'button',
+      'button'
     );
   });
 
   expect(getImplicitRoleForInput([JSXAttributeMock('type', 'checkbox')])).toBe(
-    'checkbox',
+    'checkbox'
   );
 
   expect(getImplicitRoleForInput([JSXAttributeMock('type', 'radio')])).toBe(
-    'radio',
+    'radio'
   );
 
   expect(getImplicitRoleForInput([JSXAttributeMock('type', 'range')])).toBe(
-    'slider',
+    'slider'
   );
 
   test('works for textboxes', () => {
     expect(getImplicitRoleForInput([JSXAttributeMock('type', 'email')])).toBe(
-      'textbox',
+      'textbox'
     );
     expect(
-      getImplicitRoleForInput([JSXAttributeMock('type', 'password')]),
+      getImplicitRoleForInput([JSXAttributeMock('type', 'password')])
     ).toBe('textbox');
     expect(getImplicitRoleForInput([JSXAttributeMock('type', 'search')])).toBe(
-      'textbox',
+      'textbox'
     );
     expect(getImplicitRoleForInput([JSXAttributeMock('type', 'tel')])).toBe(
-      'textbox',
+      'textbox'
     );
     expect(getImplicitRoleForInput([JSXAttributeMock('type', 'url')])).toBe(
-      'textbox',
+      'textbox'
     );
   });
 
   expect(getImplicitRoleForInput([JSXAttributeMock('type', '')])).toBe(
-    'textbox',
+    'textbox'
   );
 
   expect(getImplicitRoleForInput([JSXAttributeMock('type', true)])).toBe(
-    'textbox',
+    'textbox'
   );
 });

@@ -30,32 +30,32 @@ export default {
     schema: [schema],
   },
 
-  create: context => {
+  create: (context) => {
     const elementType = getElementType(context);
 
     const emojiRegexp = emojiRegex();
     return {
-      JSXOpeningElement: node => {
+      JSXOpeningElement: (node) => {
         const literalChildValue = node.parent.children.find(
-          child => child.type === 'Literal' || child.type === 'JSXText',
+          (child) => child.type === 'Literal' || child.type === 'JSXText'
         );
 
         if (literalChildValue && emojiRegexp.test(literalChildValue.value)) {
           const elementIsHidden = isHiddenFromScreenReader(
             elementType(node),
-            node.attributes,
+            node.attributes
           );
           if (elementIsHidden) {
             return; // emoji is decorative
           }
 
           const rolePropValue = getLiteralPropValue(
-            getProp(node.attributes, 'role'),
+            getProp(node.attributes, 'role')
           );
           const ariaLabelProp = getProp(node.attributes, 'aria-label');
           const arialLabelledByProp = getProp(
             node.attributes,
-            'aria-labelledby',
+            'aria-labelledby'
           );
           const hasLabel =
             ariaLabelProp !== undefined || arialLabelledByProp !== undefined;

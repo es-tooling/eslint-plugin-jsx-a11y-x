@@ -22,7 +22,7 @@ const { validityCheck } = rule;
 
 const ruleTester = new RuleTester();
 
-const errorMessage = name => {
+const errorMessage = (name) => {
   const { type, values: permittedValues } = aria.get(name.toLowerCase());
 
   switch (type) {
@@ -215,8 +215,8 @@ ruleTester.run('aria-proptypes', rule, {
         { code: '<div aria-labelledby={foo} />' },
         { code: '<div aria-labelledby={foo.bar} />' },
         { code: '<div aria-labelledby={null} />' },
-        { code: '<div aria-labelledby={undefined} />' },
-      ),
+        { code: '<div aria-labelledby={undefined} />' }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -382,8 +382,8 @@ ruleTester.run('aria-proptypes', rule, {
         {
           code: '<div aria-relevant="additions removalss " />',
           errors: [errorMessage('aria-relevant')],
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

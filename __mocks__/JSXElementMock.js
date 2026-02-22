@@ -18,7 +18,7 @@ export type JSXElementMockType = {
 export default function JSXElementMock(
   tagName: string,
   attributes: Array<JSXAttributeMockType> = [],
-  children?: Array<Node> = [],
+  children?: Array<Node> = []
 ): JSXElementMockType {
   return {
     type: 'JSXElement',

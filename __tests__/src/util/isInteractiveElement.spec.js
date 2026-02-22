@@ -19,11 +19,11 @@ describe('isInteractiveElement', () => {
       expect(
         isInteractiveElement(
           elementType(openingElement),
-          openingElement.attributes,
-        ),
+          openingElement.attributes
+        )
       ).toBe(
         true,
-        `identifies \`${genElementSymbol(openingElement)}\` as an interactive element`,
+        `identifies \`${genElementSymbol(openingElement)}\` as an interactive element`
       );
     });
   });
@@ -33,11 +33,11 @@ describe('isInteractiveElement', () => {
       expect(
         isInteractiveElement(
           elementType(openingElement),
-          openingElement.attributes,
-        ),
+          openingElement.attributes
+        )
       ).toBe(
         false,
-        `identifies \`${genElementSymbol(openingElement)}\` as an interactive element`,
+        `identifies \`${genElementSymbol(openingElement)}\` as an interactive element`
       );
     });
   });
@@ -47,11 +47,11 @@ describe('isInteractiveElement', () => {
       expect(
         isInteractiveElement(
           elementType(openingElement),
-          openingElement.attributes,
-        ),
+          openingElement.attributes
+        )
       ).toBe(
         false,
-        `identifies \`${genElementSymbol(openingElement)}\` as an interactive element`,
+        `identifies \`${genElementSymbol(openingElement)}\` as an interactive element`
       );
     });
   });
@@ -61,11 +61,11 @@ describe('isInteractiveElement', () => {
       expect(
         isInteractiveElement(
           elementType(openingElement),
-          openingElement.attributes,
-        ),
+          openingElement.attributes
+        )
       ).toBe(
         false,
-        `identifies \`${genElementSymbol(openingElement)}\` as an interactive element`,
+        `identifies \`${genElementSymbol(openingElement)}\` as an interactive element`
       );
     });
   });
@@ -75,11 +75,11 @@ describe('isInteractiveElement', () => {
       expect(
         isInteractiveElement(
           elementType(openingElement),
-          openingElement.attributes,
-        ),
+          openingElement.attributes
+        )
       ).toBe(
         false,
-        `identifies \`${genElementSymbol(openingElement)}\` as an interactive element`,
+        `identifies \`${genElementSymbol(openingElement)}\` as an interactive element`
       );
     });
   });

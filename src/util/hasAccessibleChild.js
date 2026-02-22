@@ -6,7 +6,7 @@ import isHiddenFromScreenReader from './isHiddenFromScreenReader';
 
 export default function hasAccessibleChild(
   node: JSXElement,
-  elementType: JSXOpeningElement => string,
+  elementType: (JSXOpeningElement) => string
 ): boolean {
   return (
     node.children.some((child: Node) => {
@@ -19,7 +19,7 @@ export default function hasAccessibleChild(
         case 'JSXElement':
           return !isHiddenFromScreenReader(
             elementType(child.openingElement),
-            child.openingElement.attributes,
+            child.openingElement.attributes
           );
         case 'JSXExpressionContainer':
           if (child.expression.type === 'Identifier') {

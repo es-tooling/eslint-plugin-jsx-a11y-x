@@ -72,21 +72,21 @@ export default ({
         // Create active aspect flag object. Failing checks will only report
         // if the related flag is set to true.
         const activeAspects = {};
-        allAspects.forEach(aspect => {
+        allAspects.forEach((aspect) => {
           activeAspects[aspect] = aspects.indexOf(aspect) !== -1;
         });
 
         const propOptions = options.specialLink || [];
         const propsToValidate = ['href'].concat(propOptions);
-        const values = propsToValidate.map(prop =>
-          getPropValue(getProp(node.attributes, prop)),
+        const values = propsToValidate.map((prop) =>
+          getPropValue(getProp(node.attributes, prop))
         );
         // Checks if any actual or custom href prop is provided.
-        const hasAnyHref = values.some(value => value != null);
+        const hasAnyHref = values.some((value) => value != null);
         // Need to check for spread operator as props can be spread onto the element
         // leading to an incorrect validation error.
         const hasSpreadOperator = attributes.some(
-          prop => prop.type === 'JSXSpreadAttribute',
+          (prop) => prop.type === 'JSXSpreadAttribute'
         );
         const onClick = getProp(attributes, 'onClick');
 
@@ -116,10 +116,10 @@ export default ({
 
         // Hrefs have been found, now check for validity.
         const invalidHrefValues = values.filter(
-          value =>
+          (value) =>
             value != null &&
             typeof value === 'string' &&
-            (!value.length || value === '#' || jsHrefRegexp.test(value)),
+            (!value.length || value === '#' || jsHrefRegexp.test(value))
         );
         if (invalidHrefValues.length !== 0) {
           // If an onClick is found it should be a button, otherwise it is an invalid link.

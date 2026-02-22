@@ -10,7 +10,7 @@
 import { generateObjSchema, enumArraySchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
 
-const errorMessage = element =>
+const errorMessage = (element) =>
   `Do not use <${element}> elements as they can create visual accessibility issues and are deprecated.`;
 
 const DEFAULT_ELEMENTS = ['marquee', 'blink'];
@@ -28,15 +28,15 @@ export default {
     schema: [schema],
   },
 
-  create: context => {
+  create: (context) => {
     const elementType = getElementType(context);
     return {
-      JSXOpeningElement: node => {
+      JSXOpeningElement: (node) => {
         const options = context.options[0] || {};
         const elementOptions = options.elements || DEFAULT_ELEMENTS;
         const type = elementType(node);
         const distractingElement = elementOptions.find(
-          element => type === element,
+          (element) => type === element
         );
 
         if (distractingElement) {

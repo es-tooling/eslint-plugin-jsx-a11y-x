@@ -18,7 +18,7 @@ import rule from '../../../src/rules/no-distracting-elements';
 
 const ruleTester = new RuleTester();
 
-const expectedError = element => ({
+const expectedError = (element) => ({
   message: `Do not use <${element}> elements as they can create visual accessibility issues and are deprecated.`,
   type: 'JSXOpeningElement',
 });
@@ -39,8 +39,8 @@ ruleTester.run('no-marquee', rule, {
         { code: '<Marquee />' },
         { code: '<div marquee />' },
         { code: '<Blink />' },
-        { code: '<div blink />' },
-      ),
+        { code: '<div blink />' }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -59,8 +59,8 @@ ruleTester.run('no-marquee', rule, {
           code: '<Blink />',
           settings: componentsSettings,
           errors: [expectedError('blink')],
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

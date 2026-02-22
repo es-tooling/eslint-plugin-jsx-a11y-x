@@ -72,8 +72,8 @@ ruleTester.run('heading-has-content', rule, {
         { code: '<h1 aria-hidden />' },
         // CUSTOM ELEMENT TESTS FOR COMPONENTS SETTINGS
         { code: '<Heading>Foo</Heading>', settings: componentsSettings },
-        { code: '<h1><CustomInput type="hidden" /></h1>' },
-      ),
+        { code: '<h1><CustomInput type="hidden" /></h1>' }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -108,8 +108,8 @@ ruleTester.run('heading-has-content', rule, {
           code: '<h1><CustomInput type="hidden" /></h1>',
           errors: [expectedError],
           settings: componentsSettings,
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

@@ -42,8 +42,8 @@ ruleTester.run('html-has-lang', rule, {
         {
           code: '<FooComponent title="Unique title" />',
           settings: componentsSettings,
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -63,8 +63,8 @@ ruleTester.run('html-has-lang', rule, {
           code: '<FooComponent />',
           errors: [expectedError],
           settings: componentsSettings,
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

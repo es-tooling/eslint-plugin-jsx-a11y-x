@@ -8,8 +8,8 @@ test('getAccessibleChildText', () => {
   expect(
     getAccessibleChildText(
       JSXElementMock('a', [JSXAttributeMock('aria-label', 'foo')]),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe('foo');
 
   expect(
@@ -17,24 +17,24 @@ test('getAccessibleChildText', () => {
       JSXElementMock(
         'a',
         [JSXAttributeMock('aria-label', 'foo')],
-        [{ type: 'JSXText', value: 'bar' }],
+        [{ type: 'JSXText', value: 'bar' }]
       ),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe('foo');
 
   expect(
     getAccessibleChildText(
       JSXElementMock('a', [JSXAttributeMock('aria-hidden', 'true')]),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe('');
 
   expect(
     getAccessibleChildText(
       JSXElementMock('a', [], [{ type: 'JSXText', value: 'bar' }]),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe('bar');
 
   expect(
@@ -47,10 +47,10 @@ test('getAccessibleChildText', () => {
             JSXAttributeMock('src', 'some/path'),
             JSXAttributeMock('alt', 'a sensible label'),
           ]),
-        ],
+        ]
       ),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe('a sensible label');
 
   expect(
@@ -58,31 +58,31 @@ test('getAccessibleChildText', () => {
       JSXElementMock(
         'a',
         [],
-        [JSXElementMock('span', [JSXAttributeMock('alt', 'a sensible label')])],
+        [JSXElementMock('span', [JSXAttributeMock('alt', 'a sensible label')])]
       ),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe('');
 
   expect(
     getAccessibleChildText(
       JSXElementMock('a', [], [{ type: 'Literal', value: 'bar' }]),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe('bar');
 
   expect(
     getAccessibleChildText(
       JSXElementMock('a', [], [{ type: 'Literal', value: ' bar   ' }]),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe('bar');
 
   expect(
     getAccessibleChildText(
       JSXElementMock('a', [], [{ type: 'Literal', value: 'foo         bar' }]),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe('foo bar');
 
   expect(
@@ -90,10 +90,10 @@ test('getAccessibleChildText', () => {
       JSXElementMock(
         'a',
         [],
-        [{ type: 'Literal', value: 'foo, bar. baz? foo; bar:' }],
+        [{ type: 'Literal', value: 'foo, bar. baz? foo; bar:' }]
       ),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe('foo bar baz foo bar');
 
   expect(
@@ -101,10 +101,10 @@ test('getAccessibleChildText', () => {
       JSXElementMock(
         'a',
         [],
-        [JSXElementMock('span', [], [{ type: 'Literal', value: 'bar' }])],
+        [JSXElementMock('span', [], [{ type: 'Literal', value: 'bar' }])]
       ),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe('bar');
 
   expect(
@@ -116,12 +116,12 @@ test('getAccessibleChildText', () => {
           JSXElementMock(
             'span',
             [],
-            [JSXElementMock('span', [JSXAttributeMock('aria-hidden', 'true')])],
+            [JSXElementMock('span', [JSXAttributeMock('aria-hidden', 'true')])]
           ),
-        ],
+        ]
       ),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe('');
 
   expect(
@@ -132,10 +132,10 @@ test('getAccessibleChildText', () => {
         [
           { type: 'Literal', value: 'foo' },
           { type: 'Literal', value: 'bar' },
-        ],
+        ]
       ),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe('foo bar');
 
   expect(
@@ -146,10 +146,10 @@ test('getAccessibleChildText', () => {
         [
           { type: 'Literal', value: ' foo ' },
           { type: 'Literal', value: ' bar ' },
-        ],
+        ]
       ),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe('foo bar');
 
   expect(
@@ -161,9 +161,9 @@ test('getAccessibleChildText', () => {
           { type: 'Literal', value: 'foo' },
           { type: 'Unknown' },
           { type: 'Literal', value: 'bar' },
-        ],
+        ]
       ),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe('foo bar');
 });

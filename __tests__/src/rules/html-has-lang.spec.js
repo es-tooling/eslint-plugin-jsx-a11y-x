@@ -37,8 +37,8 @@ ruleTester.run('html-has-lang', rule, {
           code: '<HTMLTop lang="en" />',
           errors: [expectedError],
           settings: { 'jsx-a11y-x': { components: { HTMLTop: 'html' } } },
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -51,8 +51,8 @@ ruleTester.run('html-has-lang', rule, {
           code: '<HTMLTop />',
           errors: [expectedError],
           settings: { 'jsx-a11y-x': { components: { HTMLTop: 'html' } } },
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

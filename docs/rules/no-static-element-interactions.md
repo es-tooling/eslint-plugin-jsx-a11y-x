@@ -88,15 +88,9 @@ Adjust the list of handler prop names in the handlers array to increase or decre
 The `allowExpressionValues` option determines whether the `role` attribute is allowed to be assigned using an expression. For example, the following would pass in recommended mode if `allowExpressionValues` is set to be `true`:
 
 ```jsx
-<div
-  role={ROLE_BUTTON}
-  onClick={() => {}}
-/>;
+<div role={ROLE_BUTTON} onClick={() => {}} />;
 // In case of a conditional expression, there should be literals on both sides of ternary operator
-<div
-  role={isButton ? 'button' : 'link'}
-  onClick={() => {}}
-/>;
+<div role={isButton ? 'button' : 'link'} onClick={() => {}} />;
 ```
 
 ### Succeed

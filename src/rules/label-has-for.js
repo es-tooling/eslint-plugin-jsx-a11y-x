@@ -89,11 +89,11 @@ function getValidityStatus(
   required,
   allowChildren,
   elementType,
-  context,
+  context
 ) {
   if (Array.isArray(required.some)) {
-    const isValid = required.some.some(rule =>
-      validate(node, rule, allowChildren, elementType, context),
+    const isValid = required.some.some((rule) =>
+      validate(node, rule, allowChildren, elementType, context)
     );
     const message = !isValid
       ? `Form label must have ANY of the following types of associated control: ${required.some.join(', ')}`
@@ -101,8 +101,8 @@ function getValidityStatus(
     return { isValid, message };
   }
   if (Array.isArray(required.every)) {
-    const isValid = required.every.every(rule =>
-      validate(node, rule, allowChildren, elementType, context),
+    const isValid = required.every.every((rule) =>
+      validate(node, rule, allowChildren, elementType, context)
     );
     const message = !isValid
       ? `Form label must have ALL of the following types of associated control: ${required.every.join(', ')}`
@@ -128,7 +128,7 @@ export default {
     schema: [schema],
   },
 
-  create: context => {
+  create: (context) => {
     const elementType = getElementType(context);
     return {
       JSXOpeningElement(node) {
@@ -150,7 +150,7 @@ export default {
           required,
           allowChildren,
           elementType,
-          context,
+          context
         );
         if (!isValid) {
           context.report({

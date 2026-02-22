@@ -9,7 +9,7 @@ import implicitRoles from './implicitRoles';
  */
 export default function getImplicitRole(
   type: string,
-  attributes: Array<Node>,
+  attributes: Array<Node>
 ): ?string {
   let implicitRole;
   if (implicitRoles[type]) {

@@ -49,8 +49,8 @@ ruleTester.run('lang', rule, {
         { code: '<HTML lang="foo" />' },
         { code: '<Foo lang={undefined} />' },
         { code: '<Foo lang="en" />', settings: componentsSettings },
-        { code: '<Box as="html" lang="en"  />', settings: componentsSettings },
-      ),
+        { code: '<Box as="html" lang="en"  />', settings: componentsSettings }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -68,8 +68,8 @@ ruleTester.run('lang', rule, {
           code: '<Box as="html" lang="foo" />',
           settings: componentsSettings,
           errors: [expectedError],
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

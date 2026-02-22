@@ -7,12 +7,12 @@ import plugin from '../src';
 
 const rules = fs
   .readdirSync(path.resolve(__dirname, '../src/rules/'))
-  .map(f => path.basename(f, '.js'));
+  .map((f) => path.basename(f, '.js'));
 
 test('all rule files should be exported by the plugin', () => {
-  rules.forEach(ruleName => {
+  rules.forEach((ruleName) => {
     expect(plugin.rules[ruleName]).toBe(
-      require(path.join('../src/rules', ruleName)),
+      require(path.join('../src/rules', ruleName))
     );
   });
 });
@@ -22,7 +22,7 @@ test('configurations', () => {
 });
 
 test('schemas', () => {
-  rules.forEach(ruleName => {
+  rules.forEach((ruleName) => {
     const rule = require(path.join('../src/rules', ruleName));
     const schema = rule.meta && rule.meta.schema && rule.meta.schema[0];
     const { type } = schema;

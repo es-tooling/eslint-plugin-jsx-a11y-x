@@ -15,35 +15,35 @@ test('isNonLiteralProperty', () => {
   expect(
     isNonLiteralProperty(
       [JSXAttributeMock(theProp, LiteralMock('theRole'))],
-      theProp,
-    ),
+      theProp
+    )
   ).toBe(false);
 
   expect(
     isNonLiteralProperty(
       [spread, JSXAttributeMock(theProp, LiteralMock('theRole'))],
-      theProp,
-    ),
+      theProp
+    )
   ).toBe(false);
 
   expect(
     isNonLiteralProperty(
       [JSXAttributeMock(theProp, JSXTextMock('theRole'))],
-      theProp,
-    ),
+      theProp
+    )
   ).toBe(false);
 
   expect(
     isNonLiteralProperty(
       [JSXAttributeMock(theProp, IdentifierMock('undefined'))],
-      theProp,
-    ),
+      theProp
+    )
   ).toBe(false);
 
   expect(
     isNonLiteralProperty(
       [JSXAttributeMock(theProp, IdentifierMock('theIdentifier'))],
-      theProp,
-    ),
+      theProp
+    )
   ).toBe(true);
 });

@@ -90,8 +90,8 @@ ruleTester.run('img-redundant-alt', rule, {
         { code: '<img alt="ImageMagick" />;' },
         { code: '<Image alt="Photo of a friend" />' },
         { code: '<Image alt="Foo" />', settings: componentsSettings },
-        { code: '<img alt="画像" />', options: [{ words: ['イメージ'] }] },
-      ),
+        { code: '<img alt="画像" />', options: [{ words: ['イメージ'] }] }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -189,8 +189,8 @@ ruleTester.run('img-redundant-alt', rule, {
           code: '<img alt="イメージです" />',
           options: [{ words: ['イメージ'] }],
           errors: [expectedError],
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

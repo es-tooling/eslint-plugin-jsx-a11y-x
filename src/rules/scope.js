@@ -25,10 +25,10 @@ export default {
     schema: [schema],
   },
 
-  create: context => {
+  create: (context) => {
     const elementType = getElementType(context);
     return {
-      JSXAttribute: node => {
+      JSXAttribute: (node) => {
         const name = propName(node);
         if (name && name.toUpperCase() !== 'SCOPE') {
           return;

@@ -16,10 +16,7 @@ For images that are being used as icons for a button or control, the `alt` prop 
 
 ```jsx
 <button>
-  <img
-    src="icon.png"
-    alt=""
-  />
+  <img src="icon.png" alt="" />
   Save
 </button>
 ```
@@ -100,12 +97,7 @@ function Foo(props) {
 
 ```jsx
 function Foo({ alt, ...props }) {
-  return (
-    <img
-      alt={alt}
-      {...props}
-    />
-  );
+  return <img alt={alt} {...props} />;
 }
 
 // OR
@@ -117,12 +109,7 @@ function Foo(props) {
     ...otherProps
   } = props;
 
-  return (
-    <img
-      alt={alt}
-      {...otherProps}
-    />
-  );
+  return <img alt={alt} {...otherProps} />;
 }
 ```
 

@@ -38,7 +38,7 @@ const errorMessage =
 const defaultInteractiveProps = [].concat(
   eventHandlersByType.focus,
   eventHandlersByType.keyboard,
-  eventHandlersByType.mouse,
+  eventHandlersByType.mouse
 );
 const schema = generateObjSchema({
   handlers: arraySchema,
@@ -66,9 +66,9 @@ export default ({
           options[0] || {};
 
         const hasInteractiveProps = handlers.some(
-          prop =>
+          (prop) =>
             hasProp(attributes, prop) &&
-            getPropValue(getProp(attributes, prop)) != null,
+            getPropValue(getProp(attributes, prop)) != null
         );
 
         if (!dom.has(type)) {

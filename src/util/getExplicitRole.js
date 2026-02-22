@@ -10,7 +10,7 @@ import type { Node } from 'ast-types-flow';
  */
 export default function getExplicitRole(
   tag: string,
-  attributes: Array<Node>,
+  attributes: Array<Node>
 ): ?string {
   const explicitRole = (function toLowerCase(role) {
     if (typeof role === 'string') {

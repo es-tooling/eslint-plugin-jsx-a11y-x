@@ -69,7 +69,6 @@ The `required` option (defaults to `"required": { "every": ["nesting", "id"] }`)
 
 - string: must be one of the acceptable strings (`"nesting"` or `"id"`)
 - object, must have one of the following properties:
-
   - some: an array of acceptable strings, will pass if ANY of the requested checks passed
   - every: an array of acceptable strings, will pass if ALL of the requested checks passed
 
@@ -95,12 +94,7 @@ function Foo(props) {
 
 ```jsx
 function Foo({ htmlFor, ...props }) {
-  return (
-    <label
-      htmlFor={htmlFor}
-      {...props}
-    />
-  );
+  return <label htmlFor={htmlFor} {...props} />;
 }
 
 // OR
@@ -108,12 +102,7 @@ function Foo({ htmlFor, ...props }) {
 function Foo(props) {
   const { htmlFor, ...otherProps } = props;
 
-  return (
-    <label
-      htmlFor={htmlFor}
-      {...otherProps}
-    />
-  );
+  return <label htmlFor={htmlFor} {...otherProps} />;
 }
 ```
 
@@ -121,10 +110,7 @@ function Foo(props) {
 
 ```jsx
 <label htmlFor="firstName">
-  <input
-    type="text"
-    id="firstName"
-  />
+  <input type="text" id="firstName" />
   First Name
 </label>
 ```

@@ -7,7 +7,7 @@ import JSXExpressionContainerMock from '../../../__mocks__/JSXExpressionContaine
 
 test('hasAccessibleChild', () => {
   expect(hasAccessibleChild(JSXElementMock('div', []), elementType)).toBe(
-    false,
+    false
   );
 
   expect(
@@ -15,10 +15,10 @@ test('hasAccessibleChild', () => {
       JSXElementMock(
         'div',
         [JSXAttributeMock('dangerouslySetInnerHTML', true)],
-        [],
+        []
       ),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe(true);
 
   expect(
@@ -31,17 +31,17 @@ test('hasAccessibleChild', () => {
             type: 'Literal',
             value: 'foo',
           },
-        ],
+        ]
       ),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe(true);
 
   expect(
     hasAccessibleChild(
       JSXElementMock('div', [], [JSXElementMock('div', [])]),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe(true);
 
   expect(
@@ -54,10 +54,10 @@ test('hasAccessibleChild', () => {
             type: 'JSXText',
             value: 'foo',
           },
-        ],
+        ]
       ),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe(true);
 
   expect(
@@ -65,10 +65,10 @@ test('hasAccessibleChild', () => {
       JSXElementMock(
         'div',
         [],
-        [JSXElementMock('div', [JSXAttributeMock('aria-hidden', true)])],
+        [JSXElementMock('div', [JSXAttributeMock('aria-hidden', true)])]
       ),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe(false);
 
   expect(
@@ -81,10 +81,10 @@ test('hasAccessibleChild', () => {
             type: 'Identifier',
             name: 'foo',
           }),
-        ],
+        ]
       ),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe(true);
 
   expect(
@@ -97,10 +97,10 @@ test('hasAccessibleChild', () => {
             type: 'Identifier',
             name: 'undefined',
           }),
-        ],
+        ]
       ),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe(false);
 
   expect(
@@ -112,17 +112,17 @@ test('hasAccessibleChild', () => {
           {
             type: 'Unknown',
           },
-        ],
+        ]
       ),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe(false);
 
   expect(
     hasAccessibleChild(
       JSXElementMock('div', [JSXAttributeMock('children', true)], []),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe(true);
 
   expect(
@@ -130,10 +130,10 @@ test('hasAccessibleChild', () => {
       JSXElementMock(
         'div',
         [],
-        [JSXElementMock('input', [JSXAttributeMock('type', 'hidden')])],
+        [JSXElementMock('input', [JSXAttributeMock('type', 'hidden')])]
       ),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe(false);
 
   expect(
@@ -141,10 +141,10 @@ test('hasAccessibleChild', () => {
       JSXElementMock(
         'div',
         [],
-        [JSXElementMock('CustomInput', [JSXAttributeMock('type', 'hidden')])],
+        [JSXElementMock('CustomInput', [JSXAttributeMock('type', 'hidden')])]
       ),
-      elementType,
-    ),
+      elementType
+    )
   ).toBe(true);
 
   expect(
@@ -152,9 +152,9 @@ test('hasAccessibleChild', () => {
       JSXElementMock(
         'div',
         [],
-        [JSXElementMock('CustomInput', [JSXAttributeMock('type', 'hidden')])],
+        [JSXElementMock('CustomInput', [JSXAttributeMock('type', 'hidden')])]
       ),
-      () => 'input',
-    ),
+      () => 'input'
+    )
   ).toBe(false);
 });

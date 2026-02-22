@@ -21,7 +21,7 @@ import getSuggestion from '../../../src/util/getSuggestion';
 const ruleTester = new RuleTester();
 const ariaAttributes = aria.keys();
 
-const errorMessage = name => {
+const errorMessage = (name) => {
   const suggestions = getSuggestion(name, ariaAttributes);
   const message = `${name}: This attribute is an invalid ARIA attribute.`;
 
@@ -39,7 +39,7 @@ const errorMessage = name => {
 };
 
 // Create basic test cases using all valid role types.
-const basicValidityTests = ariaAttributes.map(prop => ({
+const basicValidityTests = ariaAttributes.map((prop) => ({
   code: `<div ${prop.toLowerCase()}="foobar" />`,
 }));
 
@@ -55,8 +55,8 @@ ruleTester.run('aria-props', rule, {
         { code: '<div fooaria-foobar="true"></div>' },
         { code: '<div fooaria-hidden="true"></div>' },
         { code: '<Bar baz />' },
-        { code: '<input type="text" aria-errormessage="foobar" />' },
-      ),
+        { code: '<input type="text" aria-errormessage="foobar" />' }
+      )
     )
     .concat(basicValidityTests)
     .map(parserOptionsMapper),
@@ -71,8 +71,8 @@ ruleTester.run('aria-props', rule, {
         {
           code: '<div aria-skldjfaria-klajsd="foobar" />',
           errors: [errorMessage('aria-skldjfaria-klajsd')],
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

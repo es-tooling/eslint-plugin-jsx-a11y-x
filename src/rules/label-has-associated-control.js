@@ -84,8 +84,8 @@ export default ({
     const elementType = getElementType(context);
 
     const rule = (node: JSXElement) => {
-      const isLabelComponent = labelComponentNames.some(name =>
-        minimatch(elementType(node.openingElement), name),
+      const isLabelComponent = labelComponentNames.some((name) =>
+        minimatch(elementType(node.openingElement), name)
       );
       if (!isLabelComponent) {
         return;
@@ -98,24 +98,24 @@ export default ({
         'progress',
         'select',
         'textarea',
-        options.controlComponents || [],
+        options.controlComponents || []
       );
       // Prevent crazy recursion.
       const recursionDepth = Math.min(
         options.depth === undefined ? 2 : options.depth,
-        25,
+        25
       );
       const hasHtmlFor = validateHtmlFor(node.openingElement, context);
       // Check for multiple control components.
-      const hasNestedControl = controlComponents.some(name =>
-        mayContainChildComponent(node, name, recursionDepth, elementType),
+      const hasNestedControl = controlComponents.some((name) =>
+        mayContainChildComponent(node, name, recursionDepth, elementType)
       );
       const hasAccessibleLabel = mayHaveAccessibleLabel(
         node,
         recursionDepth,
         options.labelAttributes,
         elementType,
-        controlComponents,
+        controlComponents
       );
 
       // Bail out immediately if we don't have an accessible label.

@@ -8,23 +8,23 @@ describe('getElementType', () => {
 
     expect(elementType(JSXElementMock('input').openingElement)).toBe(
       'input',
-      'returns the exact tag name for a DOM element',
+      'returns the exact tag name for a DOM element'
     );
 
     expect(elementType(JSXElementMock('CustomInput').openingElement)).toBe(
       'CustomInput',
-      'returns the exact tag name for a custom element',
+      'returns the exact tag name for a custom element'
     );
 
     expect(elementType(JSXElementMock('toString').openingElement)).toBe(
       'toString',
-      'returns the exact tag name for names that are in Object.prototype',
+      'returns the exact tag name for names that are in Object.prototype'
     );
 
     expect(
       elementType(
-        JSXElementMock('span', [JSXAttributeMock('as', 'h1')]).openingElement,
-      ),
+        JSXElementMock('span', [JSXAttributeMock('as', 'h1')]).openingElement
+      )
     ).toBe('span', 'returns the default tag name provided');
   });
 
@@ -41,26 +41,26 @@ describe('getElementType', () => {
 
     expect(elementType(JSXElementMock('input').openingElement)).toBe(
       'input',
-      'returns the exact tag name for a DOM element',
+      'returns the exact tag name for a DOM element'
     );
 
     expect(elementType(JSXElementMock('CustomInput').openingElement)).toBe(
       'input',
-      'returns the mapped tag name for a custom element',
+      'returns the mapped tag name for a custom element'
     );
 
     expect(elementType(JSXElementMock('CityInput').openingElement)).toBe(
       'CityInput',
-      'returns the exact tag name for a custom element not in the components map',
+      'returns the exact tag name for a custom element not in the components map'
     );
 
     expect(
       elementType(
-        JSXElementMock('span', [JSXAttributeMock('as', 'h1')]).openingElement,
-      ),
+        JSXElementMock('span', [JSXAttributeMock('as', 'h1')]).openingElement
+      )
     ).toBe(
       'span',
-      'return the default tag name since not polymorphicPropName was provided',
+      'return the default tag name since not polymorphicPropName was provided'
     );
   });
 
@@ -79,31 +79,31 @@ describe('getElementType', () => {
     expect(
       elementType(
         JSXElementMock('span', [JSXAttributeMock('asChild', 'h1')])
-          .openingElement,
-      ),
+          .openingElement
+      )
     ).toBe(
       'h1',
-      'returns the tag name provided by the polymorphic prop, "asChild", defined in the settings',
+      'returns the tag name provided by the polymorphic prop, "asChild", defined in the settings'
     );
 
     expect(
       elementType(
         JSXElementMock('CustomButton', [JSXAttributeMock('asChild', 'a')])
-          .openingElement,
-      ),
+          .openingElement
+      )
     ).toBe(
       'a',
-      'returns the tag name provided by the polymorphic prop, "asChild", defined in the settings instead of the component mapping tag',
+      'returns the tag name provided by the polymorphic prop, "asChild", defined in the settings instead of the component mapping tag'
     );
 
     expect(
       elementType(
         JSXElementMock('CustomButton', [JSXAttributeMock('as', 'a')])
-          .openingElement,
-      ),
+          .openingElement
+      )
     ).toBe(
       'button',
-      'returns the tag name provided by the componnet mapping if the polymorphic prop, "asChild", defined in the settings is not set',
+      'returns the tag name provided by the componnet mapping if the polymorphic prop, "asChild", defined in the settings is not set'
     );
   });
 
@@ -124,40 +124,40 @@ describe('getElementType', () => {
     expect(
       elementType(
         JSXElementMock('Spinner', [JSXAttributeMock('asChild', 'img')])
-          .openingElement,
-      ),
+          .openingElement
+      )
     ).toBe(
       'Spinner',
-      'does not use the polymorphic prop if polymorphicAllowList is defined, but element is not part of polymorphicAllowList',
+      'does not use the polymorphic prop if polymorphicAllowList is defined, but element is not part of polymorphicAllowList'
     );
 
     expect(
       elementType(
         JSXElementMock('Icon', [JSXAttributeMock('asChild', 'img')])
-          .openingElement,
-      ),
+          .openingElement
+      )
     ).toBe(
       'img',
-      'uses the polymorphic prop if it is in explicitly defined polymorphicAllowList',
+      'uses the polymorphic prop if it is in explicitly defined polymorphicAllowList'
     );
 
     expect(
       elementType(
         JSXElementMock('Box', [JSXAttributeMock('asChild', 'span')])
-          .openingElement,
-      ),
+          .openingElement
+      )
     ).toBe(
       'span',
-      'returns the tag name provided by the polymorphic prop, "asChild", defined in the settings instead of the component mapping tag',
+      'returns the tag name provided by the polymorphic prop, "asChild", defined in the settings instead of the component mapping tag'
     );
 
     expect(
       elementType(
-        JSXElementMock('Box', [JSXAttributeMock('as', 'a')]).openingElement,
-      ),
+        JSXElementMock('Box', [JSXAttributeMock('as', 'a')]).openingElement
+      )
     ).toBe(
       'div',
-      'returns the tag name provided by the component mapping if the polymorphic prop, "asChild", defined in the settings is not set',
+      'returns the tag name provided by the component mapping if the polymorphic prop, "asChild", defined in the settings is not set'
     );
   });
 });

@@ -30,8 +30,8 @@ ruleTester.run('no-access-key', rule, {
       [].concat(
         { code: '<div />;' },
         { code: '<div {...props} />' },
-        { code: '<div accessKey={undefined} />' },
-      ),
+        { code: '<div accessKey={undefined} />' }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -56,8 +56,8 @@ ruleTester.run('no-access-key', rule, {
         {
           code: '<div accessKey={`${undefined}${undefined}`} />',
           errors: [expectedError],
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

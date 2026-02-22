@@ -55,8 +55,8 @@ ruleTester.run('no-autofocus', rule, {
           code: '<Button />',
           options: ignoreNonDOMSchema,
           settings: componentsSettings,
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -78,8 +78,8 @@ ruleTester.run('no-autofocus', rule, {
           errors: [expectedError],
           options: ignoreNonDOMSchema,
           settings: componentsSettings,
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

@@ -18,11 +18,11 @@ describe('isNonInteractiveElement', () => {
       expect(
         isNonInteractiveElement(
           elementType(openingElement),
-          openingElement.attributes,
-        ),
+          openingElement.attributes
+        )
       ).toBe(
         true,
-        `identifies \`${genElementSymbol(openingElement)}\` as a non-interactive element`,
+        `identifies \`${genElementSymbol(openingElement)}\` as a non-interactive element`
       );
     });
   });
@@ -32,11 +32,11 @@ describe('isNonInteractiveElement', () => {
       expect(
         isNonInteractiveElement(
           elementType(openingElement),
-          openingElement.attributes,
-        ),
+          openingElement.attributes
+        )
       ).toBe(
         false,
-        `identifies \`${genElementSymbol(openingElement)}\` as a non-interactive element`,
+        `identifies \`${genElementSymbol(openingElement)}\` as a non-interactive element`
       );
     });
   });
@@ -46,11 +46,11 @@ describe('isNonInteractiveElement', () => {
       expect(
         isNonInteractiveElement(
           elementType(openingElement),
-          openingElement.attributes,
-        ),
+          openingElement.attributes
+        )
       ).toBe(
         false,
-        `identifies \`${genElementSymbol(openingElement)}\` as a non-interactive element`,
+        `identifies \`${genElementSymbol(openingElement)}\` as a non-interactive element`
       );
     });
   });
@@ -60,11 +60,11 @@ describe('isNonInteractiveElement', () => {
       expect(
         isNonInteractiveElement(
           elementType(openingElement),
-          openingElement.attributes,
-        ),
+          openingElement.attributes
+        )
       ).toBe(
         false,
-        `identifies \`${genElementSymbol(openingElement)}\` as a non-interactive element`,
+        `identifies \`${genElementSymbol(openingElement)}\` as a non-interactive element`
       );
     });
   });
@@ -74,11 +74,11 @@ describe('isNonInteractiveElement', () => {
       expect(
         isNonInteractiveElement(
           elementType(openingElement),
-          openingElement.attributes,
-        ),
+          openingElement.attributes
+        )
       ).toBe(
         false,
-        `identifies \`${genElementSymbol(openingElement)}\` as a non-interactive element`,
+        `identifies \`${genElementSymbol(openingElement)}\` as a non-interactive element`
       );
     });
   });

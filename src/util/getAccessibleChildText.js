@@ -34,17 +34,17 @@ function standardizeSpaceAndCase(input: string): string {
  */
 export default function getAccessibleChildText(
   node: JSXElement,
-  elementType: JSXOpeningElement => string,
+  elementType: (JSXOpeningElement) => string
 ): string {
   const ariaLabel = getLiteralPropValue(
-    getProp(node.openingElement.attributes, 'aria-label'),
+    getProp(node.openingElement.attributes, 'aria-label')
   );
   // early escape-hatch when aria-label is applied
   if (ariaLabel) return standardizeSpaceAndCase(ariaLabel);
 
   // early-return if alt prop exists and is an image
   const altTag = getLiteralPropValue(
-    getProp(node.openingElement.attributes, 'alt'),
+    getProp(node.openingElement.attributes, 'alt')
   );
   if (elementType(node.openingElement) === 'img' && altTag)
     return standardizeSpaceAndCase(altTag);
@@ -53,7 +53,7 @@ export default function getAccessibleChildText(
   if (
     isHiddenFromScreenReader(
       elementType(node.openingElement),
-      node.openingElement.attributes,
+      node.openingElement.attributes
     )
   ) {
     return '';

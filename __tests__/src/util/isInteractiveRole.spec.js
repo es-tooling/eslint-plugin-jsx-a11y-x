@@ -16,7 +16,7 @@ describe('isInteractiveRole', () => {
 
       expect(isInteractiveRole(elementType(openingElement), attributes)).toBe(
         false,
-        `does NOT identify \`${genElementSymbol(openingElement)}\` as an interactive role element`,
+        `does NOT identify \`${genElementSymbol(openingElement)}\` as an interactive role element`
       );
     });
   });
@@ -29,7 +29,7 @@ describe('isInteractiveRole', () => {
 
       expect(isInteractiveRole(elementType(openingElement), attributes)).toBe(
         true,
-        `identifies \`${genElementSymbol(openingElement)}\` as an interactive role element`,
+        `identifies \`${genElementSymbol(openingElement)}\` as an interactive role element`
       );
     });
   });

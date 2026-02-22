@@ -6,7 +6,7 @@ import { getLiteralPropValue, getProp, propName } from 'jsx-ast-utils-x';
 
 const isSemanticRoleElement = (
   elementType: string,
-  attributes: Array<JSXAttribute>,
+  attributes: Array<JSXAttribute>
 ): boolean => {
   const roleAttr = getProp(attributes, 'role');
   let res = false;
@@ -17,8 +17,8 @@ const isSemanticRoleElement = (
     }
     if (
       concept.name === elementType &&
-      (concept.attributes || []).every(cAttr =>
-        attributes.some(attr => {
+      (concept.attributes || []).every((cAttr) =>
+        attributes.some((attr) => {
           if (!attr.type || attr.type !== 'JSXAttribute') {
             return false;
           }
@@ -31,16 +31,16 @@ const isSemanticRoleElement = (
             return false;
           }
           return namesMatch && valuesMatch !== undefined ? valuesMatch : true;
-        }),
+        })
       )
     ) {
-      axObjects.forEach(name => {
+      axObjects.forEach((name) => {
         if (res) {
           return;
         }
         const roles = AXObjectRoles.get(name);
         if (roles) {
-          roles.forEach(role => {
+          roles.forEach((role) => {
             if (res === true) {
               return;
             }

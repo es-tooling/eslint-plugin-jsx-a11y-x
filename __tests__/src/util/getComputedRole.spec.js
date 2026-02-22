@@ -3,15 +3,15 @@ import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
 
 test('getComputedRole', () => {
   expect(getComputedRole('div', [JSXAttributeMock('role', 'button')])).toBe(
-    'button',
+    'button'
   );
 
   expect(getComputedRole('li', [JSXAttributeMock('role', 'beeswax')])).toBe(
-    'listitem',
+    'listitem'
   );
 
   expect(getComputedRole('div', [JSXAttributeMock('role', 'beeswax')])).toBe(
-    null,
+    null
   );
 
   expect(getComputedRole('li', [])).toBe('listitem');
@@ -19,7 +19,7 @@ test('getComputedRole', () => {
   expect(getComputedRole('div', [])).toBe(null);
 
   expect(getComputedRole('li', [JSXAttributeMock('role', 'beeswax')])).toBe(
-    'listitem',
+    'listitem'
   );
 
   expect(getComputedRole('div', [])).toBe(null);

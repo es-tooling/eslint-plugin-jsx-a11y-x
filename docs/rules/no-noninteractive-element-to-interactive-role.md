@@ -18,11 +18,7 @@ Put the control inside the non-interactive container element.
 
 ```jsx
 <li>
-  <div
-    role="button"
-    onClick={() => {}}
-    onKeyPress={() => {}}
-  >
+  <div role="button" onClick={() => {}} onKeyPress={() => {}}>
     Save
   </div>
 </li>
@@ -31,16 +27,8 @@ Put the control inside the non-interactive container element.
 Or wrap the content inside your interactive element.
 
 ```jsx
-<div
-  role="button"
-  onClick={() => {}}
-  onKeyPress={() => {}}
-  tabIndex="0"
->
-  <img
-    src="some/file.png"
-    alt="Save"
-  />
+<div role="button" onClick={() => {}} onKeyPress={() => {}} tabIndex="0">
+  <img src="some/file.png" alt="Save" />
 </div>
 ```
 

@@ -9,18 +9,18 @@ const THRESHOLD = 2;
  */
 export default function getSuggestion(word, dictionary = [], limit = 2) {
   const distances = Object.fromEntries(
-    dictionary.map(dictionaryWord => {
+    dictionary.map((dictionaryWord) => {
       const distance = editDistance(
         word.toUpperCase(),
-        dictionaryWord.toUpperCase(),
+        dictionaryWord.toUpperCase()
       );
       const { steps } = distance;
       return [dictionaryWord, steps];
-    }),
+    })
   );
 
   return Object.keys(distances)
-    .filter(suggestion => distances[suggestion] <= THRESHOLD)
+    .filter((suggestion) => distances[suggestion] <= THRESHOLD)
     .sort((a, b) => distances[a] - distances[b]) // Sort by distance
     .slice(0, limit);
 }

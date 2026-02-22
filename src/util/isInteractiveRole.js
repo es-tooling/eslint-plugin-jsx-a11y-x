@@ -5,9 +5,9 @@ import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
 
 const roles = rolesMap.keys();
 const interactiveRoles = roles.filter(
-  name =>
+  (name) =>
     !rolesMap.get(name).abstract &&
-    rolesMap.get(name).superClass.some(klasses => klasses.includes('widget')),
+    rolesMap.get(name).superClass.some((klasses) => klasses.includes('widget'))
 );
 
 // 'toolbar' does not descend from widget, but it does support
@@ -26,7 +26,7 @@ interactiveRoles.push('toolbar');
  */
 const isInteractiveRole = (
   tagName: string,
-  attributes: Array<Node>,
+  attributes: Array<Node>
 ): boolean => {
   const value = getLiteralPropValue(getProp(attributes, 'role'));
 
@@ -40,7 +40,7 @@ const isInteractiveRole = (
   let isInteractive = false;
   const normalizedValues = String(value).toLowerCase().split(' ');
   const validRoles = normalizedValues.flatMap((name: string) =>
-    roles.includes(name) ? [name] : [],
+    roles.includes(name) ? [name] : []
   );
   if (validRoles.length > 0) {
     // The first role value is a series takes precedence.

@@ -13,7 +13,7 @@ import { getProp } from 'jsx-ast-utils-x';
 
 const isNonLiteralProperty = (
   attributes: Array<Node>,
-  propName: string,
+  propName: string
 ): boolean => {
   const prop = getProp(attributes, propName);
   if (!prop) return false;

@@ -473,8 +473,8 @@ ruleTester.run(`${ruleName}:recommended`, rule, {
         { code: '<li role="treeitem" />;' },
         { code: '<Component role="treeitem" />;' },
         { code: '<fieldset role="radiogroup" />;' },
-        { code: '<fieldset role="presentation" />;' },
-      ),
+        { code: '<fieldset role="presentation" />;' }
+      )
     )
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
@@ -505,8 +505,8 @@ ruleTester.run(`${ruleName}:strict`, rule, {
         { code: '<li role="tab" />;', errors: [expectedError] },
         { code: '<li role="menuitem" />;', errors: [expectedError] },
         { code: '<li role="row" />;', errors: [expectedError] },
-        { code: '<li role="treeitem" />;', errors: [expectedError] },
-      ),
+        { code: '<li role="treeitem" />;', errors: [expectedError] }
+      )
     )
     .map(parserOptionsMapper),
 });

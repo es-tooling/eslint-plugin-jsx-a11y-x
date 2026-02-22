@@ -44,8 +44,8 @@ ruleTester.run('tabindex-no-positive', rule, {
         { code: '<div tabIndex="-5" />' },
         { code: '<div tabIndex="-5.5" />' },
         { code: '<div tabIndex={-5.5} />' },
-        { code: '<div tabIndex={-5} />' },
-      ),
+        { code: '<div tabIndex={-5} />' }
+      )
     )
     .map(parserOptionsMapper),
 
@@ -56,8 +56,8 @@ ruleTester.run('tabindex-no-positive', rule, {
         { code: '<div tabIndex={1} />', errors: [expectedError] },
         { code: '<div tabIndex={"1"} />', errors: [expectedError] },
         { code: '<div tabIndex={`1`} />', errors: [expectedError] },
-        { code: '<div tabIndex={1.589} />', errors: [expectedError] },
-      ),
+        { code: '<div tabIndex={1.589} />', errors: [expectedError] }
+      )
     )
     .map(parserOptionsMapper),
 });

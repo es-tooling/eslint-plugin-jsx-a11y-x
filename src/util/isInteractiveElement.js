@@ -10,65 +10,65 @@ const elementRoleEntries = [...elementRoles];
 
 const nonInteractiveRoles = new Set(
   roleKeys
-    .filter(name => {
+    .filter((name) => {
       const role = roles.get(name);
       return (
         !role.abstract &&
         // 'toolbar' does not descend from widget, but it does support
         // aria-activedescendant, thus in practice we treat it as a widget.
         name !== 'toolbar' &&
-        !role.superClass.some(classes => classes.includes('widget'))
+        !role.superClass.some((classes) => classes.includes('widget'))
       );
     })
     .concat(
       // The `progressbar` is descended from `widget`, but in practice, its
       // value is always `readonly`, so we treat it as a non-interactive role.
-      'progressbar',
-    ),
+      'progressbar'
+    )
 );
 
 const interactiveRoles = new Set(
   roleKeys
-    .filter(name => {
+    .filter((name) => {
       const role = roles.get(name);
       return (
         !role.abstract &&
         // The `progressbar` is descended from `widget`, but in practice, its
         // value is always `readonly`, so we treat it as a non-interactive role.
         name !== 'progressbar' &&
-        role.superClass.some(classes => classes.includes('widget'))
+        role.superClass.some((classes) => classes.includes('widget'))
       );
     })
     .concat(
       // 'toolbar' does not descend from widget, but it does support
       // aria-activedescendant, thus in practice we treat it as a widget.
-      'toolbar',
-    ),
+      'toolbar'
+    )
 );
 
 const interactiveElementRoleSchemas = elementRoleEntries.flatMap(
   ([elementSchema, rolesArr]) =>
     rolesArr.some((role): boolean => interactiveRoles.has(role))
       ? [elementSchema]
-      : [],
+      : []
 );
 
 const nonInteractiveElementRoleSchemas = elementRoleEntries.flatMap(
   ([elementSchema, rolesArr]) =>
     rolesArr.every((role): boolean => nonInteractiveRoles.has(role))
       ? [elementSchema]
-      : [],
+      : []
 );
 
 const interactiveAXObjects = new Set(
-  AXObjects.keys().filter(name => AXObjects.get(name).type === 'widget'),
+  AXObjects.keys().filter((name) => AXObjects.get(name).type === 'widget')
 );
 
 const interactiveElementAXObjectSchemas = [...elementAXObjects].flatMap(
   ([elementSchema, AXObjectsArr]) =>
     AXObjectsArr.every((role): boolean => interactiveAXObjects.has(role))
       ? [elementSchema]
-      : [],
+      : []
 );
 
 function checkIsInteractiveElement(tagName, attributes): boolean {
@@ -111,7 +111,7 @@ function checkIsInteractiveElement(tagName, attributes): boolean {
  */
 const isInteractiveElement = (
   tagName: string,
-  attributes: Array<Node>,
+  attributes: Array<Node>
 ): boolean => {
   // Do not test higher level JSX components, as we do not know what
   // low-level DOM element this maps to.

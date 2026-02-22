@@ -3,11 +3,11 @@ import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
 
 test('getExplicitRole', () => {
   expect(getExplicitRole('div', [JSXAttributeMock('role', 'button')])).toBe(
-    'button',
+    'button'
   );
 
   expect(getExplicitRole('div', [JSXAttributeMock('role', 'beeswax')])).toBe(
-    null,
+    null
   );
 
   expect(getExplicitRole('div', [])).toBe(null);

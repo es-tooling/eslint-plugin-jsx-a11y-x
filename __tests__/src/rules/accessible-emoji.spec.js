@@ -51,8 +51,8 @@ ruleTester.run('accessible-emoji', rule, {
         {
           code: '<Box as="input" type="hidden">🐼</Box>',
           settings: { 'jsx-a11y-x': { polymorphicPropName: 'as' } },
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -82,8 +82,8 @@ ruleTester.run('accessible-emoji', rule, {
           code: '<Box as="span">🐼</Box>',
           settings: { 'jsx-a11y-x': { polymorphicPropName: 'as' } },
           errors: [expectedError],
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

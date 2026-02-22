@@ -21,7 +21,7 @@ const jscodeshiftMain = jscodeshiftJSON.main;
 const jscodeshiftPath = require.resolve('jscodeshift');
 const jscodeshiftRoot = jscodeshiftPath.slice(
   0,
-  jscodeshiftPath.indexOf(jscodeshiftMain),
+  jscodeshiftPath.indexOf(jscodeshiftMain)
 );
 
 // Validate
@@ -52,9 +52,9 @@ exec(
     `--ruleName=${ruleName}`,
     `--rulePath=${rulePath}`,
   ].join(' '),
-  error => {
+  (error) => {
     if (error) {
       console.error(`exec error: ${error}`);
     }
-  },
+  }
 );

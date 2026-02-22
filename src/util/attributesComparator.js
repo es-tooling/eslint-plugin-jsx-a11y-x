@@ -9,7 +9,7 @@ import type { Node } from 'ast-types-flow';
  */
 function attributesComparator(
   baseAttributes: Array<{ [key: string]: mixed }> = [],
-  attributes: Array<Node> = [],
+  attributes: Array<Node> = []
 ): boolean {
   return baseAttributes.every((baseAttr): boolean =>
     attributes.some((attribute): boolean => {
@@ -26,7 +26,7 @@ function attributesComparator(
         return false;
       }
       return true;
-    }),
+    })
   );
 }
 

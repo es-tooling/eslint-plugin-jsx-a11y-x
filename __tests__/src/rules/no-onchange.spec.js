@@ -52,8 +52,8 @@ ruleTester.run('no-onchange', rule, {
           code: '<Input onChange={() => {}} />;',
           settings: componentsSettings,
         },
-        { code: '<CustomOption onChange={() => {}} />' },
-      ),
+        { code: '<CustomOption onChange={() => {}} />' }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -73,8 +73,8 @@ ruleTester.run('no-onchange', rule, {
           code: '<CustomOption onChange={() => {}} />;',
           errors: [expectedError],
           settings: componentsSettings,
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

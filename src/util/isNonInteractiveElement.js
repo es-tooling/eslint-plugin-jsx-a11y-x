@@ -11,7 +11,7 @@ const elementRoleEntries = [...elementRoles];
 
 const nonInteractiveRoles = new Set(
   roleKeys
-    .filter(name => {
+    .filter((name) => {
       const role = roles.get(name);
       return (
         !role.abstract &&
@@ -21,19 +21,19 @@ const nonInteractiveRoles = new Set(
         // This role is meant to have no semantic value.
         // @see https://www.w3.org/TR/wai-aria-1.2/#generic
         name !== 'generic' &&
-        !role.superClass.some(classes => classes.includes('widget'))
+        !role.superClass.some((classes) => classes.includes('widget'))
       );
     })
     .concat(
       // The `progressbar` is descended from `widget`, but in practice, its
       // value is always `readonly`, so we treat it as a non-interactive role.
-      'progressbar',
-    ),
+      'progressbar'
+    )
 );
 
 const interactiveRoles = new Set(
   roleKeys
-    .filter(name => {
+    .filter((name) => {
       const role = roles.get(name);
       return (
         !role.abstract &&
@@ -43,41 +43,41 @@ const interactiveRoles = new Set(
         // This role is meant to have no semantic value.
         // @see https://www.w3.org/TR/wai-aria-1.2/#generic
         name !== 'generic' &&
-        role.superClass.some(classes => classes.includes('widget'))
+        role.superClass.some((classes) => classes.includes('widget'))
       );
     })
     .concat(
       // 'toolbar' does not descend from widget, but it does support
       // aria-activedescendant, thus in practice we treat it as a widget.
-      'toolbar',
-    ),
+      'toolbar'
+    )
 );
 
 const interactiveElementRoleSchemas = elementRoleEntries.flatMap(
   ([elementSchema, rolesArr]) =>
     rolesArr.some((role): boolean => interactiveRoles.has(role))
       ? [elementSchema]
-      : [],
+      : []
 );
 
 const nonInteractiveElementRoleSchemas = elementRoleEntries.flatMap(
   ([elementSchema, rolesArr]) =>
     rolesArr.every((role): boolean => nonInteractiveRoles.has(role))
       ? [elementSchema]
-      : [],
+      : []
 );
 
 const nonInteractiveAXObjects = new Set(
-  AXObjects.keys().filter(name =>
-    ['window', 'structure'].includes(AXObjects.get(name).type),
-  ),
+  AXObjects.keys().filter((name) =>
+    ['window', 'structure'].includes(AXObjects.get(name).type)
+  )
 );
 
 const nonInteractiveElementAXObjectSchemas = [...elementAXObjects].flatMap(
   ([elementSchema, AXObjectsArr]) =>
     AXObjectsArr.every((role): boolean => nonInteractiveAXObjects.has(role))
       ? [elementSchema]
-      : [],
+      : []
 );
 
 function checkIsNonInteractiveElement(tagName, attributes): boolean {
@@ -122,7 +122,7 @@ function checkIsNonInteractiveElement(tagName, attributes): boolean {
  */
 const isNonInteractiveElement = (
   tagName: string,
-  attributes: Array<Node>,
+  attributes: Array<Node>
 ): boolean => {
   // Do not test higher level JSX components, as we do not know what
   // low-level DOM element this maps to.

@@ -27,7 +27,7 @@ const DEFAULT_AMBIGUOUS_WORDS = [
   'learn more',
 ];
 
-const expectedErrorGenerator = words => ({
+const expectedErrorGenerator = (words) => ({
   message: `Ambiguous text within anchor. Screen reader users rely on link text for context; the words "${words.join('", "')}" are ambiguous and do not provide enough context.`,
   type: 'JSXOpeningElement',
 });
@@ -79,8 +79,8 @@ ruleTester.run('anchor-ambiguous-text', rule, {
             },
           ],
           settings: { 'jsx-a11y-x': { components: { Link: 'a' } } },
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -147,8 +147,8 @@ ruleTester.run('anchor-ambiguous-text', rule, {
               words: ['a disallowed word'],
             },
           ],
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

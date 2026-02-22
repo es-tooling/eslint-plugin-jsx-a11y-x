@@ -21,12 +21,12 @@ test('getTabIndex', () => {
   expect(getTabIndex(JSXAttributeMock('tabIndex', false))).toBe(undefined);
 
   expect(typeof getTabIndex(JSXAttributeMock('tabIndex', () => 0))).toBe(
-    'function',
+    'function'
   );
 
   const name = 'identName';
   expect(
-    getTabIndex(JSXAttributeMock('tabIndex', IdentifierMock(name), true)),
+    getTabIndex(JSXAttributeMock('tabIndex', IdentifierMock(name), true))
   ).toBe(name);
 
   expect(getTabIndex(JSXAttributeMock('tabIndex', undefined))).toBe(undefined);

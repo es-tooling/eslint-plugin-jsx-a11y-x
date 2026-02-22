@@ -201,8 +201,8 @@ ruleTester.run('label-has-for', rule, {
         {
           code: '<label htmlFor={id}>{ labelText }<div><div><div><div><input id={id} type="checkbox" name={id} value={value} /></div></div></div></div></label>',
           options: optionsRequiredEvery,
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -425,8 +425,8 @@ ruleTester.run('label-has-for', rule, {
           code: '<form><input type="text" id="howmuch" value="1" /><label htmlFor="howmuch">How much ?<span /></label></form>',
           errors: [expectedEveryError],
           options: optionsRequiredEvery,
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

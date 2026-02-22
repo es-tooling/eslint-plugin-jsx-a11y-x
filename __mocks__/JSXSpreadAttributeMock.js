@@ -9,7 +9,7 @@ export type JSXSpreadAttributeMockType = {
 };
 
 export default function JSXSpreadAttributeMock(
-  identifier: string,
+  identifier: string
 ): JSXSpreadAttributeMockType {
   return {
     type: 'JSXSpreadAttribute',

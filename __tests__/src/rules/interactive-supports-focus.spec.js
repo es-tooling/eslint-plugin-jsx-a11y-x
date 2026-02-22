@@ -25,7 +25,7 @@ function template(strings, ...keys) {
   return (...values) =>
     keys.reduce(
       (acc, k, i) => acc + (values[k] || '') + strings[i + 1],
-      strings[0],
+      strings[0]
     );
 }
 
@@ -208,14 +208,14 @@ const passReducer = (roles, handlers, messageTemplate) =>
         roles.reduce(
           (roleAcc, role) =>
             roleAcc.concat(
-              handlers.map(handler => ({
+              handlers.map((handler) => ({
                 code: messageTemplate(element, role, handler),
-              })),
+              }))
             ),
-          [],
-        ),
+          []
+        )
       ),
-    [],
+    []
   );
 
 const failReducer = (roles, handlers, messageTemplate) =>
@@ -225,7 +225,7 @@ const failReducer = (roles, handlers, messageTemplate) =>
         roles.reduce(
           (roleAcc, role) =>
             roleAcc.concat(
-              handlers.map(handler => ({
+              handlers.map((handler) => ({
                 code: codeTemplate(element, role, handler),
                 errors: [
                   {
@@ -245,20 +245,20 @@ const failReducer = (roles, handlers, messageTemplate) =>
                                 element,
                                 '-1',
                                 role,
-                                handler,
+                                handler
                               ),
                             },
                           ]
-                        : [],
+                        : []
                     ),
                   },
                 ],
-              })),
+              }))
             ),
-          [],
-        ),
+          []
+        )
       ),
-    [],
+    []
   );
 
 ruleTester.run(`${ruleName}:recommended`, rule, {
@@ -269,16 +269,18 @@ ruleTester.run(`${ruleName}:recommended`, rule, {
         ...passReducer(
           interactiveRoles,
           eventHandlers.filter(
-            handler => !triggeringHandlers.includes(handler),
+            (handler) => !triggeringHandlers.includes(handler)
           ),
-          codeTemplate,
+          codeTemplate
         ),
         ...passReducer(
-          interactiveRoles.filter(role => !recommendedRoles.includes(role)),
-          eventHandlers.filter(handler => triggeringHandlers.includes(handler)),
-          tabindexTemplate,
-        ),
-      ),
+          interactiveRoles.filter((role) => !recommendedRoles.includes(role)),
+          eventHandlers.filter((handler) =>
+            triggeringHandlers.includes(handler)
+          ),
+          tabindexTemplate
+        )
+      )
     )
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
@@ -288,11 +290,11 @@ ruleTester.run(`${ruleName}:recommended`, rule, {
         ...neverValid,
         ...failReducer(recommendedRoles, triggeringHandlers, tabbableTemplate),
         ...failReducer(
-          interactiveRoles.filter(role => !recommendedRoles.includes(role)),
+          interactiveRoles.filter((role) => !recommendedRoles.includes(role)),
           triggeringHandlers,
-          focusableTemplate,
-        ),
-      ),
+          focusableTemplate
+        )
+      )
     )
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
@@ -306,16 +308,18 @@ ruleTester.run(`${ruleName}:strict`, rule, {
         ...passReducer(
           interactiveRoles,
           eventHandlers.filter(
-            handler => !triggeringHandlers.includes(handler),
+            (handler) => !triggeringHandlers.includes(handler)
           ),
-          codeTemplate,
+          codeTemplate
         ),
         ...passReducer(
-          interactiveRoles.filter(role => !strictRoles.includes(role)),
-          eventHandlers.filter(handler => triggeringHandlers.includes(handler)),
-          tabindexTemplate,
-        ),
-      ),
+          interactiveRoles.filter((role) => !strictRoles.includes(role)),
+          eventHandlers.filter((handler) =>
+            triggeringHandlers.includes(handler)
+          ),
+          tabindexTemplate
+        )
+      )
     )
     .map(ruleOptionsMapperFactory(strictOptions))
     .map(parserOptionsMapper),
@@ -325,11 +329,11 @@ ruleTester.run(`${ruleName}:strict`, rule, {
         ...neverValid,
         ...failReducer(strictRoles, triggeringHandlers, tabbableTemplate),
         ...failReducer(
-          interactiveRoles.filter(role => !strictRoles.includes(role)),
+          interactiveRoles.filter((role) => !strictRoles.includes(role)),
           triggeringHandlers,
-          focusableTemplate,
-        ),
-      ),
+          focusableTemplate
+        )
+      )
     )
     .map(ruleOptionsMapperFactory(strictOptions))
     .map(parserOptionsMapper),

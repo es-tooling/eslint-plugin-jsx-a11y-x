@@ -565,8 +565,8 @@ ruleTester.run(`${ruleName}:recommended`, rule, {
         { code: '<div role="article" onAnimationStart={() => {}} />;' },
         { code: '<div role="article" onAnimationEnd={() => {}} />;' },
         { code: '<div role="article" onAnimationIteration={() => {}} />;' },
-        { code: '<div role="article" onTransitionEnd={() => {}} />;' },
-      ),
+        { code: '<div role="article" onTransitionEnd={() => {}} />;' }
+      )
     )
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
@@ -658,8 +658,8 @@ ruleTester.run(`${ruleName}:strict`, rule, {
         {
           code: '<div role="article" onMouseOver={() => {}} />;',
           errors: [expectedError],
-        },
-      ),
+        }
+      )
     )
     .map(ruleOptionsMapperFactory(strictOptions))
     .map(parserOptionsMapper),

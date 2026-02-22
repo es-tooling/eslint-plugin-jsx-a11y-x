@@ -485,8 +485,8 @@ ruleTester.run('anchor-is-valid', rule, {
         {
           code: '<Anchor hrefLeft={null} />',
           options: componentsAndSpecialLinkAndInvalidHrefAspect,
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -985,8 +985,8 @@ ruleTester.run('anchor-is-valid', rule, {
           code: '<Anchor hrefLeft={null} />',
           options: componentsAndSpecialLinkAndNoHrefAspect,
           errors: [noHrefexpectedError],
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

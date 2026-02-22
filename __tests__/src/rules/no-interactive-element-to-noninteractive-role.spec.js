@@ -425,8 +425,8 @@ ruleTester.run(`${ruleName}:recommended`, rule, {
         ...alwaysValid,
         { code: '<tr role="presentation" />;' },
         { code: '<canvas role="img" />;' },
-        { code: '<Component role="presentation" />;' },
-      ),
+        { code: '<Component role="presentation" />;' }
+      )
     )
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
@@ -443,8 +443,8 @@ ruleTester.run(`${ruleName}:strict`, rule, {
       [].concat(
         ...neverValid,
         { code: '<tr role="presentation" />;', errors: [expectedError] },
-        { code: '<canvas role="img" />;', errors: [expectedError] },
-      ),
+        { code: '<canvas role="img" />;', errors: [expectedError] }
+      )
     )
     .map(parserOptionsMapper),
 });

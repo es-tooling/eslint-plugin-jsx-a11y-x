@@ -356,8 +356,8 @@ ruleTester.run(`${ruleName}:no-config`, rule, {
     .all(
       [].concat(
         { code: '<input type="hidden" />' },
-        { code: '<input type="text" aria-hidden="true" />' },
-      ),
+        { code: '<input type="text" aria-hidden="true" />' }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers

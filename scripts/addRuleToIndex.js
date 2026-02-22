@@ -34,8 +34,8 @@ export default function transformer(file, api, options) {
             j.literal(ruleName),
             j.callExpression(j.identifier('require'), [
               j.literal(rulePathInSrc),
-            ]),
-          ),
+            ])
+          )
         );
         path.parentPath.value.value.properties.sort(nameSort);
       }
@@ -45,8 +45,8 @@ export default function transformer(file, api, options) {
           j.property(
             'init',
             j.literal(`jsx-a11y/${ruleName}`),
-            j.literal('error'),
-          ),
+            j.literal('error')
+          )
         );
         path.parentPath.value.value.properties.sort(nameSort);
       }

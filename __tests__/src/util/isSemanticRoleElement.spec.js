@@ -6,7 +6,7 @@ describe('isSemanticRoleElement', () => {
     isSemanticRoleElement('input', [
       JSXAttributeMock('type', 'checkbox'),
       JSXAttributeMock('role', 'switch'),
-    ]),
+    ])
   ).toBe(true);
 
   test('rejects non-semantics role elements', () => {
@@ -14,25 +14,25 @@ describe('isSemanticRoleElement', () => {
       isSemanticRoleElement('input', [
         JSXAttributeMock('type', 'radio'),
         JSXAttributeMock('role', 'switch'),
-      ]),
+      ])
     ).toBe(false);
 
     expect(
       isSemanticRoleElement('input', [
         JSXAttributeMock('type', 'text'),
         JSXAttributeMock('role', 'combobox'),
-      ]),
+      ])
     ).toBe(false);
 
     expect(
       isSemanticRoleElement('button', [
         JSXAttributeMock('role', 'switch'),
         JSXAttributeMock('aria-pressed', 'true'),
-      ]),
+      ])
     ).toBe(false);
 
     expect(
-      isSemanticRoleElement('input', [JSXAttributeMock('role', 'switch')]),
+      isSemanticRoleElement('input', [JSXAttributeMock('role', 'switch')])
     ).toBe(false);
   });
 

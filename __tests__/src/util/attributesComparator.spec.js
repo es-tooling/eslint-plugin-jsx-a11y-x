@@ -10,8 +10,8 @@ test('attributesComparator', () => {
   expect(
     attributesComparator(
       [],
-      [JSXAttributeMock('foo', 0), JSXAttributeMock('bar', 'baz')],
-    ),
+      [JSXAttributeMock('foo', 0), JSXAttributeMock('bar', 'baz')]
+    )
   ).toBe(true);
 
   const baseAttributes = [
@@ -37,7 +37,7 @@ test('attributesComparator', () => {
       JSXAttributeMock('biz', 2),
       JSXAttributeMock('ziff', 'opo'),
       JSXAttributeMock('far', 'lolz'),
-    ]),
+    ])
   ).toBe(false);
 
   expect(
@@ -45,7 +45,7 @@ test('attributesComparator', () => {
       JSXAttributeMock('biz', 1),
       JSXAttributeMock('fizz', 'pop'),
       JSXAttributeMock('goo', 'gazz'),
-    ]),
+    ])
   ).toBe(false);
 
   expect(
@@ -53,7 +53,7 @@ test('attributesComparator', () => {
       JSXAttributeMock('biz', 1),
       JSXAttributeMock('fizz', 'pop'),
       JSXAttributeMock('fuzz', 'lolz'),
-    ]),
+    ])
   ).toBe(true);
 
   expect(
@@ -62,6 +62,6 @@ test('attributesComparator', () => {
       JSXAttributeMock('fizz', 'pop'),
       JSXAttributeMock('fuzz', 'lolz'),
       JSXAttributeMock('dar', 'tee'),
-    ]),
+    ])
   ).toBe(true);
 });

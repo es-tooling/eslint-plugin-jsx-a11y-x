@@ -104,8 +104,8 @@ ruleTester.run('mouse-events-have-key-events', rule, {
         {
           code: '<div onMouseLeave={() => {}} />',
           options: [{ hoverOutHandlers: ['onPointerLeave'] }],
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -172,8 +172,8 @@ ruleTester.run('mouse-events-have-key-events', rule, {
           code: '<div onPointerLeave={() => {}} />',
           options: [{ hoverOutHandlers: ['onPointerLeave'] }],
           errors: [pointerLeaveError],
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

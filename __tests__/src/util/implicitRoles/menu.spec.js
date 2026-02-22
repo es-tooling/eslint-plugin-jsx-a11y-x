@@ -3,7 +3,7 @@ import getImplicitRoleForMenu from '../../../../src/util/implicitRoles/menu';
 
 test('isAbstractRole', () => {
   expect(getImplicitRoleForMenu([JSXAttributeMock('type', 'toolbar')])).toBe(
-    'toolbar',
+    'toolbar'
   );
 
   expect(getImplicitRoleForMenu([JSXAttributeMock('type', '')])).toBe('');

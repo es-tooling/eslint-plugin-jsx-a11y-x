@@ -6,7 +6,7 @@ export type JSXExpressionContainerMockType = {
 };
 
 export default function JSXExpressionContainerMock(
-  exp: mixed,
+  exp: mixed
 ): JSXExpressionContainerMockType {
   return {
     type: 'JSXExpressionContainer',

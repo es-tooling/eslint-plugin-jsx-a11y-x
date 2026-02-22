@@ -6,7 +6,7 @@ import { elementType, getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
 import type { ESLintContext } from '../../flow/eslint';
 
 const getElementType = (
-  context: ESLintContext,
+  context: ESLintContext
 ): ((node: JSXOpeningElement) => string) => {
   const { settings } = context;
   const polymorphicPropName = settings['jsx-a11y-x']?.polymorphicPropName;

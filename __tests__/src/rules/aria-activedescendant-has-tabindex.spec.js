@@ -84,8 +84,8 @@ ruleTester.run('aria-activedescendant-has-tabindex', rule, {
         },
         {
           code: '<input aria-activedescendant={someID} tabIndex={-1} />;',
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -101,8 +101,8 @@ ruleTester.run('aria-activedescendant-has-tabindex', rule, {
           settings: {
             'jsx-a11y-x': { components: { CustomComponent: 'div' } },
           },
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

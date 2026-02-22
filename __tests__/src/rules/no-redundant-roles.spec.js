@@ -135,8 +135,8 @@ ruleTester.run(`${ruleName}:recommended`, rule, {
   valid: parsers
     .all(
       [].concat(
-        alwaysValid.map(ruleOptionsMapperFactory(noNavExceptionsOptions)),
-      ),
+        alwaysValid.map(ruleOptionsMapperFactory(noNavExceptionsOptions))
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -144,7 +144,7 @@ ruleTester.run(`${ruleName}:recommended`, rule, {
       [].concat(...neverValid, {
         code: '<nav role="navigation" />',
         errors: [expectedError('nav', 'navigation')],
-      }),
+      })
     )
     .map(ruleOptionsMapperFactory(noNavExceptionsOptions))
     .map(parserOptionsMapper),
@@ -158,8 +158,8 @@ ruleTester.run(`${ruleName}:recommended (valid list role override)`, rule, {
         { code: '<ol role="list" />' },
         { code: '<dl role="list" />' },
         { code: '<img src="example.svg" role="img" />' },
-        { code: '<svg role="img" />' },
-      ),
+        { code: '<svg role="img" />' }
+      )
     )
     .map(ruleOptionsMapperFactory(listException))
     .map(parserOptionsMapper),
@@ -172,8 +172,8 @@ ruleTester.run(`${ruleName}:recommended (valid list role override)`, rule, {
         {
           code: '<img src={someVariable} role="img" />',
           errors: [expectedError('img', 'img')],
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

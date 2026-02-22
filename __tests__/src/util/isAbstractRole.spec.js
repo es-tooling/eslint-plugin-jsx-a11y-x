@@ -15,7 +15,7 @@ describe('isAbstractRole', () => {
       const { attributes } = openingElement;
       expect(isAbstractRole(elementType(openingElement), attributes)).toBe(
         true,
-        `identifies \`${genElementSymbol(openingElement)}\` as an abstract role element`,
+        `identifies \`${genElementSymbol(openingElement)}\` as an abstract role element`
       );
     });
   });
@@ -25,7 +25,7 @@ describe('isAbstractRole', () => {
       const { attributes } = openingElement;
       expect(isAbstractRole(elementType(openingElement), attributes)).toBe(
         false,
-        `does NOT identify \`${genElementSymbol(openingElement)}\` as an abstract role element`,
+        `does NOT identify \`${genElementSymbol(openingElement)}\` as an abstract role element`
       );
     });
   });

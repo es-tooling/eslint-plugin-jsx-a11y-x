@@ -42,8 +42,8 @@ ruleTester.run('anchor-has-content', rule, {
         },
         { code: '<a title={title} />' },
         { code: '<a aria-label={ariaLabel} />' },
-        { code: '<a title={title} aria-label={ariaLabel} />' },
-      ),
+        { code: '<a title={title} aria-label={ariaLabel} />' }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -56,8 +56,8 @@ ruleTester.run('anchor-has-content', rule, {
           code: '<Link />',
           errors: [expectedError],
           settings: { 'jsx-a11y-x': { components: { Link: 'a' } } },
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

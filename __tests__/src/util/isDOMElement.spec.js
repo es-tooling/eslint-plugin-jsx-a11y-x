@@ -11,7 +11,7 @@ describe('isDOMElement', () => {
 
       expect(isDOMElement(elementType(element.openingElement))).toBe(
         true,
-        `identifies ${el} as a DOM element`,
+        `identifies ${el} as a DOM element`
       );
     });
   });

@@ -19,8 +19,8 @@ ruleTester.run('prefer-tag-over-role', rule, {
         { code: '<div role="also unknown" />;' },
         { code: '<other />' },
         { code: '<img role="img" />' },
-        { code: '<input role="checkbox" />' },
-      ),
+        { code: '<input role="checkbox" />' }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -59,8 +59,8 @@ ruleTester.run('prefer-tag-over-role', rule, {
         {
           code: '<div role="banner" />',
           errors: [expectedError('banner', '<header>')],
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

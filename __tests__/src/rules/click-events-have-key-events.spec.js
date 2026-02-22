@@ -62,8 +62,8 @@ ruleTester.run('click-events-have-key-events', rule, {
         { code: '<div onClick={() => void 0} role="none" />;' },
         { code: '<TestComponent onClick={doFoo} />' },
         { code: '<Button onClick={doFoo} />' },
-        { code: '<Footer onClick={doFoo} />' },
-      ),
+        { code: '<Footer onClick={doFoo} />' }
+      )
     )
     .map(parserOptionsMapper),
   invalid: parsers
@@ -102,8 +102,8 @@ ruleTester.run('click-events-have-key-events', rule, {
           code: '<Footer onClick={doFoo} />',
           errors: [expectedError],
           settings: { 'jsx-a11y-x': { components: { Footer: 'footer' } } },
-        },
-      ),
+        }
+      )
     )
     .map(parserOptionsMapper),
 });

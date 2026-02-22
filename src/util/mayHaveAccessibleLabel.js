@@ -21,13 +21,13 @@ function tryTrim(value: any) {
 
 function hasLabellingProp(
   openingElement: JSXOpeningElement,
-  additionalLabellingProps?: Array<string> = [],
+  additionalLabellingProps?: Array<string> = []
 ) {
   const labellingProps = [].concat(
     'alt', // Assume alt is used correctly on an image
     'aria-label',
     'aria-labelledby',
-    additionalLabellingProps,
+    additionalLabellingProps
   );
   return openingElement.attributes.some((attribute): boolean => {
     // We must assume that a spread value contains a labelling prop.
@@ -50,7 +50,7 @@ export default function mayHaveAccessibleLabel(
   maxDepth: number = 1,
   additionalLabellingProps?: Array<string> = [],
   getElementType: (node: JSXOpeningElement) => string = rawElementType,
-  controlComponents: Array<string> = [],
+  controlComponents: Array<string> = []
 ): boolean {
   function checkElement(node: Node, depth: number): boolean {
     // Bail when maxDepth is exceeded.
@@ -92,7 +92,7 @@ export default function mayHaveAccessibleLabel(
 
       if (
         isReactComponent &&
-        !controlComponents.some(control => minimatch(name, control))
+        !controlComponents.some((control) => minimatch(name, control))
       ) {
         return true;
       }

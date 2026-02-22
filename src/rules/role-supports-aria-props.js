@@ -65,16 +65,16 @@ export default {
         // Make sure it has no aria-* properties defined outside its property set.
         const { props: propKeyValues } = roles.get(roleValue);
         const invalidAriaPropsForRole = new Set(
-          aria.keys().filter(attribute => !(attribute in propKeyValues)),
+          aria.keys().filter((attribute) => !(attribute in propKeyValues))
         );
 
         node.attributes
           .filter(
-            prop =>
+            (prop) =>
               getPropValue(prop) != null && // Ignore the attribute if its value is null or undefined.
-              prop.type !== 'JSXSpreadAttribute', // Ignore the attribute if it's a spread.
+              prop.type !== 'JSXSpreadAttribute' // Ignore the attribute if it's a spread.
           )
-          .forEach(prop => {
+          .forEach((prop) => {
             const name = propName(prop);
             if (invalidAriaPropsForRole.has(name)) {
               context.report({

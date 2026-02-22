@@ -31,10 +31,10 @@ export default {
     schema: [schema],
   },
 
-  create: context => {
+  create: (context) => {
     const elementType = getElementType(context);
     return {
-      JSXOpeningElement: node => {
+      JSXOpeningElement: (node) => {
         const props = node.attributes;
         if (getProp(props, 'onclick') === undefined) {
           return;

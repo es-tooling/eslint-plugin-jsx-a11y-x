@@ -14,7 +14,7 @@ import getSuggestion from '../util/getSuggestion';
 
 const ariaAttributes = aria.keys();
 
-const errorMessage = name => {
+const errorMessage = (name) => {
   const suggestions = getSuggestion(name, ariaAttributes);
   const message = `${name}: This attribute is an invalid ARIA attribute.`;
 
@@ -36,8 +36,8 @@ export default {
     schema: [schema],
   },
 
-  create: context => ({
-    JSXAttribute: attribute => {
+  create: (context) => ({
+    JSXAttribute: (attribute) => {
       const name = propName(attribute);
 
       // `aria` needs to be prefix of property.
