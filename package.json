@@ -1,7 +1,7 @@
 {
   "name": "eslint-plugin-jsx-a11y-x",
   "version": "0.1.1",
-  "type": "commonjs",
+  "type": "module",
   "description": "An ESLint plugin to apply various a11y rules to JSX templates",
   "repository": "git+https://github.com/es-tooling/eslint-plugin-jsx-a11y-x.git",
   "homepage": "https://github.com/es-tooling/eslint-plugin-jsx-a11y-x#readme",
@@ -25,8 +25,7 @@
     "eslint-plugin-jsx-a11y"
   ],
   "scripts": {
-    "build": "premove lib && babel src --out-dir lib --copy-files",
-    "create": "node ./scripts/create-rule",
+    "create-rule": "node ./scripts/create-rule",
     "format": "prettier --write .",
     "generate-list-of-rules": "eslint-doc-generator --rule-doc-title-format prefix-name --rule-doc-section-options false --config-emoji recommended,☑️ --ignore-config flat/recommended --ignore-config flat/strict",
     "lint": "npm run lint:js && npm run lint:docs",
