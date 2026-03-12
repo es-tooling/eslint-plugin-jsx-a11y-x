@@ -25,7 +25,6 @@ const errorMessage =
 
 const expectedError = {
   message: errorMessage,
-  type: 'JSXOpeningElement',
 };
 
 const ruleName = 'no-noninteractive-element-interactions';

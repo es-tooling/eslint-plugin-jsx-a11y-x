@@ -29,10 +29,9 @@ export default function parserOptionsMapper({
   languageOptions = {},
   settings = {},
 }) {
-  return usingLegacy
+  const testCase = usingLegacy
     ? {
         code,
-        errors,
         options,
         parserOptions: {
           ...defaultLegacyParserOptions,
@@ -42,7 +41,6 @@ export default function parserOptionsMapper({
       }
     : {
         code,
-        errors,
         options,
         languageOptions: {
           ...defaultLanguageOptions,
@@ -50,4 +48,8 @@ export default function parserOptionsMapper({
         },
         settings,
       };
+
+  if (errors != null && errors.length) testCase.errors = errors;
+
+  return testCase;
 }
