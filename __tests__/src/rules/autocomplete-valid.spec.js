@@ -25,12 +25,6 @@ const invalidAutocomplete = [
   },
 ];
 
-const inappropriateAutocomplete = [
-  {
-    message: axeFailMessage('autocomplete-appropriate'),
-  },
-];
-
 const componentsSettings = {
   'jsx-a11y-x': {
     components: {
