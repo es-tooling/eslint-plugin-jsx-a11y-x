@@ -1,5 +1,7 @@
 # jsx-a11y-x/no-access-key
 
+📝 Enforce that the `accessKey` prop is not used on any element to avoid complications with keyboard commands used by a screen reader.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

@@ -1,5 +1,7 @@
 # jsx-a11y-x/control-has-associated-label
 
+📝 Enforce that a control (an interactive element) has a text label.
+
 🚫 This rule is _disabled_ in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

@@ -1,5 +1,7 @@
 # jsx-a11y-x/anchor-is-valid
 
+📝 Enforce all anchors are valid, navigable elements.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

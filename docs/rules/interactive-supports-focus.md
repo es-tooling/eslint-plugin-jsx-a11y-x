@@ -1,5 +1,7 @@
 # jsx-a11y-x/interactive-supports-focus
 
+📝 Enforce that elements with interactive handlers like `onClick` must be focusable.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 💡 This rule is manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).

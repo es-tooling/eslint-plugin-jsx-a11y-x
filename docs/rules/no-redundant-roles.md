@@ -1,5 +1,7 @@
 # jsx-a11y-x/no-redundant-roles
 
+📝 Enforce explicit role property is not the same as implicit/default role property on element.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

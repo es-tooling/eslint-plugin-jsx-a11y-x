@@ -1,5 +1,7 @@
 # jsx-a11y-x/scope
 
+📝 Enforce `scope` prop is only used on `<th>` elements.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

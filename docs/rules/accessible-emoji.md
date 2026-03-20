@@ -1,5 +1,7 @@
 # jsx-a11y-x/accessible-emoji
 
+📝 Enforce emojis are wrapped in `<span>` and provide screen reader access.
+
 ❌ This rule is deprecated.
 
 <!-- end auto-generated rule header -->
