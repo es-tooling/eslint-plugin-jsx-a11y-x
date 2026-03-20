@@ -38,7 +38,11 @@ const NODE_MODULES = '../../node_modules';
 
 const parsers = {
   BABEL_ESLINT: path.join(__dirname, NODE_MODULES, 'babel-eslint'),
-  '@BABEL_ESLINT': path.join(__dirname, NODE_MODULES, '@babel/eslint-parser'),
+  '@BABEL_ESLINT': path.join(
+    __dirname,
+    NODE_MODULES,
+    'babel-eslint-parser-8-cjs',
+  ),
   TYPESCRIPT_ESLINT: path.join(
     __dirname,
     NODE_MODULES,
