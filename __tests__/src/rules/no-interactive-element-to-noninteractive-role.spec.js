@@ -113,7 +113,6 @@ const alwaysValid = [
   { code: '<div className="foo" {...props} role="button" />;' },
   { code: '<div aria-hidden role="button" />;' },
   { code: '<div aria-hidden={true} role="button" />;' },
-  { code: '<div role="button" />;' },
   { code: '<div role={undefined} role="button" />;' },
   { code: '<div {...props} role="button" />;' },
   { code: '<div onKeyUp={() => void 0} aria-hidden={false} role="button" />;' },
@@ -182,7 +181,6 @@ const alwaysValid = [
   { code: '<wbr role="button" />;' },
   { code: '<xmp role="button" />;' },
   /* HTML elements attributed with an interactive role */
-  { code: '<div role="button" />;' },
   { code: '<div role="checkbox" />;' },
   { code: '<div role="columnheader" />;' },
   { code: '<div role="combobox" />;' },
@@ -231,7 +229,6 @@ const alwaysValid = [
    * interactive role. */
   { code: '<main role="button" />;' },
   { code: '<area role="button" />;' },
-  { code: '<article role="button" />;' },
   { code: '<article role="button" />;' },
   { code: '<dd role="button" />;' },
   { code: '<dfn role="button" />;' },

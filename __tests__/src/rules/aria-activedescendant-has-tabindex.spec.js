@@ -81,9 +81,6 @@ ruleTester.run('aria-activedescendant-has-tabindex', rule, {
         {
           code: '<div aria-activedescendant={someID} tabIndex="-1" />;',
         },
-        {
-          code: '<input aria-activedescendant={someID} tabIndex={-1} />;',
-        },
       ),
     )
     .map(parserOptionsMapper),

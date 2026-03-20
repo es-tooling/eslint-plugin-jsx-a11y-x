@@ -8,7 +8,10 @@
 // -----------------------------------------------------------------------------
 
 import { RuleTester } from 'eslint';
-import { eventHandlers, eventHandlersByType } from 'jsx-ast-utils-x';
+import {
+  eventHandlers as _eventHandlers,
+  eventHandlersByType,
+} from 'jsx-ast-utils-x';
 import { configs } from '../../../src/index';
 import parserOptionsMapper from '../../__util__/parserOptionsMapper';
 import parsers from '../../__util__/helpers/parsers';
@@ -154,8 +157,8 @@ const neverValid = [
 const interactiveRoles = [
   'button',
   'checkbox',
-  'link',
   'gridcell',
+  'link',
   'menuitem',
   'menuitemcheckbox',
   'menuitemradio',
@@ -194,10 +197,10 @@ const strictRoles = [
 
 const staticElements = ['div'];
 
-const triggeringHandlers = [
-  ...eventHandlersByType.mouse,
-  ...eventHandlersByType.keyboard,
-];
+const eventHandlers = Array.from(new Set(_eventHandlers));
+const triggeringHandlers = Array.from(
+  new Set([...eventHandlersByType.mouse, ...eventHandlersByType.keyboard]),
+);
 
 const passReducer = (roles, handlers, messageTemplate) =>
   staticElements.reduce(
@@ -272,7 +275,7 @@ ruleTester.run(`${ruleName}:recommended`, rule, {
         ),
         ...passReducer(
           interactiveRoles.filter(role => !recommendedRoles.includes(role)),
-          eventHandlers.filter(handler => triggeringHandlers.includes(handler)),
+          triggeringHandlers,
           tabindexTemplate,
         ),
       ),
@@ -309,7 +312,7 @@ ruleTester.run(`${ruleName}:strict`, rule, {
         ),
         ...passReducer(
           interactiveRoles.filter(role => !strictRoles.includes(role)),
-          eventHandlers.filter(handler => triggeringHandlers.includes(handler)),
+          triggeringHandlers,
           tabindexTemplate,
         ),
       ),

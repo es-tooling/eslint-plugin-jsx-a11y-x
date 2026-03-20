@@ -401,7 +401,6 @@ ruleTester.run('role-supports-aria-props', rule, {
         { code: '<textarea aria-hidden />' },
         { code: '<select aria-expanded />' },
         { code: '<datalist aria-expanded />' },
-        { code: '<div role="heading" aria-level />' },
         { code: '<div role="heading" aria-level="1" />' },
 
         semver.satisfies(eslintVersion, '>= 6')

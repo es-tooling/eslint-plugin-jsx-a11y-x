@@ -150,7 +150,6 @@ ruleTester.run('anchor-is-valid', rule, {
         { code: '<Link href={foo} />', options: components },
         { code: '<Link href="/foo" />', options: components },
         { code: '<Link href="https://foo.bar.com" />', options: components },
-        { code: '<div href="foo" />', options: components },
         { code: '<Link href={`#foo`}/>', options: components },
         { code: '<Link href={"foo"}/>', options: components },
         { code: '<Link href="#foo" />', options: components },
@@ -168,7 +167,6 @@ ruleTester.run('anchor-is-valid', rule, {
         { code: '<a hrefLeft="#foo" />', options: specialLink },
         { code: '<UX.Layout>test</UX.Layout>', options: specialLink },
         { code: '<a hrefRight={this} />', options: specialLink },
-        { code: '<a {...props} />', options: specialLink },
         { code: '<a hrefRight="foo" />', options: specialLink },
         { code: '<a hrefRight={foo} />', options: specialLink },
         { code: '<a hrefRight="/foo" />', options: specialLink },
@@ -177,8 +175,6 @@ ruleTester.run('anchor-is-valid', rule, {
         { code: '<a hrefRight={`#foo`}/>', options: specialLink },
         { code: '<a hrefRight={"foo"}/>', options: specialLink },
         { code: '<a hrefRight="#foo" />', options: specialLink },
-        { code: '<UX.Layout>test</UX.Layout>', options: specialLink },
-        { code: '<a hrefRight={this} />', options: specialLink },
 
         // CUSTOM BOTH COMPONENTS AND SPECIALLINK TESTS
         { code: '<Anchor {...props} />', options: componentsAndSpecialLink },
@@ -341,10 +337,6 @@ ruleTester.run('anchor-is-valid', rule, {
           options: specialLink,
         },
         {
-          code: '<a {...props} onClick={() => void 0} />',
-          options: specialLink,
-        },
-        {
           code: '<a hrefRight="foo" onClick={() => void 0} />',
           options: specialLink,
         },
@@ -374,10 +366,6 @@ ruleTester.run('anchor-is-valid', rule, {
         },
         {
           code: '<a hrefRight="#foo" onClick={() => void 0} />',
-          options: specialLink,
-        },
-        {
-          code: '<a hrefRight={this} onClick={() => void 0} />',
           options: specialLink,
         },
 

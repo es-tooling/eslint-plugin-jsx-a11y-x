@@ -37,12 +37,11 @@ const roleValidityTests = domElements.map(element => {
 });
 
 const ariaValidityTests = domElements
+  // Filter out reserved elements, as they would already be covered by `domElements`
+  .filter(element => !dom.get(element).reserved)
   .map(element => {
-    const isReserved = dom.get(element).reserved || false;
-    const aria = isReserved ? '' : 'aria-hidden';
-
     return {
-      code: `<${element} ${aria} />`,
+      code: `<${element} aria-hidden />`,
     };
   })
   .concat({
