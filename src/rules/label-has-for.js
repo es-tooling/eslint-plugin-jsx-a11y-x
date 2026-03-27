@@ -120,6 +120,7 @@ function getValidityStatus(
 export default {
   meta: {
     deprecated: true,
+    // eslint-disable-next-line eslint-plugin/no-meta-replaced-by
     replacedBy: ['label-has-associated-control'],
     docs: {
       description: 'Enforce that `<label>` elements have the `htmlFor` prop.',

@@ -20,13 +20,11 @@ const ruleTester = new RuleTester();
 
 const missingPropError = type => ({
   message: `${type} elements must have an alt prop, either with meaningful text, or an empty string for decorative images.`,
-  type: 'JSXOpeningElement',
 });
 
 const altValueError = type => ({
   message: `Invalid alt value for ${type}. \
 Use alt="" for presentational images.`,
-  type: 'JSXOpeningElement',
 });
 
 const ariaLabelValueError = {
@@ -41,7 +39,6 @@ const ariaLabelledbyValueError = {
 const preferAltError = () => ({
   message:
     'Prefer alt="" over a presentational role. First rule of aria is to not use aria if it can be achieved via native HTML.',
-  type: 'JSXOpeningElement',
 });
 
 const objectError = {
@@ -176,7 +173,6 @@ ruleTester.run('alt-text', rule, {
         { code: '<Image {...this.props} alt="foo" />', options: array },
         { code: '<image />', options: array },
         { code: '<Image alt={function(e) {} } />', options: array },
-        { code: '<div alt={function(e) {} } />', options: array },
         { code: '<Image alt={() => void 0} />', options: array },
         { code: '<IMAGE />', options: array },
         { code: '<Image alt={alt || "foo" } />', options: array },

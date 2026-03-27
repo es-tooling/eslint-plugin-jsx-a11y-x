@@ -1,5 +1,7 @@
 # jsx-a11y-x/alt-text
 
+📝 Enforce all elements that require alternative text have meaningful information to relay back to end user.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

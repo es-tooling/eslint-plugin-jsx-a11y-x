@@ -1,5 +1,7 @@
 # jsx-a11y-x/html-has-lang
 
+📝 Enforce `<html>` element has `lang` prop.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

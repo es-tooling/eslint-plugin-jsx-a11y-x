@@ -1,5 +1,7 @@
 # jsx-a11y-x/label-has-for
 
+📝 Enforce that `<label>` elements have the `htmlFor` prop.
+
 ❌ This rule is deprecated. It was replaced by [`jsx-a11y-x/label-has-associated-control`](label-has-associated-control.md).
 
 🚫 This rule is _disabled_ in the following configs: ☑️ `recommended`, 🔒 `strict`.

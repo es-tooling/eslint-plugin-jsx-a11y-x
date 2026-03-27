@@ -27,7 +27,6 @@ const errorMessage =
 
 const expectedError = {
   message: errorMessage,
-  type: 'JSXAttribute',
 };
 
 const ruleName = 'jsx-a11y-x/no-noninteractive-element-to-interactive-role';
@@ -103,7 +102,6 @@ const alwaysValid = [
   { code: '<input type="datetime-local" role="img" />' },
   { code: '<input type="email" role="img" />' },
   { code: '<input type="file" role="img" />' },
-  { code: '<input type="hidden" role="button" />' },
   { code: '<input type="image" role="img" />' },
   { code: '<input type="month" role="img" />' },
   { code: '<input type="number" role="img" />' },
@@ -181,7 +179,6 @@ const alwaysValid = [
   { code: '<div className="foo" {...props} role="button" />;' },
   { code: '<div aria-hidden role="button" />;' },
   { code: '<div aria-hidden={true} role="button" />;' },
-  { code: '<div role="button" />;' },
   { code: '<div role={undefined} role="button" />;' },
   { code: '<div {...props} role="button" />;' },
   { code: '<div onKeyUp={() => void 0} aria-hidden={false} role="button" />;' },
@@ -226,7 +223,6 @@ const alwaysValid = [
   { code: '<wbr role="button" />;' },
   { code: '<xmp role="button" />;' },
   /* HTML elements attributed with an interactive role */
-  { code: '<div role="button" />;' },
   { code: '<div role="checkbox" />;' },
   { code: '<div role="columnheader" />;' },
   { code: '<div role="combobox" />;' },
@@ -281,7 +277,6 @@ const alwaysValid = [
   { code: '<a role="menuitem" />' },
   { code: '<a role="menuitem" />;' },
   { code: '<area role="listitem" />;' },
-  { code: '<article role="listitem" />;' },
   { code: '<article role="listitem" />;' },
   { code: '<dd role="listitem" />;' },
   { code: '<dfn role="listitem" />;' },

@@ -22,14 +22,6 @@ const ruleTester = new RuleTester();
 const invalidAutocomplete = [
   {
     message: axeFailMessage('autocomplete-valid'),
-    type: 'JSXOpeningElement',
-  },
-];
-
-const inappropriateAutocomplete = [
-  {
-    message: axeFailMessage('autocomplete-appropriate'),
-    type: 'JSXOpeningElement',
   },
 ];
 
@@ -77,19 +69,15 @@ ruleTester.run('autocomplete-valid', rule, {
         // see also: https://github.com/dequelabs/axe-core/issues/2912
         {
           code: '<input type="date" autocomplete="email" />;',
-          errors: inappropriateAutocomplete,
         },
         {
           code: '<input type="number" autocomplete="url" />;',
-          errors: inappropriateAutocomplete,
         },
         {
           code: '<input type="month" autocomplete="tel" />;',
-          errors: inappropriateAutocomplete,
         },
         {
           code: '<Foo type="month" autocomplete="tel"></Foo>;',
-          errors: inappropriateAutocomplete,
           options: [{ inputComponents: ['Foo'] }],
         },
       ),

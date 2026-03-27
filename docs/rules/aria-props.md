@@ -1,5 +1,7 @@
 # jsx-a11y-x/aria-props
 
+📝 Enforce all `aria-*` props are valid.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

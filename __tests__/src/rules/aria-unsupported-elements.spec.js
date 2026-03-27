@@ -23,7 +23,6 @@ const ruleTester = new RuleTester();
 const errorMessage = invalidProp => ({
   message: `This element does not support ARIA roles, states and properties. \
 Try removing the prop '${invalidProp}'.`,
-  type: 'JSXOpeningElement',
 });
 
 const domElements = dom.keys();
@@ -38,17 +37,15 @@ const roleValidityTests = domElements.map(element => {
 });
 
 const ariaValidityTests = domElements
+  // Filter out reserved elements, as they would already be covered by `domElements`
+  .filter(element => !dom.get(element).reserved)
   .map(element => {
-    const isReserved = dom.get(element).reserved || false;
-    const aria = isReserved ? '' : 'aria-hidden';
-
     return {
-      code: `<${element} ${aria} />`,
+      code: `<${element} aria-hidden />`,
     };
   })
   .concat({
     code: '<fake aria-hidden />',
-    errors: [errorMessage('aria-hidden')],
   });
 
 // Generate invalid test cases.

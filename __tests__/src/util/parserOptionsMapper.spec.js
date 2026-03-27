@@ -9,7 +9,6 @@ test('parserOptionsMapper', () => {
   const expectedResult = usingLegacy
     ? {
         code: '<div />',
-        errors: [],
         options: {},
         parserOptions: {
           ecmaVersion: 2018,
@@ -22,7 +21,6 @@ test('parserOptionsMapper', () => {
       }
     : {
         code: '<div />',
-        errors: [],
         options: {},
         languageOptions: {
           ecmaVersion: 'latest',
@@ -47,7 +45,6 @@ test('parserOptionsMapper', () => {
   const expectedResult2 = usingLegacy
     ? {
         code: '<div />',
-        errors: [],
         options: {},
         parserOptions: {
           ecmaVersion: 5,
@@ -60,7 +57,6 @@ test('parserOptionsMapper', () => {
       }
     : {
         code: '<div />',
-        errors: [],
         options: {},
         languageOptions: {
           ecmaVersion: 5,

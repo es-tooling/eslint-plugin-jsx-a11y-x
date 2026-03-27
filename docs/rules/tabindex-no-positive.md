@@ -1,5 +1,7 @@
 # jsx-a11y-x/tabindex-no-positive
 
+📝 Enforce `tabIndex` value is not greater than zero.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

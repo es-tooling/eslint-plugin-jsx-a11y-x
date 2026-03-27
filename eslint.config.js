@@ -1,21 +1,19 @@
-const js = require('@eslint/js');
-const { defineConfig } = require('eslint/config');
-const globals = require('globals');
-const eslintPlugin = require('eslint-plugin-eslint-plugin');
-const importX = require('eslint-plugin-import-x');
-const ftFlow = require('eslint-plugin-ft-flow');
 const { FlatCompat } = require('@eslint/eslintrc');
-const babelParser = require('@babel/eslint-parser');
+const js = require('@eslint/js');
+const babelParser = require('babel-eslint-parser-8-cjs');
+const { defineConfig } = require('eslint/config');
 const prettierConfig = require('eslint-config-prettier');
 const {
   createTypeScriptImportResolver,
 } = require('eslint-import-resolver-typescript');
+const { default: eslintPlugin } = require('eslint-plugin-eslint-plugin');
+const ftFlow = require('eslint-plugin-ft-flow');
+const importX = require('eslint-plugin-import-x');
+const globals = require('globals');
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+const compat = new FlatCompat({ baseDirectory: __dirname });
 
-module.exports = defineConfig([
+module.exports = defineConfig(
   {
     ignores: ['.yarn', 'coverage', 'lib', 'reports', 'examples'],
   },
@@ -51,7 +49,7 @@ module.exports = defineConfig([
   })),
   {
     files: ['src/rules/*'],
-    extends: [eslintPlugin.configs['flat/rules-recommended']],
+    extends: [eslintPlugin.configs['rules-recommended']],
     rules: {
       'eslint-plugin/require-meta-docs-description': [
         'error',
@@ -66,6 +64,7 @@ module.exports = defineConfig([
             'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/{{name}}.md',
         },
       ],
+      'eslint-plugin/require-meta-default-options': 'off',
       'eslint-plugin/require-meta-type': 'off',
       // disable temporarily
       'eslint-plugin/prefer-message-ids': 'off',
@@ -73,7 +72,7 @@ module.exports = defineConfig([
   },
   {
     files: ['__tests__/src/rules/*.js'],
-    extends: [eslintPlugin.configs['flat/tests-recommended']],
+    extends: [eslintPlugin.configs['tests-recommended']],
   },
   {
     files: ['__tests__/**/*'],
@@ -81,4 +80,4 @@ module.exports = defineConfig([
       globals: globals.jest,
     },
   },
-]);
+);

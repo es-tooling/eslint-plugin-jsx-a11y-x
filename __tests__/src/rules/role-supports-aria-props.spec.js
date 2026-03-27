@@ -32,7 +32,6 @@ const generateErrorMessage = (attr, role, tag, isImplicit) => {
 
 const errorMessage = (attr, role, tag, isImplicit) => ({
   message: generateErrorMessage(attr, role, tag, isImplicit),
-  type: 'JSXOpeningElement',
 });
 
 const componentsSettings = {
@@ -402,7 +401,6 @@ ruleTester.run('role-supports-aria-props', rule, {
         { code: '<textarea aria-hidden />' },
         { code: '<select aria-expanded />' },
         { code: '<datalist aria-expanded />' },
-        { code: '<div role="heading" aria-level />' },
         { code: '<div role="heading" aria-level="1" />' },
 
         semver.satisfies(eslintVersion, '>= 6')

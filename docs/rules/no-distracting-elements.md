@@ -1,5 +1,7 @@
 # jsx-a11y-x/no-distracting-elements
 
+📝 Enforce distracting elements are not used.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

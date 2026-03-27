@@ -21,7 +21,6 @@ const ruleTester = new RuleTester();
 const expectedError = {
   message:
     'An element that manages focus with `aria-activedescendant` must have a tabindex',
-  type: 'JSXOpeningElement',
 };
 
 ruleTester.run('aria-activedescendant-has-tabindex', rule, {
@@ -81,9 +80,6 @@ ruleTester.run('aria-activedescendant-has-tabindex', rule, {
         },
         {
           code: '<div aria-activedescendant={someID} tabIndex="-1" />;',
-        },
-        {
-          code: '<input aria-activedescendant={someID} tabIndex={-1} />;',
         },
       ),
     )

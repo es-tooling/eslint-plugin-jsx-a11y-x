@@ -26,11 +26,15 @@ jobs:
           - 8.56
           - 8
           - 9
-
+          - 10
         include:
           - executeLint: true
             node: lts/*
             os: ubuntu-latest
+        exclude:
+          # ESLint 10 is not supported on Node < 20.19
+          - node: 18
+            eslint: 10
       fail-fast: false
 
     runs-on: ${{ matrix.os }}

@@ -1,5 +1,7 @@
 # jsx-a11y-x/anchor-has-content
 
+📝 Enforce all anchors to contain accessible content.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

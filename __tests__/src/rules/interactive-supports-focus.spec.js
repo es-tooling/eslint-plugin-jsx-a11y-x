@@ -8,7 +8,10 @@
 // -----------------------------------------------------------------------------
 
 import { RuleTester } from 'eslint';
-import { eventHandlers, eventHandlersByType } from 'jsx-ast-utils-x';
+import {
+  eventHandlers as _eventHandlers,
+  eventHandlersByType,
+} from 'jsx-ast-utils-x';
 import { configs } from '../../../src/index';
 import parserOptionsMapper from '../../__util__/parserOptionsMapper';
 import parsers from '../../__util__/helpers/parsers';
@@ -30,7 +33,6 @@ function template(strings, ...keys) {
 }
 
 const ruleName = 'interactive-supports-focus';
-const type = 'JSXOpeningElement';
 const codeTemplate = template`<${0} role="${1}" ${2}={() => void 0} />`;
 const fixedTemplate = template`<${0} tabIndex={${1}} role="${2}" ${3}={() => void 0} />`;
 const tabindexTemplate = template`<${0} role="${1}" ${2}={() => void 0} tabIndex="0" />`;
@@ -53,7 +55,6 @@ const buttonError = {
       output: '<Div tabIndex={0} onClick={() => void 0} role="button" />',
     },
   ],
-  type,
 };
 
 const recommendedOptions =
@@ -156,8 +157,8 @@ const neverValid = [
 const interactiveRoles = [
   'button',
   'checkbox',
-  'link',
   'gridcell',
+  'link',
   'menuitem',
   'menuitemcheckbox',
   'menuitemradio',
@@ -196,10 +197,10 @@ const strictRoles = [
 
 const staticElements = ['div'];
 
-const triggeringHandlers = [
-  ...eventHandlersByType.mouse,
-  ...eventHandlersByType.keyboard,
-];
+const eventHandlers = Array.from(new Set(_eventHandlers));
+const triggeringHandlers = Array.from(
+  new Set([...eventHandlersByType.mouse, ...eventHandlersByType.keyboard]),
+);
 
 const passReducer = (roles, handlers, messageTemplate) =>
   staticElements.reduce(
@@ -229,7 +230,6 @@ const failReducer = (roles, handlers, messageTemplate) =>
                 code: codeTemplate(element, role, handler),
                 errors: [
                   {
-                    type,
                     message: messageTemplate(role),
                     suggestions: [
                       {
@@ -275,7 +275,7 @@ ruleTester.run(`${ruleName}:recommended`, rule, {
         ),
         ...passReducer(
           interactiveRoles.filter(role => !recommendedRoles.includes(role)),
-          eventHandlers.filter(handler => triggeringHandlers.includes(handler)),
+          triggeringHandlers,
           tabindexTemplate,
         ),
       ),
@@ -312,7 +312,7 @@ ruleTester.run(`${ruleName}:strict`, rule, {
         ),
         ...passReducer(
           interactiveRoles.filter(role => !strictRoles.includes(role)),
-          eventHandlers.filter(handler => triggeringHandlers.includes(handler)),
+          triggeringHandlers,
           tabindexTemplate,
         ),
       ),

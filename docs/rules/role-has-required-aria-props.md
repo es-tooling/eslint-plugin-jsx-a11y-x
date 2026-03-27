@@ -1,5 +1,7 @@
 # jsx-a11y-x/role-has-required-aria-props
 
+📝 Enforce that elements with ARIA roles must have all required attributes for that role.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->
