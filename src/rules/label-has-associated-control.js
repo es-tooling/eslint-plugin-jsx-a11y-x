@@ -71,7 +71,7 @@ export default ({
     docs: {
       description:
         'Enforce that a `label` tag has a text label and an associated control.',
-      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/blob/main/docs/rules/label-has-associated-control.md',
+      url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/label-has-associated-control.md',
     },
     schema: [schema],
   },

@@ -31,7 +31,7 @@ export default ({
     docs: {
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/no-noninteractive-element-to-interactive-role.md',
       description:
-        'Non-interactive elements should not be assigned interactive roles.',
+        'Disallow non-interactive elements being assigned interactive roles.',
     },
     schema: [
       {
