@@ -1,5 +1,4 @@
 /**
- * @flow
  * @file Disallow inherently interactive elements to be assigned non-interactive
  *   roles.
  * @author Jesse Beach
@@ -11,13 +10,6 @@
 
 import { dom } from 'aria-query';
 import { getProp, getLiteralPropValue, propName } from 'jsx-ast-utils-x';
-import type { JSXIdentifier } from 'ast-types-flow';
-import type {
-  ESLintConfig,
-  ESLintContext,
-  ESLintVisitorSelectorConfig,
-} from '../../flow/eslint';
-import type { ESLintJSXAttribute } from '../../flow/eslint-jsx';
 import getElementType from '../util/getElementType';
 import isInteractiveElement from '../util/isInteractiveElement';
 import isNonInteractiveRole from '../util/isNonInteractiveRole';
@@ -26,7 +18,7 @@ import isPresentationRole from '../util/isPresentationRole';
 const errorMessage =
   'Interactive elements should not be assigned non-interactive roles.';
 
-export default ({
+export default {
   meta: {
     docs: {
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/no-interactive-element-to-noninteractive-role.md',
@@ -47,13 +39,12 @@ export default ({
     ],
   },
 
-  create: (context: ESLintContext): ESLintVisitorSelectorConfig => {
+  create: (context) => {
     const { options } = context;
     const elementType = getElementType(context);
     return {
-      JSXAttribute: (attribute: ESLintJSXAttribute) => {
-        const attributeName: JSXIdentifier = propName(attribute);
-        // $FlowFixMe: [TODO] Mark propName as a JSXIdentifier, not a string.
+      JSXAttribute: (attribute) => {
+        const attributeName = propName(attribute);
         if (attributeName !== 'role') {
           return;
         }
@@ -90,4 +81,4 @@ export default ({
       },
     };
   },
-}: ESLintConfig);
+};

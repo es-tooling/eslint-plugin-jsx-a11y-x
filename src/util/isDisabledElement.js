@@ -1,9 +1,6 @@
-/** @flow */
-
 import { getProp, getLiteralPropValue, getPropValue } from 'jsx-ast-utils-x';
-import type { Node } from 'ast-types-flow';
 
-const isDisabledElement = (attributes: Array<Node>): boolean => {
+const isDisabledElement = (attributes) => {
   const disabledAttr = getProp(attributes, 'disabled');
   const disabledAttrValue = getPropValue(disabledAttr);
   const isHTML5Disabled = disabledAttr && disabledAttrValue !== undefined;

@@ -1,6 +1,3 @@
-/** @flow */
-
-import type { Node } from 'ast-types-flow';
 import { getProp } from 'jsx-ast-utils-x';
 
 /**
@@ -11,10 +8,7 @@ import { getProp } from 'jsx-ast-utils-x';
  * Literal. Otherwise returns false.
  */
 
-const isNonLiteralProperty = (
-  attributes: Array<Node>,
-  propName: string,
-): boolean => {
+const isNonLiteralProperty = (attributes, propName) => {
   const prop = getProp(attributes, propName);
   if (!prop) return false;
 

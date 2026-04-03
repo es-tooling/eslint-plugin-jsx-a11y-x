@@ -1,18 +1,12 @@
-/** @flow */
-
 import { getLiteralPropValue, propName } from 'jsx-ast-utils-x';
-import type { Node } from 'ast-types-flow';
 
 /**
  * Returns true if all items in baseAttributes are found in attributes. Always
  * returns true if baseAttributes is empty.
  */
-function attributesComparator(
-  baseAttributes: Array<{ [key: string]: mixed }> = [],
-  attributes: Array<Node> = [],
-): boolean {
-  return baseAttributes.every((baseAttr): boolean =>
-    attributes.some((attribute): boolean => {
+function attributesComparator(baseAttributes = [], attributes = []) {
+  return baseAttributes.every((baseAttr) =>
+    attributes.some((attribute) => {
       // Guard against non-JSXAttribute nodes like JSXSpreadAttribute
       if (attribute.type !== 'JSXAttribute') {
         return false;

@@ -146,7 +146,6 @@ const parsers = {
         features.has('bind operator') ||
         features.has('do expressions') ||
         features.has('decorators') ||
-        features.has('flow') ||
         features.has('ts') ||
         features.has('types') ||
         (features.has('fragment') && semver.satisfies(version, '< 5'));
@@ -161,13 +160,11 @@ const parsers = {
         skipBabel ||
         features.has('no-babel-new') ||
         !semver.satisfies(version, '^7.5.0') || // require('@babel/eslint-parser/package.json').peerDependencies.eslint
-        features.has('flow') ||
         features.has('types') ||
         features.has('ts');
       const skipTS =
         semver.satisfies(version, '<= 5') || // TODO: make these pass on eslint 5
         features.has('no-ts') ||
-        features.has('flow') ||
         features.has('jsx namespace') ||
         features.has('bind operator') ||
         features.has('do expressions');

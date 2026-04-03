@@ -1,6 +1,4 @@
-// @flow
 import { roles as rolesMap } from 'aria-query';
-import type { Node } from 'ast-types-flow';
 import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
 
 const roles = rolesMap.keys();
@@ -24,10 +22,7 @@ interactiveRoles.push('toolbar');
  * have a tagName or it has a tagName and a role attribute with a value in the
  * set of non-interactive roles.
  */
-const isInteractiveRole = (
-  tagName: string,
-  attributes: Array<Node>,
-): boolean => {
+const isInteractiveRole = (tagName, attributes) => {
   const value = getLiteralPropValue(getProp(attributes, 'role'));
 
   // If value is undefined, then the role attribute will be dropped in the DOM.
@@ -39,7 +34,7 @@ const isInteractiveRole = (
 
   let isInteractive = false;
   const normalizedValues = String(value).toLowerCase().split(' ');
-  const validRoles = normalizedValues.flatMap((name: string) =>
+  const validRoles = normalizedValues.flatMap((name) =>
     roles.includes(name) ? [name] : [],
   );
   if (validRoles.length > 0) {

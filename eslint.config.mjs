@@ -3,14 +3,9 @@ import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 import eslintPlugin from 'eslint-plugin-eslint-plugin';
 import importX from 'eslint-plugin-import-x';
-import ftFlow from 'eslint-plugin-ft-flow';
 import { FlatCompat } from '@eslint/eslintrc';
 import babelParser from '@babel/eslint-parser';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
-
-const compat = new FlatCompat({
-  baseDirectory: import.meta.dirname,
-});
 
 export default defineConfig([
   {
@@ -36,15 +31,6 @@ export default defineConfig([
       'import-x/resolver-next': createTypeScriptImportResolver(),
     },
   },
-  ...compat.config(ftFlow.configs.recommended).map((config) => ({
-    ...config,
-    files: [
-      'src/**/*.js',
-      'flow/*.js',
-      '__mocks__/**/*.js',
-      '__tests__/**/*.js',
-    ],
-  })),
   {
     files: ['src/rules/*'],
     extends: [eslintPlugin.configs.recommended],

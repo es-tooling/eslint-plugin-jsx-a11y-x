@@ -1,7 +1,4 @@
-/** @flow */
-
 import { dom, roles as rolesMap } from 'aria-query';
-import type { Node } from 'ast-types-flow';
 import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
 
 const nonInteractiveRoles = rolesMap
@@ -32,10 +29,7 @@ const nonInteractiveRoles = rolesMap
  * cannot be made in this case and false is returned.
  */
 
-const isNonInteractiveRole = (
-  tagName: string,
-  attributes: Array<Node>,
-): boolean => {
+const isNonInteractiveRole = (tagName, attributes) => {
   // Do not test higher level JSX components, as we do not know what
   // low-level DOM element this maps to.
   if (!dom.has(tagName)) {
@@ -46,7 +40,7 @@ const isNonInteractiveRole = (
 
   let isNonInteractive = false;
   const normalizedValues = String(role).toLowerCase().split(' ');
-  const validRoles = normalizedValues.flatMap((name: string) =>
+  const validRoles = normalizedValues.flatMap((name) =>
     rolesMap.has(name) ? [name] : [],
   );
   if (validRoles.length > 0) {

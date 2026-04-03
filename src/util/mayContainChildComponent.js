@@ -3,29 +3,24 @@
  * accessible label. If no determination is possible, it returns false. Treat
  * false as an unknown value. The element might still have an accessible label,
  * but this module cannot determine it positively.
- *
- * @flow
  */
 
-import type { JSXOpeningElement, Node } from 'ast-types-flow';
 import { elementType as rawElementType } from 'jsx-ast-utils-x';
 import minimatch from 'minimatch';
 
 export default function mayContainChildComponent(
-  root: Node,
-  componentName: string,
-  maxDepth: number = 1,
-  elementType: (node: JSXOpeningElement) => string = rawElementType,
-): boolean {
-  function traverseChildren(node: Node, depth: number): boolean {
+  root,
+  componentName,
+  maxDepth = 1,
+  elementType = rawElementType,
+) {
+  function traverseChildren(node, depth) {
     // Bail when maxDepth is exceeded.
     if (depth > maxDepth) {
       return false;
     }
     if (node.children) {
-      /* $FlowFixMe */
       for (let i = 0; i < node.children.length; i += 1) {
-        /* $FlowFixMe */
         const childNode = node.children[i];
         // Assume an expression container renders a label. It is the best we can
         // do in this case.

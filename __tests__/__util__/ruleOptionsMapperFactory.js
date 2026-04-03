@@ -1,27 +1,5 @@
-/** @flow */
-
-type ESLintTestRunnerTestCase = {
-  code: string,
-  errors: ?Array<{ message: string, type: string }>,
-  options: ?Array<mixed>,
-  parserOptions: ?Array<mixed>,
-  settings?: { [string]: mixed },
-};
-
-type RuleOptionsMapperFactoryType = (
-  params: ESLintTestRunnerTestCase,
-) => ESLintTestRunnerTestCase;
-
-export default function ruleOptionsMapperFactory(
-  ruleOptions: Array<mixed> = [],
-): RuleOptionsMapperFactoryType {
-  return ({
-    code,
-    errors,
-    options,
-    parserOptions,
-    settings,
-  }: ESLintTestRunnerTestCase): ESLintTestRunnerTestCase => {
+export default function ruleOptionsMapperFactory(ruleOptions = []) {
+  return ({ code, errors, options, parserOptions, settings }) => {
     return {
       code,
       errors,

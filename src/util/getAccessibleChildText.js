@@ -1,7 +1,3 @@
-// @flow
-
-import type { JSXElement, JSXOpeningElement, Node } from 'ast-types-flow';
-
 import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
 
 import isHiddenFromScreenReader from './isHiddenFromScreenReader';
@@ -13,7 +9,7 @@ import isHiddenFromScreenReader from './isHiddenFromScreenReader';
  * @param {string} input
  * @returns Lowercase, single-spaced, punctuation-stripped, trimmed string
  */
-function standardizeSpaceAndCase(input: string): string {
+function standardizeSpaceAndCase(input) {
   return input
     .trim()
     .replace(/[,.?¿!‽¡;:]/g, '') // strip punctuation
@@ -32,10 +28,7 @@ function standardizeSpaceAndCase(input: string): string {
  * @param {JSXElement} node - Node to traverse
  * @returns Child text as a string
  */
-export default function getAccessibleChildText(
-  node: JSXElement,
-  elementType: (JSXOpeningElement) => string,
-): string {
+export default function getAccessibleChildText(node, elementType) {
   const ariaLabel = getLiteralPropValue(
     getProp(node.openingElement.attributes, 'aria-label'),
   );
@@ -60,8 +53,7 @@ export default function getAccessibleChildText(
   }
 
   const rawChildText = node.children
-    .map((currentNode: Node): string => {
-      // $FlowFixMe JSXText is missing in ast-types-flow
+    .map((currentNode) => {
       if (currentNode.type === 'Literal' || currentNode.type === 'JSXText') {
         return String(currentNode.value);
       }

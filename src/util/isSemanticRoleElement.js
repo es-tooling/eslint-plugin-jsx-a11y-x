@@ -1,13 +1,7 @@
-/** @flow */
-
-import type { JSXAttribute } from 'ast-types-flow';
 import { AXObjectRoles, elementAXObjects } from 'axobject-query';
 import { getLiteralPropValue, getProp, propName } from 'jsx-ast-utils-x';
 
-const isSemanticRoleElement = (
-  elementType: string,
-  attributes: Array<JSXAttribute>,
-): boolean => {
+const isSemanticRoleElement = (elementType, attributes) => {
   const roleAttr = getProp(attributes, 'role');
   let res = false;
   const roleAttrValue = getLiteralPropValue(roleAttr);

@@ -1,5 +1,4 @@
 /**
- * @flow
  * @file Enforce that elements with onClick handlers must be tabbable.
  * @author Ethan Cohen
  */
@@ -11,12 +10,6 @@ import {
   getLiteralPropValue,
   hasAnyProp,
 } from 'jsx-ast-utils-x';
-import type { JSXOpeningElement } from 'ast-types-flow';
-import type {
-  ESLintConfig,
-  ESLintContext,
-  ESLintVisitorSelectorConfig,
-} from '../../flow/eslint';
 import { enumArraySchema, generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
 import isDisabledElement from '../util/isDisabledElement';
@@ -51,7 +44,7 @@ const interactiveProps = [
   ...eventHandlersByType.keyboard,
 ];
 
-export default ({
+export default {
   meta: {
     docs: {
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/interactive-supports-focus.md',
@@ -68,10 +61,10 @@ export default ({
     schema: [schema],
   },
 
-  create: (context: ESLintContext): ESLintVisitorSelectorConfig => {
+  create: (context) => {
     const elementType = getElementType(context);
     return {
-      JSXOpeningElement: (node: JSXOpeningElement) => {
+      JSXOpeningElement: (node) => {
         const tabbable =
           (context.options &&
             context.options[0] &&
@@ -148,4 +141,4 @@ export default ({
       },
     };
   },
-}: ESLintConfig);
+};

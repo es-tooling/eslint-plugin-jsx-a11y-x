@@ -1,5 +1,4 @@
 /**
- * @flow
  * @file Enforce static elements have no interactive handlers.
  * @author Ethan Cohen
  */
@@ -15,12 +14,6 @@ import {
   getProp,
   hasProp,
 } from 'jsx-ast-utils-x';
-import type { JSXOpeningElement } from 'ast-types-flow';
-import type {
-  ESLintConfig,
-  ESLintContext,
-  ESLintVisitorSelectorConfig,
-} from '../../flow/eslint';
 import { arraySchema, generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
 import isAbstractRole from '../util/isAbstractRole';
@@ -44,7 +37,7 @@ const schema = generateObjSchema({
   handlers: arraySchema,
 });
 
-export default ({
+export default {
   meta: {
     docs: {
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/no-static-element-interactions.md',
@@ -54,11 +47,11 @@ export default ({
     schema: [schema],
   },
 
-  create: (context: ESLintContext): ESLintVisitorSelectorConfig => {
+  create: (context) => {
     const { options } = context;
     const elementType = getElementType(context);
     return {
-      JSXOpeningElement: (node: JSXOpeningElement) => {
+      JSXOpeningElement: (node) => {
         const { attributes } = node;
         const type = elementType(node);
 
@@ -128,4 +121,4 @@ export default ({
       },
     };
   },
-}: ESLintConfig);
+};

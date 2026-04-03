@@ -9,5 +9,5 @@ module.exports = {
       },
     ],
   ],
-  plugins: ['@babel/plugin-transform-flow-strip-types', 'add-module-exports'],
+  plugins: ['add-module-exports'],
 };

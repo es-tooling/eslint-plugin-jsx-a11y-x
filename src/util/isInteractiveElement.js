@@ -1,6 +1,4 @@
-/** @flow */
 import { dom, elementRoles, roles } from 'aria-query';
-import type { Node } from 'ast-types-flow';
 import { AXObjects, elementAXObjects } from 'axobject-query';
 
 import attributesComparator from './attributesComparator';
@@ -48,14 +46,12 @@ const interactiveRoles = new Set(
 
 const interactiveElementRoleSchemas = elementRoleEntries.flatMap(
   ([elementSchema, rolesArr]) =>
-    rolesArr.some((role): boolean => interactiveRoles.has(role))
-      ? [elementSchema]
-      : [],
+    rolesArr.some((role) => interactiveRoles.has(role)) ? [elementSchema] : [],
 );
 
 const nonInteractiveElementRoleSchemas = elementRoleEntries.flatMap(
   ([elementSchema, rolesArr]) =>
-    rolesArr.every((role): boolean => nonInteractiveRoles.has(role))
+    rolesArr.every((role) => nonInteractiveRoles.has(role))
       ? [elementSchema]
       : [],
 );
@@ -66,12 +62,12 @@ const interactiveAXObjects = new Set(
 
 const interactiveElementAXObjectSchemas = [...elementAXObjects].flatMap(
   ([elementSchema, AXObjectsArr]) =>
-    AXObjectsArr.every((role): boolean => interactiveAXObjects.has(role))
+    AXObjectsArr.every((role) => interactiveAXObjects.has(role))
       ? [elementSchema]
       : [],
 );
 
-function checkIsInteractiveElement(tagName, attributes): boolean {
+function checkIsInteractiveElement(tagName, attributes) {
   function elementSchemaMatcher(elementSchema) {
     return (
       tagName === elementSchema.name &&
@@ -109,10 +105,7 @@ function checkIsInteractiveElement(tagName, attributes): boolean {
  * need to discern whether or not it's intention is to be interacted with on the
  * DOM.
  */
-const isInteractiveElement = (
-  tagName: string,
-  attributes: Array<Node>,
-): boolean => {
+const isInteractiveElement = (tagName, attributes) => {
   // Do not test higher level JSX components, as we do not know what
   // low-level DOM element this maps to.
   if (!dom.has(tagName)) {

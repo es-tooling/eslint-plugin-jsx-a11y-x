@@ -1,5 +1,3 @@
-export const parser = 'flow';
-
 export default function transformer(file, api, options) {
   const j = api.jscodeshift;
   const s = j(file.source);

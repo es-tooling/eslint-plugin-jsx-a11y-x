@@ -1,5 +1,4 @@
 /**
- * @flow
  * @file Enforce controls are associated with a text label.
  * @author Jesse Beach
  */
@@ -9,13 +8,7 @@
 // ----------------------------------------------------------------------------
 
 import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
-import type { JSXElement } from 'ast-types-flow';
 import { generateObjSchema, arraySchema } from '../util/schemas';
-import type {
-  ESLintConfig,
-  ESLintContext,
-  ESLintVisitorSelectorConfig,
-} from '../../flow/eslint';
 import getElementType from '../util/getElementType';
 import isDOMElement from '../util/isDOMElement';
 import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader';
@@ -39,7 +32,7 @@ const schema = generateObjSchema({
   },
 });
 
-export default ({
+export default {
   meta: {
     docs: {
       description:
@@ -49,7 +42,7 @@ export default ({
     schema: [schema],
   },
 
-  create: (context: ESLintContext): ESLintVisitorSelectorConfig => {
+  create: (context) => {
     const elementType = getElementType(context);
     const options = context.options[0] || {};
     const {
@@ -61,7 +54,7 @@ export default ({
 
     const newIgnoreElements = new Set([...ignoreElements, ...ignoreList]);
 
-    const rule = (node: JSXElement): void => {
+    const rule = (node) => {
       const tag = elementType(node.openingElement);
       const role = getLiteralPropValue(
         getProp(node.openingElement.attributes, 'role'),
@@ -120,4 +113,4 @@ export default ({
       JSXElement: rule,
     };
   },
-}: ESLintConfig);
+};

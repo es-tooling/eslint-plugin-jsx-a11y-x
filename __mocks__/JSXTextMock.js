@@ -1,12 +1,4 @@
-/** @flow */
-
-export type JSXTextMockType = {|
-  type: 'JSXText',
-  value: string,
-  raw: string,
-|};
-
-export default function JSXTextMock(value: string): JSXTextMockType {
+export default function JSXTextMock(value) {
   return {
     type: 'JSXText',
     value,
