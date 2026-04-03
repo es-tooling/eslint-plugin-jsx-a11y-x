@@ -24,12 +24,12 @@ const expectedError = {
 };
 
 ruleTester.run('${name}', rule, {
-  valid: parsers.all([].concat(
+  valid: parsers.all([
     { code: '<div />;' },
-  ].map(parserOptionsMapper))),
-  invalid: parsers.all([].concat(
+  ].map(parserOptionsMapper)),
+  invalid: parsers.all([
 
-  ).map(parserOptionsMapper)),
+  ].map(parserOptionsMapper)),
 });
 `;
 

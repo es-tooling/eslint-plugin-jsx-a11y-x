@@ -420,31 +420,27 @@ const neverValid = [
 const recommendedOptions = configs.recommended.rules[ruleName][1] || {};
 ruleTester.run(`${ruleName}:recommended`, rule, {
   valid: parsers
-    .all(
-      [].concat(
-        ...alwaysValid,
-        { code: '<tr role="presentation" />;' },
-        { code: '<canvas role="img" />;' },
-        { code: '<Component role="presentation" />;' },
-      ),
-    )
+    .all([
+      ...alwaysValid,
+      { code: '<tr role="presentation" />;' },
+      { code: '<canvas role="img" />;' },
+      { code: '<Component role="presentation" />;' },
+    ])
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
   invalid: parsers
-    .all([].concat(...neverValid))
+    .all(neverValid)
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
 });
 
 ruleTester.run(`${ruleName}:strict`, rule, {
-  valid: parsers.all([].concat(...alwaysValid)).map(parserOptionsMapper),
+  valid: parsers.all(alwaysValid).map(parserOptionsMapper),
   invalid: parsers
-    .all(
-      [].concat(
-        ...neverValid,
-        { code: '<tr role="presentation" />;', errors: [expectedError] },
-        { code: '<canvas role="img" />;', errors: [expectedError] },
-      ),
-    )
+    .all([
+      ...neverValid,
+      { code: '<tr role="presentation" />;', errors: [expectedError] },
+      { code: '<canvas role="img" />;', errors: [expectedError] },
+    ])
     .map(parserOptionsMapper),
 });

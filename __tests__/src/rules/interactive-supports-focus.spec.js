@@ -263,74 +263,62 @@ const failReducer = (roles, handlers, messageTemplate) =>
 
 ruleTester.run(`${ruleName}:recommended`, rule, {
   valid: parsers
-    .all(
-      [].concat(
-        ...alwaysValid,
-        ...passReducer(
-          interactiveRoles,
-          eventHandlers.filter(
-            handler => !triggeringHandlers.includes(handler),
-          ),
-          codeTemplate,
-        ),
-        ...passReducer(
-          interactiveRoles.filter(role => !recommendedRoles.includes(role)),
-          eventHandlers.filter(handler => triggeringHandlers.includes(handler)),
-          tabindexTemplate,
-        ),
+    .all([
+      ...alwaysValid,
+      ...passReducer(
+        interactiveRoles,
+        eventHandlers.filter(handler => !triggeringHandlers.includes(handler)),
+        codeTemplate,
       ),
-    )
+      ...passReducer(
+        interactiveRoles.filter(role => !recommendedRoles.includes(role)),
+        eventHandlers.filter(handler => triggeringHandlers.includes(handler)),
+        tabindexTemplate,
+      ),
+    ])
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
   invalid: parsers
-    .all(
-      [].concat(
-        ...neverValid,
-        ...failReducer(recommendedRoles, triggeringHandlers, tabbableTemplate),
-        ...failReducer(
-          interactiveRoles.filter(role => !recommendedRoles.includes(role)),
-          triggeringHandlers,
-          focusableTemplate,
-        ),
+    .all([
+      ...neverValid,
+      ...failReducer(recommendedRoles, triggeringHandlers, tabbableTemplate),
+      ...failReducer(
+        interactiveRoles.filter(role => !recommendedRoles.includes(role)),
+        triggeringHandlers,
+        focusableTemplate,
       ),
-    )
+    ])
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
 });
 
 ruleTester.run(`${ruleName}:strict`, rule, {
   valid: parsers
-    .all(
-      [].concat(
-        ...alwaysValid,
-        ...passReducer(
-          interactiveRoles,
-          eventHandlers.filter(
-            handler => !triggeringHandlers.includes(handler),
-          ),
-          codeTemplate,
-        ),
-        ...passReducer(
-          interactiveRoles.filter(role => !strictRoles.includes(role)),
-          eventHandlers.filter(handler => triggeringHandlers.includes(handler)),
-          tabindexTemplate,
-        ),
+    .all([
+      ...alwaysValid,
+      ...passReducer(
+        interactiveRoles,
+        eventHandlers.filter(handler => !triggeringHandlers.includes(handler)),
+        codeTemplate,
       ),
-    )
+      ...passReducer(
+        interactiveRoles.filter(role => !strictRoles.includes(role)),
+        eventHandlers.filter(handler => triggeringHandlers.includes(handler)),
+        tabindexTemplate,
+      ),
+    ])
     .map(ruleOptionsMapperFactory(strictOptions))
     .map(parserOptionsMapper),
   invalid: parsers
-    .all(
-      [].concat(
-        ...neverValid,
-        ...failReducer(strictRoles, triggeringHandlers, tabbableTemplate),
-        ...failReducer(
-          interactiveRoles.filter(role => !strictRoles.includes(role)),
-          triggeringHandlers,
-          focusableTemplate,
-        ),
+    .all([
+      ...neverValid,
+      ...failReducer(strictRoles, triggeringHandlers, tabbableTemplate),
+      ...failReducer(
+        interactiveRoles.filter(role => !strictRoles.includes(role)),
+        triggeringHandlers,
+        focusableTemplate,
       ),
-    )
+    ])
     .map(ruleOptionsMapperFactory(strictOptions))
     .map(parserOptionsMapper),
 });

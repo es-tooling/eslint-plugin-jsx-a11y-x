@@ -33,34 +33,30 @@ const componentsSettings = {
 
 ruleTester.run('no-marquee', rule, {
   valid: parsers
-    .all(
-      [].concat(
-        { code: '<div />;' },
-        { code: '<Marquee />' },
-        { code: '<div marquee />' },
-        { code: '<Blink />' },
-        { code: '<div blink />' },
-      ),
-    )
+    .all([
+      { code: '<div />;' },
+      { code: '<Marquee />' },
+      { code: '<div marquee />' },
+      { code: '<Blink />' },
+      { code: '<div blink />' },
+    ])
     .map(parserOptionsMapper),
   invalid: parsers
-    .all(
-      [].concat(
-        { code: '<marquee />', errors: [expectedError('marquee')] },
-        { code: '<marquee {...props} />', errors: [expectedError('marquee')] },
-        {
-          code: '<marquee lang={undefined} />',
-          errors: [expectedError('marquee')],
-        },
-        { code: '<blink />', errors: [expectedError('blink')] },
-        { code: '<blink {...props} />', errors: [expectedError('blink')] },
-        { code: '<blink foo={undefined} />', errors: [expectedError('blink')] },
-        {
-          code: '<Blink />',
-          settings: componentsSettings,
-          errors: [expectedError('blink')],
-        },
-      ),
-    )
+    .all([
+      { code: '<marquee />', errors: [expectedError('marquee')] },
+      { code: '<marquee {...props} />', errors: [expectedError('marquee')] },
+      {
+        code: '<marquee lang={undefined} />',
+        errors: [expectedError('marquee')],
+      },
+      { code: '<blink />', errors: [expectedError('blink')] },
+      { code: '<blink {...props} />', errors: [expectedError('blink')] },
+      { code: '<blink foo={undefined} />', errors: [expectedError('blink')] },
+      {
+        code: '<Blink />',
+        settings: componentsSettings,
+        errors: [expectedError('blink')],
+      },
+    ])
     .map(parserOptionsMapper),
 });

@@ -10,7 +10,7 @@ try {
 }
 
 const disableNewTS = semver.satisfies(tsParserVersion, '>= 4.1') // this rule is not useful on v4.1+ of the TS parser
-  ? x => ({ ...x, features: [].concat(x.features, 'no-ts-new') })
+  ? x => ({ ...x, features: [...x.features, 'no-ts-new'] })
   : x => x;
 
 function minEcmaVersion(features, parserOptions) {
@@ -84,25 +84,27 @@ const parsers = {
         delete test.features;
         return test;
       }
-      const features = new Set([].concat(test.features || []));
+      const features = new Set(test.features);
       delete test.features;
 
       const es = minEcmaVersion(features, test.parserOptions);
 
       function addComment(testObject, parser) {
-        const extras = [].concat(
+        const extras = [
           `features: [${Array.from(features).join(',')}]`,
           `parser: ${parser}`,
-          testObject.parserOptions
-            ? `parserOptions: ${JSON.stringify(testObject.parserOptions)}`
-            : [],
-          testObject.options
-            ? `options: ${JSON.stringify(testObject.options)}`
-            : [],
-          testObject.settings
-            ? `settings: ${JSON.stringify(testObject.settings)}`
-            : [],
-        );
+        ];
+        if (testObject.parserOptions) {
+          extras.push(
+            `parserOptions: ${JSON.stringify(testObject.parserOptions)}`,
+          );
+        }
+        if (testObject.options) {
+          extras.push(`options: ${JSON.stringify(testObject.options)}`);
+        }
+        if (testObject.settings) {
+          extras.push(`settings: ${JSON.stringify(testObject.settings)}`);
+        }
 
         const extraComment = `\n// ${extras.join(', ')}`;
 
@@ -172,51 +174,67 @@ const parsers = {
       const tsOld = !skipTS && !features.has('no-ts-old');
       const tsNew = !skipTS && !features.has('no-ts-new');
 
-      return [].concat(
-        skipBase
-          ? []
-          : addComment(
-              {
-                ...test,
-                ...(typeof es === 'number' && {
-                  parserOptions: { ...test.parserOptions, ecmaVersion: es },
-                }),
-              },
-              'default',
-            ),
-        skipOldBabel
-          ? []
-          : addComment(
-              {
-                ...test,
-                parser: parsers.BABEL_ESLINT,
-                parserOptions: parsers.babelParserOptions(test, features),
-              },
-              'babel-eslint',
-            ),
-        skipNewBabel
-          ? []
-          : addComment(
-              {
-                ...test,
-                parser: parsers['@BABEL_ESLINT'],
-                parserOptions: parsers.babelParserOptions(test, features),
-              },
-              '@babel/eslint-parser',
-            ),
-        tsOld
-          ? addComment(
-              { ...test, parser: parsers.TYPESCRIPT_ESLINT },
-              'typescript-eslint',
-            )
-          : [],
-        tsNew
-          ? addComment(
-              { ...test, parser: parsers['@TYPESCRIPT_ESLINT'] },
-              '@typescript-eslint/parser',
-            )
-          : [],
-      );
+      const testObjects = [];
+
+      if (!skipBase) {
+        testObjects.push(
+          addComment(
+            {
+              ...test,
+              ...(typeof es === 'number' && {
+                parserOptions: { ...test.parserOptions, ecmaVersion: es },
+              }),
+            },
+            'default',
+          ),
+        );
+      }
+
+      if (!skipOldBabel) {
+        testObjects.pushs(
+          addComment(
+            {
+              ...test,
+              parser: parsers.BABEL_ESLINT,
+              parserOptions: parsers.babelParserOptions(test, features),
+            },
+            'babel-eslint',
+          ),
+        );
+      }
+
+      if (!skipNewBabel) {
+        testObjects.push(
+          addComment(
+            {
+              ...test,
+              parser: parsers['@BABEL_ESLINT'],
+              parserOptions: parsers.babelParserOptions(test, features),
+            },
+            '@babel/eslint-parser',
+          ),
+        );
+      }
+
+      if (tsOld) {
+        testObjects.push(
+          addComment(
+            { ...test, parser: parsers.TYPESCRIPT_ESLINT },
+            'typescript-eslint',
+          ),
+        );
+      }
+
+      if (tsNew) {
+        testObjects.push(
+          addComment(
+            { ...test, parser: parsers['@TYPESCRIPT_ESLINT'] },
+            '@typescript-eslint/parser',
+          ),
+        );
+      }
+
+      return testObjects;
     });
     return t;
   },
