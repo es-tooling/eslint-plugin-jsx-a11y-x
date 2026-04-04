@@ -28,10 +28,10 @@ export default {
     schema: [],
   },
 
-  create: context => {
+  create: (context) => {
     const elementType = getElementType(context);
     return {
-      JSXAttribute: attribute => {
+      JSXAttribute: (attribute) => {
         const name = propName(attribute).toLowerCase();
 
         if (name !== 'role') {
@@ -55,7 +55,7 @@ export default {
 
         const normalizedValues = String(roleAttrValue).toLowerCase().split(' ');
         const validRoles = normalizedValues.filter(
-          val => roleKeys.indexOf(val) > -1,
+          (val) => roleKeys.indexOf(val) > -1,
         );
 
         // Check semantic DOM elements
@@ -64,12 +64,12 @@ export default {
           return;
         }
         // Check arbitrary DOM elements
-        validRoles.forEach(role => {
+        validRoles.forEach((role) => {
           const { requiredProps: requiredPropKeyValues } = roles.get(role);
           const requiredProps = Object.keys(requiredPropKeyValues);
 
           if (requiredProps.length > 0) {
-            const hasRequiredProps = requiredProps.every(prop =>
+            const hasRequiredProps = requiredProps.every((prop) =>
               getProp(attributes, prop),
             );
             if (hasRequiredProps === false) {

@@ -12,7 +12,7 @@ import { aria, dom } from 'aria-query';
 import { propName } from 'jsx-ast-utils-x';
 import getElementType from '../util/getElementType';
 
-const errorMessage = invalidProp =>
+const errorMessage = (invalidProp) =>
   `This element does not support ARIA roles, states and properties. \
 Try removing the prop '${invalidProp}'.`;
 
@@ -28,10 +28,10 @@ export default {
     schema: [],
   },
 
-  create: context => {
+  create: (context) => {
     const elementType = getElementType(context);
     return {
-      JSXOpeningElement: node => {
+      JSXOpeningElement: (node) => {
         const nodeType = elementType(node);
         const nodeAttrs = dom.get(nodeType) || {};
         const { reserved: isReservedNodeType = false } = nodeAttrs;
@@ -41,7 +41,7 @@ export default {
           return;
         }
 
-        node.attributes.forEach(prop => {
+        node.attributes.forEach((prop) => {
           if (prop.type === 'JSXSpreadAttribute') {
             return;
           }

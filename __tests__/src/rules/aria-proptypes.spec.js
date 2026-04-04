@@ -22,7 +22,7 @@ const { validityCheck } = rule;
 
 const ruleTester = new RuleTester();
 
-const errorMessage = name => {
+const errorMessage = (name) => {
   const { type, values: permittedValues } = aria.get(name.toLowerCase());
 
   switch (type) {

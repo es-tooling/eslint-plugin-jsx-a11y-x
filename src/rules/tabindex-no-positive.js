@@ -20,8 +20,8 @@ export default {
     schema: [],
   },
 
-  create: context => ({
-    JSXAttribute: attribute => {
+  create: (context) => ({
+    JSXAttribute: (attribute) => {
       const name = propName(attribute).toUpperCase();
 
       // Check if tabIndex is the attribute

@@ -5,7 +5,7 @@ import getElementType from '../util/getElementType';
 const errorMessage =
   'Use {{tag}} instead of the "{{role}}" role to ensure accessibility across all devices.';
 
-const formatTag = tag => {
+const formatTag = (tag) => {
   if (!tag.attributes) {
     return `<${tag.name}>`;
   }
@@ -16,7 +16,7 @@ const formatTag = tag => {
   return `<${tag.name} ${attribute.name}=${value}>`;
 };
 
-const getLastPropValue = rawProp => {
+const getLastPropValue = (rawProp) => {
   const propValue = getPropValue(rawProp);
   if (!propValue) {
     return propValue;
@@ -39,11 +39,11 @@ export default {
     schema: [],
   },
 
-  create: context => {
+  create: (context) => {
     const elementType = getElementType(context);
 
     return {
-      JSXOpeningElement: node => {
+      JSXOpeningElement: (node) => {
         const role = getLastPropValue(getProp(node.attributes, 'role'));
         if (!role) {
           return;
@@ -56,7 +56,9 @@ export default {
 
         const matchedTags = Array.from(matchedTagsSet);
         if (
-          matchedTags.some(matchedTag => matchedTag.name === elementType(node))
+          matchedTags.some(
+            (matchedTag) => matchedTag.name === elementType(node),
+          )
         ) {
           return;
         }

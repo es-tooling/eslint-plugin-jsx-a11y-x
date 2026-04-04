@@ -34,11 +34,7 @@ Provide text content in the `button` element.
 Use the `aria-label` attribute and provide the text label as the value.
 
 ```jsx
-<button
-  type="button"
-  aria-label="Save"
-  class="icon-save"
-/>
+<button type="button" aria-label="Save" class="icon-save" />
 ```
 
 ### Case: The label for my element is already located on the page and I don't want to repeat the text in my source code.
@@ -55,11 +51,7 @@ Use the `aria-labelledby` attribute and point the IDREF value to an element with
 You can configure the rule to be aware of your custom components. Refer to the Rule Details below.
 
 ```jsx
-<CustomInput
-  label="Surname"
-  type="text"
-  value={value}
-/>
+<CustomInput label="Surname" type="text" value={value} />
 ```
 
 ## Rule options
@@ -111,20 +103,13 @@ This rule takes one optional object argument of type object:
 ### Succeed
 
 ```jsx
-<button
-  type="button"
-  aria-label="Save"
-  class="icon-save"
-/>
+<button type="button" aria-label="Save" class="icon-save" />
 ```
 
 ### Fail
 
 ```jsx
-<button
-  type="button"
-  class="icon-save"
-/>
+<button type="button" class="icon-save" />
 ```
 
 ## Accessibility guidelines

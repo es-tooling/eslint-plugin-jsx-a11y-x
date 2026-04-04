@@ -26,16 +26,20 @@ const errorMessage = {
 
 const roleKeys = roles.keys();
 
-const validRoles = roleKeys.filter(role => roles.get(role).abstract === false);
-const invalidRoles = roleKeys.filter(role => roles.get(role).abstract === true);
+const validRoles = roleKeys.filter(
+  (role) => roles.get(role).abstract === false,
+);
+const invalidRoles = roleKeys.filter(
+  (role) => roles.get(role).abstract === true,
+);
 
-const createTests = roleNames =>
-  roleNames.map(role => ({
+const createTests = (roleNames) =>
+  roleNames.map((role) => ({
     code: `<div role="${role.toLowerCase()}" />`,
   }));
 
 const validTests = createTests(validRoles);
-const invalidTests = createTests(invalidRoles).map(test => {
+const invalidTests = createTests(invalidRoles).map((test) => {
   const invalidTest = { ...test };
   invalidTest.errors = [errorMessage];
   return invalidTest;

@@ -11,7 +11,7 @@ const elementRoleEntries = [...elementRoles];
 
 const nonInteractiveRoles = new Set(
   roleKeys
-    .filter(name => {
+    .filter((name) => {
       const role = roles.get(name);
       return (
         !role.abstract &&
@@ -21,7 +21,7 @@ const nonInteractiveRoles = new Set(
         // This role is meant to have no semantic value.
         // @see https://www.w3.org/TR/wai-aria-1.2/#generic
         name !== 'generic' &&
-        !role.superClass.some(classes => classes.includes('widget'))
+        !role.superClass.some((classes) => classes.includes('widget'))
       );
     })
     .concat(
@@ -33,7 +33,7 @@ const nonInteractiveRoles = new Set(
 
 const interactiveRoles = new Set(
   roleKeys
-    .filter(name => {
+    .filter((name) => {
       const role = roles.get(name);
       return (
         !role.abstract &&
@@ -43,7 +43,7 @@ const interactiveRoles = new Set(
         // This role is meant to have no semantic value.
         // @see https://www.w3.org/TR/wai-aria-1.2/#generic
         name !== 'generic' &&
-        role.superClass.some(classes => classes.includes('widget'))
+        role.superClass.some((classes) => classes.includes('widget'))
       );
     })
     .concat(
@@ -68,7 +68,7 @@ const nonInteractiveElementRoleSchemas = elementRoleEntries.flatMap(
 );
 
 const nonInteractiveAXObjects = new Set(
-  AXObjects.keys().filter(name =>
+  AXObjects.keys().filter((name) =>
     ['window', 'structure'].includes(AXObjects.get(name).type),
   ),
 );

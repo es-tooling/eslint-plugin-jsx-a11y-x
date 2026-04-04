@@ -84,7 +84,7 @@ export default ({
     const elementType = getElementType(context);
 
     const rule = (node: JSXElement) => {
-      const isLabelComponent = labelComponentNames.some(name =>
+      const isLabelComponent = labelComponentNames.some((name) =>
         minimatch(elementType(node.openingElement), name),
       );
       if (!isLabelComponent) {
@@ -107,7 +107,7 @@ export default ({
       );
       const hasHtmlFor = validateHtmlFor(node.openingElement, context);
       // Check for multiple control components.
-      const hasNestedControl = controlComponents.some(name =>
+      const hasNestedControl = controlComponents.some((name) =>
         mayContainChildComponent(node, name, recursionDepth, elementType),
       );
       const hasAccessibleLabel = mayHaveAccessibleLabel(

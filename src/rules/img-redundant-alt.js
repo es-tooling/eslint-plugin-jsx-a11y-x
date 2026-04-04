@@ -26,18 +26,18 @@ const schema = generateObjSchema({
 const ASCII_REGEXP = /[\x20-\x7F]+/;
 
 function containsRedundantWord(value, redundantWords) {
-  const lowercaseRedundantWords = redundantWords.map(redundantWord =>
+  const lowercaseRedundantWords = redundantWords.map((redundantWord) =>
     redundantWord.toLowerCase(),
   );
 
   if (ASCII_REGEXP.test(value)) {
     return value
       .split(/\s+/)
-      .some(valueWord =>
+      .some((valueWord) =>
         lowercaseRedundantWords.includes(valueWord.toLowerCase()),
       );
   }
-  return lowercaseRedundantWords.some(redundantWord =>
+  return lowercaseRedundantWords.some((redundantWord) =>
     value.toLowerCase().includes(redundantWord),
   );
 }
@@ -52,10 +52,10 @@ export default {
     schema: [schema],
   },
 
-  create: context => {
+  create: (context) => {
     const elementType = getElementType(context);
     return {
-      JSXOpeningElement: node => {
+      JSXOpeningElement: (node) => {
         const options = context.options[0] || {};
         const componentOptions = options.components || [];
         const typesToValidate = ['img'].concat(componentOptions);

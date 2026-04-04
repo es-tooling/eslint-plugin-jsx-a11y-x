@@ -77,17 +77,9 @@ The recommended options for this rule allow `tabIndex` on elements with the noni
 The `allowExpressionValues` option determines whether the `role` attribute is allowed to be assigned using an expression. For example, the following would pass in recommended mode if `allowExpressionValues` is set to be `true`:
 
 ```jsx
-<div
-  role={ROLE_BUTTON}
-  onClick={() => {}}
-  tabIndex="0"
-/>;
+<div role={ROLE_BUTTON} onClick={() => {}} tabIndex="0" />;
 // In case of a conditional expression, there should be literals on both sides of ternary operator
-<div
-  role={isButton ? 'button' : 'link'}
-  onClick={() => {}}
-  tabIndex="0"
-/>;
+<div role={isButton ? 'button' : 'link'} onClick={() => {}} tabIndex="0" />;
 ```
 
 ### Succeed

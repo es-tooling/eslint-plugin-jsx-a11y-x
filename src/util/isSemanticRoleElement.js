@@ -17,8 +17,8 @@ const isSemanticRoleElement = (
     }
     if (
       concept.name === elementType &&
-      (concept.attributes || []).every(cAttr =>
-        attributes.some(attr => {
+      (concept.attributes || []).every((cAttr) =>
+        attributes.some((attr) => {
           if (!attr.type || attr.type !== 'JSXAttribute') {
             return false;
           }
@@ -34,13 +34,13 @@ const isSemanticRoleElement = (
         }),
       )
     ) {
-      axObjects.forEach(name => {
+      axObjects.forEach((name) => {
         if (res) {
           return;
         }
         const roles = AXObjectRoles.get(name);
         if (roles) {
-          roles.forEach(role => {
+          roles.forEach((role) => {
             if (res === true) {
               return;
             }

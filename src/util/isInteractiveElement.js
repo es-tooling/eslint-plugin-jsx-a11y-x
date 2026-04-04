@@ -10,14 +10,14 @@ const elementRoleEntries = [...elementRoles];
 
 const nonInteractiveRoles = new Set(
   roleKeys
-    .filter(name => {
+    .filter((name) => {
       const role = roles.get(name);
       return (
         !role.abstract &&
         // 'toolbar' does not descend from widget, but it does support
         // aria-activedescendant, thus in practice we treat it as a widget.
         name !== 'toolbar' &&
-        !role.superClass.some(classes => classes.includes('widget'))
+        !role.superClass.some((classes) => classes.includes('widget'))
       );
     })
     .concat(
@@ -29,14 +29,14 @@ const nonInteractiveRoles = new Set(
 
 const interactiveRoles = new Set(
   roleKeys
-    .filter(name => {
+    .filter((name) => {
       const role = roles.get(name);
       return (
         !role.abstract &&
         // The `progressbar` is descended from `widget`, but in practice, its
         // value is always `readonly`, so we treat it as a non-interactive role.
         name !== 'progressbar' &&
-        role.superClass.some(classes => classes.includes('widget'))
+        role.superClass.some((classes) => classes.includes('widget'))
       );
     })
     .concat(
@@ -61,7 +61,7 @@ const nonInteractiveElementRoleSchemas = elementRoleEntries.flatMap(
 );
 
 const interactiveAXObjects = new Set(
-  AXObjects.keys().filter(name => AXObjects.get(name).type === 'widget'),
+  AXObjects.keys().filter((name) => AXObjects.get(name).type === 'widget'),
 );
 
 const interactiveElementAXObjectSchemas = [...elementAXObjects].flatMap(

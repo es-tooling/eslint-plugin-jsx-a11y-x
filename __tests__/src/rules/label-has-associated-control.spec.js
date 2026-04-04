@@ -30,7 +30,7 @@ const errorMessages = {
   both: 'A form label must have a valid htmlFor attribute and a control as a descendant.',
 };
 const expectedErrors = {};
-Object.keys(errorMessages).forEach(key => {
+Object.keys(errorMessages).forEach((key) => {
   expectedErrors[key] = {
     message: errorMessages[key],
     type: 'JSXOpeningElement',
@@ -247,7 +247,7 @@ const alwaysValid = [
   { code: '<input type="hidden" />' },
 ];
 
-const htmlForInvalid = assertType => {
+const htmlForInvalid = (assertType) => {
   const expectedError = expectedErrors[assertType];
   return [
     {
@@ -289,7 +289,7 @@ const htmlForInvalid = assertType => {
     },
   ];
 };
-const nestingInvalid = assertType => {
+const nestingInvalid = (assertType) => {
   const expectedError = expectedErrors[assertType];
   return [
     { code: '<label>A label<input /></label>', errors: [expectedError] },
@@ -376,7 +376,7 @@ const nestingInvalid = assertType => {
   ];
 };
 
-const neverValid = assertType => {
+const neverValid = (assertType) => {
   const expectedError = expectedErrors[assertType];
   return [
     {

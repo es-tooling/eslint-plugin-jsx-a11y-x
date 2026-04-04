@@ -5,9 +5,9 @@ import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
 
 const roles = rolesMap.keys();
 const interactiveRoles = roles.filter(
-  name =>
+  (name) =>
     !rolesMap.get(name).abstract &&
-    rolesMap.get(name).superClass.some(klasses => klasses.includes('widget')),
+    rolesMap.get(name).superClass.some((klasses) => klasses.includes('widget')),
 );
 
 // 'toolbar' does not descend from widget, but it does support

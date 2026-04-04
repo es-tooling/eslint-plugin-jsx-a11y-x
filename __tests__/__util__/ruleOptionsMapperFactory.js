@@ -30,7 +30,7 @@ export default function ruleOptionsMapperFactory(
         Object.fromEntries(
           (options || [])
             .concat(ruleOptions)
-            .flatMap(item => Object.entries(item)),
+            .flatMap((item) => Object.entries(item)),
         ),
       ],
       parserOptions,

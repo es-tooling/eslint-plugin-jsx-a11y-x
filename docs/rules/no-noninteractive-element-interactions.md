@@ -89,10 +89,7 @@ If your user interface has a table-like layout, but is filled with interactive c
 ```jsx
 <table role="grid">
   <tr>
-    <td
-      role="gridcell"
-      onClick={this.sort}
-    >
+    <td role="gridcell" onClick={this.sort}>
       Sort
     </td>
   </tr>

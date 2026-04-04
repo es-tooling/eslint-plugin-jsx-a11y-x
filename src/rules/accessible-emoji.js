@@ -26,14 +26,14 @@ export default {
     schema: [],
   },
 
-  create: context => {
+  create: (context) => {
     const elementType = getElementType(context);
 
     const emojiRegexp = emojiRegex();
     return {
-      JSXOpeningElement: node => {
+      JSXOpeningElement: (node) => {
         const literalChildValue = node.parent.children.find(
-          child => child.type === 'Literal' || child.type === 'JSXText',
+          (child) => child.type === 'Literal' || child.type === 'JSXText',
         );
 
         if (literalChildValue && emojiRegexp.test(literalChildValue.value)) {

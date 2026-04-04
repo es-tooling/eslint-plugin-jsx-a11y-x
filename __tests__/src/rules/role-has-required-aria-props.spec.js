@@ -21,7 +21,7 @@ import rule from '../../../src/rules/role-has-required-aria-props';
 
 const ruleTester = new RuleTester();
 
-const errorMessage = role => {
+const errorMessage = (role) => {
   const requiredProps = Object.keys(roles.get(role).requiredProps);
 
   return {
@@ -39,7 +39,7 @@ const componentsSettings = {
 };
 
 // Create basic test cases using all valid role types.
-const basicValidityTests = roles.keys().map(role => {
+const basicValidityTests = roles.keys().map((role) => {
   const { requiredProps: requiredPropKeyValues } = roles.get(role);
   const requiredProps = Object.keys(requiredPropKeyValues);
   const propChain = requiredProps.join(' ');

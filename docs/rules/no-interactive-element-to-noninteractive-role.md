@@ -27,16 +27,8 @@ Wrap your interactive element in a `<div>` with the desired role.
 Put the content inside your interactive element.
 
 ```jsx
-<div
-  role="button"
-  onClick={() => {}}
-  onKeyPress={() => {}}
-  tabIndex="0"
->
-  <div
-    role="img"
-    aria-label="Save"
-  />
+<div role="button" onClick={() => {}} onKeyPress={() => {}} tabIndex="0">
+  <div role="img" aria-label="Save" />
 </div>
 ```
 
