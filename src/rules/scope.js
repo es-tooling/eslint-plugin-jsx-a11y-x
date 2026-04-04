@@ -9,12 +9,9 @@
 
 import { dom } from 'aria-query';
 import { propName } from 'jsx-ast-utils-x';
-import { generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
 
 const errorMessage = 'The scope prop can only be used on <th> elements.';
-
-const schema = generateObjSchema();
 
 export default {
   meta: {
@@ -22,7 +19,7 @@ export default {
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/scope.md',
       description: 'Enforce `scope` prop is only used on `<th>` elements.',
     },
-    schema: [schema],
+    schema: [],
   },
 
   create: context => {

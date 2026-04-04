@@ -123,9 +123,9 @@ const neverValid = [
 
 ruleTester.run(`${ruleName}:recommended`, rule, {
   valid: parsers
-    .all([].concat(...alwaysValid, { code: '<nav role="navigation" />' }))
+    .all([...alwaysValid, { code: '<nav role="navigation" />' }])
     .map(parserOptionsMapper),
-  invalid: parsers.all([].concat(neverValid)).map(parserOptionsMapper),
+  invalid: parsers.all(neverValid).map(parserOptionsMapper),
 });
 
 const noNavExceptionsOptions = { nav: [] };
@@ -133,47 +133,40 @@ const listException = { ul: ['list'], ol: ['list'] };
 
 ruleTester.run(`${ruleName}:recommended`, rule, {
   valid: parsers
-    .all(
-      [].concat(
-        alwaysValid.map(ruleOptionsMapperFactory(noNavExceptionsOptions)),
-      ),
-    )
+    .all(alwaysValid.map(ruleOptionsMapperFactory(noNavExceptionsOptions)))
     .map(parserOptionsMapper),
   invalid: parsers
-    .all(
-      [].concat(...neverValid, {
+    .all([
+      ...neverValid,
+      {
         code: '<nav role="navigation" />',
         errors: [expectedError('nav', 'navigation')],
-      }),
-    )
+      },
+    ])
     .map(ruleOptionsMapperFactory(noNavExceptionsOptions))
     .map(parserOptionsMapper),
 });
 
 ruleTester.run(`${ruleName}:recommended (valid list role override)`, rule, {
   valid: parsers
-    .all(
-      [].concat(
-        { code: '<ul role="list" />' },
-        { code: '<ol role="list" />' },
-        { code: '<dl role="list" />' },
-        { code: '<img src="example.svg" role="img" />' },
-        { code: '<svg role="img" />' },
-      ),
-    )
+    .all([
+      { code: '<ul role="list" />' },
+      { code: '<ol role="list" />' },
+      { code: '<dl role="list" />' },
+      { code: '<img src="example.svg" role="img" />' },
+      { code: '<svg role="img" />' },
+    ])
     .map(ruleOptionsMapperFactory(listException))
     .map(parserOptionsMapper),
   invalid: parsers
-    .all(
-      [].concat(
-        { code: '<ul role="list" />', errors: [expectedError('ul', 'list')] },
-        { code: '<ol role="list" />', errors: [expectedError('ol', 'list')] },
-        { code: '<img role="img" />', errors: [expectedError('img', 'img')] },
-        {
-          code: '<img src={someVariable} role="img" />',
-          errors: [expectedError('img', 'img')],
-        },
-      ),
-    )
+    .all([
+      { code: '<ul role="list" />', errors: [expectedError('ul', 'list')] },
+      { code: '<ol role="list" />', errors: [expectedError('ol', 'list')] },
+      { code: '<img role="img" />', errors: [expectedError('img', 'img')] },
+      {
+        code: '<img src={someVariable} role="img" />',
+        errors: [expectedError('img', 'img')],
+      },
+    ])
     .map(parserOptionsMapper),
 });

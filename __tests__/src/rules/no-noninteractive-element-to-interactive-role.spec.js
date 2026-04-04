@@ -450,63 +450,59 @@ const neverValid = [
 const recommendedOptions = configs.recommended.rules[ruleName][1] || {};
 ruleTester.run(`${ruleName}:recommended`, rule, {
   valid: parsers
-    .all(
-      [].concat(
-        ...alwaysValid,
-        { code: '<ul role="menu" />;' },
-        { code: '<ul role="menubar" />;' },
-        { code: '<ul role="radiogroup" />;' },
-        { code: '<ul role="tablist" />;' },
-        { code: '<ul role="tree" />;' },
-        { code: '<ul role="treegrid" />;' },
-        { code: '<ol role="menu" />;' },
-        { code: '<ol role="menubar" />;' },
-        { code: '<ol role="radiogroup" />;' },
-        { code: '<ol role="tablist" />;' },
-        { code: '<ol role="tree" />;' },
-        { code: '<ol role="treegrid" />;' },
-        { code: '<li role="tab" />;' },
-        { code: '<li role="menuitem" />;' },
-        { code: '<li role="menuitemcheckbox" />;' },
-        { code: '<li role="menuitemradio" />;' },
-        { code: '<li role="row" />;' },
-        { code: '<li role="treeitem" />;' },
-        { code: '<Component role="treeitem" />;' },
-        { code: '<fieldset role="radiogroup" />;' },
-        { code: '<fieldset role="presentation" />;' },
-      ),
-    )
+    .all([
+      ...alwaysValid,
+      { code: '<ul role="menu" />;' },
+      { code: '<ul role="menubar" />;' },
+      { code: '<ul role="radiogroup" />;' },
+      { code: '<ul role="tablist" />;' },
+      { code: '<ul role="tree" />;' },
+      { code: '<ul role="treegrid" />;' },
+      { code: '<ol role="menu" />;' },
+      { code: '<ol role="menubar" />;' },
+      { code: '<ol role="radiogroup" />;' },
+      { code: '<ol role="tablist" />;' },
+      { code: '<ol role="tree" />;' },
+      { code: '<ol role="treegrid" />;' },
+      { code: '<li role="tab" />;' },
+      { code: '<li role="menuitem" />;' },
+      { code: '<li role="menuitemcheckbox" />;' },
+      { code: '<li role="menuitemradio" />;' },
+      { code: '<li role="row" />;' },
+      { code: '<li role="treeitem" />;' },
+      { code: '<Component role="treeitem" />;' },
+      { code: '<fieldset role="radiogroup" />;' },
+      { code: '<fieldset role="presentation" />;' },
+    ])
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
   invalid: parsers
-    .all([].concat(...neverValid))
+    .all(neverValid)
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
 });
 
 ruleTester.run(`${ruleName}:strict`, rule, {
-  valid: parsers.all([].concat(...alwaysValid)).map(parserOptionsMapper),
+  valid: parsers.all(alwaysValid).map(parserOptionsMapper),
   invalid: parsers
-    .all(
-      [].concat(
-        ...neverValid,
-        { code: '<ul role="menu" />;', errors: [expectedError] },
-        { code: '<ul role="menubar" />;', errors: [expectedError] },
-        { code: '<ul role="radiogroup" />;', errors: [expectedError] },
-        { code: '<ul role="tablist" />;', errors: [expectedError] },
-        { code: '<ul role="tree" />;', errors: [expectedError] },
-        { code: '<ul role="treegrid" />;', errors: [expectedError] },
-        { code: '<ol role="menu" />;', errors: [expectedError] },
-        { code: '<ol role="menubar" />;', errors: [expectedError] },
-        { code: '<ol role="radiogroup" />;', errors: [expectedError] },
-        { code: '<ol role="tablist" />;', errors: [expectedError] },
-        { code: '<ol role="tree" />;', errors: [expectedError] },
-        { code: '<ol role="treegrid" />;', errors: [expectedError] },
-        { code: '<li role="tab" />;', errors: [expectedError] },
-        { code: '<li role="menuitem" />;', errors: [expectedError] },
-        { code: '<li role="row" />;', errors: [expectedError] },
-        { code: '<li role="treeitem" />;', errors: [expectedError] },
-      ),
-    )
+    .all([
+      ...neverValid,
+      { code: '<ul role="menu" />;', errors: [expectedError] },
+      { code: '<ul role="menubar" />;', errors: [expectedError] },
+      { code: '<ul role="radiogroup" />;', errors: [expectedError] },
+      { code: '<ul role="tablist" />;', errors: [expectedError] },
+      { code: '<ul role="tree" />;', errors: [expectedError] },
+      { code: '<ul role="treegrid" />;', errors: [expectedError] },
+      { code: '<ol role="menu" />;', errors: [expectedError] },
+      { code: '<ol role="menubar" />;', errors: [expectedError] },
+      { code: '<ol role="radiogroup" />;', errors: [expectedError] },
+      { code: '<ol role="tablist" />;', errors: [expectedError] },
+      { code: '<ol role="tree" />;', errors: [expectedError] },
+      { code: '<ol role="treegrid" />;', errors: [expectedError] },
+      { code: '<li role="tab" />;', errors: [expectedError] },
+      { code: '<li role="menuitem" />;', errors: [expectedError] },
+      { code: '<li role="row" />;', errors: [expectedError] },
+      { code: '<li role="treeitem" />;', errors: [expectedError] },
+    ])
     .map(parserOptionsMapper),
 });

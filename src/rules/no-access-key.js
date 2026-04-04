@@ -8,12 +8,9 @@
 // ----------------------------------------------------------------------------
 
 import { getProp, getPropValue } from 'jsx-ast-utils-x';
-import { generateObjSchema } from '../util/schemas';
 
 const errorMessage =
   'No access key attribute allowed. Inconsistencies between keyboard shortcuts and keyboard commands used by screen readers and keyboard-only users create a11y complications.';
-
-const schema = generateObjSchema();
 
 export default {
   meta: {
@@ -22,7 +19,7 @@ export default {
       description:
         'Enforce that the `accessKey` prop is not used on any element to avoid complications with keyboard commands used by a screen reader.',
     },
-    schema: [schema],
+    schema: [],
   },
 
   create: context => ({

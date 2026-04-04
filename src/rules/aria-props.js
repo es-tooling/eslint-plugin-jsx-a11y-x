@@ -9,7 +9,6 @@
 
 import { aria } from 'aria-query';
 import { propName } from 'jsx-ast-utils-x';
-import { generateObjSchema } from '../util/schemas';
 import getSuggestion from '../util/getSuggestion';
 
 const ariaAttributes = aria.keys();
@@ -25,15 +24,13 @@ const errorMessage = name => {
   return message;
 };
 
-const schema = generateObjSchema();
-
 export default {
   meta: {
     docs: {
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/aria-props.md',
       description: 'Enforce all `aria-*` props are valid.',
     },
-    schema: [schema],
+    schema: [],
   },
 
   create: context => ({

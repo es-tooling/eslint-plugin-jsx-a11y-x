@@ -15,8 +15,6 @@ import {
   getPropValue,
   propName,
 } from 'jsx-ast-utils-x';
-
-import { generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
 import getImplicitRole from '../util/getImplicitRole';
 
@@ -28,8 +26,6 @@ const errorMessage = (attr, role, tag, isImplicit) => {
   return `The attribute ${attr} is not supported by the role ${role}.`;
 };
 
-const schema = generateObjSchema();
-
 export default {
   meta: {
     docs: {
@@ -37,7 +33,7 @@ export default {
       description:
         'Enforce that elements with explicit or implicit roles defined contain only `aria-*` properties supported by that `role`.',
     },
-    schema: [schema],
+    schema: [],
   },
 
   create(context) {

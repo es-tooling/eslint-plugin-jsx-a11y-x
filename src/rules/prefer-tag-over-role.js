@@ -1,13 +1,9 @@
 import { roleElements } from 'aria-query';
 import { getProp, getPropValue } from 'jsx-ast-utils-x';
-
 import getElementType from '../util/getElementType';
-import { generateObjSchema } from '../util/schemas';
 
 const errorMessage =
   'Use {{tag}} instead of the "{{role}}" role to ensure accessibility across all devices.';
-
-const schema = generateObjSchema();
 
 const formatTag = tag => {
   if (!tag.attributes) {
@@ -40,7 +36,7 @@ export default {
         'Enforces using semantic DOM elements over the ARIA `role` property.',
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/prefer-tag-over-role.md',
     },
-    schema: [schema],
+    schema: [],
   },
 
   create: context => {

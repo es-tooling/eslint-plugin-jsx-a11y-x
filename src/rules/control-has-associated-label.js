@@ -59,7 +59,7 @@ export default ({
       ignoreRoles = [],
     } = options;
 
-    const newIgnoreElements = new Set([].concat(ignoreElements, ignoreList));
+    const newIgnoreElements = new Set([...ignoreElements, ...ignoreList]);
 
     const rule = (node: JSXElement): void => {
       const tag = elementType(node.openingElement);

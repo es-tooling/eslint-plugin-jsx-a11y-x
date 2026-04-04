@@ -330,11 +330,11 @@ const neverValid = [
 const recommendedOptions = configs.recommended.rules[ruleName][1] || {};
 ruleTester.run(`${ruleName}:recommended`, rule, {
   valid: parsers
-    .all([].concat(...alwaysValid))
+    .all(alwaysValid)
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
   invalid: parsers
-    .all([].concat(...neverValid))
+    .all(neverValid)
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
 });
@@ -342,25 +342,23 @@ ruleTester.run(`${ruleName}:recommended`, rule, {
 const strictOptions = configs.strict.rules[ruleName][1] || {};
 ruleTester.run(`${ruleName}:strict`, rule, {
   valid: parsers
-    .all([].concat(...alwaysValid))
+    .all(alwaysValid)
     .map(ruleOptionsMapperFactory(strictOptions))
     .map(parserOptionsMapper),
   invalid: parsers
-    .all([].concat(...neverValid))
+    .all(neverValid)
     .map(ruleOptionsMapperFactory(strictOptions))
     .map(parserOptionsMapper),
 });
 
 ruleTester.run(`${ruleName}:no-config`, rule, {
   valid: parsers
-    .all(
-      [].concat(
-        { code: '<input type="hidden" />' },
-        { code: '<input type="text" aria-hidden="true" />' },
-      ),
-    )
+    .all([
+      { code: '<input type="hidden" />' },
+      { code: '<input type="text" aria-hidden="true" />' },
+    ])
     .map(parserOptionsMapper),
   invalid: parsers
-    .all([].concat({ code: '<input type="text" />', errors: [expectedError] }))
+    .all([{ code: '<input type="text" />', errors: [expectedError] }])
     .map(parserOptionsMapper),
 });

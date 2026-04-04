@@ -8,11 +8,8 @@
 // ----------------------------------------------------------------------------
 
 import { getLiteralPropValue, propName } from 'jsx-ast-utils-x';
-import { generateObjSchema } from '../util/schemas';
 
 const errorMessage = 'Avoid positive integer values for tabIndex.';
-
-const schema = generateObjSchema();
 
 export default {
   meta: {
@@ -20,7 +17,7 @@ export default {
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/tabindex-no-positive.md',
       description: 'Enforce `tabIndex` value is not greater than zero.',
     },
-    schema: [schema],
+    schema: [],
   },
 
   create: context => ({

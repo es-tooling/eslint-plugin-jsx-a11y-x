@@ -10,7 +10,6 @@
 
 import { aria, dom } from 'aria-query';
 import { propName } from 'jsx-ast-utils-x';
-import { generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
 
 const errorMessage = invalidProp =>
@@ -19,8 +18,6 @@ Try removing the prop '${invalidProp}'.`;
 
 const invalidAttributes = new Set(aria.keys().concat('role'));
 
-const schema = generateObjSchema();
-
 export default {
   meta: {
     docs: {
@@ -28,7 +25,7 @@ export default {
       description:
         'Enforce that elements that do not support ARIA roles, states, and properties do not have those attributes.',
     },
-    schema: [schema],
+    schema: [],
   },
 
   create: context => {
