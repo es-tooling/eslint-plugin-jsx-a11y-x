@@ -26,6 +26,7 @@ export default {
       description: 'Enforce distracting elements are not used.',
     },
     schema: [schema],
+    defaultOptions: [{ elements: DEFAULT_ELEMENTS }],
   },
 
   create: (context) => {
@@ -33,7 +34,7 @@ export default {
     return {
       JSXOpeningElement: (node) => {
         const options = context.options[0] || {};
-        const elementOptions = options.elements || DEFAULT_ELEMENTS;
+        const elementOptions = options.elements;
         const type = elementType(node);
         const distractingElement = elementOptions.find(
           (element) => type === element,
