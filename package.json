@@ -10,7 +10,6 @@
     "JounQin <admin@1stg.me> (https://www.1stG.me)"
   ],
   "license": "MIT",
-  "packageManager": "yarn@4.9.1",
   "engines": {
     "node": "^18.18.0 || ^20.9.0 || >=21.1.0"
   },
@@ -30,18 +29,18 @@
     "create": "node ./scripts/create-rule",
     "format": "prettier --write .",
     "generate-list-of-rules": "eslint-doc-generator --rule-doc-title-format prefix-name --rule-doc-section-options false --config-emoji recommended,☑️ --ignore-config flat/recommended --ignore-config flat/strict",
-    "lint": "yarn lint:js && yarn lint:docs",
-    "lint:docs": "yarn generate-list-of-rules --check",
+    "lint": "pnpm run lint:js && pnpm run lint:docs",
+    "lint:docs": "pnpm run generate-list-of-rules --check",
     "lint:js": "eslint",
-    "lint:js:fix": "yarn lint:js --fix",
-    "pregenerate-list-of-rules": "yarn build",
-    "prepublishOnly": "yarn lint && yarn tests-only",
-    "release": "yarn build && clean-pkg-json && changeset publish",
-    "test": "yarn tests-only",
-    "test-example:flat-cjs": "cd examples/flat-cjs && yarn && yarn lint",
-    "test-example:flat-esm": "cd examples/flat-esm && yarn && yarn lint",
-    "test-example:legacy": "cd examples/legacy && yarn && yarn lint",
-    "test:examples": "yarn build && yarn test-example:legacy && yarn test-example:flat-esm && yarn test-example:flat-cjs",
+    "lint:js:fix": "pnpm run lint:js --fix",
+    "pregenerate-list-of-rules": "pnpm run build",
+    "prepublishOnly": "pnpm run lint && pnpm run tests-only",
+    "release": "pnpm run build && clean-pkg-json && changeset publish",
+    "test": "pnpm run tests-only",
+    "test-example:flat-cjs": "cd examples/flat-cjs && pnpm install && pnpm run lint",
+    "test-example:flat-esm": "cd examples/flat-esm && pnpm install && pnpm run lint",
+    "test-example:legacy": "cd examples/legacy && pnpm install && pnpm run lint",
+    "test:examples": "pnpm run build && pnpm run test-example:legacy && pnpm run test-example:flat-esm && pnpm run test-example:flat-cjs",
     "tests-only": "jest --coverage"
   },
   "peerDependencies": {

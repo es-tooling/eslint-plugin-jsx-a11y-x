@@ -8,7 +8,7 @@ import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescrip
 
 export default defineConfig([
   {
-    ignores: ['.yarn', 'coverage', 'lib', 'reports', 'examples'],
+    ignores: ['coverage', 'lib', 'reports', 'examples'],
   },
   {
     files: [
