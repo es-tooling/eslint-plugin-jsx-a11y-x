@@ -24,10 +24,12 @@ test('configurations', () => {
 test('schemas', () => {
   rules.forEach(ruleName => {
     const rule = require(path.join('../src/rules', ruleName));
-    const schema = rule.meta && rule.meta.schema && rule.meta.schema[0];
-    const { type } = schema;
-
-    expect(type).toBe('object');
+    const schema = rule.meta.schema[0];
+    // Some rules don't have a schema.
+    if (schema) {
+      const { type } = schema;
+      expect(type).toBe('object');
+    }
   });
 });
 

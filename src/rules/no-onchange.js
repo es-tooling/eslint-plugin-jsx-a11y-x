@@ -8,15 +8,12 @@
 // ----------------------------------------------------------------------------
 
 import { getProp } from 'jsx-ast-utils-x';
-import { generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
 
 const errorMessage =
   'onBlur must be used instead of onchange, unless absolutely necessary and it causes no negative consequences for keyboard only or screen reader users.';
 
 const applicableTypes = ['select', 'option'];
-
-const schema = generateObjSchema();
 
 export default {
   meta: {
@@ -26,7 +23,7 @@ export default {
         'Enforce usage of `onBlur` over `onChange` on select menus for accessibility.',
     },
     deprecated: true,
-    schema: [schema],
+    schema: [],
   },
 
   create: context => {

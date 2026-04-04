@@ -10,7 +10,6 @@
 
 import { dom } from 'aria-query';
 import { getProp, hasAnyProp } from 'jsx-ast-utils-x';
-import { generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
 import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader';
 import isInteractiveElement from '../util/isInteractiveElement';
@@ -19,8 +18,6 @@ import isPresentationRole from '../util/isPresentationRole';
 const errorMessage =
   'Visible, non-interactive elements with click handlers must have at least one keyboard listener.';
 
-const schema = generateObjSchema();
-
 export default {
   meta: {
     docs: {
@@ -28,7 +25,7 @@ export default {
       description:
         'Enforce a clickable non-interactive element has at least one keyboard event listener.',
     },
-    schema: [schema],
+    schema: [],
   },
 
   create: context => {

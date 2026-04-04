@@ -5,7 +5,6 @@
 
 import { dom } from 'aria-query';
 import { getProp } from 'jsx-ast-utils-x';
-import { generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
 import getTabIndex from '../util/getTabIndex';
 import isInteractiveElement from '../util/isInteractiveElement';
@@ -17,15 +16,13 @@ import isInteractiveElement from '../util/isInteractiveElement';
 const errorMessage =
   'An element that manages focus with `aria-activedescendant` must have a tabindex';
 
-const schema = generateObjSchema();
-
 export default {
   meta: {
     docs: {
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/aria-activedescendant-has-tabindex.md',
       description: 'Enforce elements with aria-activedescendant are tabbable.',
     },
-    schema: [schema],
+    schema: [],
   },
 
   create: context => {
