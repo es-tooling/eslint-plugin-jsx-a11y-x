@@ -1,5 +1,7 @@
 # jsx-a11y-x/no-noninteractive-tabindex
 
+📝 `tabIndex` should only be declared on interactive elements.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

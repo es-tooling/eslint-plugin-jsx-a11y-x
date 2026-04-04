@@ -1,5 +1,7 @@
 # jsx-a11y-x/autocomplete-valid
 
+📝 Enforce that autocomplete attributes are used correctly.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

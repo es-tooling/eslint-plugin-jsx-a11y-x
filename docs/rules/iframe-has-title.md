@@ -1,5 +1,7 @@
 # jsx-a11y-x/iframe-has-title
 
+📝 Enforce iframe elements have a title attribute.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

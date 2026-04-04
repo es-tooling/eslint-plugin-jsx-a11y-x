@@ -1,5 +1,7 @@
 # jsx-a11y-x/prefer-tag-over-role
 
+📝 Enforces using semantic DOM elements over the ARIA `role` property.
+
 <!-- end auto-generated rule header -->
 
 Enforces using semantic DOM elements over the ARIA `role` property.

@@ -1,5 +1,7 @@
 # jsx-a11y-x/no-noninteractive-element-to-interactive-role
 
+📝 Non-interactive elements should not be assigned interactive roles.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

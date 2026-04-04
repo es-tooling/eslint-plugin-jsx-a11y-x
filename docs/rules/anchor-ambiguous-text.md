@@ -1,5 +1,7 @@
 # jsx-a11y-x/anchor-ambiguous-text
 
+📝 Enforce `<a>` text to not exactly match "click here", "here", "link", or "a link".
+
 🚫 This rule is _disabled_ in the ☑️ `recommended` config.
 
 <!-- end auto-generated rule header -->

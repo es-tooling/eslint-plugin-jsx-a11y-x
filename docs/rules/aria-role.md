@@ -1,5 +1,7 @@
 # jsx-a11y-x/aria-role
 
+📝 Enforce that elements with ARIA roles must use a valid, non-abstract ARIA role.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->
