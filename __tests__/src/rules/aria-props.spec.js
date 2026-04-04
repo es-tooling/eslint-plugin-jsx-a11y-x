@@ -45,34 +45,30 @@ const basicValidityTests = ariaAttributes.map(prop => ({
 
 ruleTester.run('aria-props', rule, {
   valid: parsers
-    .all(
-      [].concat(
-        // Variables should pass, as we are only testing literals.
-        { code: '<div />' },
-        { code: '<div></div>' },
-        { code: '<div aria="wee"></div>' }, // Needs aria-*
-        { code: '<div abcARIAdef="true"></div>' },
-        { code: '<div fooaria-foobar="true"></div>' },
-        { code: '<div fooaria-hidden="true"></div>' },
-        { code: '<Bar baz />' },
-        { code: '<input type="text" aria-errormessage="foobar" />' },
-      ),
-    )
+    .all([
+      // Variables should pass, as we are only testing literals.
+      { code: '<div />' },
+      { code: '<div></div>' },
+      { code: '<div aria="wee"></div>' }, // Needs aria-*
+      { code: '<div abcARIAdef="true"></div>' },
+      { code: '<div fooaria-foobar="true"></div>' },
+      { code: '<div fooaria-hidden="true"></div>' },
+      { code: '<Bar baz />' },
+      { code: '<input type="text" aria-errormessage="foobar" />' },
+    ])
     .concat(basicValidityTests)
     .map(parserOptionsMapper),
   invalid: parsers
-    .all(
-      [].concat(
-        { code: '<div aria-="foobar" />', errors: [errorMessage('aria-')] },
-        {
-          code: '<div aria-labeledby="foobar" />',
-          errors: [errorMessage('aria-labeledby')],
-        },
-        {
-          code: '<div aria-skldjfaria-klajsd="foobar" />',
-          errors: [errorMessage('aria-skldjfaria-klajsd')],
-        },
-      ),
-    )
+    .all([
+      { code: '<div aria-="foobar" />', errors: [errorMessage('aria-')] },
+      {
+        code: '<div aria-labeledby="foobar" />',
+        errors: [errorMessage('aria-labeledby')],
+      },
+      {
+        code: '<div aria-skldjfaria-klajsd="foobar" />',
+        errors: [errorMessage('aria-skldjfaria-klajsd')],
+      },
+    ])
     .map(parserOptionsMapper),
 });

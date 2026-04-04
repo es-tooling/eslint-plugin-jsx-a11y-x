@@ -25,34 +25,30 @@ const expectedError = {
 
 ruleTester.run('html-has-lang', rule, {
   valid: parsers
-    .all(
-      [].concat(
-        { code: '<div />;' },
-        { code: '<html lang="en" />' },
-        { code: '<html lang="en-US" />' },
-        { code: '<html lang={foo} />' },
-        { code: '<html lang />' },
-        { code: '<HTML />' },
-        {
-          code: '<HTMLTop lang="en" />',
-          errors: [expectedError],
-          settings: { 'jsx-a11y-x': { components: { HTMLTop: 'html' } } },
-        },
-      ),
-    )
+    .all([
+      { code: '<div />;' },
+      { code: '<html lang="en" />' },
+      { code: '<html lang="en-US" />' },
+      { code: '<html lang={foo} />' },
+      { code: '<html lang />' },
+      { code: '<HTML />' },
+      {
+        code: '<HTMLTop lang="en" />',
+        errors: [expectedError],
+        settings: { 'jsx-a11y-x': { components: { HTMLTop: 'html' } } },
+      },
+    ])
     .map(parserOptionsMapper),
   invalid: parsers
-    .all(
-      [].concat(
-        { code: '<html />', errors: [expectedError] },
-        { code: '<html {...props} />', errors: [expectedError] },
-        { code: '<html lang={undefined} />', errors: [expectedError] },
-        {
-          code: '<HTMLTop />',
-          errors: [expectedError],
-          settings: { 'jsx-a11y-x': { components: { HTMLTop: 'html' } } },
-        },
-      ),
-    )
+    .all([
+      { code: '<html />', errors: [expectedError] },
+      { code: '<html {...props} />', errors: [expectedError] },
+      { code: '<html lang={undefined} />', errors: [expectedError] },
+      {
+        code: '<HTMLTop />',
+        errors: [expectedError],
+        settings: { 'jsx-a11y-x': { components: { HTMLTop: 'html' } } },
+      },
+    ])
     .map(parserOptionsMapper),
 });

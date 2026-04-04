@@ -502,76 +502,74 @@ const recommendedOptions =
   configs.recommended.rules[`jsx-a11y-x/${ruleName}`][1] || {};
 ruleTester.run(`${ruleName}:recommended`, rule, {
   valid: parsers
-    .all(
-      [].concat(
-        ...alwaysValid,
-        // All the possible handlers
-        { code: '<div role="article" onCopy={() => {}} />;' },
-        { code: '<div role="article" onCut={() => {}} />;' },
-        { code: '<div role="article" onPaste={() => {}} />;' },
-        { code: '<div role="article" onCompositionEnd={() => {}} />;' },
-        { code: '<div role="article" onCompositionStart={() => {}} />;' },
-        { code: '<div role="article" onCompositionUpdate={() => {}} />;' },
-        { code: '<div role="article" onFocus={() => {}} />;' },
-        { code: '<div role="article" onBlur={() => {}} />;' },
-        { code: '<div role="article" onChange={() => {}} />;' },
-        { code: '<div role="article" onInput={() => {}} />;' },
-        { code: '<div role="article" onSubmit={() => {}} />;' },
-        { code: '<div role="article" onContextMenu={() => {}} />;' },
-        { code: '<div role="article" onDblClick={() => {}} />;' },
-        { code: '<div role="article" onDoubleClick={() => {}} />;' },
-        { code: '<div role="article" onDrag={() => {}} />;' },
-        { code: '<div role="article" onDragEnd={() => {}} />;' },
-        { code: '<div role="article" onDragEnter={() => {}} />;' },
-        { code: '<div role="article" onDragExit={() => {}} />;' },
-        { code: '<div role="article" onDragLeave={() => {}} />;' },
-        { code: '<div role="article" onDragOver={() => {}} />;' },
-        { code: '<div role="article" onDragStart={() => {}} />;' },
-        { code: '<div role="article" onDrop={() => {}} />;' },
-        { code: '<div role="article" onMouseEnter={() => {}} />;' },
-        { code: '<div role="article" onMouseLeave={() => {}} />;' },
-        { code: '<div role="article" onMouseMove={() => {}} />;' },
-        { code: '<div role="article" onMouseOut={() => {}} />;' },
-        { code: '<div role="article" onMouseOver={() => {}} />;' },
-        { code: '<div role="article" onSelect={() => {}} />;' },
-        { code: '<div role="article" onTouchCancel={() => {}} />;' },
-        { code: '<div role="article" onTouchEnd={() => {}} />;' },
-        { code: '<div role="article" onTouchMove={() => {}} />;' },
-        { code: '<div role="article" onTouchStart={() => {}} />;' },
-        { code: '<div role="article" onScroll={() => {}} />;' },
-        { code: '<div role="article" onWheel={() => {}} />;' },
-        { code: '<div role="article" onAbort={() => {}} />;' },
-        { code: '<div role="article" onCanPlay={() => {}} />;' },
-        { code: '<div role="article" onCanPlayThrough={() => {}} />;' },
-        { code: '<div role="article" onDurationChange={() => {}} />;' },
-        { code: '<div role="article" onEmptied={() => {}} />;' },
-        { code: '<div role="article" onEncrypted={() => {}} />;' },
-        { code: '<div role="article" onEnded={() => {}} />;' },
-        { code: '<div role="article" onLoadedData={() => {}} />;' },
-        { code: '<div role="article" onLoadedMetadata={() => {}} />;' },
-        { code: '<div role="article" onLoadStart={() => {}} />;' },
-        { code: '<div role="article" onPause={() => {}} />;' },
-        { code: '<div role="article" onPlay={() => {}} />;' },
-        { code: '<div role="article" onPlaying={() => {}} />;' },
-        { code: '<div role="article" onProgress={() => {}} />;' },
-        { code: '<div role="article" onRateChange={() => {}} />;' },
-        { code: '<div role="article" onSeeked={() => {}} />;' },
-        { code: '<div role="article" onSeeking={() => {}} />;' },
-        { code: '<div role="article" onStalled={() => {}} />;' },
-        { code: '<div role="article" onSuspend={() => {}} />;' },
-        { code: '<div role="article" onTimeUpdate={() => {}} />;' },
-        { code: '<div role="article" onVolumeChange={() => {}} />;' },
-        { code: '<div role="article" onWaiting={() => {}} />;' },
-        { code: '<div role="article" onAnimationStart={() => {}} />;' },
-        { code: '<div role="article" onAnimationEnd={() => {}} />;' },
-        { code: '<div role="article" onAnimationIteration={() => {}} />;' },
-        { code: '<div role="article" onTransitionEnd={() => {}} />;' },
-      ),
-    )
+    .all([
+      ...alwaysValid,
+      // All the possible handlers
+      { code: '<div role="article" onCopy={() => {}} />;' },
+      { code: '<div role="article" onCut={() => {}} />;' },
+      { code: '<div role="article" onPaste={() => {}} />;' },
+      { code: '<div role="article" onCompositionEnd={() => {}} />;' },
+      { code: '<div role="article" onCompositionStart={() => {}} />;' },
+      { code: '<div role="article" onCompositionUpdate={() => {}} />;' },
+      { code: '<div role="article" onFocus={() => {}} />;' },
+      { code: '<div role="article" onBlur={() => {}} />;' },
+      { code: '<div role="article" onChange={() => {}} />;' },
+      { code: '<div role="article" onInput={() => {}} />;' },
+      { code: '<div role="article" onSubmit={() => {}} />;' },
+      { code: '<div role="article" onContextMenu={() => {}} />;' },
+      { code: '<div role="article" onDblClick={() => {}} />;' },
+      { code: '<div role="article" onDoubleClick={() => {}} />;' },
+      { code: '<div role="article" onDrag={() => {}} />;' },
+      { code: '<div role="article" onDragEnd={() => {}} />;' },
+      { code: '<div role="article" onDragEnter={() => {}} />;' },
+      { code: '<div role="article" onDragExit={() => {}} />;' },
+      { code: '<div role="article" onDragLeave={() => {}} />;' },
+      { code: '<div role="article" onDragOver={() => {}} />;' },
+      { code: '<div role="article" onDragStart={() => {}} />;' },
+      { code: '<div role="article" onDrop={() => {}} />;' },
+      { code: '<div role="article" onMouseEnter={() => {}} />;' },
+      { code: '<div role="article" onMouseLeave={() => {}} />;' },
+      { code: '<div role="article" onMouseMove={() => {}} />;' },
+      { code: '<div role="article" onMouseOut={() => {}} />;' },
+      { code: '<div role="article" onMouseOver={() => {}} />;' },
+      { code: '<div role="article" onSelect={() => {}} />;' },
+      { code: '<div role="article" onTouchCancel={() => {}} />;' },
+      { code: '<div role="article" onTouchEnd={() => {}} />;' },
+      { code: '<div role="article" onTouchMove={() => {}} />;' },
+      { code: '<div role="article" onTouchStart={() => {}} />;' },
+      { code: '<div role="article" onScroll={() => {}} />;' },
+      { code: '<div role="article" onWheel={() => {}} />;' },
+      { code: '<div role="article" onAbort={() => {}} />;' },
+      { code: '<div role="article" onCanPlay={() => {}} />;' },
+      { code: '<div role="article" onCanPlayThrough={() => {}} />;' },
+      { code: '<div role="article" onDurationChange={() => {}} />;' },
+      { code: '<div role="article" onEmptied={() => {}} />;' },
+      { code: '<div role="article" onEncrypted={() => {}} />;' },
+      { code: '<div role="article" onEnded={() => {}} />;' },
+      { code: '<div role="article" onLoadedData={() => {}} />;' },
+      { code: '<div role="article" onLoadedMetadata={() => {}} />;' },
+      { code: '<div role="article" onLoadStart={() => {}} />;' },
+      { code: '<div role="article" onPause={() => {}} />;' },
+      { code: '<div role="article" onPlay={() => {}} />;' },
+      { code: '<div role="article" onPlaying={() => {}} />;' },
+      { code: '<div role="article" onProgress={() => {}} />;' },
+      { code: '<div role="article" onRateChange={() => {}} />;' },
+      { code: '<div role="article" onSeeked={() => {}} />;' },
+      { code: '<div role="article" onSeeking={() => {}} />;' },
+      { code: '<div role="article" onStalled={() => {}} />;' },
+      { code: '<div role="article" onSuspend={() => {}} />;' },
+      { code: '<div role="article" onTimeUpdate={() => {}} />;' },
+      { code: '<div role="article" onVolumeChange={() => {}} />;' },
+      { code: '<div role="article" onWaiting={() => {}} />;' },
+      { code: '<div role="article" onAnimationStart={() => {}} />;' },
+      { code: '<div role="article" onAnimationEnd={() => {}} />;' },
+      { code: '<div role="article" onAnimationIteration={() => {}} />;' },
+      { code: '<div role="article" onTransitionEnd={() => {}} />;' },
+    ])
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
   invalid: parsers
-    .all([].concat(...neverValid))
+    .all([...neverValid])
     .map(ruleOptionsMapperFactory(recommendedOptions))
     .map(parserOptionsMapper),
 });
@@ -579,88 +577,86 @@ ruleTester.run(`${ruleName}:recommended`, rule, {
 const strictOptions = configs.strict.rules[`jsx-a11y-x/${ruleName}`][1] || {};
 ruleTester.run(`${ruleName}:strict`, rule, {
   valid: parsers
-    .all([].concat(...alwaysValid))
+    .all(alwaysValid)
     .map(ruleOptionsMapperFactory(strictOptions))
     .map(parserOptionsMapper),
   invalid: parsers
-    .all(
-      [].concat(
-        ...neverValid,
-        // All the possible handlers
-        {
-          code: '<div role="article" onFocus={() => {}} />;',
-          errors: [expectedError],
-        },
-        {
-          code: '<div role="article" onBlur={() => {}} />;',
-          errors: [expectedError],
-        },
-        {
-          code: '<div role="article" onContextMenu={() => {}} />;',
-          errors: [expectedError],
-        },
-        {
-          code: '<div role="article" onDblClick={() => {}} />;',
-          errors: [expectedError],
-        },
-        {
-          code: '<div role="article" onDoubleClick={() => {}} />;',
-          errors: [expectedError],
-        },
-        {
-          code: '<div role="article" onDrag={() => {}} />;',
-          errors: [expectedError],
-        },
-        {
-          code: '<div role="article" onDragEnd={() => {}} />;',
-          errors: [expectedError],
-        },
-        {
-          code: '<div role="article" onDragEnter={() => {}} />;',
-          errors: [expectedError],
-        },
-        {
-          code: '<div role="article" onDragExit={() => {}} />;',
-          errors: [expectedError],
-        },
-        {
-          code: '<div role="article" onDragLeave={() => {}} />;',
-          errors: [expectedError],
-        },
-        {
-          code: '<div role="article" onDragOver={() => {}} />;',
-          errors: [expectedError],
-        },
-        {
-          code: '<div role="article" onDragStart={() => {}} />;',
-          errors: [expectedError],
-        },
-        {
-          code: '<div role="article" onDrop={() => {}} />;',
-          errors: [expectedError],
-        },
-        {
-          code: '<div role="article" onMouseEnter={() => {}} />;',
-          errors: [expectedError],
-        },
-        {
-          code: '<div role="article" onMouseLeave={() => {}} />;',
-          errors: [expectedError],
-        },
-        {
-          code: '<div role="article" onMouseMove={() => {}} />;',
-          errors: [expectedError],
-        },
-        {
-          code: '<div role="article" onMouseOut={() => {}} />;',
-          errors: [expectedError],
-        },
-        {
-          code: '<div role="article" onMouseOver={() => {}} />;',
-          errors: [expectedError],
-        },
-      ),
-    )
+    .all([
+      ...neverValid,
+      // All the possible handlers
+      {
+        code: '<div role="article" onFocus={() => {}} />;',
+        errors: [expectedError],
+      },
+      {
+        code: '<div role="article" onBlur={() => {}} />;',
+        errors: [expectedError],
+      },
+      {
+        code: '<div role="article" onContextMenu={() => {}} />;',
+        errors: [expectedError],
+      },
+      {
+        code: '<div role="article" onDblClick={() => {}} />;',
+        errors: [expectedError],
+      },
+      {
+        code: '<div role="article" onDoubleClick={() => {}} />;',
+        errors: [expectedError],
+      },
+      {
+        code: '<div role="article" onDrag={() => {}} />;',
+        errors: [expectedError],
+      },
+      {
+        code: '<div role="article" onDragEnd={() => {}} />;',
+        errors: [expectedError],
+      },
+      {
+        code: '<div role="article" onDragEnter={() => {}} />;',
+        errors: [expectedError],
+      },
+      {
+        code: '<div role="article" onDragExit={() => {}} />;',
+        errors: [expectedError],
+      },
+      {
+        code: '<div role="article" onDragLeave={() => {}} />;',
+        errors: [expectedError],
+      },
+      {
+        code: '<div role="article" onDragOver={() => {}} />;',
+        errors: [expectedError],
+      },
+      {
+        code: '<div role="article" onDragStart={() => {}} />;',
+        errors: [expectedError],
+      },
+      {
+        code: '<div role="article" onDrop={() => {}} />;',
+        errors: [expectedError],
+      },
+      {
+        code: '<div role="article" onMouseEnter={() => {}} />;',
+        errors: [expectedError],
+      },
+      {
+        code: '<div role="article" onMouseLeave={() => {}} />;',
+        errors: [expectedError],
+      },
+      {
+        code: '<div role="article" onMouseMove={() => {}} />;',
+        errors: [expectedError],
+      },
+      {
+        code: '<div role="article" onMouseOut={() => {}} />;',
+        errors: [expectedError],
+      },
+      {
+        code: '<div role="article" onMouseOver={() => {}} />;',
+        errors: [expectedError],
+      },
+    ])
     .map(ruleOptionsMapperFactory(strictOptions))
     .map(parserOptionsMapper),
 });

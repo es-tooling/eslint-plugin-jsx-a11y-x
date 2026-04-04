@@ -36,45 +36,41 @@ const componentsSettings = {
 
 ruleTester.run('no-onchange', rule, {
   valid: parsers
-    .all(
-      [].concat(
-        { code: '<select onBlur={() => {}} />;' },
-        { code: '<select onBlur={handleOnBlur} />;' },
-        { code: '<option />;' },
-        { code: '<option onBlur={() => {}} onChange={() => {}} />;' },
-        { code: '<option {...props} />' },
-        { code: '<input onChange={() => {}} />;' },
-        { code: '<input onChange={handleOnChange} />;' },
-        { code: '<input />;' },
-        { code: '<input onChange={() => {}} onChange={() => {}} />;' },
-        { code: '<input {...props} />' },
-        {
-          code: '<Input onChange={() => {}} />;',
-          settings: componentsSettings,
-        },
-        { code: '<CustomOption onChange={() => {}} />' },
-      ),
-    )
+    .all([
+      { code: '<select onBlur={() => {}} />;' },
+      { code: '<select onBlur={handleOnBlur} />;' },
+      { code: '<option />;' },
+      { code: '<option onBlur={() => {}} onChange={() => {}} />;' },
+      { code: '<option {...props} />' },
+      { code: '<input onChange={() => {}} />;' },
+      { code: '<input onChange={handleOnChange} />;' },
+      { code: '<input />;' },
+      { code: '<input onChange={() => {}} onChange={() => {}} />;' },
+      { code: '<input {...props} />' },
+      {
+        code: '<Input onChange={() => {}} />;',
+        settings: componentsSettings,
+      },
+      { code: '<CustomOption onChange={() => {}} />' },
+    ])
     .map(parserOptionsMapper),
   invalid: parsers
-    .all(
-      [].concat(
-        { code: '<select onChange={() => {}} />;', errors: [expectedError] },
-        {
-          code: '<select onChange={handleOnChange} />;',
-          errors: [expectedError],
-        },
-        { code: '<option onChange={() => {}} />', errors: [expectedError] },
-        {
-          code: '<option onChange={() => {}} {...props} />',
-          errors: [expectedError],
-        },
-        {
-          code: '<CustomOption onChange={() => {}} />;',
-          errors: [expectedError],
-          settings: componentsSettings,
-        },
-      ),
-    )
+    .all([
+      { code: '<select onChange={() => {}} />;', errors: [expectedError] },
+      {
+        code: '<select onChange={handleOnChange} />;',
+        errors: [expectedError],
+      },
+      { code: '<option onChange={() => {}} />', errors: [expectedError] },
+      {
+        code: '<option onChange={() => {}} {...props} />',
+        errors: [expectedError],
+      },
+      {
+        code: '<CustomOption onChange={() => {}} />;',
+        errors: [expectedError],
+        settings: componentsSettings,
+      },
+    ])
     .map(parserOptionsMapper),
 });
