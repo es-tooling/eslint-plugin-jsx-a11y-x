@@ -1,21 +1,19 @@
-const js = require('@eslint/js');
-const { defineConfig } = require('eslint/config');
-const globals = require('globals');
-const eslintPlugin = require('eslint-plugin-eslint-plugin');
-const importX = require('eslint-plugin-import-x');
-const ftFlow = require('eslint-plugin-ft-flow');
-const { FlatCompat } = require('@eslint/eslintrc');
-const babelParser = require('@babel/eslint-parser');
-const prettierConfig = require('eslint-config-prettier');
-const {
-  createTypeScriptImportResolver,
-} = require('eslint-import-resolver-typescript');
+import js from '@eslint/js';
+import { defineConfig } from 'eslint/config';
+import globals from 'globals';
+import eslintPlugin from 'eslint-plugin-eslint-plugin';
+import importX from 'eslint-plugin-import-x';
+import ftFlow from 'eslint-plugin-ft-flow';
+import { FlatCompat } from '@eslint/eslintrc';
+import babelParser from '@babel/eslint-parser';
+import prettierConfig from 'eslint-config-prettier';
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 
 const compat = new FlatCompat({
-  baseDirectory: __dirname,
+  baseDirectory: import.meta.dirname,
 });
 
-module.exports = defineConfig([
+export default defineConfig([
   {
     ignores: ['.yarn', 'coverage', 'lib', 'reports', 'examples'],
   },
