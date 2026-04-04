@@ -472,7 +472,7 @@ const neverValid = assertType => {
 // htmlFor valid
 ruleTester.run(ruleName, rule, {
   valid: parsers
-    .all([].concat(...alwaysValid, ...htmlForValid))
+    .all([...alwaysValid, ...htmlForValid])
     .map(
       ruleOptionsMapperFactory({
         assert: 'htmlFor',
@@ -480,7 +480,7 @@ ruleTester.run(ruleName, rule, {
     )
     .map(parserOptionsMapper),
   invalid: parsers
-    .all([].concat(...neverValid('htmlFor'), ...nestingInvalid('htmlFor')))
+    .all([...neverValid('htmlFor'), ...nestingInvalid('htmlFor')])
     .map(
       ruleOptionsMapperFactory({
         assert: 'htmlFor',
@@ -492,7 +492,7 @@ ruleTester.run(ruleName, rule, {
 // nesting valid
 ruleTester.run(ruleName, rule, {
   valid: parsers
-    .all([].concat(...alwaysValid, ...nestingValid))
+    .all([...alwaysValid, ...nestingValid])
     .map(
       ruleOptionsMapperFactory({
         assert: 'nesting',
@@ -500,7 +500,7 @@ ruleTester.run(ruleName, rule, {
     )
     .map(parserOptionsMapper),
   invalid: parsers
-    .all([].concat(...neverValid('nesting'), ...htmlForInvalid('nesting')))
+    .all([...neverValid('nesting'), ...htmlForInvalid('nesting')])
     .map(
       ruleOptionsMapperFactory({
         assert: 'nesting',
@@ -512,7 +512,7 @@ ruleTester.run(ruleName, rule, {
 // either valid
 ruleTester.run(ruleName, rule, {
   valid: parsers
-    .all([].concat(...alwaysValid, ...htmlForValid, ...nestingValid))
+    .all([...alwaysValid, ...htmlForValid, ...nestingValid])
     .map(
       ruleOptionsMapperFactory({
         assert: 'either',
@@ -520,7 +520,7 @@ ruleTester.run(ruleName, rule, {
     )
     .map(parserOptionsMapper),
   invalid: parsers
-    .all([].concat(...neverValid('either')))
+    .all(neverValid('either'))
     .map(
       ruleOptionsMapperFactory({
         assert: 'either',
@@ -532,7 +532,7 @@ ruleTester.run(ruleName, rule, {
 // both valid
 ruleTester.run(ruleName, rule, {
   valid: parsers
-    .all([].concat(...alwaysValid, ...bothValid))
+    .all([...alwaysValid, ...bothValid])
     .map(
       ruleOptionsMapperFactory({
         assert: 'both',
@@ -540,13 +540,11 @@ ruleTester.run(ruleName, rule, {
     )
     .map(parserOptionsMapper),
   invalid: parsers
-    .all(
-      [].concat(
-        ...neverValid('both'),
-        ...htmlForInvalid('both'),
-        ...nestingInvalid('both'),
-      ),
-    )
+    .all([
+      ...neverValid('both'),
+      ...htmlForInvalid('both'),
+      ...nestingInvalid('both'),
+    ])
     .map(
       ruleOptionsMapperFactory({
         assert: 'both',

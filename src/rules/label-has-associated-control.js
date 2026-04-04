@@ -91,15 +91,15 @@ export default ({
         return;
       }
 
-      const controlComponents = [].concat(
+      const controlComponents = [
         'input',
         'meter',
         'output',
         'progress',
         'select',
         'textarea',
-        options.controlComponents || [],
-      );
+        ...(options.controlComponents || []),
+      ];
       // Prevent crazy recursion.
       const recursionDepth = Math.min(
         options.depth === undefined ? 2 : options.depth,

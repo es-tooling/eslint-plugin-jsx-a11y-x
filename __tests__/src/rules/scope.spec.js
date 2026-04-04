@@ -34,29 +34,25 @@ const componentsSettings = {
 
 ruleTester.run('scope', rule, {
   valid: parsers
-    .all(
-      [].concat(
-        { code: '<div />;' },
-        { code: '<div foo />;' },
-        { code: '<th scope />' },
-        { code: '<th scope="row" />' },
-        { code: '<th scope={foo} />' },
-        { code: '<th scope={"col"} {...props} />' },
-        { code: '<Foo scope="bar" {...props} />' },
-        { code: '<TableHeader scope="row" />', settings: componentsSettings },
-      ),
-    )
+    .all([
+      { code: '<div />;' },
+      { code: '<div foo />;' },
+      { code: '<th scope />' },
+      { code: '<th scope="row" />' },
+      { code: '<th scope={foo} />' },
+      { code: '<th scope={"col"} {...props} />' },
+      { code: '<Foo scope="bar" {...props} />' },
+      { code: '<TableHeader scope="row" />', settings: componentsSettings },
+    ])
     .map(parserOptionsMapper),
   invalid: parsers
-    .all(
-      [].concat(
-        { code: '<div scope />', errors: [expectedError] },
-        {
-          code: '<Foo scope="bar" />',
-          settings: componentsSettings,
-          errors: [expectedError],
-        },
-      ),
-    )
+    .all([
+      { code: '<div scope />', errors: [expectedError] },
+      {
+        code: '<Foo scope="bar" />',
+        settings: componentsSettings,
+        errors: [expectedError],
+      },
+    ])
     .map(parserOptionsMapper),
 });

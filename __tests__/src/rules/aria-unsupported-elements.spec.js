@@ -73,9 +73,9 @@ const invalidAriaValidityTests = domElements
 
 ruleTester.run('aria-unsupported-elements', rule, {
   valid: parsers
-    .all([].concat(roleValidityTests, ariaValidityTests))
+    .all([...roleValidityTests, ...ariaValidityTests])
     .map(parserOptionsMapper),
   invalid: parsers
-    .all([].concat(invalidRoleValidityTests, invalidAriaValidityTests))
+    .all([...invalidRoleValidityTests, ...invalidAriaValidityTests])
     .map(parserOptionsMapper),
 });
