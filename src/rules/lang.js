@@ -9,12 +9,9 @@
 
 import { propName, getLiteralPropValue } from 'jsx-ast-utils-x';
 import tags from 'language-tags';
-import { generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
 
 const errorMessage = 'lang attribute must have a valid value.';
-
-const schema = generateObjSchema();
 
 export default {
   meta: {
@@ -22,7 +19,7 @@ export default {
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/lang.md',
       description: 'Enforce lang attribute has a valid value.',
     },
-    schema: [schema],
+    schema: [],
   },
 
   create: context => {

@@ -9,15 +9,11 @@
 
 import emojiRegex from 'emoji-regex';
 import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
-
-import { generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
 import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader';
 
 const errorMessage =
   'Emojis should be wrapped in <span>, have role="img", and have an accessible description with aria-label or aria-labelledby.';
-
-const schema = generateObjSchema();
 
 export default {
   meta: {
@@ -27,7 +23,7 @@ export default {
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/accessible-emoji.md',
     },
     deprecated: true,
-    schema: [schema],
+    schema: [],
   },
 
   create: context => {

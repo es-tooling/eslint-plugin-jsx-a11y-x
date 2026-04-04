@@ -10,14 +10,11 @@
 
 import { dom, roles } from 'aria-query';
 import { getProp, getLiteralPropValue, propName } from 'jsx-ast-utils-x';
-import { generateObjSchema } from '../util/schemas';
 import getElementType from '../util/getElementType';
 import isSemanticRoleElement from '../util/isSemanticRoleElement';
 
 const errorMessage = (role, requiredProps) =>
   `Elements with the ARIA role "${role}" must have the following attributes defined: ${String(requiredProps).toLowerCase()}`;
-
-const schema = generateObjSchema();
 
 const roleKeys = roles.keys();
 
@@ -28,7 +25,7 @@ export default {
       description:
         'Enforce that elements with ARIA roles must have all required attributes for that role.',
     },
-    schema: [schema],
+    schema: [],
   },
 
   create: context => {

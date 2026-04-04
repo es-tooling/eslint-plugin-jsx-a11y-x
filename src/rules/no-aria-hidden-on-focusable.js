@@ -11,9 +11,6 @@
 import { getProp, getPropValue } from 'jsx-ast-utils-x';
 import getElementType from '../util/getElementType';
 import isFocusable from '../util/isFocusable';
-import { generateObjSchema } from '../util/schemas';
-
-const schema = generateObjSchema();
 
 export default {
   meta: {
@@ -22,7 +19,7 @@ export default {
       description:
         'Disallow `aria-hidden="true"` from being set on focusable elements.',
     },
-    schema: [schema],
+    schema: [],
   },
 
   create(context) {

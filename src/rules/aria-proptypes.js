@@ -9,7 +9,6 @@
 
 import { aria } from 'aria-query';
 import { getLiteralPropValue, getPropValue, propName } from 'jsx-ast-utils-x';
-import { generateObjSchema } from '../util/schemas';
 
 const errorMessage = (name, type, permittedValues) => {
   switch (type) {
@@ -70,8 +69,6 @@ const validityCheck = (value, expectedType, permittedValues) => {
   }
 };
 
-const schema = generateObjSchema();
-
 export default {
   validityCheck,
   meta: {
@@ -79,7 +76,7 @@ export default {
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/aria-proptypes.md',
       description: 'Enforce ARIA state and property values are valid.',
     },
-    schema: [schema],
+    schema: [],
   },
 
   create: context => ({
