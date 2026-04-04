@@ -6,7 +6,6 @@ import importX from 'eslint-plugin-import-x';
 import ftFlow from 'eslint-plugin-ft-flow';
 import { FlatCompat } from '@eslint/eslintrc';
 import babelParser from '@babel/eslint-parser';
-import prettierConfig from 'eslint-config-prettier';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 
 const compat = new FlatCompat({
@@ -30,7 +29,6 @@ export default defineConfig([
     },
     extends: [js.configs.recommended, importX.flatConfigs.recommended],
     rules: {
-      ...prettierConfig.rules,
       'no-template-curly-in-string': 'off',
       'import-x/no-extraneous-dependencies': 'error',
     },
