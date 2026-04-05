@@ -25,6 +25,7 @@ export default {
       description: 'Enforce all anchors to contain accessible content.',
     },
     schema: [schema],
+    defaultOptions: [{ components: [] }],
   },
 
   create: (context) => {
@@ -32,7 +33,7 @@ export default {
     return {
       JSXOpeningElement: (node) => {
         const options = context.options[0] || {};
-        const componentOptions = options.components || [];
+        const componentOptions = options.components;
         const typeCheck = ['a'].concat(componentOptions);
         const nodeType = elementType(node);
 
