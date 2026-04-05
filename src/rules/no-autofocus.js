@@ -18,7 +18,6 @@ const errorMessage =
 const schema = generateObjSchema({
   ignoreNonDOM: {
     type: 'boolean',
-    default: false,
   },
 });
 
@@ -29,6 +28,7 @@ export default {
       description: 'Enforce autoFocus prop is not enabled.',
     },
     schema: [schema],
+    defaultOptions: [{ ignoreNonDOM: false }],
   },
 
   create: (context) => {
@@ -38,7 +38,7 @@ export default {
         // Determine if ignoreNonDOM is set to true
         // If true, then do not run rule.
         const options = context.options[0] || {};
-        const ignoreNonDOM = !!options.ignoreNonDOM;
+        const ignoreNonDOM = options.ignoreNonDOM;
 
         if (ignoreNonDOM) {
           const type = elementType(attribute.parent);

@@ -3693,7 +3693,6 @@ __metadata:
     babel-plugin-add-module-exports: "npm:^1.0.4"
     clean-pkg-json: "npm:^1.3.0"
     damerau-levenshtein: "npm:^1.0.8"
-    emoji-regex: "npm:^9.2.2"
     eslint: "npm:^9.27.0"
     eslint-doc-generator: "npm:^1.7.1"
     eslint-import-resolver-typescript: "npm:^4.4.1"

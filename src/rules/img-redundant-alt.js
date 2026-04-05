@@ -50,6 +50,7 @@ export default {
         'Enforce `<img>` alt prop does not contain the word "image", "picture", or "photo".',
     },
     schema: [schema],
+    defaultOptions: [{ components: [], words: [] }],
   },
 
   create: (context) => {
@@ -57,7 +58,7 @@ export default {
     return {
       JSXOpeningElement: (node) => {
         const options = context.options[0] || {};
-        const componentOptions = options.components || [];
+        const componentOptions = options.components;
         const typesToValidate = ['img'].concat(componentOptions);
         const nodeType = elementType(node);
 
@@ -76,7 +77,7 @@ export default {
         const isVisible =
           isHiddenFromScreenReader(nodeType, node.attributes) === false;
 
-        const { words = [] } = options;
+        const { words } = options;
         const redundantWords = REDUNDANT_WORDS.concat(words);
 
         if (typeof value === 'string' && isVisible) {
