@@ -3744,15 +3744,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-eslint-plugin@npm:^6.4.0":
-  version: 6.4.0
-  resolution: "eslint-plugin-eslint-plugin@npm:6.4.0"
+"eslint-plugin-eslint-plugin@npm:^7.3.2":
+  version: 7.3.2
+  resolution: "eslint-plugin-eslint-plugin@npm:7.3.2"
   dependencies:
     "@eslint-community/eslint-utils": "npm:^4.4.0"
     estraverse: "npm:^5.3.0"
   peerDependencies:
-    eslint: ">=8.23.0"
-  checksum: 10c0/c34a976d70e3d8ef91f6adb7ff6a89d149531c8624da07b2ef2696c44d4a0184c4c5baf8a63e18f53fd13468b2b491c72bcbb1832178e96a18bce54ad385dca5
+    eslint: ">=9.0.0"
+  checksum: 10c0/7089f8fe79c9c296e5c343defa3da906a5cba5147a4a7dc6d605834452bae047408b8b81736e7272b407df9ffbc9700c6b022c2ebc97d818284836394cc4da71
   languageName: node
   linkType: hard
 
@@ -3832,7 +3832,7 @@ __metadata:
     eslint: "npm:^9.27.0"
     eslint-doc-generator: "npm:^3.3.2"
     eslint-import-resolver-typescript: "npm:^4.4.1"
-    eslint-plugin-eslint-plugin: "npm:^6.4.0"
+    eslint-plugin-eslint-plugin: "npm:^7.3.2"
     eslint-plugin-ft-flow: "npm:^3.0.11"
     eslint-plugin-import-x: "npm:^4.13.3"
     eslint-plugin-jest: "npm:^28.11.0"

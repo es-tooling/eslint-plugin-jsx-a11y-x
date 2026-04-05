@@ -47,7 +47,7 @@ export default defineConfig([
   })),
   {
     files: ['src/rules/*'],
-    extends: [eslintPlugin.configs['flat/rules-recommended']],
+    extends: [eslintPlugin.configs.recommended],
     rules: {
       'eslint-plugin/require-meta-docs-description': [
         'error',
@@ -69,7 +69,7 @@ export default defineConfig([
   },
   {
     files: ['__tests__/src/rules/*.js'],
-    extends: [eslintPlugin.configs['flat/tests-recommended']],
+    extends: [eslintPlugin.configs.recommended],
   },
   {
     files: ['__tests__/**/*'],
