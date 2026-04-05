@@ -2545,7 +2545,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/utils@npm:^6.0.0 || ^7.0.0 || ^8.0.0, @typescript-eslint/utils@npm:^8.32.1":
+"@typescript-eslint/utils@npm:^8.32.1":
   version: 8.32.1
   resolution: "@typescript-eslint/utils@npm:8.32.1"
   dependencies:
@@ -3790,24 +3790,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jest@npm:^28.11.0":
-  version: 28.11.0
-  resolution: "eslint-plugin-jest@npm:28.11.0"
-  dependencies:
-    "@typescript-eslint/utils": "npm:^6.0.0 || ^7.0.0 || ^8.0.0"
-  peerDependencies:
-    "@typescript-eslint/eslint-plugin": ^6.0.0 || ^7.0.0 || ^8.0.0
-    eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
-    jest: "*"
-  peerDependenciesMeta:
-    "@typescript-eslint/eslint-plugin":
-      optional: true
-    jest:
-      optional: true
-  checksum: 10c0/faa06ce1c4d0ad7aa0fb1c725edf77fe543a17fe091424dfe5b5e3bba8930470516e5831592e4fb725884f7e5f1034f303f49b7fab28b2abdf99765bfd048473
-  languageName: node
-  linkType: hard
-
 "eslint-plugin-jsx-a11y-x@workspace:.":
   version: 0.0.0-use.local
   resolution: "eslint-plugin-jsx-a11y-x@workspace:."
@@ -3835,7 +3817,6 @@ __metadata:
     eslint-plugin-eslint-plugin: "npm:^7.3.2"
     eslint-plugin-ft-flow: "npm:^3.0.11"
     eslint-plugin-import-x: "npm:^4.13.3"
-    eslint-plugin-jest: "npm:^28.11.0"
     estraverse: "npm:^5.3.0"
     hermes-eslint: "npm:^0.28.1"
     in-publish: "npm:^2.0.1"
