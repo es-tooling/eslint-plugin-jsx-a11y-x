@@ -47,8 +47,11 @@ jobs:
       - name: Install Dependencies
         run: yarn --immutable
 
-      - name: Build and Test
-        run: yarn run-s build test
+      - name: Build
+        run: yarn build
+
+      - name: Test
+        run: yarn test
 
       - name: Lint
         run: yarn lint
