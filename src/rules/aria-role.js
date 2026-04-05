@@ -26,7 +26,6 @@ const schema = generateObjSchema({
   },
   ignoreNonDOM: {
     type: 'boolean',
-    default: false,
   },
 });
 
@@ -42,12 +41,13 @@ export default {
         'Enforce that elements with ARIA roles must use a valid, non-abstract ARIA role.',
     },
     schema: [schema],
+    defaultOptions: [{ allowedInvalidRoles: [], ignoreNonDOM: false }],
   },
 
   create: (context) => {
     const options = context.options[0] || {};
-    const ignoreNonDOM = !!options.ignoreNonDOM;
-    const allowedInvalidRoles = new Set(options.allowedInvalidRoles || []);
+    const ignoreNonDOM = options.ignoreNonDOM;
+    const allowedInvalidRoles = new Set(options.allowedInvalidRoles);
     const elementType = getElementType(context);
 
     return {
