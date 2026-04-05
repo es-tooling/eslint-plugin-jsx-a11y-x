@@ -1,5 +1,7 @@
 # jsx-a11y-x/label-has-associated-control
 
+📝 Enforce that a `label` tag has a text label and an associated control.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

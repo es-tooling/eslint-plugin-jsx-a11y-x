@@ -1,5 +1,7 @@
 # jsx-a11y-x/no-onchange
 
+📝 Enforce usage of `onBlur` over `onChange` on select menus for accessibility.
+
 ❌ This rule is deprecated.
 
 <!-- end auto-generated rule header -->

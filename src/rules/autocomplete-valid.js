@@ -22,6 +22,7 @@ export default {
       description: 'Enforce that autocomplete attributes are used correctly.',
     },
     schema: [schema],
+    defaultOptions: [{ inputComponents: [] }],
   },
 
   create: (context) => {
@@ -29,7 +30,7 @@ export default {
     return {
       JSXOpeningElement: (node) => {
         const options = context.options[0] || {};
-        const { inputComponents = [] } = options;
+        const { inputComponents } = options;
         const inputTypes = ['input'].concat(inputComponents);
 
         const elType = elementType(node);

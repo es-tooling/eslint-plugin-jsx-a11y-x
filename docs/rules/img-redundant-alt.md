@@ -1,5 +1,7 @@
 # jsx-a11y-x/img-redundant-alt
 
+📝 Enforce `<img>` alt prop does not contain the word "image", "picture", or "photo".
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

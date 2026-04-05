@@ -1,5 +1,7 @@
 # jsx-a11y-x/role-supports-aria-props
 
+📝 Enforce that elements with explicit or implicit roles defined contain only `aria-*` properties supported by that `role`.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

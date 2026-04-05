@@ -210,12 +210,13 @@ export default {
         'Enforce all elements that require alternative text have meaningful information to relay back to end user.',
     },
     schema: [schema],
+    defaultOptions: [{ elements: DEFAULT_ELEMENTS }],
   },
 
   create: (context) => {
     const options = context.options[0] || {};
     // Elements to validate for alt text.
-    const elementOptions = options.elements || DEFAULT_ELEMENTS;
+    const elementOptions = options.elements;
     // Get custom components for just the elements that will be tested.
     const customComponents = elementOptions.flatMap(
       (element) => options[element],

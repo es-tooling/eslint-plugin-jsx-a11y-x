@@ -1,5 +1,7 @@
 # jsx-a11y-x/aria-activedescendant-has-tabindex
 
+📝 Enforce elements with aria-activedescendant are tabbable.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

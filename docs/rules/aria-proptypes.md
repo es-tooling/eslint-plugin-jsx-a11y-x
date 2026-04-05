@@ -1,5 +1,7 @@
 # jsx-a11y-x/aria-proptypes
 
+📝 Enforce ARIA state and property values are valid.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->
