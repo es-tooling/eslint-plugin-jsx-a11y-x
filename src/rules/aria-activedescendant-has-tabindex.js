@@ -25,10 +25,10 @@ export default {
     schema: [],
   },
 
-  create: context => {
+  create: (context) => {
     const elementType = getElementType(context);
     return {
-      JSXOpeningElement: node => {
+      JSXOpeningElement: (node) => {
         const { attributes } = node;
 
         if (getProp(attributes, 'aria-activedescendant') === undefined) {

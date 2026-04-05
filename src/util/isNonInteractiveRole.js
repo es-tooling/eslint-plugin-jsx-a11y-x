@@ -7,11 +7,11 @@ import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
 const nonInteractiveRoles = rolesMap
   .keys()
   .filter(
-    name =>
+    (name) =>
       !rolesMap.get(name).abstract &&
       !rolesMap
         .get(name)
-        .superClass.some(klasses => klasses.includes('widget')),
+        .superClass.some((klasses) => klasses.includes('widget')),
   );
 
 /**

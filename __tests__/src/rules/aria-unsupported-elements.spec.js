@@ -20,7 +20,7 @@ import rule from '../../../src/rules/aria-unsupported-elements';
 
 const ruleTester = new RuleTester();
 
-const errorMessage = invalidProp => ({
+const errorMessage = (invalidProp) => ({
   message: `This element does not support ARIA roles, states and properties. \
 Try removing the prop '${invalidProp}'.`,
   type: 'JSXOpeningElement',
@@ -28,7 +28,7 @@ Try removing the prop '${invalidProp}'.`,
 
 const domElements = dom.keys();
 // Generate valid test cases
-const roleValidityTests = domElements.map(element => {
+const roleValidityTests = domElements.map((element) => {
   const isReserved = dom.get(element).reserved || false;
   const role = isReserved ? '' : 'role';
 
@@ -38,7 +38,7 @@ const roleValidityTests = domElements.map(element => {
 });
 
 const ariaValidityTests = domElements
-  .map(element => {
+  .map((element) => {
     const isReserved = dom.get(element).reserved || false;
     const aria = isReserved ? '' : 'aria-hidden';
 
@@ -53,8 +53,8 @@ const ariaValidityTests = domElements
 
 // Generate invalid test cases.
 const invalidRoleValidityTests = domElements
-  .filter(element => dom.get(element).reserved)
-  .map(reservedElem => ({
+  .filter((element) => dom.get(element).reserved)
+  .map((reservedElem) => ({
     code: `<${reservedElem} role {...props} />`,
     errors: [errorMessage('role')],
   }))
@@ -65,8 +65,8 @@ const invalidRoleValidityTests = domElements
   });
 
 const invalidAriaValidityTests = domElements
-  .filter(element => dom.get(element).reserved)
-  .map(reservedElem => ({
+  .filter((element) => dom.get(element).reserved)
+  .map((reservedElem) => ({
     code: `<${reservedElem} aria-hidden aria-role="none" {...props} />`,
     errors: [errorMessage('aria-hidden')],
   }));

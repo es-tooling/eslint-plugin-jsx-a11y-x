@@ -92,7 +92,7 @@ export default function mayHaveAccessibleLabel(
 
       if (
         isReactComponent &&
-        !controlComponents.some(control => minimatch(name, control))
+        !controlComponents.some((control) => minimatch(name, control))
       ) {
         return true;
       }

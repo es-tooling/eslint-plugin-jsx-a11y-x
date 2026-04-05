@@ -55,14 +55,14 @@ const validityCheck = (value, expectedType, permittedValues) => {
     case 'idlist':
       return (
         typeof value === 'string' &&
-        value.split(' ').every(token => validityCheck(token, 'id', []))
+        value.split(' ').every((token) => validityCheck(token, 'id', []))
       );
     case 'tokenlist':
       return (
         typeof value === 'string' &&
         value
           .split(' ')
-          .every(token => permittedValues.indexOf(token.toLowerCase()) > -1)
+          .every((token) => permittedValues.indexOf(token.toLowerCase()) > -1)
       );
     default:
       return false;
@@ -79,8 +79,8 @@ export default {
     schema: [],
   },
 
-  create: context => ({
-    JSXAttribute: attribute => {
+  create: (context) => ({
+    JSXAttribute: (attribute) => {
       const name = propName(attribute);
       const normalizedName = name.toLowerCase();
 

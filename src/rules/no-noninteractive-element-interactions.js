@@ -67,14 +67,14 @@ export default ({
         // Allow overrides from rule configuration for specific elements and roles.
         if (Object.hasOwn(config, type)) {
           attributes = attributes.filter(
-            attr =>
+            (attr) =>
               attr.type !== 'JSXSpreadAttribute' &&
               !config[type].includes(propName(attr)),
           );
         }
 
         const hasInteractiveProps = interactiveProps.some(
-          prop =>
+          (prop) =>
             hasProp(attributes, prop) &&
             getPropValue(getProp(attributes, prop)) != null,
         );

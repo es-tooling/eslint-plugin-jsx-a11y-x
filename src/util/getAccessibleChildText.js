@@ -34,7 +34,7 @@ function standardizeSpaceAndCase(input: string): string {
  */
 export default function getAccessibleChildText(
   node: JSXElement,
-  elementType: JSXOpeningElement => string,
+  elementType: (JSXOpeningElement) => string,
 ): string {
   const ariaLabel = getLiteralPropValue(
     getProp(node.openingElement.attributes, 'aria-label'),

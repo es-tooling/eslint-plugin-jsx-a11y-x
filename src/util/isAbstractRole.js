@@ -2,7 +2,7 @@ import { dom, roles } from 'aria-query';
 import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
 
 const abstractRoles = new Set(
-  roles.keys().filter(role => roles.get(role).abstract),
+  roles.keys().filter((role) => roles.get(role).abstract),
 );
 
 const DOMElements = new Set(dom.keys());

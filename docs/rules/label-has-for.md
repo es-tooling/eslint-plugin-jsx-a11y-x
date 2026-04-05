@@ -95,12 +95,7 @@ function Foo(props) {
 
 ```jsx
 function Foo({ htmlFor, ...props }) {
-  return (
-    <label
-      htmlFor={htmlFor}
-      {...props}
-    />
-  );
+  return <label htmlFor={htmlFor} {...props} />;
 }
 
 // OR
@@ -108,12 +103,7 @@ function Foo({ htmlFor, ...props }) {
 function Foo(props) {
   const { htmlFor, ...otherProps } = props;
 
-  return (
-    <label
-      htmlFor={htmlFor}
-      {...otherProps}
-    />
-  );
+  return <label htmlFor={htmlFor} {...otherProps} />;
 }
 ```
 
@@ -121,10 +111,7 @@ function Foo(props) {
 
 ```jsx
 <label htmlFor="firstName">
-  <input
-    type="text"
-    id="firstName"
-  />
+  <input type="text" id="firstName" />
   First Name
 </label>
 ```

@@ -33,15 +33,15 @@ const schema = generateObjSchema({
 const isMediaType = (context, type) => {
   const options = context.options[0] || {};
   return MEDIA_TYPES.concat(
-    MEDIA_TYPES.flatMap(mediaType => options[mediaType]),
-  ).some(typeToCheck => typeToCheck === type);
+    MEDIA_TYPES.flatMap((mediaType) => options[mediaType]),
+  ).some((typeToCheck) => typeToCheck === type);
 };
 
 const isTrackType = (context, type) => {
   const options = context.options[0] || {};
   return ['track']
     .concat(options.track || [])
-    .some(typeToCheck => typeToCheck === type);
+    .some((typeToCheck) => typeToCheck === type);
 };
 
 export default ({
@@ -88,7 +88,7 @@ export default ({
           return;
         }
 
-        const hasCaption: boolean = trackChildren.some(track => {
+        const hasCaption: boolean = trackChildren.some((track) => {
           const kindProp = getProp(track.openingElement.attributes, 'kind');
           const kindPropValue = getLiteralPropValue(kindProp) || '';
           return kindPropValue.toLowerCase() === 'captions';

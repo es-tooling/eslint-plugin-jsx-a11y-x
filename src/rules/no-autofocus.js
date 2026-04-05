@@ -31,10 +31,10 @@ export default {
     schema: [schema],
   },
 
-  create: context => {
+  create: (context) => {
     const elementType = getElementType(context);
     return {
-      JSXAttribute: attribute => {
+      JSXAttribute: (attribute) => {
         // Determine if ignoreNonDOM is set to true
         // If true, then do not run rule.
         const options = context.options[0] || {};

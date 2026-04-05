@@ -66,7 +66,7 @@ export default ({
           options[0] || {};
 
         const hasInteractiveProps = handlers.some(
-          prop =>
+          (prop) =>
             hasProp(attributes, prop) &&
             getPropValue(getProp(attributes, prop)) != null,
         );

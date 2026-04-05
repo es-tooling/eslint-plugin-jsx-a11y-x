@@ -52,7 +52,7 @@ exec(
     `--ruleName=${ruleName}`,
     `--rulePath=${rulePath}`,
   ].join(' '),
-  error => {
+  (error) => {
     if (error) {
       console.error(`exec error: ${error}`);
     }

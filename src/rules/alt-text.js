@@ -24,7 +24,7 @@ const schema = generateObjSchema({
   'input[type="image"]': arraySchema,
 });
 
-const ariaLabelHasValue = prop => {
+const ariaLabelHasValue = (prop) => {
   const value = getPropValue(prop);
   if (value === undefined) {
     return false;
@@ -212,18 +212,18 @@ export default {
     schema: [schema],
   },
 
-  create: context => {
+  create: (context) => {
     const options = context.options[0] || {};
     // Elements to validate for alt text.
     const elementOptions = options.elements || DEFAULT_ELEMENTS;
     // Get custom components for just the elements that will be tested.
     const customComponents = elementOptions.flatMap(
-      element => options[element],
+      (element) => options[element],
     );
     const typesToValidate = new Set(
       []
         .concat(customComponents, elementOptions)
-        .map(type => (type === 'input[type="image"]' ? 'input' : type)),
+        .map((type) => (type === 'input[type="image"]' ? 'input' : type)),
     );
     const elementType = getElementType(context);
 
@@ -241,7 +241,7 @@ export default {
 
         // Map nodeType to the DOM element if we are running this on a custom component.
         if (elementOptions.indexOf(DOMElement) === -1) {
-          DOMElement = elementOptions.find(element => {
+          DOMElement = elementOptions.find((element) => {
             const customComponentsForElement = options[element] || [];
             return customComponentsForElement.indexOf(nodeType) > -1;
           });

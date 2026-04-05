@@ -21,10 +21,10 @@ export default {
     schema: [],
   },
 
-  create: context => {
+  create: (context) => {
     const elementType = getElementType(context);
     return {
-      JSXOpeningElement: node => {
+      JSXOpeningElement: (node) => {
         const type = elementType(node);
 
         if (type && type !== 'html') {

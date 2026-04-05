@@ -1,11 +1,15 @@
-import { format } from 'prettier';
+import { format, resolveConfig } from 'prettier';
 
-import prettierRC from './.prettierrc.mjs';
+const prettierOptions = await resolveConfig('./README.md');
 
 /** @type {import('eslint-doc-generator').GenerateOptions} */
 const config = {
-  postprocess: content =>
-    format(content, { ...prettierRC, parser: 'markdown' }),
+  postprocess: (content, filepath) =>
+    format(content, {
+      ...prettierOptions,
+      parser: 'markdown',
+      filepath,
+    }),
 };
 
 export default config;

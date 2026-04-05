@@ -43,10 +43,7 @@ You can configure the rule to be aware of your custom components.
 
 ```jsx
 <CustomInputLabel label="Surname">
-  <CustomInput
-    type="text"
-    value={value}
-  />
+  <CustomInput type="text" value={value} />
 </CustomInputLabel>
 ```
 
@@ -136,12 +133,7 @@ function Foo(props) {
 function Foo(props) {
   const { htmlFor, ...otherProps } = props;
 
-  return (
-    <label
-      htmlFor={htmlFor}
-      {...otherProps}
-    />
-  );
+  return <label htmlFor={htmlFor} {...otherProps} />;
 }
 ```
 
