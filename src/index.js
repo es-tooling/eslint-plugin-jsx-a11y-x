@@ -3,7 +3,6 @@ const legacyConfigBase = require('./configs/legacy-config-base');
 const { name, version } = require('../package.json');
 
 const allRules = {
-  'accessible-emoji': require('./rules/accessible-emoji'),
   'alt-text': require('./rules/alt-text'),
   'anchor-ambiguous-text': require('./rules/anchor-ambiguous-text'),
   'anchor-has-content': require('./rules/anchor-has-content'),
@@ -22,7 +21,6 @@ const allRules = {
   'img-redundant-alt': require('./rules/img-redundant-alt'),
   'interactive-supports-focus': require('./rules/interactive-supports-focus'),
   'label-has-associated-control': require('./rules/label-has-associated-control'),
-  'label-has-for': require('./rules/label-has-for'),
   lang: require('./rules/lang'),
   'media-has-caption': require('./rules/media-has-caption'),
   'mouse-events-have-key-events': require('./rules/mouse-events-have-key-events'),
@@ -34,7 +32,6 @@ const allRules = {
   'no-noninteractive-element-interactions': require('./rules/no-noninteractive-element-interactions'),
   'no-noninteractive-element-to-interactive-role': require('./rules/no-noninteractive-element-to-interactive-role'),
   'no-noninteractive-tabindex': require('./rules/no-noninteractive-tabindex'),
-  'no-onchange': require('./rules/no-onchange'),
   'no-redundant-roles': require('./rules/no-redundant-roles'),
   'no-static-element-interactions': require('./rules/no-static-element-interactions'),
   'prefer-tag-over-role': require('./rules/prefer-tag-over-role'),
