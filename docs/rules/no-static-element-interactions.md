@@ -1,5 +1,7 @@
 # jsx-a11y-x/no-static-element-interactions
 
+📝 Enforce that non-interactive, visible elements (such as `<div>`) that have click handlers use the role attribute.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

@@ -1,5 +1,7 @@
 # jsx-a11y-x/no-aria-hidden-on-focusable
 
+📝 Disallow `aria-hidden="true"` from being set on focusable elements.
+
 <!-- end auto-generated rule header -->
 
 Enforce that `aria-hidden="true"` is not set on focusable elements.

@@ -1,5 +1,7 @@
 # jsx-a11y-x/mouse-events-have-key-events
 
+📝 Enforce that `onMouseOver`/`onMouseOut` are accompanied by `onFocus`/`onBlur` for keyboard-only users.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

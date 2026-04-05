@@ -1,5 +1,7 @@
 # jsx-a11y-x/heading-has-content
 
+📝 Enforce heading (`h1`, `h2`, etc) elements contain accessible content.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

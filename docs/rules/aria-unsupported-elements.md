@@ -1,5 +1,7 @@
 # jsx-a11y-x/aria-unsupported-elements
 
+📝 Enforce that elements that do not support ARIA roles, states, and properties do not have those attributes.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->

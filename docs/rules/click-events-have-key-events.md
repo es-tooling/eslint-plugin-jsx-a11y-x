@@ -1,5 +1,7 @@
 # jsx-a11y-x/click-events-have-key-events
 
+📝 Enforce a clickable non-interactive element has at least one keyboard event listener.
+
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
 <!-- end auto-generated rule header -->
