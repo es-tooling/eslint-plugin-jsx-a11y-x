@@ -27,6 +27,7 @@ export default {
         'Enforce heading (`h1`, `h2`, etc) elements contain accessible content.',
     },
     schema: [schema],
+    defaultOptions: [{ components: [] }],
   },
 
   create: (context) => {
@@ -34,7 +35,7 @@ export default {
     return {
       JSXOpeningElement: (node) => {
         const options = context.options[0] || {};
-        const componentOptions = options.components || [];
+        const componentOptions = options.components;
         const typeCheck = headings.concat(componentOptions);
         const nodeType = elementType(node);
 
