@@ -41,8 +41,11 @@ export default ({
           },
           uniqueItems: true,
         },
+        description:
+          'An object mapping element types to arrays of roles that are allowed to be redundant for those elements.',
       },
     ],
+    defaultOptions: [{}],
   },
 
   create: (context: ESLintContext): ESLintVisitorSelectorConfig => {

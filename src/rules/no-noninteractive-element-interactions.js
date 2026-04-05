@@ -53,6 +53,7 @@ export default ({
         'Disallow non-interactive elements being assigned mouse or keyboard event listeners.',
     },
     schema: [schema],
+    defaultOptions: [{ handlers: defaultInteractiveProps }],
   },
 
   create: (context: ESLintContext): ESLintVisitorSelectorConfig => {

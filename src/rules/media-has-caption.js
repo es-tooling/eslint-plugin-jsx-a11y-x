@@ -40,7 +40,7 @@ const isMediaType = (context, type) => {
 const isTrackType = (context, type) => {
   const options = context.options[0] || {};
   return ['track']
-    .concat(options.track || [])
+    .concat(options.track)
     .some((typeToCheck) => typeToCheck === type);
 };
 
@@ -52,6 +52,7 @@ export default ({
         'Enforces that `<audio>` and `<video>` elements must have a `<track>` for captions.',
     },
     schema: [schema],
+    defaultOptions: [{ audio: [], video: [], track: [] }],
   },
 
   create: (context: ESLintContext): ESLintVisitorSelectorConfig => {
