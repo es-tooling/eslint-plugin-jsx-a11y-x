@@ -3782,9 +3782,6 @@ __metadata:
     eslint-import-resolver-typescript: "npm:^4.4.1"
     eslint-plugin-eslint-plugin: "npm:^7.3.2"
     eslint-plugin-import-x: "npm:^4.13.3"
-    estraverse: "npm:^5.3.0"
-    in-publish: "npm:^2.0.1"
-    jackspeak: "npm:=2.1.1"
     jest: "npm:^29.7.0"
     jscodeshift: "npm:^17.3.0"
     jsx-ast-utils-x: "npm:^0.1.0"
@@ -4516,18 +4513,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"in-publish@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "in-publish@npm:2.0.1"
-  bin:
-    in-install: in-install.js
-    in-publish: in-publish.js
-    not-in-install: not-in-install.js
-    not-in-publish: not-in-publish.js
-  checksum: 10c0/d83f7ac47f3f922134d26a586795d7bbd4a6d487601153ddf5b35980141f82a4563f7072fafc64785f6948244ab8681a10b85c0f6d18bbcb14333ff7c88f1ccc
-  languageName: node
-  linkType: hard
-
 "inflight@npm:^1.0.4":
   version: 1.0.6
   resolution: "inflight@npm:1.0.6"
@@ -4741,19 +4726,6 @@ __metadata:
     html-escaper: "npm:^2.0.0"
     istanbul-lib-report: "npm:^3.0.0"
   checksum: 10c0/a379fadf9cf8dc5dfe25568115721d4a7eb82fbd50b005a6672aff9c6989b20cc9312d7865814e0859cd8df58cbf664482e1d3604be0afde1f7fc3ccc1394a51
-  languageName: node
-  linkType: hard
-
-"jackspeak@npm:=2.1.1":
-  version: 2.1.1
-  resolution: "jackspeak@npm:2.1.1"
-  dependencies:
-    "@pkgjs/parseargs": "npm:^0.11.0"
-    cliui: "npm:^8.0.1"
-  dependenciesMeta:
-    "@pkgjs/parseargs":
-      optional: true
-  checksum: 10c0/3c5919d4e2d01d539c99d1ed5fde84c29ef170b7bc50dbb80ed712df348ef3ec87346197db1a86264128d220b357b8ab619c70ece26f08abe4b4de0c424b1334
   languageName: node
   linkType: hard
 
