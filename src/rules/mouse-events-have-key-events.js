@@ -53,8 +53,8 @@ export default {
 
       const { options } = context;
 
-      const hoverInHandlers: string[] = options[0]?.hoverInHandlers;
-      const hoverOutHandlers: string[] = options[0]?.hoverOutHandlers;
+      const hoverInHandlers = options[0]?.hoverInHandlers;
+      const hoverOutHandlers = options[0]?.hoverOutHandlers;
 
       const { attributes } = node;
 
