@@ -1,5 +1,4 @@
 /**
- * @flow
  * @file Enforce label tags have an associated control.
  * @author Jesse Beach
  */
@@ -9,14 +8,8 @@
 // ----------------------------------------------------------------------------
 
 import { hasProp, getProp, getPropValue } from 'jsx-ast-utils-x';
-import type { JSXElement } from 'ast-types-flow';
 import minimatch from 'minimatch';
 import { generateObjSchema, arraySchema } from '../util/schemas';
-import type {
-  ESLintConfig,
-  ESLintContext,
-  ESLintVisitorSelectorConfig,
-} from '../../flow/eslint';
 import getElementType from '../util/getElementType';
 import mayContainChildComponent from '../util/mayContainChildComponent';
 import mayHaveAccessibleLabel from '../util/mayHaveAccessibleLabel';
@@ -66,7 +59,7 @@ const validateHtmlFor = (node, context) => {
   return false;
 };
 
-export default ({
+export default {
   meta: {
     docs: {
       description:
@@ -85,14 +78,14 @@ export default ({
     ],
   },
 
-  create: (context: ESLintContext): ESLintVisitorSelectorConfig => {
+  create: (context) => {
     const options = context.options[0] || {};
     const labelComponents = options.labelComponents;
     const assertType = options.assert;
     const labelComponentNames = ['label'].concat(labelComponents);
     const elementType = getElementType(context);
 
-    const rule = (node: JSXElement) => {
+    const rule = (node) => {
       const isLabelComponent = labelComponentNames.some((name) =>
         minimatch(elementType(node.openingElement), name),
       );
@@ -175,4 +168,4 @@ export default ({
       JSXElement: rule,
     };
   },
-}: ESLintConfig);
+};

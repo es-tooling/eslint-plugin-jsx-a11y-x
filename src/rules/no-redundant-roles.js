@@ -1,5 +1,4 @@
 /**
- * @flow
  * @file Enforce explicit role property is not the same as implicit/default role
  *   property on element.
  * @author Ethan Cohen <@evcohen>
@@ -9,12 +8,6 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import type { JSXOpeningElement } from 'ast-types-flow';
-import type {
-  ESLintConfig,
-  ESLintContext,
-  ESLintVisitorSelectorConfig,
-} from '../../flow/eslint';
 import getElementType from '../util/getElementType';
 import getExplicitRole from '../util/getExplicitRole';
 import getImplicitRole from '../util/getImplicitRole';
@@ -24,7 +17,7 @@ const errorMessage = (element, implicitRole) =>
 
 const DEFAULT_ROLE_EXCEPTIONS = { nav: ['navigation'] };
 
-export default ({
+export default {
   meta: {
     docs: {
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/no-redundant-roles.md',
@@ -48,11 +41,11 @@ export default ({
     defaultOptions: [{}],
   },
 
-  create: (context: ESLintContext): ESLintVisitorSelectorConfig => {
+  create: (context) => {
     const { options } = context;
     const elementType = getElementType(context);
     return {
-      JSXOpeningElement: (node: JSXOpeningElement) => {
+      JSXOpeningElement: (node) => {
         const type = elementType(node);
         const implicitRole = getImplicitRole(type, node.attributes);
         const explicitRole = getExplicitRole(type, node.attributes);
@@ -83,4 +76,4 @@ export default ({
       },
     };
   },
-}: ESLintConfig);
+};

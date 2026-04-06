@@ -1,5 +1,4 @@
 /**
- * @flow
  * @file Enforce anchor text to not exactly match 'click here', 'here', 'link',
  *   'learn more', and user-specified words.
  * @author Matt Wang
@@ -9,7 +8,6 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import type { ESLintConfig, ESLintContext } from '../../flow/eslint';
 import { arraySchema, generateObjSchema } from '../util/schemas';
 import getAccessibleChildText from '../util/getAccessibleChildText';
 import getElementType from '../util/getElementType';
@@ -26,7 +24,7 @@ const schema = generateObjSchema({
   words: arraySchema,
 });
 
-export default ({
+export default {
   meta: {
     docs: {
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/anchor-ambiguous-text.md',
@@ -37,7 +35,7 @@ export default ({
     defaultOptions: [{ words: DEFAULT_AMBIGUOUS_WORDS }],
   },
 
-  create: (context: ESLintContext) => {
+  create: (context) => {
     const elementType = getElementType(context);
 
     const typesToValidate = ['a'];
@@ -73,4 +71,4 @@ export default ({
       },
     };
   },
-}: ESLintConfig);
+};

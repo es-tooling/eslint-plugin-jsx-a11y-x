@@ -1,5 +1,4 @@
 /**
- * @flow
  * @file Enforce onmouseover/onmouseout are accompanied by onfocus/onblur.
  * @author Ethan Cohen
  */
@@ -11,7 +10,6 @@
 import { dom } from 'aria-query';
 import { getProp, getPropValue } from 'jsx-ast-utils-x';
 import { arraySchema, generateObjSchema } from '../util/schemas';
-import type { ESLintConfig, ESLintContext } from '../../flow/eslint';
 
 const schema = generateObjSchema({
   hoverInHandlers: {
@@ -29,7 +27,7 @@ const schema = generateObjSchema({
 const DEFAULT_HOVER_IN_HANDLERS = ['onMouseOver'];
 const DEFAULT_HOVER_OUT_HANDLERS = ['onMouseOut'];
 
-export default ({
+export default {
   meta: {
     docs: {
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/mouse-events-have-key-events.md',
@@ -45,7 +43,7 @@ export default ({
     ],
   },
 
-  create: (context: ESLintContext) => ({
+  create: (context) => ({
     JSXOpeningElement: (node) => {
       const { name } = node.name;
 
@@ -55,8 +53,8 @@ export default ({
 
       const { options } = context;
 
-      const hoverInHandlers: string[] = options[0]?.hoverInHandlers;
-      const hoverOutHandlers: string[] = options[0]?.hoverOutHandlers;
+      const hoverInHandlers = options[0]?.hoverInHandlers;
+      const hoverOutHandlers = options[0]?.hoverOutHandlers;
 
       const { attributes } = node;
 
@@ -107,4 +105,4 @@ export default ({
       }
     },
   }),
-}: ESLintConfig);
+};

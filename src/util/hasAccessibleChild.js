@@ -1,19 +1,12 @@
-// @flow
-
 import { hasAnyProp } from 'jsx-ast-utils-x';
-import type { JSXElement, Node, JSXOpeningElement } from 'ast-types-flow';
 import isHiddenFromScreenReader from './isHiddenFromScreenReader';
 
-export default function hasAccessibleChild(
-  node: JSXElement,
-  elementType: (JSXOpeningElement) => string,
-): boolean {
+export default function hasAccessibleChild(node, elementType) {
   return (
-    node.children.some((child: Node) => {
+    node.children.some((child) => {
       switch (child.type) {
         case 'Literal':
           return !!child.value;
-        // $FlowFixMe JSXText is missing in ast-types-flow
         case 'JSXText':
           return !!child.value;
         case 'JSXElement':

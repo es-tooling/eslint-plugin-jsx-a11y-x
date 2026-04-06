@@ -3,8 +3,6 @@
  * label is present because of expression containers or spread attributes. A
  * false return value means that the node definitely does not have a label, but
  * a true return return value means that the node may or may not have a label.
- *
- * @flow
  */
 
 import {
@@ -12,24 +10,20 @@ import {
   propName,
   elementType as rawElementType,
 } from 'jsx-ast-utils-x';
-import type { JSXOpeningElement, Node } from 'ast-types-flow';
 import minimatch from 'minimatch';
 
-function tryTrim(value: any) {
+function tryTrim(value) {
   return typeof value === 'string' ? value.trim() : value;
 }
 
-function hasLabellingProp(
-  openingElement: JSXOpeningElement,
-  additionalLabellingProps?: Array<string> = [],
-) {
+function hasLabellingProp(openingElement, additionalLabellingProps = []) {
   const labellingProps = [
     'alt', // Assume alt is used correctly on an image
     'aria-label',
     'aria-labelledby',
     ...additionalLabellingProps,
   ];
-  return openingElement.attributes.some((attribute): boolean => {
+  return openingElement.attributes.some((attribute) => {
     // We must assume that a spread value contains a labelling prop.
     if (attribute.type !== 'JSXAttribute') {
       return true;
@@ -46,13 +40,13 @@ function hasLabellingProp(
 }
 
 export default function mayHaveAccessibleLabel(
-  root: Node,
-  maxDepth: number = 1,
-  additionalLabellingProps?: Array<string> = [],
-  getElementType: (node: JSXOpeningElement) => string = rawElementType,
-  controlComponents: Array<string> = [],
-): boolean {
-  function checkElement(node: Node, depth: number): boolean {
+  root,
+  maxDepth = 1,
+  additionalLabellingProps = [],
+  getElementType = rawElementType,
+  controlComponents = [],
+) {
+  function checkElement(node, depth) {
     // Bail when maxDepth is exceeded.
     if (depth > maxDepth) {
       return false;
@@ -67,14 +61,12 @@ export default function mayHaveAccessibleLabel(
       return true;
     }
     // Check for JSXText.
-    // $FlowFixMe Remove after updating ast-types-flow
     if (node.type === 'JSXText' && !!tryTrim(node.value)) {
       return true;
     }
     // Check for labelling props.
     if (
       node.openingElement &&
-      /* $FlowFixMe */
       hasLabellingProp(node.openingElement, additionalLabellingProps)
     ) {
       return true;
@@ -85,7 +77,6 @@ export default function mayHaveAccessibleLabel(
       node.children.length === 0 &&
       node.openingElement
     ) {
-      // $FlowFixMe `node.openingElement` has `unknown` type
       const name = getElementType(node.openingElement);
       const isReactComponent =
         name.length > 0 && name[0] === name[0].toUpperCase();
@@ -100,9 +91,7 @@ export default function mayHaveAccessibleLabel(
 
     // Recurse into the child element nodes.
     if (node.children) {
-      /* $FlowFixMe */
       for (let i = 0; i < node.children.length; i += 1) {
-        /* $FlowFixMe */
         if (checkElement(node.children[i], depth + 1)) {
           return true;
         }

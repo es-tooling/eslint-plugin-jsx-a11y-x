@@ -1,5 +1,3 @@
-// @flow
-import type { Node } from 'ast-types-flow';
 import getExplicitRole from './getExplicitRole';
 import getImplicitRole from './getImplicitRole';
 /**
@@ -8,9 +6,6 @@ import getImplicitRole from './getImplicitRole';
  * 1. The valid value of its explicit role attribute; or
  * 2. The implicit value of its tag.
  */
-export default function getComputedRole(
-  tag: string,
-  attributes: Array<Node>,
-): ?string {
+export default function getComputedRole(tag, attributes) {
   return getExplicitRole(tag, attributes) || getImplicitRole(tag, attributes);
 }

@@ -1,5 +1,4 @@
 /**
- * @flow
  * @file Disallow tabindex on static and noninteractive elements
  * @author jessebeach
  */
@@ -9,13 +8,7 @@
 // ----------------------------------------------------------------------------
 
 import { dom } from 'aria-query';
-import type { JSXOpeningElement } from 'ast-types-flow';
 import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
-import type {
-  ESLintConfig,
-  ESLintContext,
-  ESLintVisitorSelectorConfig,
-} from '../../flow/eslint';
 import getElementType from '../util/getElementType';
 import isInteractiveElement from '../util/isInteractiveElement';
 import isInteractiveRole from '../util/isInteractiveRole';
@@ -37,7 +30,7 @@ const schema = generateObjSchema({
   },
 });
 
-export default ({
+export default {
   meta: {
     docs: {
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/no-noninteractive-tabindex.md',
@@ -48,11 +41,11 @@ export default ({
     defaultOptions: [{ roles: [], tags: [] }],
   },
 
-  create: (context: ESLintContext): ESLintVisitorSelectorConfig => {
+  create: (context) => {
     const { options } = context;
     const elementType = getElementType(context);
     return {
-      JSXOpeningElement: (node: JSXOpeningElement) => {
+      JSXOpeningElement: (node) => {
         const type = elementType(node);
         const { attributes } = node;
         const tabIndexProp = getProp(attributes, 'tabIndex');
@@ -113,4 +106,4 @@ export default ({
       },
     };
   },
-}: ESLintConfig);
+};

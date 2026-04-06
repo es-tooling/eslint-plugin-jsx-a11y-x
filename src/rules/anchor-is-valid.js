@@ -1,5 +1,4 @@
 /**
- * @flow
  * @file Performs validity check on anchor hrefs. Warns when anchors are used as
  *   buttons.
  * @author Almero Steyn
@@ -10,12 +9,6 @@
 // ----------------------------------------------------------------------------
 
 import { getProp, getPropValue } from 'jsx-ast-utils-x';
-import type { JSXOpeningElement } from 'ast-types-flow';
-import type {
-  ESLintConfig,
-  ESLintContext,
-  ESLintVisitorSelectorConfig,
-} from '../../flow/eslint';
 import {
   generateObjSchema,
   arraySchema,
@@ -40,7 +33,7 @@ const schema = generateObjSchema({
   aspects: enumArraySchema(allAspects, 1),
 });
 
-export default ({
+export default {
   meta: {
     docs: {
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/anchor-is-valid.md',
@@ -50,12 +43,12 @@ export default ({
     defaultOptions: [{ components: [], specialLink: [], aspects: allAspects }],
   },
 
-  create: (context: ESLintContext): ESLintVisitorSelectorConfig => {
+  create: (context) => {
     const elementType = getElementType(context);
     const jsHrefRegexp = /^\W*?javascript:/;
 
     return {
-      JSXOpeningElement: (node: JSXOpeningElement): void => {
+      JSXOpeningElement: (node) => {
         const { attributes } = node;
         const options = context.options[0] || {};
         const componentOptions = options.components;
@@ -139,4 +132,4 @@ export default ({
       },
     };
   },
-}: ESLintConfig);
+};

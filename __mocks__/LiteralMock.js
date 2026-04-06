@@ -1,12 +1,4 @@
-/** @flow */
-
-export type LiteralMockType = {|
-  type: 'Literal',
-  value: string,
-  raw: string,
-|};
-
-export default function LiteralMock(value: string): LiteralMockType {
+export default function LiteralMock(value) {
   return {
     type: 'Literal',
     value,

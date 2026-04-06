@@ -48,7 +48,6 @@ exec(
     './src/index.js',
     '-t ./scripts/addRuleToIndex.js',
     '--extensions js',
-    '--parser flow',
     `--ruleName=${ruleName}`,
     `--rulePath=${rulePath}`,
   ].join(' '),
