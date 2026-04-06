@@ -3,7 +3,6 @@ import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 import eslintPlugin from 'eslint-plugin-eslint-plugin';
 import importX from 'eslint-plugin-import-x';
-import { FlatCompat } from '@eslint/eslintrc';
 import babelParser from '@babel/eslint-parser';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 
