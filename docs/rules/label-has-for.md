@@ -71,7 +71,6 @@ The `required` option (defaults to `"required": { "every": ["nesting", "id"] }`)
 
 - string: must be one of the acceptable strings (`"nesting"` or `"id"`)
 - object, must have one of the following properties:
-
   - some: an array of acceptable strings, will pass if ANY of the requested checks passed
   - every: an array of acceptable strings, will pass if ALL of the requested checks passed
 

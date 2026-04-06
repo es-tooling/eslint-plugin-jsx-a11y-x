@@ -78,7 +78,7 @@
     "jscodeshift": "^17.3.0",
     "minimist": "^1.2.8",
     "premove": "^4.0.0",
-    "prettier": "^3.5.3",
+    "prettier": "^3.8.1",
     "semver": "^6.3.1",
     "to-ast": "^1.0.0"
   },
