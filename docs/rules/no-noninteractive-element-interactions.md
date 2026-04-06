@@ -1,6 +1,6 @@
 # jsx-a11y-x/no-noninteractive-element-interactions
 
-📝 Non-interactive elements should not be assigned mouse or keyboard event listeners.
+📝 Disallow non-interactive elements being assigned mouse or keyboard event listeners.
 
 💼 This rule is enabled in the following configs: ☑️ `recommended`, 🔒 `strict`.
 
