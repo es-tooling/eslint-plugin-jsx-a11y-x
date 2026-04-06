@@ -74,12 +74,21 @@ export default ({
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/label-has-associated-control.md',
     },
     schema: [schema],
+    defaultOptions: [
+      {
+        labelComponents: [],
+        labelAttributes: [],
+        controlComponents: [],
+        assert: 'either',
+        depth: 2,
+      },
+    ],
   },
 
   create: (context: ESLintContext): ESLintVisitorSelectorConfig => {
     const options = context.options[0] || {};
-    const labelComponents = options.labelComponents || [];
-    const assertType = options.assert || 'either';
+    const labelComponents = options.labelComponents;
+    const assertType = options.assert;
     const labelComponentNames = ['label'].concat(labelComponents);
     const elementType = getElementType(context);
 
@@ -98,13 +107,10 @@ export default ({
         'progress',
         'select',
         'textarea',
-        ...(options.controlComponents || []),
+        ...options.controlComponents,
       ];
       // Prevent crazy recursion.
-      const recursionDepth = Math.min(
-        options.depth === undefined ? 2 : options.depth,
-        25,
-      );
+      const recursionDepth = Math.min(options.depth, 25);
       const hasHtmlFor = validateHtmlFor(node.openingElement, context);
       // Check for multiple control components.
       const hasNestedControl = controlComponents.some((name) =>
