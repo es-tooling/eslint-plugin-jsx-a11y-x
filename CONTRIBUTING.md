@@ -40,7 +40,7 @@ We are happy to welcome contributions from anyone willing to improve documentati
 - Get all dependencies
 
   ```sh
-  yarn
+  pnpm install
   ```
 
 - Add the upstream source for being able to sync main project changes back into your fork. For example, to configure an upstream remote repository for the `eslint-plugin-jsx-a11y` fork, run:
@@ -52,7 +52,7 @@ We are happy to welcome contributions from anyone willing to improve documentati
 - Run the tests and the build
 
   ```sh
-  yarn test
+  pnpm run test
   ```
 
 - Make and submit changes to the project source files following our [pull request submission workflow](#pull-requests)
@@ -81,10 +81,10 @@ git rebase upstream/main
 Verify your changes
 
 ```sh
-yarn test
+pnpm run test
 # or
-yarn tests-only
-yarn lint
+pnpm run tests-only
+pnpm run lint
 ```
 
 Push your changes

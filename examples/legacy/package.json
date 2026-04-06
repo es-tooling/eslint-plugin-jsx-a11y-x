@@ -12,6 +12,6 @@
   },
   "devDependencies": {
     "eslint": "^9.9.1",
-    "eslint-plugin-jsx-a11y-x": "portal:../.."
+    "eslint-plugin-jsx-a11y-x": "file:../.."
   }
 }

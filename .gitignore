@@ -1,6 +1,3 @@
 lib
 node_modules
 coverage
-**/.yarn/*
-!.yarn/releases
-!.yarn/plugins
