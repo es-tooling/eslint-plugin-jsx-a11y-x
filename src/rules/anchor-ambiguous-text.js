@@ -32,6 +32,7 @@ export default {
         'Enforce `<a>` text to not exactly match "click here", "here", "link", or "a link".',
     },
     schema: [schema],
+    defaultOptions: [{ words: DEFAULT_AMBIGUOUS_WORDS }],
   },
 
   create: (context) => {
@@ -40,7 +41,7 @@ export default {
     const typesToValidate = ['a'];
 
     const options = context.options[0] || {};
-    const { words = DEFAULT_AMBIGUOUS_WORDS } = options;
+    const { words } = options;
     const ambiguousWords = new Set(words);
 
     return {

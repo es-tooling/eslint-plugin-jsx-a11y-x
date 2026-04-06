@@ -40,6 +40,7 @@ export default {
       description: 'Enforce all anchors are valid, navigable elements.',
     },
     schema: [schema],
+    defaultOptions: [{ components: [], specialLink: [], aspects: allAspects }],
   },
 
   create: (context) => {
@@ -50,7 +51,7 @@ export default {
       JSXOpeningElement: (node) => {
         const { attributes } = node;
         const options = context.options[0] || {};
-        const componentOptions = options.components || [];
+        const componentOptions = options.components;
         const typeCheck = ['a'].concat(componentOptions);
         const nodeType = elementType(node);
 
@@ -60,7 +61,7 @@ export default {
         }
 
         // Set up the rule aspects to check.
-        const aspects = options.aspects || allAspects;
+        const aspects = options.aspects;
 
         // Create active aspect flag object. Failing checks will only report
         // if the related flag is set to true.
@@ -69,7 +70,7 @@ export default {
           activeAspects[aspect] = aspects.indexOf(aspect) !== -1;
         });
 
-        const propOptions = options.specialLink || [];
+        const propOptions = options.specialLink;
         const propsToValidate = ['href'].concat(propOptions);
         const values = propsToValidate.map((prop) =>
           getPropValue(getProp(node.attributes, prop)),

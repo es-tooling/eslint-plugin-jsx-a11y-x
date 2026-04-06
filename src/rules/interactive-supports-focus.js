@@ -59,6 +59,7 @@ export default {
         'Add `tabIndex={-1}` to make the element focusable but not reachable via sequential keyboard navigation.',
     },
     schema: [schema],
+    defaultOptions: [{ tabbable: [] }],
   },
 
   create: (context) => {
@@ -66,10 +67,7 @@ export default {
     return {
       JSXOpeningElement: (node) => {
         const tabbable =
-          (context.options &&
-            context.options[0] &&
-            context.options[0].tabbable) ||
-          [];
+          context.options && context.options[0] && context.options[0].tabbable;
         const { attributes } = node;
         const type = elementType(node);
         const hasInteractiveProps = hasAnyProp(attributes, interactiveProps);

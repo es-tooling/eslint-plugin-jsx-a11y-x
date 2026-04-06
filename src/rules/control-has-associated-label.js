@@ -40,17 +40,21 @@ export default {
       url: 'https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/tree/HEAD/docs/rules/control-has-associated-label.md',
     },
     schema: [schema],
+    defaultOptions: [
+      {
+        labelAttributes: [],
+        controlComponents: [],
+        ignoreElements: [],
+        ignoreRoles: [],
+      },
+    ],
   },
 
   create: (context) => {
     const elementType = getElementType(context);
     const options = context.options[0] || {};
-    const {
-      labelAttributes = [],
-      controlComponents = [],
-      ignoreElements = [],
-      ignoreRoles = [],
-    } = options;
+    const { labelAttributes, controlComponents, ignoreElements, ignoreRoles } =
+      options;
 
     const newIgnoreElements = new Set([...ignoreElements, ...ignoreList]);
 

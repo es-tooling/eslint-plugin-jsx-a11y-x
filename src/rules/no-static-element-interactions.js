@@ -45,6 +45,7 @@ export default {
         'Enforce that non-interactive, visible elements (such as `<div>`) that have click handlers use the role attribute.',
     },
     schema: [schema],
+    defaultOptions: [{ handlers: defaultInteractiveProps }],
   },
 
   create: (context) => {
@@ -55,8 +56,7 @@ export default {
         const { attributes } = node;
         const type = elementType(node);
 
-        const { allowExpressionValues, handlers = defaultInteractiveProps } =
-          options[0] || {};
+        const { allowExpressionValues, handlers } = options[0] || {};
 
         const hasInteractiveProps = handlers.some(
           (prop) =>

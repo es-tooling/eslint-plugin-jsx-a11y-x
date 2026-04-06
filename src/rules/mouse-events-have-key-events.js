@@ -35,6 +35,12 @@ export default {
         'Enforce that `onMouseOver`/`onMouseOut` are accompanied by `onFocus`/`onBlur` for keyboard-only users.',
     },
     schema: [schema],
+    defaultOptions: [
+      {
+        hoverInHandlers: DEFAULT_HOVER_IN_HANDLERS,
+        hoverOutHandlers: DEFAULT_HOVER_OUT_HANDLERS,
+      },
+    ],
   },
 
   create: (context) => ({
@@ -47,10 +53,8 @@ export default {
 
       const { options } = context;
 
-      const hoverInHandlers =
-        options[0]?.hoverInHandlers ?? DEFAULT_HOVER_IN_HANDLERS;
-      const hoverOutHandlers =
-        options[0]?.hoverOutHandlers ?? DEFAULT_HOVER_OUT_HANDLERS;
+      const hoverInHandlers: string[] = options[0]?.hoverInHandlers;
+      const hoverOutHandlers: string[] = options[0]?.hoverOutHandlers;
 
       const { attributes } = node;
 

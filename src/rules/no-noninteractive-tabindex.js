@@ -38,6 +38,7 @@ export default {
         'Enforce `tabIndex` only be declared on interactive elements.',
     },
     schema: [schema],
+    defaultOptions: [{ roles: [], tags: [] }],
   },
 
   create: (context) => {
@@ -62,10 +63,10 @@ export default {
         }
         // Allow for configuration overrides.
         const { tags, roles, allowExpressionValues } = options[0] || {};
-        if (tags && tags.includes(type)) {
+        if (tags.includes(type)) {
           return;
         }
-        if (roles && roles.includes(role)) {
+        if (roles.includes(role)) {
           return;
         }
         if (
