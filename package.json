@@ -71,6 +71,7 @@
     "eslint-import-resolver-typescript": "^4.4.1",
     "eslint-plugin-eslint-plugin": "^7.3.2",
     "eslint-plugin-import-x": "^4.13.3",
+    "globals": "^17.4.0",
     "jest": "^29.7.0",
     "jscodeshift": "^17.3.0",
     "minimist": "^1.2.8",
