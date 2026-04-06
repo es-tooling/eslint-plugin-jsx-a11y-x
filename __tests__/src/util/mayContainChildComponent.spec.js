@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest';
 import mayContainChildComponent from '../../../src/util/mayContainChildComponent.js';
 import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';
 import JSXElementMock from '../../../__mocks__/JSXElementMock.js';

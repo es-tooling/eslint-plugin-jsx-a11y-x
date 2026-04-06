@@ -1,3 +1,4 @@
+import { expect, test } from 'vitest';
 import getTabIndex from '../../../src/util/getTabIndex.js';
 import IdentifierMock from '../../../__mocks__/IdentifierMock.js';
 import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';

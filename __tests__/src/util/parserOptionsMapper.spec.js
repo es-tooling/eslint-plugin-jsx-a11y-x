@@ -1,3 +1,4 @@
+import { expect, test } from 'vitest';
 import { ESLint } from 'eslint';
 import semver from 'semver';
 import parserOptionsMapper from '../../__util__/parserOptionsMapper.js';

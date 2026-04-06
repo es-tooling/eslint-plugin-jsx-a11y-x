@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest';
 import mayHaveAccessibleLabel from '../../../src/util/mayHaveAccessibleLabel.js';
 import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';
 import JSXElementMock from '../../../__mocks__/JSXElementMock.js';

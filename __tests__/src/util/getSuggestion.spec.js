@@ -1,3 +1,4 @@
+import { expect, test } from 'vitest';
 import getSuggestion from '../../../src/util/getSuggestion.js';
 
 test('spell check suggestion API', () => {

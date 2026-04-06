@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest';
 import isDisabledElement from '../../../src/util/isDisabledElement.js';
 import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';
 

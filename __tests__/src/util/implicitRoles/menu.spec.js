@@ -1,3 +1,4 @@
+import { expect, test } from 'vitest';
 import JSXAttributeMock from '../../../../__mocks__/JSXAttributeMock.js';
 import getImplicitRoleForMenu from '../../../../src/util/implicitRoles/menu.js';
 

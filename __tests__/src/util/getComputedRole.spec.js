@@ -1,3 +1,4 @@
+import { expect, test } from 'vitest';
 import getComputedRole from '../../../src/util/getComputedRole.js';
 import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';
 

@@ -7,6 +7,7 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
+import { expect, test } from 'vitest';
 import { aria } from 'aria-query';
 import { RuleTester } from 'eslint';
 
