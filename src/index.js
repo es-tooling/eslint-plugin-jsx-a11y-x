@@ -69,9 +69,11 @@ const allRules = {
   'no-aria-hidden-on-focusable': noAriaHiddenOnFocusable,
   'no-autofocus': noAutofocus,
   'no-distracting-elements': noDistractingElements,
-  'no-interactive-element-to-noninteractive-role': noInteractiveElementToNoninteractiveRole,
+  'no-interactive-element-to-noninteractive-role':
+    noInteractiveElementToNoninteractiveRole,
   'no-noninteractive-element-interactions': noNoninteractiveElementInteractions,
-  'no-noninteractive-element-to-interactive-role': noNoninteractiveElementToInteractiveRole,
+  'no-noninteractive-element-to-interactive-role':
+    noNoninteractiveElementToInteractiveRole,
   'no-noninteractive-tabindex': noNoninteractiveTabindex,
   'no-redundant-roles': noRedundantRoles,
   'no-static-element-interactions': noStaticElementInteractions,

@@ -16,7 +16,8 @@ import isNonInteractiveRole from '../util/isNonInteractiveRole.js';
 import isPresentationRole from '../util/isPresentationRole.js';
 import getTabIndex from '../util/getTabIndex.js';
 
-const { getProp, eventHandlersByType, getLiteralPropValue, hasAnyProp } = jsxAstUtils;
+const { getProp, eventHandlersByType, getLiteralPropValue, hasAnyProp } =
+  jsxAstUtils;
 
 // ----------------------------------------------------------------------------
 // Rule Definition

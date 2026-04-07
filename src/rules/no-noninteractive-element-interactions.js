@@ -19,7 +19,8 @@ import isNonInteractiveElement from '../util/isNonInteractiveElement.js';
 import isNonInteractiveRole from '../util/isNonInteractiveRole.js';
 import isPresentationRole from '../util/isPresentationRole.js';
 
-const { eventHandlersByType, getPropValue, getProp, hasProp, propName } = jsxAstUtils;
+const { eventHandlersByType, getPropValue, getProp, hasProp, propName } =
+  jsxAstUtils;
 
 const errorMessage =
   'Non-interactive elements should not be assigned mouse or keyboard event listeners.';
