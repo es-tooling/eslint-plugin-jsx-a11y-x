@@ -40,7 +40,7 @@
     "test-example:flat-esm": "cd examples/flat-esm && pnpm install && pnpm run lint",
     "test-example:legacy": "cd examples/legacy && pnpm install && pnpm run lint",
     "test:examples": "pnpm run test-example:legacy && pnpm run test-example:flat-esm && pnpm run test-example:flat-cjs",
-    "tests-only": "NODE_OPTIONS='--experimental-vm-modules' jest --coverage"
+    "tests-only": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --coverage"
   },
   "peerDependencies": {
     "eslint": "^8.57.0 || ^9.0.0"
