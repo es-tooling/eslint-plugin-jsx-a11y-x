@@ -25,6 +25,7 @@
     "eslint-plugin-jsx-a11y"
   ],
   "scripts": {
+    "build": "echo \"No build step needed until TypeScript migration\"",
     "create": "node ./scripts/create-rule.cjs",
     "format": "prettier --write .",
     "generate-list-of-rules": "eslint-doc-generator --rule-doc-title-format prefix-name --rule-doc-section-options false --config-emoji recommended,☑️ --ignore-config flat/recommended --ignore-config flat/strict",
