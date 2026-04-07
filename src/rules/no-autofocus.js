@@ -7,10 +7,12 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { propName, getPropValue } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
 import { dom } from 'aria-query';
-import { generateObjSchema } from '../util/schemas';
-import getElementType from '../util/getElementType';
+import { generateObjSchema } from '../util/schemas.js';
+import getElementType from '../util/getElementType.js';
+
+const { propName, getPropValue } = jsxAstUtils;
 
 const errorMessage =
   'The autoFocus prop should not be enabled, as it can reduce usability and accessibility for users.';

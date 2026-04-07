@@ -1,5 +1,7 @@
-import { hasAnyProp } from 'jsx-ast-utils-x';
-import isHiddenFromScreenReader from './isHiddenFromScreenReader';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import isHiddenFromScreenReader from './isHiddenFromScreenReader.js';
+
+const { hasAnyProp } = jsxAstUtils;
 
 export default function hasAccessibleChild(node, elementType) {
   return (

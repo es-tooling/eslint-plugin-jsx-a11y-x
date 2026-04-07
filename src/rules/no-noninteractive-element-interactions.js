@@ -7,23 +7,19 @@
 // ----------------------------------------------------------------------------
 
 import { dom } from 'aria-query';
-import {
-  eventHandlersByType,
-  getPropValue,
-  getProp,
-  hasProp,
-  propName,
-} from 'jsx-ast-utils-x';
-import { arraySchema, generateObjSchema } from '../util/schemas';
-import getElementType from '../util/getElementType';
-import isAbstractRole from '../util/isAbstractRole';
-import isContentEditable from '../util/isContentEditable';
-import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader';
-import isInteractiveElement from '../util/isInteractiveElement';
-import isInteractiveRole from '../util/isInteractiveRole';
-import isNonInteractiveElement from '../util/isNonInteractiveElement';
-import isNonInteractiveRole from '../util/isNonInteractiveRole';
-import isPresentationRole from '../util/isPresentationRole';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import { arraySchema, generateObjSchema } from '../util/schemas.js';
+import getElementType from '../util/getElementType.js';
+import isAbstractRole from '../util/isAbstractRole.js';
+import isContentEditable from '../util/isContentEditable.js';
+import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader.js';
+import isInteractiveElement from '../util/isInteractiveElement.js';
+import isInteractiveRole from '../util/isInteractiveRole.js';
+import isNonInteractiveElement from '../util/isNonInteractiveElement.js';
+import isNonInteractiveRole from '../util/isNonInteractiveRole.js';
+import isPresentationRole from '../util/isPresentationRole.js';
+
+const { eventHandlersByType, getPropValue, getProp, hasProp, propName } = jsxAstUtils;
 
 const errorMessage =
   'Non-interactive elements should not be assigned mouse or keyboard event listeners.';

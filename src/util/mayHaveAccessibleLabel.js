@@ -5,12 +5,10 @@
  * a true return return value means that the node may or may not have a label.
  */
 
-import {
-  getPropValue,
-  propName,
-  elementType as rawElementType,
-} from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
 import minimatch from 'minimatch';
+
+const { getPropValue, propName, elementType: rawElementType } = jsxAstUtils;
 
 function tryTrim(value) {
   return typeof value === 'string' ? value.trim() : value;

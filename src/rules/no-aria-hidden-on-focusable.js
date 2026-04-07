@@ -8,9 +8,11 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { getProp, getPropValue } from 'jsx-ast-utils-x';
-import getElementType from '../util/getElementType';
-import isFocusable from '../util/isFocusable';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import getElementType from '../util/getElementType.js';
+import isFocusable from '../util/isFocusable.js';
+
+const { getProp, getPropValue } = jsxAstUtils;
 
 export default {
   meta: {

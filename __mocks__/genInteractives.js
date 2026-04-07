@@ -1,7 +1,7 @@
 import { dom, roles } from 'aria-query';
 
-import JSXAttributeMock from './JSXAttributeMock';
-import JSXElementMock from './JSXElementMock';
+import JSXAttributeMock from './JSXAttributeMock.js';
+import JSXElementMock from './JSXElementMock.js';
 
 const domElements = dom.keys();
 const roleNames = roles.keys();

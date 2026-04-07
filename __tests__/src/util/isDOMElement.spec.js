@@ -1,8 +1,10 @@
 import { dom } from 'aria-query';
-import { elementType } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
 
-import isDOMElement from '../../../src/util/isDOMElement';
-import JSXElementMock from '../../../__mocks__/JSXElementMock';
+import isDOMElement from '../../../src/util/isDOMElement.js';
+import JSXElementMock from '../../../__mocks__/JSXElementMock.js';
+
+const { elementType } = jsxAstUtils;
 
 describe('isDOMElement', () => {
   test('DOM elements', () => {

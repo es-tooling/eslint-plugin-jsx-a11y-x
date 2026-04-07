@@ -5,8 +5,10 @@
  * but this module cannot determine it positively.
  */
 
-import { elementType as rawElementType } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
 import minimatch from 'minimatch';
+
+const { elementType: rawElementType } = jsxAstUtils;
 
 export default function mayContainChildComponent(
   root,

@@ -7,12 +7,14 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { hasProp, getProp, getPropValue } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
 import minimatch from 'minimatch';
-import { generateObjSchema, arraySchema } from '../util/schemas';
-import getElementType from '../util/getElementType';
-import mayContainChildComponent from '../util/mayContainChildComponent';
-import mayHaveAccessibleLabel from '../util/mayHaveAccessibleLabel';
+import { generateObjSchema, arraySchema } from '../util/schemas.js';
+import getElementType from '../util/getElementType.js';
+import mayContainChildComponent from '../util/mayContainChildComponent.js';
+import mayHaveAccessibleLabel from '../util/mayHaveAccessibleLabel.js';
+
+const { hasProp, getProp, getPropValue } = jsxAstUtils;
 
 const errorMessages = {
   accessibleLabel: 'A form label must have accessible text.',

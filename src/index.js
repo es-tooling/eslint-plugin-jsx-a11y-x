@@ -1,44 +1,85 @@
-const flatConfigBase = require('./configs/flat-config-base');
-const legacyConfigBase = require('./configs/legacy-config-base');
+import { createRequire } from 'module';
+
+import { flatConfigBase } from './configs/flat-config-base.js';
+import { legacyConfigBase } from './configs/legacy-config-base.js';
+
+import altText from './rules/alt-text.js';
+import anchorAmbiguousText from './rules/anchor-ambiguous-text.js';
+import anchorHasContent from './rules/anchor-has-content.js';
+import anchorIsValid from './rules/anchor-is-valid.js';
+import ariaActivedescendantHasTabindex from './rules/aria-activedescendant-has-tabindex.js';
+import ariaProps from './rules/aria-props.js';
+import ariaProptypes from './rules/aria-proptypes.js';
+import ariaRole from './rules/aria-role.js';
+import ariaUnsupportedElements from './rules/aria-unsupported-elements.js';
+import autocompleteValid from './rules/autocomplete-valid.js';
+import clickEventsHaveKeyEvents from './rules/click-events-have-key-events.js';
+import controlHasAssociatedLabel from './rules/control-has-associated-label.js';
+import headingHasContent from './rules/heading-has-content.js';
+import htmlHasLang from './rules/html-has-lang.js';
+import iframeHasTitle from './rules/iframe-has-title.js';
+import imgRedundantAlt from './rules/img-redundant-alt.js';
+import interactiveSupportsFocus from './rules/interactive-supports-focus.js';
+import labelHasAssociatedControl from './rules/label-has-associated-control.js';
+import lang from './rules/lang.js';
+import mediaHasCaption from './rules/media-has-caption.js';
+import mouseEventsHaveKeyEvents from './rules/mouse-events-have-key-events.js';
+import noAccessKey from './rules/no-access-key.js';
+import noAriaHiddenOnFocusable from './rules/no-aria-hidden-on-focusable.js';
+import noAutofocus from './rules/no-autofocus.js';
+import noDistractingElements from './rules/no-distracting-elements.js';
+import noInteractiveElementToNoninteractiveRole from './rules/no-interactive-element-to-noninteractive-role.js';
+import noNoninteractiveElementInteractions from './rules/no-noninteractive-element-interactions.js';
+import noNoninteractiveElementToInteractiveRole from './rules/no-noninteractive-element-to-interactive-role.js';
+import noNoninteractiveTabindex from './rules/no-noninteractive-tabindex.js';
+import noRedundantRoles from './rules/no-redundant-roles.js';
+import noStaticElementInteractions from './rules/no-static-element-interactions.js';
+import preferTagOverRole from './rules/prefer-tag-over-role.js';
+import roleHasRequiredAriaProps from './rules/role-has-required-aria-props.js';
+import roleSupportAriaProps from './rules/role-supports-aria-props.js';
+import scope from './rules/scope.js';
+import tabindexNoPositive from './rules/tabindex-no-positive.js';
+
+const require = createRequire(import.meta.url);
 const { name, version } = require('../package.json');
 
 const allRules = {
-  'alt-text': require('./rules/alt-text'),
-  'anchor-ambiguous-text': require('./rules/anchor-ambiguous-text'),
-  'anchor-has-content': require('./rules/anchor-has-content'),
-  'anchor-is-valid': require('./rules/anchor-is-valid'),
-  'aria-activedescendant-has-tabindex': require('./rules/aria-activedescendant-has-tabindex'),
-  'aria-props': require('./rules/aria-props'),
-  'aria-proptypes': require('./rules/aria-proptypes'),
-  'aria-role': require('./rules/aria-role'),
-  'aria-unsupported-elements': require('./rules/aria-unsupported-elements'),
-  'autocomplete-valid': require('./rules/autocomplete-valid'),
-  'click-events-have-key-events': require('./rules/click-events-have-key-events'),
-  'control-has-associated-label': require('./rules/control-has-associated-label'),
-  'heading-has-content': require('./rules/heading-has-content'),
-  'html-has-lang': require('./rules/html-has-lang'),
-  'iframe-has-title': require('./rules/iframe-has-title'),
-  'img-redundant-alt': require('./rules/img-redundant-alt'),
-  'interactive-supports-focus': require('./rules/interactive-supports-focus'),
-  'label-has-associated-control': require('./rules/label-has-associated-control'),
-  lang: require('./rules/lang'),
-  'media-has-caption': require('./rules/media-has-caption'),
-  'mouse-events-have-key-events': require('./rules/mouse-events-have-key-events'),
-  'no-access-key': require('./rules/no-access-key'),
-  'no-aria-hidden-on-focusable': require('./rules/no-aria-hidden-on-focusable'),
-  'no-autofocus': require('./rules/no-autofocus'),
-  'no-distracting-elements': require('./rules/no-distracting-elements'),
-  'no-interactive-element-to-noninteractive-role': require('./rules/no-interactive-element-to-noninteractive-role'),
-  'no-noninteractive-element-interactions': require('./rules/no-noninteractive-element-interactions'),
-  'no-noninteractive-element-to-interactive-role': require('./rules/no-noninteractive-element-to-interactive-role'),
-  'no-noninteractive-tabindex': require('./rules/no-noninteractive-tabindex'),
-  'no-redundant-roles': require('./rules/no-redundant-roles'),
-  'no-static-element-interactions': require('./rules/no-static-element-interactions'),
-  'prefer-tag-over-role': require('./rules/prefer-tag-over-role'),
-  'role-has-required-aria-props': require('./rules/role-has-required-aria-props'),
-  'role-supports-aria-props': require('./rules/role-supports-aria-props'),
-  scope: require('./rules/scope'),
-  'tabindex-no-positive': require('./rules/tabindex-no-positive'),
+  'alt-text': altText,
+  'anchor-ambiguous-text': anchorAmbiguousText,
+  'anchor-has-content': anchorHasContent,
+  'anchor-is-valid': anchorIsValid,
+  'aria-activedescendant-has-tabindex': ariaActivedescendantHasTabindex,
+  'aria-props': ariaProps,
+  'aria-proptypes': ariaProptypes,
+  'aria-role': ariaRole,
+  'aria-unsupported-elements': ariaUnsupportedElements,
+  'autocomplete-valid': autocompleteValid,
+  'click-events-have-key-events': clickEventsHaveKeyEvents,
+  'control-has-associated-label': controlHasAssociatedLabel,
+  'heading-has-content': headingHasContent,
+  'html-has-lang': htmlHasLang,
+  'iframe-has-title': iframeHasTitle,
+  'img-redundant-alt': imgRedundantAlt,
+  'interactive-supports-focus': interactiveSupportsFocus,
+  'label-has-associated-control': labelHasAssociatedControl,
+  lang,
+  'media-has-caption': mediaHasCaption,
+  'mouse-events-have-key-events': mouseEventsHaveKeyEvents,
+  'no-access-key': noAccessKey,
+  'no-aria-hidden-on-focusable': noAriaHiddenOnFocusable,
+  'no-autofocus': noAutofocus,
+  'no-distracting-elements': noDistractingElements,
+  'no-interactive-element-to-noninteractive-role': noInteractiveElementToNoninteractiveRole,
+  'no-noninteractive-element-interactions': noNoninteractiveElementInteractions,
+  'no-noninteractive-element-to-interactive-role': noNoninteractiveElementToInteractiveRole,
+  'no-noninteractive-tabindex': noNoninteractiveTabindex,
+  'no-redundant-roles': noRedundantRoles,
+  'no-static-element-interactions': noStaticElementInteractions,
+  'prefer-tag-over-role': preferTagOverRole,
+  'role-has-required-aria-props': roleHasRequiredAriaProps,
+  'role-supports-aria-props': roleSupportAriaProps,
+  scope,
+  'tabindex-no-positive': tabindexNoPositive,
 };
 
 const recommendedRules = {
@@ -314,4 +355,6 @@ const flatConfigs = {
   strict: createConfig(strictRules, 'strict'),
 };
 
-module.exports = Object.assign(jsxA11y, { configs, flatConfigs });
+const plugin = Object.assign(jsxA11y, { configs, flatConfigs });
+
+export default plugin;

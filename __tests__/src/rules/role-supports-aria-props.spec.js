@@ -8,13 +8,13 @@
 // -----------------------------------------------------------------------------
 
 import { aria, roles } from 'aria-query';
-import { RuleTester } from 'eslint';
-import { version as eslintVersion } from 'eslint/package.json';
+import { ESLint, RuleTester } from 'eslint';
 import semver from 'semver';
+import parserOptionsMapper from '../../__util__/parserOptionsMapper.js';
+import parsers from '../../__util__/helpers/parsers.js';
+import rule from '../../../src/rules/role-supports-aria-props.js';
 
-import parserOptionsMapper from '../../__util__/parserOptionsMapper';
-import parsers from '../../__util__/helpers/parsers';
-import rule from '../../../src/rules/role-supports-aria-props';
+const eslintVersion = ESLint.version;
 
 // -----------------------------------------------------------------------------
 // Tests

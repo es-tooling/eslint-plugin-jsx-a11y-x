@@ -9,11 +9,13 @@
 // ----------------------------------------------------------------------------
 
 import { dom } from 'aria-query';
-import { propName } from 'jsx-ast-utils-x';
-import getElementType from '../util/getElementType';
-import getExplicitRole from '../util/getExplicitRole';
-import isNonInteractiveElement from '../util/isNonInteractiveElement';
-import isInteractiveRole from '../util/isInteractiveRole';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import getElementType from '../util/getElementType.js';
+import getExplicitRole from '../util/getExplicitRole.js';
+import isNonInteractiveElement from '../util/isNonInteractiveElement.js';
+import isInteractiveRole from '../util/isInteractiveRole.js';
+
+const { propName } = jsxAstUtils;
 
 const errorMessage =
   'Non-interactive elements should not be assigned interactive roles.';

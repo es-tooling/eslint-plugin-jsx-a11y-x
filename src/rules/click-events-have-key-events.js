@@ -9,11 +9,13 @@
 // ----------------------------------------------------------------------------
 
 import { dom } from 'aria-query';
-import { getProp, hasAnyProp } from 'jsx-ast-utils-x';
-import getElementType from '../util/getElementType';
-import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader';
-import isInteractiveElement from '../util/isInteractiveElement';
-import isPresentationRole from '../util/isPresentationRole';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import getElementType from '../util/getElementType.js';
+import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader.js';
+import isInteractiveElement from '../util/isInteractiveElement.js';
+import isPresentationRole from '../util/isPresentationRole.js';
+
+const { getProp, hasAnyProp } = jsxAstUtils;
 
 const errorMessage =
   'Visible, non-interactive elements with click handlers must have at least one keyboard listener.';

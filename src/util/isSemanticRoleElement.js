@@ -1,5 +1,7 @@
 import { AXObjectRoles, elementAXObjects } from 'axobject-query';
-import { getLiteralPropValue, getProp, propName } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
+
+const { getLiteralPropValue, getProp, propName } = jsxAstUtils;
 
 const isSemanticRoleElement = (elementType, attributes) => {
   const roleAttr = getProp(attributes, 'role');

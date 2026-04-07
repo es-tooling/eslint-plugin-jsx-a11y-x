@@ -8,10 +8,12 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
-import { generateObjSchema, arraySchema } from '../util/schemas';
-import getElementType from '../util/getElementType';
-import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import { generateObjSchema, arraySchema } from '../util/schemas.js';
+import getElementType from '../util/getElementType.js';
+import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader.js';
+
+const { getProp, getLiteralPropValue } = jsxAstUtils;
 
 const REDUNDANT_WORDS = ['image', 'photo', 'picture'];
 

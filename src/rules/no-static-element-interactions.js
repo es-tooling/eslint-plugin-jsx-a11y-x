@@ -8,22 +8,19 @@
 // ----------------------------------------------------------------------------
 
 import { dom } from 'aria-query';
-import {
-  eventHandlersByType,
-  getPropValue,
-  getProp,
-  hasProp,
-} from 'jsx-ast-utils-x';
-import { arraySchema, generateObjSchema } from '../util/schemas';
-import getElementType from '../util/getElementType';
-import isAbstractRole from '../util/isAbstractRole';
-import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader';
-import isInteractiveElement from '../util/isInteractiveElement';
-import isInteractiveRole from '../util/isInteractiveRole';
-import isNonInteractiveElement from '../util/isNonInteractiveElement';
-import isNonInteractiveRole from '../util/isNonInteractiveRole';
-import isNonLiteralProperty from '../util/isNonLiteralProperty';
-import isPresentationRole from '../util/isPresentationRole';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import { arraySchema, generateObjSchema } from '../util/schemas.js';
+import getElementType from '../util/getElementType.js';
+import isAbstractRole from '../util/isAbstractRole.js';
+import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader.js';
+import isInteractiveElement from '../util/isInteractiveElement.js';
+import isInteractiveRole from '../util/isInteractiveRole.js';
+import isNonInteractiveElement from '../util/isNonInteractiveElement.js';
+import isNonInteractiveRole from '../util/isNonInteractiveRole.js';
+import isNonLiteralProperty from '../util/isNonLiteralProperty.js';
+import isPresentationRole from '../util/isPresentationRole.js';
+
+const { eventHandlersByType, getPropValue, getProp, hasProp } = jsxAstUtils;
 
 const errorMessage =
   'Avoid non-native interactive elements. If using native HTML is not possible, add an appropriate role and support for tabbing, mouse, keyboard, and touch inputs to an interactive content element.';

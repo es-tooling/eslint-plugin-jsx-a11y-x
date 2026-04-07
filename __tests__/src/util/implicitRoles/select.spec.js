@@ -1,5 +1,5 @@
-import JSXAttributeMock from '../../../../__mocks__/JSXAttributeMock';
-import getImplicitRoleForSelect from '../../../../src/util/implicitRoles/select';
+import JSXAttributeMock from '../../../../__mocks__/JSXAttributeMock.js';
+import getImplicitRoleForSelect from '../../../../src/util/implicitRoles/select.js';
 
 describe('isAbstractRole', () => {
   test('works for combobox', () => {

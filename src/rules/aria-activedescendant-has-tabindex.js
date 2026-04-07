@@ -4,10 +4,12 @@
  */
 
 import { dom } from 'aria-query';
-import { getProp } from 'jsx-ast-utils-x';
-import getElementType from '../util/getElementType';
-import getTabIndex from '../util/getTabIndex';
-import isInteractiveElement from '../util/isInteractiveElement';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import getElementType from '../util/getElementType.js';
+import getTabIndex from '../util/getTabIndex.js';
+import isInteractiveElement from '../util/isInteractiveElement.js';
+
+const { getProp } = jsxAstUtils;
 
 // ----------------------------------------------------------------------------
 // Rule Definition

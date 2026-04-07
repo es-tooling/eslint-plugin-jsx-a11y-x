@@ -1,5 +1,5 @@
 import { roles as rolesMap } from 'aria-query';
-import implicitRoles from './implicitRoles';
+import implicitRoles from './implicitRoles/index.js';
 
 /**
  * Returns an element's implicit role given its attributes and type. Some

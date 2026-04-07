@@ -1,10 +1,10 @@
-import mayHaveAccessibleLabel from '../../../src/util/mayHaveAccessibleLabel';
-import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
-import JSXElementMock from '../../../__mocks__/JSXElementMock';
-import JSXExpressionContainerMock from '../../../__mocks__/JSXExpressionContainerMock';
-import JSXSpreadAttributeMock from '../../../__mocks__/JSXSpreadAttributeMock';
-import JSXTextMock from '../../../__mocks__/JSXTextMock';
-import LiteralMock from '../../../__mocks__/LiteralMock';
+import mayHaveAccessibleLabel from '../../../src/util/mayHaveAccessibleLabel.js';
+import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';
+import JSXElementMock from '../../../__mocks__/JSXElementMock.js';
+import JSXExpressionContainerMock from '../../../__mocks__/JSXExpressionContainerMock.js';
+import JSXSpreadAttributeMock from '../../../__mocks__/JSXSpreadAttributeMock.js';
+import JSXTextMock from '../../../__mocks__/JSXTextMock.js';
+import LiteralMock from '../../../__mocks__/LiteralMock.js';
 
 describe('mayHaveAccessibleLabel', () => {
   expect(

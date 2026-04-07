@@ -1,7 +1,7 @@
-import mayContainChildComponent from '../../../src/util/mayContainChildComponent';
-import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
-import JSXElementMock from '../../../__mocks__/JSXElementMock';
-import JSXExpressionContainerMock from '../../../__mocks__/JSXExpressionContainerMock';
+import mayContainChildComponent from '../../../src/util/mayContainChildComponent.js';
+import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';
+import JSXElementMock from '../../../__mocks__/JSXElementMock.js';
+import JSXExpressionContainerMock from '../../../__mocks__/JSXExpressionContainerMock.js';
 
 describe('mayContainChildComponent', () => {
   expect(

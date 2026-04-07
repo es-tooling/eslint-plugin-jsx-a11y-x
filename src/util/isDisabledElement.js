@@ -1,4 +1,6 @@
-import { getProp, getLiteralPropValue, getPropValue } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
+
+const { getProp, getLiteralPropValue, getPropValue } = jsxAstUtils;
 
 const isDisabledElement = (attributes) => {
   const disabledAttr = getProp(attributes, 'disabled');

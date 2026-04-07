@@ -6,10 +6,13 @@
 // ----------------------------------------------------------------------------
 // Rule Definition
 // ----------------------------------------------------------------------------
-import { runVirtualRule } from 'axe-core';
-import { getLiteralPropValue, getProp } from 'jsx-ast-utils-x';
-import { generateObjSchema, arraySchema } from '../util/schemas';
-import getElementType from '../util/getElementType';
+import axe from 'axe-core';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import { generateObjSchema, arraySchema } from '../util/schemas.js';
+import getElementType from '../util/getElementType.js';
+
+const { runVirtualRule } = axe;
+const { getLiteralPropValue, getProp } = jsxAstUtils;
 
 const schema = generateObjSchema({
   inputComponents: arraySchema,

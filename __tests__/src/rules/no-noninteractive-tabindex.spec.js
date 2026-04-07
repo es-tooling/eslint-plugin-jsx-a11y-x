@@ -8,11 +8,13 @@
 // -----------------------------------------------------------------------------
 
 import { RuleTester } from 'eslint';
-import { configs } from '../../../src/index';
-import parserOptionsMapper from '../../__util__/parserOptionsMapper';
-import parsers from '../../__util__/helpers/parsers';
-import rule from '../../../src/rules/no-noninteractive-tabindex';
-import ruleOptionsMapperFactory from '../../__util__/ruleOptionsMapperFactory';
+import plugin from '../../../src/index.js';
+import parserOptionsMapper from '../../__util__/parserOptionsMapper.js';
+import parsers from '../../__util__/helpers/parsers.js';
+import rule from '../../../src/rules/no-noninteractive-tabindex.js';
+import ruleOptionsMapperFactory from '../../__util__/ruleOptionsMapperFactory.js';
+
+const { configs } = plugin;
 
 // -----------------------------------------------------------------------------
 // Tests

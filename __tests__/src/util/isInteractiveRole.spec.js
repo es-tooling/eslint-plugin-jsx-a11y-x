@@ -1,11 +1,12 @@
-import { elementType } from 'jsx-ast-utils-x';
-
-import isInteractiveRole from '../../../src/util/isInteractiveRole';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import isInteractiveRole from '../../../src/util/isInteractiveRole.js';
 import {
   genElementSymbol,
   genInteractiveRoleElements,
   genNonInteractiveRoleElements,
-} from '../../../__mocks__/genInteractives';
+} from '../../../__mocks__/genInteractives.js';
+
+const { elementType } = jsxAstUtils;
 
 describe('isInteractiveRole', () => {
   expect(isInteractiveRole(undefined, [])).toBe(false);

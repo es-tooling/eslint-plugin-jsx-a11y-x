@@ -8,8 +8,10 @@
 // ----------------------------------------------------------------------------
 
 import { aria } from 'aria-query';
-import { propName } from 'jsx-ast-utils-x';
-import getSuggestion from '../util/getSuggestion';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import getSuggestion from '../util/getSuggestion.js';
+
+const { propName } = jsxAstUtils;
 
 const ariaAttributes = aria.keys();
 

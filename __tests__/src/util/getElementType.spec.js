@@ -1,6 +1,6 @@
-import getElementType from '../../../src/util/getElementType';
-import JSXElementMock from '../../../__mocks__/JSXElementMock';
-import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
+import getElementType from '../../../src/util/getElementType.js';
+import JSXElementMock from '../../../__mocks__/JSXElementMock.js';
+import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';
 
 describe('getElementType', () => {
   test('no settings in context', () => {

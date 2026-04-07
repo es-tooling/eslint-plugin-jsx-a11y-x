@@ -1,5 +1,7 @@
-import { version as eslintVersion } from 'eslint/package.json';
+import { ESLint } from 'eslint';
 import semver from 'semver';
+
+const eslintVersion = ESLint.version;
 
 const usingLegacy = semver.major(eslintVersion) < 9;
 

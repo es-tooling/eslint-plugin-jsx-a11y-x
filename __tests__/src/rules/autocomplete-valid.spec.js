@@ -8,10 +8,10 @@
 // -----------------------------------------------------------------------------
 
 import { RuleTester } from 'eslint';
-import parserOptionsMapper from '../../__util__/parserOptionsMapper';
-import { axeFailMessage } from '../../__util__/axeMapping';
-import parsers from '../../__util__/helpers/parsers';
-import rule from '../../../src/rules/autocomplete-valid';
+import parserOptionsMapper from '../../__util__/parserOptionsMapper.js';
+import { axeFailMessage } from '../../__util__/axeMapping.js';
+import parsers from '../../__util__/helpers/parsers.js';
+import rule from '../../../src/rules/autocomplete-valid.js';
 
 // -----------------------------------------------------------------------------
 // Tests

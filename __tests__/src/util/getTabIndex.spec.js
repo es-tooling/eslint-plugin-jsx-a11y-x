@@ -1,6 +1,6 @@
-import getTabIndex from '../../../src/util/getTabIndex';
-import IdentifierMock from '../../../__mocks__/IdentifierMock';
-import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
+import getTabIndex from '../../../src/util/getTabIndex.js';
+import IdentifierMock from '../../../__mocks__/IdentifierMock.js';
+import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';
 
 test('getTabIndex', () => {
   expect(getTabIndex(JSXAttributeMock('tabIndex', 0))).toBe(0);

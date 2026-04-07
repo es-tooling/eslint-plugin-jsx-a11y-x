@@ -1,4 +1,4 @@
-import getImplicitRole from '../../../src/util/getImplicitRole';
+import getImplicitRole from '../../../src/util/getImplicitRole.js';
 
 test('getImplicitRole', () => {
   expect(getImplicitRole('li', [])).toBe('listitem');

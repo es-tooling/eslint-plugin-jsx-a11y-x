@@ -7,9 +7,11 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
-import { generateObjSchema, arraySchema } from '../util/schemas';
-import getElementType from '../util/getElementType';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import { generateObjSchema, arraySchema } from '../util/schemas.js';
+import getElementType from '../util/getElementType.js';
+
+const { getProp, getLiteralPropValue } = jsxAstUtils;
 
 const errorMessage =
   'Media elements such as <audio> and <video> must have a <track> for captions.';

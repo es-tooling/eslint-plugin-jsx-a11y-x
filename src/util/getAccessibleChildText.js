@@ -1,6 +1,8 @@
-import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
 
-import isHiddenFromScreenReader from './isHiddenFromScreenReader';
+import isHiddenFromScreenReader from './isHiddenFromScreenReader.js';
+
+const { getProp, getLiteralPropValue } = jsxAstUtils;
 
 /**
  * Returns a new "standardized" string: all whitespace is collapsed to one

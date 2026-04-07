@@ -1,5 +1,5 @@
 import toAST from 'to-ast';
-import JSXExpressionContainerMock from './JSXExpressionContainerMock';
+import JSXExpressionContainerMock from './JSXExpressionContainerMock.js';
 
 export default function JSXAttributeMock(
   prop,

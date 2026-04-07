@@ -8,13 +8,15 @@
 // ----------------------------------------------------------------------------
 
 import { dom } from 'aria-query';
-import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
-import getElementType from '../util/getElementType';
-import isInteractiveElement from '../util/isInteractiveElement';
-import isInteractiveRole from '../util/isInteractiveRole';
-import isNonLiteralProperty from '../util/isNonLiteralProperty';
-import { generateObjSchema, arraySchema } from '../util/schemas';
-import getTabIndex from '../util/getTabIndex';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import getElementType from '../util/getElementType.js';
+import isInteractiveElement from '../util/isInteractiveElement.js';
+import isInteractiveRole from '../util/isInteractiveRole.js';
+import isNonLiteralProperty from '../util/isNonLiteralProperty.js';
+import { generateObjSchema, arraySchema } from '../util/schemas.js';
+import getTabIndex from '../util/getTabIndex.js';
+
+const { getProp, getLiteralPropValue } = jsxAstUtils;
 
 const errorMessage =
   '`tabIndex` should only be declared on interactive elements.';

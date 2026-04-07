@@ -1,11 +1,12 @@
-import { elementType } from 'jsx-ast-utils-x';
-
-import isNonInteractiveRole from '../../../src/util/isNonInteractiveRole';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import isNonInteractiveRole from '../../../src/util/isNonInteractiveRole.js';
 import {
   genElementSymbol,
   genInteractiveRoleElements,
   genNonInteractiveRoleElements,
-} from '../../../__mocks__/genInteractives';
+} from '../../../__mocks__/genInteractives.js';
+
+const { elementType } = jsxAstUtils;
 
 describe('isNonInteractiveRole', () => {
   expect(isNonInteractiveRole(undefined, [])).toBe(false);

@@ -9,14 +9,11 @@
 // ----------------------------------------------------------------------------
 
 import { aria, roles } from 'aria-query';
-import {
-  getProp,
-  getLiteralPropValue,
-  getPropValue,
-  propName,
-} from 'jsx-ast-utils-x';
-import getElementType from '../util/getElementType';
-import getImplicitRole from '../util/getImplicitRole';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import getElementType from '../util/getElementType.js';
+import getImplicitRole from '../util/getImplicitRole.js';
+
+const { getProp, getLiteralPropValue, getPropValue, propName } = jsxAstUtils;
 
 const errorMessage = (attr, role, tag, isImplicit) => {
   if (isImplicit) {

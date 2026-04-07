@@ -1,7 +1,6 @@
-import { elementType } from 'jsx-ast-utils-x';
-
-import isInteractiveElement from '../../../src/util/isInteractiveElement';
-import JSXElementMock from '../../../__mocks__/JSXElementMock';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import isInteractiveElement from '../../../src/util/isInteractiveElement.js';
+import JSXElementMock from '../../../__mocks__/JSXElementMock.js';
 import {
   genElementSymbol,
   genIndeterminantInteractiveElements,
@@ -9,7 +8,9 @@ import {
   genInteractiveRoleElements,
   genNonInteractiveElements,
   genNonInteractiveRoleElements,
-} from '../../../__mocks__/genInteractives';
+} from '../../../__mocks__/genInteractives.js';
+
+const { elementType } = jsxAstUtils;
 
 describe('isInteractiveElement', () => {
   expect(isInteractiveElement(undefined, [])).toBe(false);

@@ -1,5 +1,5 @@
-import isSemanticRoleElement from '../../../src/util/isSemanticRoleElement';
-import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
+import isSemanticRoleElement from '../../../src/util/isSemanticRoleElement.js';
+import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';
 
 describe('isSemanticRoleElement', () => {
   expect(

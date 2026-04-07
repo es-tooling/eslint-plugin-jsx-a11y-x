@@ -10,9 +10,9 @@
 
 import { dom } from 'aria-query';
 import { RuleTester } from 'eslint';
-import parserOptionsMapper from '../../__util__/parserOptionsMapper';
-import parsers from '../../__util__/helpers/parsers';
-import rule from '../../../src/rules/aria-unsupported-elements';
+import parserOptionsMapper from '../../__util__/parserOptionsMapper.js';
+import parsers from '../../__util__/helpers/parsers.js';
+import rule from '../../../src/rules/aria-unsupported-elements.js';
 
 // -----------------------------------------------------------------------------
 // Tests
