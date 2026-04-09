@@ -1,5 +1,5 @@
-import getExplicitRole from '../../../src/util/getExplicitRole';
-import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
+import getExplicitRole from '../../../src/util/getExplicitRole.js';
+import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';
 
 test('getExplicitRole', () => {
   expect(getExplicitRole('div', [JSXAttributeMock('role', 'button')])).toBe(

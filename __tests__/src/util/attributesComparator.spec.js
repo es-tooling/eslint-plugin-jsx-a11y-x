@@ -1,6 +1,6 @@
-import attributesComparator from '../../../src/util/attributesComparator';
-import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
-import JSXElementMock from '../../../__mocks__/JSXElementMock';
+import attributesComparator from '../../../src/util/attributesComparator.js';
+import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';
+import JSXElementMock from '../../../__mocks__/JSXElementMock.js';
 
 test('attributesComparator', () => {
   expect(attributesComparator()).toBe(true);

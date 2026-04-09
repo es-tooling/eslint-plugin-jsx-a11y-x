@@ -2,7 +2,7 @@ import {
   generateObjSchema,
   arraySchema,
   enumArraySchema,
-} from '../../../src/util/schemas';
+} from '../../../src/util/schemas.js';
 
 describe('schemas', () => {
   test('should generate an object schema with correct properties', () => {

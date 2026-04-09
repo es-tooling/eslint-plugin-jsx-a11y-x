@@ -1,4 +1,6 @@
-import { getLiteralPropValue, propName } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
+
+const { getLiteralPropValue, propName } = jsxAstUtils;
 
 /**
  * Returns true if all items in baseAttributes are found in attributes. Always

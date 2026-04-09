@@ -7,9 +7,11 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { propName, getLiteralPropValue } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
 import tags from 'language-tags';
-import getElementType from '../util/getElementType';
+import getElementType from '../util/getElementType.js';
+
+const { propName, getLiteralPropValue } = jsxAstUtils;
 
 const errorMessage = 'lang attribute must have a valid value.';
 

@@ -1,5 +1,5 @@
-import JSXAttributeMock from '../../../../__mocks__/JSXAttributeMock';
-import getImplicitRoleForMenuitem from '../../../../src/util/implicitRoles/menuitem';
+import JSXAttributeMock from '../../../../__mocks__/JSXAttributeMock.js';
+import getImplicitRoleForMenuitem from '../../../../src/util/implicitRoles/menuitem.js';
 
 test('isAbstractRole', () => {
   expect(

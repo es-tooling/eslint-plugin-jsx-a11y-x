@@ -7,8 +7,10 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { getProp, getPropValue } from 'jsx-ast-utils-x';
-import getElementType from '../util/getElementType';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import getElementType from '../util/getElementType.js';
+
+const { getProp, getPropValue } = jsxAstUtils;
 
 const errorMessage = '<iframe> elements must have a unique title property.';
 

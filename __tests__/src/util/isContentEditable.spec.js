@@ -1,5 +1,5 @@
-import isContentEditable from '../../../src/util/isContentEditable';
-import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
+import isContentEditable from '../../../src/util/isContentEditable.js';
+import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';
 
 describe('isContentEditable - HTML5', () => {
   expect(

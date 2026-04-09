@@ -1,6 +1,12 @@
+import { createRequire } from 'module';
 import path from 'path';
+import { fileURLToPath } from 'url';
+import { ESLint } from 'eslint';
 import semver from 'semver';
-import { version } from 'eslint/package.json';
+
+const require = createRequire(import.meta.url);
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const version = ESLint.version;
 
 let tsParserVersion;
 try {

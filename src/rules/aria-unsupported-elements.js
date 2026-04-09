@@ -9,8 +9,10 @@
 // ----------------------------------------------------------------------------
 
 import { aria, dom } from 'aria-query';
-import { propName } from 'jsx-ast-utils-x';
-import getElementType from '../util/getElementType';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import getElementType from '../util/getElementType.js';
+
+const { propName } = jsxAstUtils;
 
 const errorMessage = (invalidProp) =>
   `This element does not support ARIA roles, states and properties. \

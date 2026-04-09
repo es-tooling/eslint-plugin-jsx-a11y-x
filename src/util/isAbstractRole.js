@@ -1,5 +1,7 @@
 import { dom, roles } from 'aria-query';
-import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
+
+const { getProp, getLiteralPropValue } = jsxAstUtils;
 
 const abstractRoles = new Set(
   roles.keys().filter((role) => roles.get(role).abstract),

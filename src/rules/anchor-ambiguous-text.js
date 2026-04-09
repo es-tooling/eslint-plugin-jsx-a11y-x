@@ -8,9 +8,9 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { arraySchema, generateObjSchema } from '../util/schemas';
-import getAccessibleChildText from '../util/getAccessibleChildText';
-import getElementType from '../util/getElementType';
+import { arraySchema, generateObjSchema } from '../util/schemas.js';
+import getAccessibleChildText from '../util/getAccessibleChildText.js';
+import getElementType from '../util/getElementType.js';
 
 const DEFAULT_AMBIGUOUS_WORDS = [
   'click here',

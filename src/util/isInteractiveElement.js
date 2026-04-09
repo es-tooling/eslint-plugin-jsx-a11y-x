@@ -1,7 +1,7 @@
 import { dom, elementRoles, roles } from 'aria-query';
 import { AXObjects, elementAXObjects } from 'axobject-query';
 
-import attributesComparator from './attributesComparator';
+import attributesComparator from './attributesComparator.js';
 
 const roleKeys = roles.keys();
 const elementRoleEntries = [...elementRoles];

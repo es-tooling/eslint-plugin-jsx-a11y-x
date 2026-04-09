@@ -7,12 +7,14 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { getProp, getPropValue, getLiteralPropValue } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
 
-import { generateObjSchema, arraySchema } from '../util/schemas';
-import getElementType from '../util/getElementType';
-import hasAccessibleChild from '../util/hasAccessibleChild';
-import isPresentationRole from '../util/isPresentationRole';
+import { generateObjSchema, arraySchema } from '../util/schemas.js';
+import getElementType from '../util/getElementType.js';
+import hasAccessibleChild from '../util/hasAccessibleChild.js';
+import isPresentationRole from '../util/isPresentationRole.js';
+
+const { getProp, getPropValue, getLiteralPropValue } = jsxAstUtils;
 
 const DEFAULT_ELEMENTS = ['img', 'object', 'area', 'input[type="image"]'];
 

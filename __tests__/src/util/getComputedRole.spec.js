@@ -1,5 +1,5 @@
-import getComputedRole from '../../../src/util/getComputedRole';
-import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
+import getComputedRole from '../../../src/util/getComputedRole.js';
+import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';
 
 test('getComputedRole', () => {
   expect(getComputedRole('div', [JSXAttributeMock('role', 'button')])).toBe(

@@ -1,5 +1,5 @@
-import getExplicitRole from './getExplicitRole';
-import getImplicitRole from './getImplicitRole';
+import getExplicitRole from './getExplicitRole.js';
+import getImplicitRole from './getImplicitRole.js';
 /**
  * Returns an element's computed role, which is
  *

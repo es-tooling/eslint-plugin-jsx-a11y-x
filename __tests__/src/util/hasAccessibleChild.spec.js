@@ -1,9 +1,11 @@
-import { elementType } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
 
-import hasAccessibleChild from '../../../src/util/hasAccessibleChild';
-import JSXElementMock from '../../../__mocks__/JSXElementMock';
-import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
-import JSXExpressionContainerMock from '../../../__mocks__/JSXExpressionContainerMock';
+import hasAccessibleChild from '../../../src/util/hasAccessibleChild.js';
+import JSXElementMock from '../../../__mocks__/JSXElementMock.js';
+import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';
+import JSXExpressionContainerMock from '../../../__mocks__/JSXExpressionContainerMock.js';
+
+const { elementType } = jsxAstUtils;
 
 test('hasAccessibleChild', () => {
   expect(hasAccessibleChild(JSXElementMock('div', []), elementType)).toBe(

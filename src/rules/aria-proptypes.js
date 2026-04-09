@@ -8,7 +8,9 @@
 // ----------------------------------------------------------------------------
 
 import { aria } from 'aria-query';
-import { getLiteralPropValue, getPropValue, propName } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
+
+const { getLiteralPropValue, getPropValue, propName } = jsxAstUtils;
 
 const errorMessage = (name, type, permittedValues) => {
   switch (type) {

@@ -1,5 +1,5 @@
-import JSXAttributeMock from '../../../../__mocks__/JSXAttributeMock';
-import getImplicitRoleForInput from '../../../../src/util/implicitRoles/input';
+import JSXAttributeMock from '../../../../__mocks__/JSXAttributeMock.js';
+import getImplicitRoleForInput from '../../../../src/util/implicitRoles/input.js';
 
 describe('isAbstractRole', () => {
   test('works for buttons', () => {

@@ -1,6 +1,8 @@
-import { getProp } from 'jsx-ast-utils-x';
-import getTabIndex from './getTabIndex';
-import isInteractiveElement from './isInteractiveElement';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import getTabIndex from './getTabIndex.js';
+import isInteractiveElement from './isInteractiveElement.js';
+
+const { getProp } = jsxAstUtils;
 
 /**
  * Returns boolean indicating whether an element appears in tab focus.

@@ -3,7 +3,6 @@ import { defineConfig } from 'eslint/config';
 import globals from 'globals';
 import eslintPlugin from 'eslint-plugin-eslint-plugin';
 import importX from 'eslint-plugin-import-x';
-import babelParser from '@babel/eslint-parser';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 
 export default defineConfig([
@@ -19,7 +18,7 @@ export default defineConfig([
     ],
     languageOptions: {
       globals: globals.node,
-      parser: babelParser,
+      sourceType: 'module',
     },
     extends: [js.configs.recommended, importX.flatConfigs.recommended],
     rules: {

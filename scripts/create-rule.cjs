@@ -5,9 +5,9 @@ const { exec } = require('child_process');
 const argv = require('minimist')(process.argv.slice(2));
 const jscodeshiftJSON = require('jscodeshift/package.json');
 
-const ruleBoilerplateGenerator = require('./boilerplate/rule');
-const testBoilerplateGenerator = require('./boilerplate/test');
-const docBoilerplateGenerator = require('./boilerplate/doc');
+const ruleBoilerplateGenerator = require('./boilerplate/rule.cjs');
+const testBoilerplateGenerator = require('./boilerplate/test.cjs');
+const docBoilerplateGenerator = require('./boilerplate/doc.cjs');
 
 const ruleName = argv._[0];
 const author = argv.author || '$AUTHOR';

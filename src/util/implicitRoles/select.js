@@ -1,4 +1,6 @@
-import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
+
+const { getProp, getLiteralPropValue } = jsxAstUtils;
 
 /**
  * Returns the implicit role for a select tag depending on attributes.

@@ -7,14 +7,16 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
-import { generateObjSchema, arraySchema } from '../util/schemas';
-import getElementType from '../util/getElementType';
-import isDOMElement from '../util/isDOMElement';
-import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader';
-import isInteractiveElement from '../util/isInteractiveElement';
-import isInteractiveRole from '../util/isInteractiveRole';
-import mayHaveAccessibleLabel from '../util/mayHaveAccessibleLabel';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import { generateObjSchema, arraySchema } from '../util/schemas.js';
+import getElementType from '../util/getElementType.js';
+import isDOMElement from '../util/isDOMElement.js';
+import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader.js';
+import isInteractiveElement from '../util/isInteractiveElement.js';
+import isInteractiveRole from '../util/isInteractiveRole.js';
+import mayHaveAccessibleLabel from '../util/mayHaveAccessibleLabel.js';
+
+const { getProp, getLiteralPropValue } = jsxAstUtils;
 
 const errorMessage = 'A control must be associated with a text label.';
 

@@ -1,8 +1,8 @@
-import { version as eslintVersion } from 'eslint/package.json';
+import { ESLint } from 'eslint';
 import semver from 'semver';
+import parserOptionsMapper from '../../__util__/parserOptionsMapper.js';
 
-import parserOptionsMapper from '../../__util__/parserOptionsMapper';
-
+const eslintVersion = ESLint.version;
 const usingLegacy = semver.major(eslintVersion) < 9;
 
 test('parserOptionsMapper', () => {

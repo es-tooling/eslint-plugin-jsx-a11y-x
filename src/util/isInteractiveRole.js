@@ -1,5 +1,7 @@
 import { roles as rolesMap } from 'aria-query';
-import { getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
+
+const { getProp, getLiteralPropValue } = jsxAstUtils;
 
 const roles = rolesMap.keys();
 const interactiveRoles = roles.filter(

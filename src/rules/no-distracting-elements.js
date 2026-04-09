@@ -7,8 +7,8 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { generateObjSchema, enumArraySchema } from '../util/schemas';
-import getElementType from '../util/getElementType';
+import { generateObjSchema, enumArraySchema } from '../util/schemas.js';
+import getElementType from '../util/getElementType.js';
 
 const errorMessage = (element) =>
   `Do not use <${element}> elements as they can create visual accessibility issues and are deprecated.`;

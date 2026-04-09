@@ -1,8 +1,10 @@
-import { elementType } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
 
-import getAccessibleChildText from '../../../src/util/getAccessibleChildText';
-import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
-import JSXElementMock from '../../../__mocks__/JSXElementMock';
+import getAccessibleChildText from '../../../src/util/getAccessibleChildText.js';
+import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';
+import JSXElementMock from '../../../__mocks__/JSXElementMock.js';
+
+const { elementType } = jsxAstUtils;
 
 test('getAccessibleChildText', () => {
   expect(

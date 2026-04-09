@@ -7,7 +7,9 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { getProp, getPropValue } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
+
+const { getProp, getPropValue } = jsxAstUtils;
 
 const errorMessage =
   'No access key attribute allowed. Inconsistencies between keyboard shortcuts and keyboard commands used by screen readers and keyboard-only users create a11y complications.';

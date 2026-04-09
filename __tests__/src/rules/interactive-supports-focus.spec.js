@@ -8,12 +8,15 @@
 // -----------------------------------------------------------------------------
 
 import { RuleTester } from 'eslint';
-import { eventHandlers, eventHandlersByType } from 'jsx-ast-utils-x';
-import { configs } from '../../../src/index';
-import parserOptionsMapper from '../../__util__/parserOptionsMapper';
-import parsers from '../../__util__/helpers/parsers';
-import rule from '../../../src/rules/interactive-supports-focus';
-import ruleOptionsMapperFactory from '../../__util__/ruleOptionsMapperFactory';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import plugin from '../../../src/index.js';
+import parserOptionsMapper from '../../__util__/parserOptionsMapper.js';
+import parsers from '../../__util__/helpers/parsers.js';
+import rule from '../../../src/rules/interactive-supports-focus.js';
+import ruleOptionsMapperFactory from '../../__util__/ruleOptionsMapperFactory.js';
+
+const { configs } = plugin;
+const { eventHandlers, eventHandlersByType } = jsxAstUtils;
 
 // -----------------------------------------------------------------------------
 // Tests

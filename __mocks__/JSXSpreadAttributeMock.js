@@ -1,4 +1,4 @@
-import IdentifierMock from './IdentifierMock';
+import IdentifierMock from './IdentifierMock.js';
 
 export default function JSXSpreadAttributeMock(identifier) {
   return {

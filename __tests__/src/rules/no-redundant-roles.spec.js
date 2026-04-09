@@ -9,10 +9,10 @@
 // -----------------------------------------------------------------------------
 
 import { RuleTester } from 'eslint';
-import parserOptionsMapper from '../../__util__/parserOptionsMapper';
-import parsers from '../../__util__/helpers/parsers';
-import rule from '../../../src/rules/no-redundant-roles';
-import ruleOptionsMapperFactory from '../../__util__/ruleOptionsMapperFactory';
+import parserOptionsMapper from '../../__util__/parserOptionsMapper.js';
+import parsers from '../../__util__/helpers/parsers.js';
+import rule from '../../../src/rules/no-redundant-roles.js';
+import ruleOptionsMapperFactory from '../../__util__/ruleOptionsMapperFactory.js';
 
 // -----------------------------------------------------------------------------
 // Tests

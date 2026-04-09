@@ -8,9 +8,9 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import getElementType from '../util/getElementType';
-import getExplicitRole from '../util/getExplicitRole';
-import getImplicitRole from '../util/getImplicitRole';
+import getElementType from '../util/getElementType.js';
+import getExplicitRole from '../util/getExplicitRole.js';
+import getImplicitRole from '../util/getImplicitRole.js';
 
 const errorMessage = (element, implicitRole) =>
   `The element ${element} has an implicit role of ${implicitRole}. Defining this explicitly is redundant and should be avoided.`;

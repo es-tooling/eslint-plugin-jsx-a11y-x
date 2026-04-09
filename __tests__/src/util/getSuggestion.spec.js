@@ -1,4 +1,4 @@
-import getSuggestion from '../../../src/util/getSuggestion';
+import getSuggestion from '../../../src/util/getSuggestion.js';
 
 test('spell check suggestion API', () => {
   expect([]).toEqual(getSuggestion('foo'));

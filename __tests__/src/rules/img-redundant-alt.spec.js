@@ -8,12 +8,13 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-import { RuleTester } from 'eslint';
+import { ESLint, RuleTester } from 'eslint';
 import semver from 'semver';
-import { version as eslintVersion } from 'eslint/package.json';
-import parserOptionsMapper from '../../__util__/parserOptionsMapper';
-import parsers from '../../__util__/helpers/parsers';
-import rule from '../../../src/rules/img-redundant-alt';
+import parserOptionsMapper from '../../__util__/parserOptionsMapper.js';
+import parsers from '../../__util__/helpers/parsers.js';
+import rule from '../../../src/rules/img-redundant-alt.js';
+
+const eslintVersion = ESLint.version;
 
 // -----------------------------------------------------------------------------
 // Tests

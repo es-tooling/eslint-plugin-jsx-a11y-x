@@ -1,5 +1,5 @@
-import isDisabledElement from '../../../src/util/isDisabledElement';
-import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
+import isDisabledElement from '../../../src/util/isDisabledElement.js';
+import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';
 
 describe('isDisabledElement', () => {
   test('HTML5', () => {

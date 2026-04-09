@@ -1,11 +1,12 @@
-import { elementType } from 'jsx-ast-utils-x';
-
-import isAbstractRole from '../../../src/util/isAbstractRole';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import isAbstractRole from '../../../src/util/isAbstractRole.js';
 import {
   genElementSymbol,
   genAbstractRoleElements,
   genNonAbstractRoleElements,
-} from '../../../__mocks__/genInteractives';
+} from '../../../__mocks__/genInteractives.js';
+
+const { elementType } = jsxAstUtils;
 
 describe('isAbstractRole', () => {
   expect(isAbstractRole(undefined, [])).toBe(false);

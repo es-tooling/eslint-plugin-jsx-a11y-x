@@ -8,8 +8,10 @@
 // ----------------------------------------------------------------------------
 
 import { dom } from 'aria-query';
-import { propName } from 'jsx-ast-utils-x';
-import getElementType from '../util/getElementType';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import getElementType from '../util/getElementType.js';
+
+const { propName } = jsxAstUtils;
 
 const errorMessage = 'The scope prop can only be used on <th> elements.';
 

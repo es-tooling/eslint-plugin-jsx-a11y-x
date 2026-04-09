@@ -8,13 +8,15 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { getProp, getPropValue } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
 import {
   generateObjSchema,
   arraySchema,
   enumArraySchema,
-} from '../util/schemas';
-import getElementType from '../util/getElementType';
+} from '../util/schemas.js';
+import getElementType from '../util/getElementType.js';
+
+const { getProp, getPropValue } = jsxAstUtils;
 
 const allAspects = ['noHref', 'invalidHref', 'preferButton'];
 

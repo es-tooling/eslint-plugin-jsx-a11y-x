@@ -1,12 +1,14 @@
-import { elementType } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
 
-import isFocusable from '../../../src/util/isFocusable';
+import isFocusable from '../../../src/util/isFocusable.js';
 import {
   genElementSymbol,
   genInteractiveElements,
   genNonInteractiveElements,
-} from '../../../__mocks__/genInteractives';
-import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock';
+} from '../../../__mocks__/genInteractives.js';
+import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';
+
+const { elementType } = jsxAstUtils;
 
 function mergeTabIndex(index, attributes) {
   return [...attributes, JSXAttributeMock('tabIndex', index)];

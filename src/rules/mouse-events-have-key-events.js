@@ -8,8 +8,10 @@
 // ----------------------------------------------------------------------------
 
 import { dom } from 'aria-query';
-import { getProp, getPropValue } from 'jsx-ast-utils-x';
-import { arraySchema, generateObjSchema } from '../util/schemas';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import { arraySchema, generateObjSchema } from '../util/schemas.js';
+
+const { getProp, getPropValue } = jsxAstUtils;
 
 const schema = generateObjSchema({
   hoverInHandlers: {

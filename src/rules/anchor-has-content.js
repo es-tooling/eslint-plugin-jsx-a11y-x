@@ -7,11 +7,13 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { hasAnyProp } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
 
-import getElementType from '../util/getElementType';
-import { arraySchema, generateObjSchema } from '../util/schemas';
-import hasAccessibleChild from '../util/hasAccessibleChild';
+import getElementType from '../util/getElementType.js';
+import { arraySchema, generateObjSchema } from '../util/schemas.js';
+import hasAccessibleChild from '../util/hasAccessibleChild.js';
+
+const { hasAnyProp } = jsxAstUtils;
 
 const errorMessage =
   'Anchors must have content and the content must be accessible by a screen reader.';

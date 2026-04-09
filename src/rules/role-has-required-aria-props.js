@@ -9,9 +9,11 @@
 // ----------------------------------------------------------------------------
 
 import { dom, roles } from 'aria-query';
-import { getProp, getLiteralPropValue, propName } from 'jsx-ast-utils-x';
-import getElementType from '../util/getElementType';
-import isSemanticRoleElement from '../util/isSemanticRoleElement';
+import jsxAstUtils from 'jsx-ast-utils-x';
+import getElementType from '../util/getElementType.js';
+import isSemanticRoleElement from '../util/isSemanticRoleElement.js';
+
+const { getProp, getLiteralPropValue, propName } = jsxAstUtils;
 
 const errorMessage = (role, requiredProps) =>
   `Elements with the ARIA role "${role}" must have the following attributes defined: ${String(requiredProps).toLowerCase()}`;

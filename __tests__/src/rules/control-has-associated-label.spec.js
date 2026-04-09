@@ -8,11 +8,13 @@
 // -----------------------------------------------------------------------------
 
 import { RuleTester } from 'eslint';
-import { configs } from '../../../src/index';
-import parserOptionsMapper from '../../__util__/parserOptionsMapper';
-import parsers from '../../__util__/helpers/parsers';
-import ruleOptionsMapperFactory from '../../__util__/ruleOptionsMapperFactory';
-import rule from '../../../src/rules/control-has-associated-label';
+import plugin from '../../../src/index.js';
+import parserOptionsMapper from '../../__util__/parserOptionsMapper.js';
+import parsers from '../../__util__/helpers/parsers.js';
+import ruleOptionsMapperFactory from '../../__util__/ruleOptionsMapperFactory.js';
+import rule from '../../../src/rules/control-has-associated-label.js';
+
+const { configs } = plugin;
 
 // -----------------------------------------------------------------------------
 // Tests

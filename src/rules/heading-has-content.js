@@ -7,10 +7,10 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { generateObjSchema, arraySchema } from '../util/schemas';
-import getElementType from '../util/getElementType';
-import hasAccessibleChild from '../util/hasAccessibleChild';
-import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader';
+import { generateObjSchema, arraySchema } from '../util/schemas.js';
+import getElementType from '../util/getElementType.js';
+import hasAccessibleChild from '../util/hasAccessibleChild.js';
+import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader.js';
 
 const errorMessage =
   'Headings must have content and the content must be accessible by a screen reader.';

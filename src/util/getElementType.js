@@ -1,4 +1,6 @@
-import { elementType, getProp, getLiteralPropValue } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
+
+const { elementType, getProp, getLiteralPropValue } = jsxAstUtils;
 
 const getElementType = (context) => {
   const { settings } = context;

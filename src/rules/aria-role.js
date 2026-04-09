@@ -8,10 +8,12 @@
 // ----------------------------------------------------------------------------
 
 import { dom, roles } from 'aria-query';
-import { getLiteralPropValue, propName } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
 
-import getElementType from '../util/getElementType';
-import { generateObjSchema } from '../util/schemas';
+import getElementType from '../util/getElementType.js';
+import { generateObjSchema } from '../util/schemas.js';
+
+const { getLiteralPropValue, propName } = jsxAstUtils;
 
 const errorMessage =
   'Elements with ARIA roles must use a valid, non-abstract ARIA role.';

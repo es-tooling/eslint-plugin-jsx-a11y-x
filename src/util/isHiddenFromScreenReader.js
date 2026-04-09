@@ -1,4 +1,6 @@
-import { getProp, getPropValue, getLiteralPropValue } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
+
+const { getProp, getPropValue, getLiteralPropValue } = jsxAstUtils;
 
 /**
  * Returns boolean indicating that the aria-hidden prop is present or the value

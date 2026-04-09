@@ -1,4 +1,6 @@
-import { getProp } from 'jsx-ast-utils-x';
+import jsxAstUtils from 'jsx-ast-utils-x';
+
+const { getProp } = jsxAstUtils;
 
 /**
  * Returns boolean indicating whether the given element has been specified with
