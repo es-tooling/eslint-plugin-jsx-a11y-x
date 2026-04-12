@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest';
 import jsxAstUtils from 'jsx-ast-utils-x';
 import isNonInteractiveElement from '../../../src/util/isNonInteractiveElement.js';
 import {

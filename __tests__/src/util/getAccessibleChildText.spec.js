@@ -1,3 +1,4 @@
+import { expect, test } from 'vitest';
 import jsxAstUtils from 'jsx-ast-utils-x';
 
 import getAccessibleChildText from '../../../src/util/getAccessibleChildText.js';

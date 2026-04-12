@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest';
 import jsxAstUtils from 'jsx-ast-utils-x';
 import isInteractiveRole from '../../../src/util/isInteractiveRole.js';
 import {

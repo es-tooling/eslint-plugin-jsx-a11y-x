@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest';
 import { dom } from 'aria-query';
 import jsxAstUtils from 'jsx-ast-utils-x';
 

@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest';
 import getElementType from '../../../src/util/getElementType.js';
 import JSXElementMock from '../../../__mocks__/JSXElementMock.js';
 import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';

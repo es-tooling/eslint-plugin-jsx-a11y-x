@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest';
 import isSemanticRoleElement from '../../../src/util/isSemanticRoleElement.js';
 import JSXAttributeMock from '../../../__mocks__/JSXAttributeMock.js';
 

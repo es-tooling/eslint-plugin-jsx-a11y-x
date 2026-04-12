@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest';
 import jsxAstUtils from 'jsx-ast-utils-x';
 import isAbstractRole from '../../../src/util/isAbstractRole.js';
 import {

@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest';
 import jsxAstUtils from 'jsx-ast-utils-x';
 import isInteractiveElement from '../../../src/util/isInteractiveElement.js';
 import JSXElementMock from '../../../__mocks__/JSXElementMock.js';

@@ -55,10 +55,4 @@ export default defineConfig([
     files: ['__tests__/src/rules/*.js'],
     extends: [eslintPlugin.configs.recommended],
   },
-  {
-    files: ['__tests__/**/*'],
-    languageOptions: {
-      globals: globals.jest,
-    },
-  },
 ]);

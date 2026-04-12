@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest';
 import JSXAttributeMock from '../../../../__mocks__/JSXAttributeMock.js';
 import getImplicitRoleForSelect from '../../../../src/util/implicitRoles/select.js';
 
