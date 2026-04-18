@@ -27,8 +27,8 @@ importers:
         specifier: ^1.0.9
         version: 1.0.9
       minimatch:
-        specifier: ^3.1.2
-        version: 3.1.5
+        specifier: ^10.2.5
+        version: 10.2.5
     devDependencies:
       '@changesets/changelog-github':
         specifier: ^0.5.1
