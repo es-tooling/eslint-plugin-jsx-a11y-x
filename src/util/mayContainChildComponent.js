@@ -6,7 +6,7 @@
  */
 
 import jsxAstUtils from 'jsx-ast-utils-x';
-import minimatch from 'minimatch';
+import { minimatch } from 'minimatch';
 
 const { elementType: rawElementType } = jsxAstUtils;
 

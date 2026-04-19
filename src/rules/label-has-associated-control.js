@@ -8,7 +8,7 @@
 // ----------------------------------------------------------------------------
 
 import jsxAstUtils from 'jsx-ast-utils-x';
-import minimatch from 'minimatch';
+import { minimatch } from 'minimatch';
 import { generateObjSchema, arraySchema } from '../util/schemas.js';
 import getElementType from '../util/getElementType.js';
 import mayContainChildComponent from '../util/mayContainChildComponent.js';
