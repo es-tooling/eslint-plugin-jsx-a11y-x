@@ -224,9 +224,9 @@ export default {
       (element) => options[element],
     );
     const typesToValidate = new Set(
-      []
-        .concat(customComponents, elementOptions)
-        .map((type) => (type === 'input[type="image"]' ? 'input' : type)),
+      [...customComponents, ...elementOptions].map((type) =>
+        type === 'input[type="image"]' ? 'input' : type,
+      ),
     );
     const elementType = getElementType(context);
 
