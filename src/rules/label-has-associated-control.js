@@ -48,8 +48,7 @@ const validateHtmlFor = (node, context) => {
     'htmlFor',
   ];
 
-  for (let i = 0; i < htmlForAttributes.length; i += 1) {
-    const attribute = htmlForAttributes[i];
+  for (const attribute of htmlForAttributes) {
     if (hasProp(node.attributes, attribute)) {
       const htmlForAttr = getProp(node.attributes, attribute);
       const htmlForValue = getPropValue(htmlForAttr);

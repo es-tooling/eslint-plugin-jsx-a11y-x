@@ -36,9 +36,7 @@ test('schemas', async () => {
 });
 
 test('plugin referentially equal to prevent flat config issues', () => {
-  const keys = Object.keys(plugin.flatConfigs);
-  for (let i = 0; i < keys.length; i += 1) {
-    const config = plugin.flatConfigs[keys[i]];
+  for (const config of Object.values(plugin.flatConfigs)) {
     expect(plugin).toBe(config.plugins['jsx-a11y-x']);
   }
 });

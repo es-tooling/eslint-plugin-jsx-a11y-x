@@ -22,8 +22,7 @@ export default function mayContainChildComponent(
       return false;
     }
     if (node.children) {
-      for (let i = 0; i < node.children.length; i += 1) {
-        const childNode = node.children[i];
+      for (const childNode of node.children) {
         // Assume an expression container renders a label. It is the best we can
         // do in this case.
         if (childNode.type === 'JSXExpressionContainer') {
