@@ -22,8 +22,6 @@ jobs:
           - 22
           - 24
         eslint:
-          - 8.56
-          - 8
           - 9
 
         include:
