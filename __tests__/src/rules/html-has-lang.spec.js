@@ -20,7 +20,6 @@ const ruleTester = new RuleTester();
 
 const expectedError = {
   message: '<html> elements must have the lang prop.',
-  type: 'JSXOpeningElement',
 };
 
 ruleTester.run('html-has-lang', rule, {

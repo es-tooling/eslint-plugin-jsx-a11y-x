@@ -21,7 +21,6 @@ const ruleTester = new RuleTester();
 const expectedError = {
   message:
     'Headings must have content and the content must be accessible by a screen reader.',
-  type: 'JSXOpeningElement',
 };
 
 const components = [

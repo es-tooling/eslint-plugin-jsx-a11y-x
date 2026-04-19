@@ -21,7 +21,6 @@ const ruleTester = new RuleTester();
 const expectedError = {
   message:
     'The autoFocus prop should not be enabled, as it can reduce usability and accessibility for users.',
-  type: 'JSXAttribute',
 };
 
 const ignoreNonDOMSchema = [

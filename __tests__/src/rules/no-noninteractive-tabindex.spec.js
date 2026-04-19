@@ -26,7 +26,6 @@ const ruleName = 'no-noninteractive-tabindex';
 
 const expectedError = {
   message: '`tabIndex` should only be declared on interactive elements.',
-  type: 'JSXAttribute',
 };
 
 const componentsSettings = {

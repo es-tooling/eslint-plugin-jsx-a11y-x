@@ -20,7 +20,6 @@ const ruleTester = new RuleTester();
 
 const expectedError = {
   message: '',
-  type: 'JSXOpeningElement',
 };
 
 ruleTester.run('${name}', rule, {

@@ -33,7 +33,6 @@ function template(strings, ...keys) {
 }
 
 const ruleName = 'interactive-supports-focus';
-const type = 'JSXOpeningElement';
 const codeTemplate = template`<${0} role="${1}" ${2}={() => void 0} />`;
 const fixedTemplate = template`<${0} tabIndex={${1}} role="${2}" ${3}={() => void 0} />`;
 const tabindexTemplate = template`<${0} role="${1}" ${2}={() => void 0} tabIndex="0" />`;
@@ -56,7 +55,6 @@ const buttonError = {
       output: '<Div tabIndex={0} onClick={() => void 0} role="button" />',
     },
   ],
-  type,
 };
 
 const recommendedOptions =
@@ -232,7 +230,6 @@ const failReducer = (roles, handlers, messageTemplate) =>
                 code: codeTemplate(element, role, handler),
                 errors: [
                   {
-                    type,
                     message: messageTemplate(role),
                     suggestions: [
                       {

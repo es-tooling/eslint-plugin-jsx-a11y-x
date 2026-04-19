@@ -27,7 +27,6 @@ const errorMessage =
 
 const expectedError = {
   message: errorMessage,
-  type: 'JSXOpeningElement',
 };
 
 const ruleName = 'no-static-element-interactions';

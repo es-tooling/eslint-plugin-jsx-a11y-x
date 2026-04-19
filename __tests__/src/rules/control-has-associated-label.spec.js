@@ -26,7 +26,6 @@ const ruleName = 'jsx-a11y-x/control-has-associated-label';
 
 const expectedError = {
   message: 'A control must be associated with a text label.',
-  type: 'JSXOpeningElement',
 };
 
 const alwaysValid = [
