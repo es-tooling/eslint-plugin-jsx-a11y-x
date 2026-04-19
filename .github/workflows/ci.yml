@@ -46,6 +46,10 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: pnpm
 
+      - name: Install ESLint ${{ matrix.eslint }}
+        if: ${{ matrix.eslint }}
+        run: pnpm add --save-dev eslint@${{ matrix.eslint }} @eslint/js@${{ matrix.eslint }}
+
       - name: Install Dependencies
         run: pnpm install
 
