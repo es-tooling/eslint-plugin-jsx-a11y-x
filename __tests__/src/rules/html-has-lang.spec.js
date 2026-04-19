@@ -33,7 +33,6 @@ ruleTester.run('html-has-lang', rule, {
       { code: '<HTML />' },
       {
         code: '<HTMLTop lang="en" />',
-        errors: [expectedError],
         settings: { 'jsx-a11y-x': { components: { HTMLTop: 'html' } } },
       },
     ])
