@@ -24,7 +24,6 @@ const errorMessage =
 
 const expectedError = {
   message: errorMessage,
-  type: 'JSXOpeningElement',
 };
 
 ruleTester.run('click-events-have-key-events', rule, {

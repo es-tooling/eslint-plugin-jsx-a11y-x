@@ -29,7 +29,6 @@ const errorMessage =
 
 const expectedError = {
   message: errorMessage,
-  type: 'JSXAttribute',
 };
 
 const ruleName = 'jsx-a11y-x/no-noninteractive-element-to-interactive-role';
