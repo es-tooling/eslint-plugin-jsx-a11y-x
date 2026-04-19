@@ -89,8 +89,8 @@ export default function mayHaveAccessibleLabel(
 
     // Recurse into the child element nodes.
     if (node.children) {
-      for (let i = 0; i < node.children.length; i += 1) {
-        if (checkElement(node.children[i], depth + 1)) {
+      for (const childNode of node.children) {
+        if (checkElement(childNode, depth + 1)) {
           return true;
         }
       }
