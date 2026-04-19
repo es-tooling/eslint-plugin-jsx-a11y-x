@@ -55,7 +55,7 @@ export default {
         }
 
         if (implicitRole === explicitRole) {
-          const allowedRedundantRoles = options[0] || {};
+          const allowedRedundantRoles = options[0];
           let redundantRolesForElement;
 
           if (Object.hasOwn(allowedRedundantRoles, type)) {

@@ -47,7 +47,7 @@ export default {
   },
 
   create: (context) => {
-    const options = context.options[0] || {};
+    const options = context.options[0];
     const ignoreNonDOM = options.ignoreNonDOM;
     const allowedInvalidRoles = new Set(options.allowedInvalidRoles);
     const elementType = getElementType(context);

@@ -53,7 +53,7 @@ export default {
       JSXOpeningElement: (node) => {
         let { attributes } = node;
         const type = elementType(node);
-        const config = options[0] || {};
+        const config = options[0];
         const interactiveProps = config.handlers || defaultInteractiveProps;
         // Allow overrides from rule configuration for specific elements and roles.
         if (Object.hasOwn(config, type)) {

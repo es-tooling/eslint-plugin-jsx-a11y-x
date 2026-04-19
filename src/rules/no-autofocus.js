@@ -39,7 +39,7 @@ export default {
       JSXAttribute: (attribute) => {
         // Determine if ignoreNonDOM is set to true
         // If true, then do not run rule.
-        const options = context.options[0] || {};
+        const options = context.options[0];
         const ignoreNonDOM = options.ignoreNonDOM;
 
         if (ignoreNonDOM) {

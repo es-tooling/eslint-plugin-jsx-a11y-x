@@ -54,7 +54,7 @@ export default {
 
   create: (context) => {
     const elementType = getElementType(context);
-    const options = context.options[0] || {};
+    const options = context.options[0];
     const { labelAttributes, controlComponents, ignoreElements, ignoreRoles } =
       options;
 

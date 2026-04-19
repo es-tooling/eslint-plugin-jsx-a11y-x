@@ -54,10 +54,7 @@ export default {
       }
 
       const { options } = context;
-
-      const hoverInHandlers = options[0]?.hoverInHandlers;
-      const hoverOutHandlers = options[0]?.hoverOutHandlers;
-
+      const { hoverInHandlers, hoverOutHandlers } = options[0];
       const { attributes } = node;
 
       // Check hover in / onfocus pairing

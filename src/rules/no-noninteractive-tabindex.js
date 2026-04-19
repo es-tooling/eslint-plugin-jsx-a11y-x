@@ -64,7 +64,7 @@ export default {
           return;
         }
         // Allow for configuration overrides.
-        const { tags, roles, allowExpressionValues } = options[0] || {};
+        const { tags, roles, allowExpressionValues } = options[0];
         if (tags.includes(type)) {
           return;
         }
