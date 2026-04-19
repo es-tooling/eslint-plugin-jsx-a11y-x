@@ -64,8 +64,7 @@ export default {
     const elementType = getElementType(context);
     return {
       JSXOpeningElement: (node) => {
-        const tabbable =
-          context.options && context.options[0] && context.options[0].tabbable;
+        const { tabbable } = context.options[0];
         const { attributes } = node;
         const type = elementType(node);
         const hasInteractiveProps = hasAnyProp(attributes, interactiveProps);

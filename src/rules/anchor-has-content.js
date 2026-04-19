@@ -34,7 +34,7 @@ export default {
     const elementType = getElementType(context);
     return {
       JSXOpeningElement: (node) => {
-        const options = context.options[0] || {};
+        const options = context.options[0];
         const componentOptions = options.components;
         const typeCheck = ['a'].concat(componentOptions);
         const nodeType = elementType(node);

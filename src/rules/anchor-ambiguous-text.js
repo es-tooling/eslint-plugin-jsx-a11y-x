@@ -40,7 +40,7 @@ export default {
 
     const typesToValidate = ['a'];
 
-    const options = context.options[0] || {};
+    const options = context.options[0];
     const { words } = options;
     const ambiguousWords = new Set(words);
 

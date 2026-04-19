@@ -33,7 +33,7 @@ export default {
     const elementType = getElementType(context);
     return {
       JSXOpeningElement: (node) => {
-        const options = context.options[0] || {};
+        const options = context.options[0];
         const elementOptions = options.elements;
         const type = elementType(node);
         const distractingElement = elementOptions.find(

@@ -216,7 +216,7 @@ export default {
   },
 
   create: (context) => {
-    const options = context.options[0] || {};
+    const options = context.options[0];
     // Elements to validate for alt text.
     const elementOptions = options.elements;
     // Get custom components for just the elements that will be tested.

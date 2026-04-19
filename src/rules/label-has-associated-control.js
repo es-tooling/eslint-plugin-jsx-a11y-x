@@ -81,7 +81,7 @@ export default {
   },
 
   create: (context) => {
-    const options = context.options[0] || {};
+    const options = context.options[0];
     const labelComponents = options.labelComponents;
     const assertType = options.assert;
     const labelComponentNames = ['label'].concat(labelComponents);

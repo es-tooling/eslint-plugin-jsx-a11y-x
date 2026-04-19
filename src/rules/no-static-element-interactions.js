@@ -53,7 +53,7 @@ export default {
         const { attributes } = node;
         const type = elementType(node);
 
-        const { allowExpressionValues, handlers } = options[0] || {};
+        const { allowExpressionValues, handlers } = options[0];
 
         const hasInteractiveProps = handlers.some(
           (prop) =>
