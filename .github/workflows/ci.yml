@@ -23,6 +23,7 @@ jobs:
           - 24
         eslint:
           - 9
+          - 10
 
         include:
           - executeLint: true
