@@ -30,7 +30,6 @@ function minEcmaVersion(features, parserOptions) {
 const NODE_MODULES = '../../node_modules';
 
 const parsers = {
-  BABEL_ESLINT: path.join(__dirname, NODE_MODULES, 'babel-eslint'),
   '@BABEL_ESLINT': path.join(__dirname, NODE_MODULES, '@babel/eslint-parser'),
   TYPESCRIPT_ESLINT: path.join(
     __dirname,
@@ -143,11 +142,6 @@ const parsers = {
         (features.has('fragment') && semver.satisfies(version, '< 5'));
 
       const skipBabel = features.has('no-babel');
-      const skipOldBabel =
-        skipBabel ||
-        features.has('no-babel-old') ||
-        features.has('optional chaining') ||
-        semver.satisfies(version, '>= 8');
       const skipNewBabel =
         skipBabel ||
         features.has('no-babel-new') ||
@@ -175,19 +169,6 @@ const parsers = {
               }),
             },
             'default',
-          ),
-        );
-      }
-
-      if (!skipOldBabel) {
-        testObjects.pushs(
-          addComment(
-            {
-              ...test,
-              parser: parsers.BABEL_ESLINT,
-              parserOptions: parsers.babelParserOptions(test, features),
-            },
-            'babel-eslint',
           ),
         );
       }
