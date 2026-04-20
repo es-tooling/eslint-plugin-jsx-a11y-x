@@ -1,23 +1,10 @@
-import { createRequire } from 'module';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { ESLint } from 'eslint';
 import semver from 'semver';
 
-const require = createRequire(import.meta.url);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const version = ESLint.version;
-
-let tsParserVersion;
-try {
-  tsParserVersion = require('@typescript-eslint/parser/package.json').version;
-} catch {
-  //
-}
-
-const disableNewTS = semver.satisfies(tsParserVersion, '>= 4.1') // this rule is not useful on v4.1+ of the TS parser
-  ? (x) => ({ ...x, features: [...x.features, 'no-ts-new'] })
-  : (x) => x;
 
 function minEcmaVersion(features, parserOptions) {
   const minEcmaVersionForFeatures = {
@@ -55,7 +42,6 @@ const parsers = {
     NODE_MODULES,
     '@typescript-eslint/parser',
   ),
-  disableNewTS,
   babelParserOptions: function parserOptions(test, features) {
     return {
       ...test.parserOptions,
