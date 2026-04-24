@@ -55,9 +55,11 @@
     "minimatch": "^10.2.5"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.28.6",
     "@changesets/changelog-github": "^0.5.1",
     "@changesets/cli": "^2.29.4",
     "@eslint/js": "^10.0.1",
+    "@typescript-eslint/parser": "^8.59.0",
     "@vitest/coverage-v8": "^4.1.4",
     "clean-pkg-json": "^1.3.0",
     "eslint": "^10.2.1",
