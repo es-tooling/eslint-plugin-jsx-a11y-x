@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.2.0
+
+### Minor Changes
+
+- [#56](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/pull/56) [`779f695`](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/commit/779f6950d93b0aca0561aab0a2fc80fadfa420d2) Thanks [@jdufresne](https://github.com/jdufresne)! - Add `defaultOptions` to all rules that take options.
+
+- [#75](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/pull/75) [`336cbab`](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/commit/336cbab132df78cfaefaf42cd7d1eb44296aa891) Thanks [@jdufresne](https://github.com/jdufresne)! - Remove support for eslint 8.
+
+- [#79](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/pull/79) [`6dc9889`](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/commit/6dc98890921df4ff7a00bd4627798623b731138f) Thanks [@jdufresne](https://github.com/jdufresne)! - Add support for ESLint 10.
+
+- [#71](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/pull/71) [`3d2ee2d`](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/commit/3d2ee2da7fe64002042e77fc9b6e5f3494663606) Thanks [@43081j](https://github.com/43081j)! - Move to ES modules only (dropping all CommonJS). CommonJS users can still `require` the package since Node 20.x (LTS).
+
+- [#76](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/pull/76) [`710cec4`](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/commit/710cec4ccfc1a914da531ad5c425bf0a549cf085) Thanks [@jdufresne](https://github.com/jdufresne)! - Update minimatch dependency to 10.2.5.
+
+- [#73](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/pull/73) [`9531d52`](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/commit/9531d5295c7f0dc0ddd933e18a50aafab89f766e) Thanks [@jdufresne](https://github.com/jdufresne)! - Remove support for Node.js 18. Now requires Node.js 20+.
+
+### Patch Changes
+
+- [#48](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/pull/48) [`8d99dab`](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/commit/8d99dab5f825ff4e855ecf176d3249e39534335f) Thanks [@jdufresne](https://github.com/jdufresne)! - Remove deprecated rules accessible-emoji, label-has-for, and no-onchange.
+
+- [#43](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/pull/43) [`d7fc23c`](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/commit/d7fc23cdd14cc819c0a902aab70e8a33c15a6920) Thanks [@jdufresne](https://github.com/jdufresne)! - Remove support for Flow.
+
 ## 0.1.1
 
 ### Patch Changes
