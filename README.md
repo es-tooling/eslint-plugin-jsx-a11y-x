@@ -1,21 +1,10 @@
 # eslint-plugin-jsx-a11y-x
 
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/es-tooling/eslint-plugin-jsx-a11y-x/ci.yml?branch=main)](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/actions/workflows/ci.yml?query=branch%3Amain)
-[![Codecov](https://img.shields.io/codecov/c/github/es-tooling/eslint-plugin-jsx-a11y-x.svg)](https://codecov.io/gh/es-tooling/eslint-plugin-jsx-a11y-x)
-[![type-coverage](https://img.shields.io/badge/dynamic/json.svg?label=type-coverage&prefix=%E2%89%A5&suffix=%&query=$.typeCoverage.atLeast&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fes-tooling%2Feslint-plugin-jsx-a11y-x%2Fmain%2Fpackage.json)](https://github.com/plantain-00/type-coverage)
-[![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/es-tooling/eslint-plugin-jsx-a11y-x)](https://coderabbit.ai)
 [![npm](https://img.shields.io/npm/v/eslint-plugin-jsx-a11y-x.svg)](https://www.npmjs.com/package/eslint-plugin-jsx-a11y-x)
 [![GitHub Release](https://img.shields.io/github/release/es-tooling/eslint-plugin-jsx-a11y-x)](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/releases)
 
-[![Conventional Commits](https://img.shields.io/badge/conventional%20commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
-[![Renovate enabled](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-[![Code Style: Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![changesets](https://img.shields.io/badge/maintained%20with-changesets-176de3.svg)](https://github.com/changesets/changesets)
-
 Static AST checker for accessibility rules on JSX elements.
-
-<a href='https://tidelift.com/lifter/search/npm/eslint-plugin-jsx-a11y-x'>Get professional support for eslint-plugin-jsx-a11y-x on Tidelift</a>
 
 ## Why?
 
@@ -50,66 +39,14 @@ pnpm add -D eslint-plugin-jsx-a11y-x
 
 <a id="usage"></a>
 
-## Usage - Legacy Config (`.eslintrc`)
-
-Add `jsx-a11y-x` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
-
-```json
-{
-  "plugins": ["jsx-a11y-x"]
-}
-```
-
-Then configure the rules you want to use under the rules section.
-
-```json
-{
-  "rules": {
-    "jsx-a11y-x/rule-name": 2
-  }
-}
-```
-
-You can also enable all the recommended or strict rules at once.
-Add `plugin:jsx-a11y-x/recommended` or `plugin:jsx-a11y-x/strict` in `extends`:
-
-```json
-{
-  "extends": ["plugin:jsx-a11y-x/recommended"]
-}
-```
-
-### Configurations
-
-> As you are extending our configuration, you can omit `"plugins": ["jsx-a11y-x"]` from your `.eslintrc` configuration file.
-
-```json
-{
-  "settings": {
-    "jsx-a11y-x": {
-      "polymorphicPropName": "as",
-      "components": {
-        "CityInput": "input",
-        "CustomButton": "button",
-        "MyButton": "button",
-        "RoundButton": "button"
-      },
-      "attributes": {
-        "for": ["htmlFor", "for"]
-      }
-    }
-  }
-}
-```
-
-## Usage - Flat Config (`eslint.config.js`)
+## Usage (`eslint.config.js`)
 
 The default export of `eslint-plugin-jsx-a11y-x` is a plugin object.
 
 ```js
-const jsxA11yX = require('eslint-plugin-jsx-a11y-x');
+import jsxA11yX from 'eslint-plugin-jsx-a11y-x';
 
-module.exports = [
+export default [
   // …
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
@@ -137,8 +74,8 @@ module.exports = [
 
 There are two shareable configs, provided by the plugin.
 
-- `flatConfigs.recommended`
-- `flatConfigs.strict`
+- `configs.recommended`
+- `configs.strict`
 
 #### CJS
 
@@ -146,7 +83,7 @@ There are two shareable configs, provided by the plugin.
 const jsxA11yX = require('eslint-plugin-jsx-a11y-x');
 
 export default [
-  jsxA11yX.flatConfigs.recommended,
+  jsxA11yX.configs.recommended,
   {
     // Your additional configs and overrides
   },
@@ -159,7 +96,7 @@ export default [
 import jsxA11yX from 'eslint-plugin-jsx-a11y-x';
 
 export default [
-  jsxA11yX.flatConfigs.recommended,
+  jsxA11yX.configs.recommended,
   {
     // Your additional configs and overrides
   },
@@ -170,16 +107,16 @@ export default [
 For most of the cases, you probably want to configure some of these properties yourself.
 
 ```js
-const jsxA11yX = require('eslint-plugin-jsx-a11y-x');
-const globals = require('globals');
+import jsxA11yX from 'eslint-plugin-jsx-a11y-x';
+import globals from 'globals);
 
-module.exports = [
+export default [
   …
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
-    ...jsxA11yX.flatConfigs.recommended,
+    ...jsxA11yX.configs.recommended,
     languageOptions: {
-      ...jsxA11yX.flatConfigs.recommended.languageOptions,
+      ...jsxA11yX.configs.recommended.languageOptions,
       globals: {
         ...globals.serviceworker,
         ...globals.browser,
