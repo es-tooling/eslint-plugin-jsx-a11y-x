@@ -1,7 +1,6 @@
 import { createRequire } from 'module';
 
 import { flatConfigBase } from './configs/flat-config-base.js';
-import { legacyConfigBase } from './configs/legacy-config-base.js';
 
 import altText from './rules/alt-text.js';
 import anchorAmbiguousText from './rules/anchor-ambiguous-text.js';
@@ -337,26 +336,18 @@ const jsxA11y = {
  * @returns Config for this set of rules.
  */
 const createConfig = (rules, flatConfigName) => ({
-  ...(flatConfigName
-    ? {
-        ...flatConfigBase,
-        name: `jsx-a11y-x/${flatConfigName}`,
-        plugins: { 'jsx-a11y-x': jsxA11y },
-      }
-    : { ...legacyConfigBase, plugins: ['jsx-a11y-x'] }),
+  ...flatConfigBase,
+  name: `jsx-a11y-x/${flatConfigName}`,
+  plugins: { 'jsx-a11y-x': jsxA11y },
   rules: { ...rules },
 });
 
 // Create configs for the plugin object
 const configs = {
-  recommended: createConfig(recommendedRules),
-  strict: createConfig(strictRules),
-};
-const flatConfigs = {
   recommended: createConfig(recommendedRules, 'recommended'),
   strict: createConfig(strictRules, 'strict'),
 };
 
-const plugin = Object.assign(jsxA11y, { configs, flatConfigs });
+jsxA11y.configs = configs;
 
-export default plugin;
+export default jsxA11y;
