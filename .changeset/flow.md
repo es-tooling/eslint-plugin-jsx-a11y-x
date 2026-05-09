@@ -1,5 +1,5 @@
 ---
-'eslint-plugin-jsx-a11y-x': patch
+'eslint-plugin-jsx-a11y-x': minor
 ---
 
 Remove support for Flow.
