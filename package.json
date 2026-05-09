@@ -59,6 +59,7 @@
     "@changesets/changelog-github": "^0.5.1",
     "@changesets/cli": "^2.29.4",
     "@eslint/js": "^10.0.1",
+    "@types/aria-query": "^5.0.4",
     "@types/node": "^25.6.0",
     "@typescript-eslint/parser": "^8.59.0",
     "@vitest/coverage-v8": "^4.1.4",
