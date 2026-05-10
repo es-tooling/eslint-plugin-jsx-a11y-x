@@ -4,6 +4,7 @@ import globals from 'globals';
 import eslintPlugin from 'eslint-plugin-eslint-plugin';
 import importX from 'eslint-plugin-import-x';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+import tseslint from 'typescript-eslint';
 
 export default defineConfig([
   {
@@ -54,5 +55,17 @@ export default defineConfig([
   {
     files: ['__tests__/src/rules/*.js'],
     extends: [eslintPlugin.configs.recommended],
+  },
+  {
+    files: ['src/**/*.ts'],
+    extends: [
+      tseslint.configs.strictTypeChecked,
+      tseslint.configs.stylisticTypeChecked,
+    ],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+      },
+    },
   },
 ]);
