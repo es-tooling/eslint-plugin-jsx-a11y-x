@@ -1,5 +1,5 @@
 ---
-'eslint-plugin-jsx-a11y-x': minor
+'eslint-plugin-jsx-a11y-x': patch
 ---
 
 Convert several files to TypeScript.
