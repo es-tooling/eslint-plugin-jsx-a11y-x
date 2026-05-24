@@ -11,25 +11,27 @@ import { dom, roles } from 'aria-query';
 import jsxAstUtils from 'jsx-ast-utils-x';
 
 import getElementType from '../util/getElementType.js';
-import { generateObjSchema } from '../util/schemas.js';
 
 const { getLiteralPropValue, propName } = jsxAstUtils;
 
 const errorMessage =
   'Elements with ARIA roles must use a valid, non-abstract ARIA role.';
 
-const schema = generateObjSchema({
-  allowedInvalidRoles: {
-    items: {
-      type: 'string',
+const schema = {
+  type: 'object',
+  properties: {
+    allowedInvalidRoles: {
+      items: {
+        type: 'string',
+      },
+      type: 'array',
+      uniqueItems: true,
     },
-    type: 'array',
-    uniqueItems: true,
+    ignoreNonDOM: {
+      type: 'boolean',
+    },
   },
-  ignoreNonDOM: {
-    type: 'boolean',
-  },
-});
+};
 
 const validRoles = new Set(
   roles.keys().filter((role) => roles.get(role).abstract === false),

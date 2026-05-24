@@ -5,7 +5,6 @@
 
 import { dom, roles } from 'aria-query';
 import jsxAstUtils from 'jsx-ast-utils-x';
-import { enumArraySchema, generateObjSchema } from '../util/schemas.js';
 import getElementType from '../util/getElementType.js';
 import isDisabledElement from '../util/isDisabledElement.js';
 import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader.js';
@@ -23,19 +22,29 @@ const { getProp, eventHandlersByType, getLiteralPropValue, hasAnyProp } =
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-const schema = generateObjSchema({
-  tabbable: enumArraySchema(
-    roles
-      .keys()
-      .filter(
-        (name) =>
-          !roles.get(name).abstract &&
-          roles
-            .get(name)
-            .superClass.some((klasses) => klasses.includes('widget')),
-      ),
-  ),
-});
+const schema = {
+  type: 'object',
+  properties: {
+    tabbable: {
+      type: 'array',
+      items: {
+        type: 'string',
+        enum: roles
+          .keys()
+          .filter(
+            (name) =>
+              !roles.get(name).abstract &&
+              roles
+                .get(name)
+                .superClass.some((klasses) => klasses.includes('widget')),
+          ),
+      },
+      uniqueItems: true,
+      additionalItems: false,
+      minItems: 0,
+    },
+  },
+};
 
 const interactiveProps = [
   ...eventHandlersByType.mouse,

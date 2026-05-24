@@ -8,7 +8,6 @@
 // ----------------------------------------------------------------------------
 
 import jsxAstUtils from 'jsx-ast-utils-x';
-import { generateObjSchema, arraySchema } from '../util/schemas.js';
 import getElementType from '../util/getElementType.js';
 import isDOMElement from '../util/isDOMElement.js';
 import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader.js';
@@ -22,17 +21,40 @@ const errorMessage = 'A control must be associated with a text label.';
 
 const ignoreList = ['link'];
 
-const schema = generateObjSchema({
-  labelAttributes: arraySchema,
-  controlComponents: arraySchema,
-  ignoreElements: arraySchema,
-  ignoreRoles: arraySchema,
-  depth: {
-    description: 'JSX tree depth limit to check for accessible label',
-    type: 'integer',
-    minimum: 0,
+const schema = {
+  type: 'object',
+  properties: {
+    labelAttributes: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+    controlComponents: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+    ignoreElements: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+    ignoreRoles: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+    depth: {
+      description: 'JSX tree depth limit to check for accessible label',
+      type: 'integer',
+      minimum: 0,
+    },
   },
-});
+};
 
 export default {
   meta: {

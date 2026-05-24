@@ -8,7 +8,6 @@
 
 import { dom } from 'aria-query';
 import jsxAstUtils from 'jsx-ast-utils-x';
-import { arraySchema, generateObjSchema } from '../util/schemas.js';
 import getElementType from '../util/getElementType.js';
 import isAbstractRole from '../util/isAbstractRole.js';
 import isContentEditable from '../util/isContentEditable.js';
@@ -31,9 +30,17 @@ const defaultInteractiveProps = [
   ...eventHandlersByType.keyboard,
   ...eventHandlersByType.mouse,
 ];
-const schema = generateObjSchema({
-  handlers: arraySchema,
-});
+const schema = {
+  type: 'object',
+  properties: {
+    handlers: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+  },
+};
 
 export default {
   meta: {

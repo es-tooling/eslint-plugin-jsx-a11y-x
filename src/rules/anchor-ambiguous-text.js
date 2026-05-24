@@ -8,7 +8,6 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { arraySchema, generateObjSchema } from '../util/schemas.js';
 import getAccessibleChildText from '../util/getAccessibleChildText.js';
 import getElementType from '../util/getElementType.js';
 
@@ -20,9 +19,17 @@ const DEFAULT_AMBIGUOUS_WORDS = [
   'learn more',
 ];
 
-const schema = generateObjSchema({
-  words: arraySchema,
-});
+const schema = {
+  type: 'object',
+  properties: {
+    words: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+  },
+};
 
 export default {
   meta: {

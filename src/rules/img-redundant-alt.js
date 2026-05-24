@@ -9,7 +9,6 @@
 // ----------------------------------------------------------------------------
 
 import jsxAstUtils from 'jsx-ast-utils-x';
-import { generateObjSchema, arraySchema } from '../util/schemas.js';
 import getElementType from '../util/getElementType.js';
 import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader.js';
 
@@ -20,10 +19,23 @@ const REDUNDANT_WORDS = ['image', 'photo', 'picture'];
 const errorMessage =
   'Redundant alt attribute. Screen-readers already announce `img` tags as an image. You don’t need to use the words `image`, `photo,` or `picture` (or any specified custom words) in the alt prop.';
 
-const schema = generateObjSchema({
-  components: arraySchema,
-  words: arraySchema,
-});
+const schema = {
+  type: 'object',
+  properties: {
+    components: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+    words: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+  },
+};
 
 const ASCII_REGEXP = /[\x20-\x7F]+/;
 

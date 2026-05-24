@@ -8,7 +8,6 @@
 // ----------------------------------------------------------------------------
 
 import jsxAstUtils from 'jsx-ast-utils-x';
-import { generateObjSchema, arraySchema } from '../util/schemas.js';
 import getElementType from '../util/getElementType.js';
 
 const { getProp, getLiteralPropValue } = jsxAstUtils;
@@ -18,11 +17,29 @@ const errorMessage =
 
 const MEDIA_TYPES = ['audio', 'video'];
 
-const schema = generateObjSchema({
-  audio: arraySchema,
-  video: arraySchema,
-  track: arraySchema,
-});
+const schema = {
+  type: 'object',
+  properties: {
+    audio: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+    video: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+    track: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+  },
+};
 
 const isMediaType = (context, type) => {
   const options = context.options[0];

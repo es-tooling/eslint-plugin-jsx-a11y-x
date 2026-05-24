@@ -7,7 +7,6 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { generateObjSchema, enumArraySchema } from '../util/schemas.js';
 import getElementType from '../util/getElementType.js';
 
 const errorMessage = (element) =>
@@ -15,9 +14,18 @@ const errorMessage = (element) =>
 
 const DEFAULT_ELEMENTS = ['marquee', 'blink'];
 
-const schema = generateObjSchema({
-  elements: enumArraySchema(DEFAULT_ELEMENTS),
-});
+const schema = {
+  type: 'object',
+  properties: {
+    elements: {
+      type: 'array',
+      items: { type: 'string', enum: DEFAULT_ELEMENTS },
+      uniqueItems: true,
+      additionalItems: false,
+      minItems: 0,
+    },
+  },
+};
 
 export default {
   meta: {

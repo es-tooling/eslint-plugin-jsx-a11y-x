@@ -9,11 +9,6 @@
 // ----------------------------------------------------------------------------
 
 import jsxAstUtils from 'jsx-ast-utils-x';
-import {
-  generateObjSchema,
-  arraySchema,
-  enumArraySchema,
-} from '../util/schemas.js';
 import getElementType from '../util/getElementType.js';
 
 const { getProp, getPropValue } = jsxAstUtils;
@@ -29,11 +24,30 @@ const noHrefErrorMessage =
 const invalidHrefErrorMessage =
   'The href attribute requires a valid value to be accessible. Provide a valid, navigable address as the href value. If you cannot provide a valid href, but still need the element to resemble a link, use a button and change it with appropriate styles. Learn more: https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/blob/HEAD/docs/rules/anchor-is-valid.md';
 
-const schema = generateObjSchema({
-  components: arraySchema,
-  specialLink: arraySchema,
-  aspects: enumArraySchema(allAspects, 1),
-});
+const schema = {
+  type: 'object',
+  properties: {
+    components: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+    specialLink: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+    aspects: {
+      type: 'array',
+      items: { type: 'string', enum: allAspects },
+      uniqueItems: true,
+      additionalItems: false,
+      minItems: 1,
+    },
+  },
+};
 
 export default {
   meta: {
