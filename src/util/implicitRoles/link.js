@@ -8,5 +8,5 @@ export default function getImplicitRoleForLink(attributes) {
     return 'link';
   }
 
-  return '';
+  return null;
 }

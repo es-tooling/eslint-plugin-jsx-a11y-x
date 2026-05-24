@@ -15,7 +15,9 @@ test('isAbstractRole', () => {
     'menuitemradio',
   );
 
-  expect(getImplicitRoleForMenuitem([JSXAttributeMock('type', '')])).toBe('');
+  expect(getImplicitRoleForMenuitem([JSXAttributeMock('type', '')])).toBe(null);
 
-  expect(getImplicitRoleForMenuitem([JSXAttributeMock('type', true)])).toBe('');
+  expect(getImplicitRoleForMenuitem([JSXAttributeMock('type', true)])).toBe(
+    null,
+  );
 });

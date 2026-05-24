@@ -7,5 +7,5 @@ test('isAbstractRole', () => {
     'toolbar',
   );
 
-  expect(getImplicitRoleForMenu([JSXAttributeMock('type', '')])).toBe('');
+  expect(getImplicitRoleForMenu([JSXAttributeMock('type', '')])).toBe(null);
 });

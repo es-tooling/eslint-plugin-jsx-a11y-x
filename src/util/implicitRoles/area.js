@@ -8,5 +8,5 @@ export default function getImplicitRoleForArea(attributes) {
     return 'link';
   }
 
-  return '';
+  return null;
 }
