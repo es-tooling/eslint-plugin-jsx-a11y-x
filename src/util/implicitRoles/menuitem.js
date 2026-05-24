@@ -17,9 +17,9 @@ export default function getImplicitRoleForMenuitem(attributes) {
       case 'RADIO':
         return 'menuitemradio';
       default:
-        return '';
+        return null;
     }
   }
 
-  return '';
+  return null;
 }

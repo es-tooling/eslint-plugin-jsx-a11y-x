@@ -7,7 +7,7 @@ export default function getImplicitRoleForImg(attributes) {
   const alt = getProp(attributes, 'alt');
 
   if (alt && getLiteralPropValue(alt) === '') {
-    return '';
+    return null;
   }
 
   /**
@@ -19,7 +19,7 @@ export default function getImplicitRoleForImg(attributes) {
    */
   const src = getProp(attributes, 'src');
   if (src && getLiteralPropValue(src)?.includes('.svg')) {
-    return '';
+    return null;
   }
 
   return 'img';

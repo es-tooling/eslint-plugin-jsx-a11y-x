@@ -9,8 +9,8 @@ export default function getImplicitRoleForMenu(attributes) {
   if (type) {
     const value = getLiteralPropValue(type);
 
-    return value && value.toUpperCase() === 'TOOLBAR' ? 'toolbar' : '';
+    return value && value.toUpperCase() === 'TOOLBAR' ? 'toolbar' : null;
   }
 
-  return '';
+  return null;
 }
