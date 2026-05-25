@@ -8,15 +8,22 @@
 // ----------------------------------------------------------------------------
 import axe from 'axe-core';
 import jsxAstUtils from 'jsx-ast-utils-x';
-import { generateObjSchema, arraySchema } from '../util/schemas.js';
 import getElementType from '../util/getElementType.js';
 
 const { runVirtualRule } = axe;
 const { getLiteralPropValue, getProp } = jsxAstUtils;
 
-const schema = generateObjSchema({
-  inputComponents: arraySchema,
-});
+const schema = {
+  type: 'object',
+  properties: {
+    inputComponents: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+  },
+};
 
 export default {
   meta: {

@@ -7,7 +7,6 @@
 // Rule Definition
 // ----------------------------------------------------------------------------
 
-import { generateObjSchema, arraySchema } from '../util/schemas.js';
 import getElementType from '../util/getElementType.js';
 import hasAccessibleChild from '../util/hasAccessibleChild.js';
 import isHiddenFromScreenReader from '../util/isHiddenFromScreenReader.js';
@@ -17,7 +16,17 @@ const errorMessage =
 
 const headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
 
-const schema = generateObjSchema({ components: arraySchema });
+const schema = {
+  type: 'object',
+  properties: {
+    components: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+  },
+};
 
 export default {
   meta: {

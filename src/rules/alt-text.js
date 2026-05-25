@@ -8,8 +8,6 @@
 // ----------------------------------------------------------------------------
 
 import jsxAstUtils from 'jsx-ast-utils-x';
-
-import { generateObjSchema, arraySchema } from '../util/schemas.js';
 import getElementType from '../util/getElementType.js';
 import hasAccessibleChild from '../util/hasAccessibleChild.js';
 import isPresentationRole from '../util/isPresentationRole.js';
@@ -18,13 +16,41 @@ const { getProp, getPropValue, getLiteralPropValue } = jsxAstUtils;
 
 const DEFAULT_ELEMENTS = ['img', 'object', 'area', 'input[type="image"]'];
 
-const schema = generateObjSchema({
-  elements: arraySchema,
-  img: arraySchema,
-  object: arraySchema,
-  area: arraySchema,
-  'input[type="image"]': arraySchema,
-});
+const schema = {
+  type: 'object',
+  properties: {
+    elements: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+    img: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+    object: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+    area: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+    'input[type="image"]': {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+  },
+};
 
 const ariaLabelHasValue = (prop) => {
   const value = getPropValue(prop);

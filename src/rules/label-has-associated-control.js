@@ -9,7 +9,6 @@
 
 import jsxAstUtils from 'jsx-ast-utils-x';
 import { minimatch } from 'minimatch';
-import { generateObjSchema, arraySchema } from '../util/schemas.js';
 import getElementType from '../util/getElementType.js';
 import mayContainChildComponent from '../util/mayContainChildComponent.js';
 import mayHaveAccessibleLabel from '../util/mayHaveAccessibleLabel.js';
@@ -25,22 +24,40 @@ const errorMessages = {
   both: 'A form label must have a valid htmlFor attribute and a control as a descendant.',
 };
 
-const schema = generateObjSchema({
-  labelComponents: arraySchema,
-  labelAttributes: arraySchema,
-  controlComponents: arraySchema,
-  assert: {
-    description:
-      'Assert that the label has htmlFor, a nested label, both or either',
-    type: 'string',
-    enum: ['htmlFor', 'nesting', 'both', 'either'],
+const schema = {
+  type: 'object',
+  properties: {
+    labelComponents: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+    labelAttributes: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+    controlComponents: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+    assert: {
+      description:
+        'Assert that the label has htmlFor, a nested label, both or either',
+      type: 'string',
+      enum: ['htmlFor', 'nesting', 'both', 'either'],
+    },
+    depth: {
+      description: 'JSX tree depth limit to check for accessible label',
+      type: 'integer',
+      minimum: 0,
+    },
   },
-  depth: {
-    description: 'JSX tree depth limit to check for accessible label',
-    type: 'integer',
-    minimum: 0,
-  },
-});
+};
 
 const validateHtmlFor = (node, context) => {
   const { settings } = context;

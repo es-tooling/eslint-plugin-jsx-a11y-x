@@ -13,7 +13,6 @@ import getElementType from '../util/getElementType.js';
 import isInteractiveElement from '../util/isInteractiveElement.js';
 import isInteractiveRole from '../util/isInteractiveRole.js';
 import isNonLiteralProperty from '../util/isNonLiteralProperty.js';
-import { generateObjSchema, arraySchema } from '../util/schemas.js';
 import getTabIndex from '../util/getTabIndex.js';
 
 const { getProp, getLiteralPropValue } = jsxAstUtils;
@@ -21,16 +20,25 @@ const { getProp, getLiteralPropValue } = jsxAstUtils;
 const errorMessage =
   '`tabIndex` should only be declared on interactive elements.';
 
-const schema = generateObjSchema({
-  roles: {
-    ...arraySchema,
-    description: 'An array of ARIA roles',
+const schema = {
+  type: 'object',
+  properties: {
+    roles: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+      description: 'An array of ARIA roles',
+    },
+    tags: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+      description: 'An array of HTML tag names',
+    },
   },
-  tags: {
-    ...arraySchema,
-    description: 'An array of HTML tag names',
-  },
-});
+};
 
 export default {
   meta: {

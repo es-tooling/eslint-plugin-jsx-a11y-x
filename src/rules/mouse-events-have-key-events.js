@@ -9,20 +9,29 @@
 
 import { dom } from 'aria-query';
 import jsxAstUtils from 'jsx-ast-utils-x';
-import { arraySchema, generateObjSchema } from '../util/schemas.js';
 
 const { getProp, getPropValue } = jsxAstUtils;
 
-const schema = generateObjSchema({
-  hoverInHandlers: {
-    ...arraySchema,
-    description: 'An array of events that need to be accompanied by `onFocus`',
+const schema = {
+  type: 'object',
+  properties: {
+    hoverInHandlers: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+      description:
+        'An array of events that need to be accompanied by `onFocus`',
+    },
+    hoverOutHandlers: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+      description: 'An array of events that need to be accompanied by `onBlur`',
+    },
   },
-  hoverOutHandlers: {
-    ...arraySchema,
-    description: 'An array of events that need to be accompanied by `onBlur`',
-  },
-});
+};
 
 // Use `onMouseOver` and `onMouseOut` by default if no config is
 // passed in for backwards compatibility

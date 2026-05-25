@@ -10,7 +10,6 @@
 import jsxAstUtils from 'jsx-ast-utils-x';
 
 import getElementType from '../util/getElementType.js';
-import { arraySchema, generateObjSchema } from '../util/schemas.js';
 import hasAccessibleChild from '../util/hasAccessibleChild.js';
 
 const { hasAnyProp } = jsxAstUtils;
@@ -18,7 +17,17 @@ const { hasAnyProp } = jsxAstUtils;
 const errorMessage =
   'Anchors must have content and the content must be accessible by a screen reader.';
 
-const schema = generateObjSchema({ components: arraySchema });
+const schema = {
+  type: 'object',
+  properties: {
+    components: {
+      type: 'array',
+      items: { type: 'string' },
+      uniqueItems: true,
+      additionalItems: false,
+    },
+  },
+};
 
 export default {
   meta: {
