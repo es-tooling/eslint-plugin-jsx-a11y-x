@@ -108,7 +108,7 @@ For most of the cases, you probably want to configure some of these properties y
 
 ```js
 import jsxA11yX from 'eslint-plugin-jsx-a11y-x';
-import globals from 'globals);
+import globals from 'globals';
 
 export default [
   …
