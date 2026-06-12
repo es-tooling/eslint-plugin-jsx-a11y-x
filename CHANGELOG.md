@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.1
+
+### Patch Changes
+
+- [#95](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/pull/95) [`308fad6`](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/commit/308fad6bc2c13223b8ebc3527398fdb88addf18f) Thanks [@jdufresne](https://github.com/jdufresne)! - Convert several files to TypeScript.
+
 ## 0.2.0
 
 ### Minor Changes
