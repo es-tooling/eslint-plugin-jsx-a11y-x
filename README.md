@@ -37,7 +37,6 @@ pnpm add -D eslint-plugin-jsx-a11y-x
 
 ### Migrating from `eslint-plugin-jsx-a11y`
 
-This package is not a drop-in replacement for `eslint-plugin-jsx-a11y`.
 When migrating a flat config, update the package import, change the rule
 namespace from `jsx-a11y/` to `jsx-a11y-x/`, and use `configs.recommended`
 or `configs.strict` instead of `flatConfigs`. Review the enabled rules and
