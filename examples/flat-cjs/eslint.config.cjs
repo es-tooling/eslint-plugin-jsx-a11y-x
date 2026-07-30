@@ -1,10 +1,10 @@
 const globals = require('globals');
 const js = require('@eslint/js');
-const jsxA11yX = require('eslint-plugin-jsx-a11y-x');
+const { default: jsxA11yX } = require('eslint-plugin-jsx-a11y-x');
 
 module.exports = [
   js.configs.recommended,
-  jsxA11yX.flatConfigs.recommended,
+  jsxA11yX.configs.recommended,
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
     languageOptions: {

@@ -35,7 +35,13 @@ yarn add -D eslint-plugin-jsx-a11y-x
 pnpm add -D eslint-plugin-jsx-a11y-x
 ```
 
-**Note:** If you installed ESLint globally (using the `-g` flag in npm, or the `global` prefix in yarn) then you must also install `eslint-plugin-jsx-a11y` globally.
+### Migrating from `eslint-plugin-jsx-a11y`
+
+This package is not a drop-in replacement for `eslint-plugin-jsx-a11y`.
+When migrating a flat config, update the package import, change the rule
+namespace from `jsx-a11y/` to `jsx-a11y-x/`, and use `configs.recommended`
+or `configs.strict` instead of `flatConfigs`. Review the enabled rules and
+options before adopting the configuration.
 
 <a id="usage"></a>
 
@@ -79,10 +85,14 @@ There are two shareable configs, provided by the plugin.
 
 #### CJS
 
-```js
-const jsxA11yX = require('eslint-plugin-jsx-a11y-x');
+On Node.js versions that support synchronous `require()` of ES modules
+without a flag (20.19.0+, 22.12.0+, and 23.0.0+), use the plugin's default
+export:
 
-export default [
+```js
+const { default: jsxA11yX } = require('eslint-plugin-jsx-a11y-x');
+
+module.exports = [
   jsxA11yX.configs.recommended,
   {
     // Your additional configs and overrides
