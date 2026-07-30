@@ -4,7 +4,7 @@ import jsxA11yX from 'eslint-plugin-jsx-a11y-x';
 
 export default [
   js.configs.recommended,
-  jsxA11yX.flatConfigs.recommended,
+  jsxA11yX.configs.recommended,
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
     languageOptions: {
