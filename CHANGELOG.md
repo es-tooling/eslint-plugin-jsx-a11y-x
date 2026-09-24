@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.1
+
+### Patch Changes
+
+- [#105](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/pull/105) [`b3d9766`](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/commit/b3d97668e1e422ef9fdf665fdfbf484fbf616ccb) Thanks [@yungando](https://github.com/yungando)! - Remove deprecated rule `label-has-for` from provided configs and docs.
+
+- [#95](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/pull/95) [`308fad6`](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x/commit/308fad6bc2c13223b8ebc3527398fdb88addf18f) Thanks [@jdufresne](https://github.com/jdufresne)! - Convert several files to TypeScript.
+
 ## 0.2.0
 
 ### Minor Changes
