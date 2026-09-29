@@ -346,6 +346,4 @@ const configs = {
   strict: createConfig(strictRules, 'strict'),
 };
 
-jsxA11y.configs = configs;
-
-export default jsxA11y;
+export default Object.assign(jsxA11y, { configs });
