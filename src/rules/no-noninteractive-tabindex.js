@@ -37,7 +37,11 @@ const schema = {
       additionalItems: false,
       description: 'An array of HTML tag names',
     },
+    allowExpressionValues: {
+      type: 'boolean',
+    },
   },
+  additionalProperties: false,
 };
 
 export default {

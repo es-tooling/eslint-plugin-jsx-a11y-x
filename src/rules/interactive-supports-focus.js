@@ -44,6 +44,7 @@ const schema = {
       minItems: 0,
     },
   },
+  additionalProperties: false,
 };
 
 const interactiveProps = [

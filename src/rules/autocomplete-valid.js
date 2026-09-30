@@ -23,6 +23,7 @@ const schema = {
       additionalItems: false,
     },
   },
+  additionalProperties: false,
 };
 
 export default {
