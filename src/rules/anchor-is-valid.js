@@ -47,6 +47,7 @@ const schema = {
       minItems: 1,
     },
   },
+  additionalProperties: false,
 };
 
 export default {

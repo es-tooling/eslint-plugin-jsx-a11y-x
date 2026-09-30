@@ -40,6 +40,11 @@ const schema = {
       additionalItems: false,
     },
   },
+  additionalProperties: {
+    type: 'array',
+    items: { type: 'string' },
+    uniqueItems: true,
+  },
 };
 
 export default {

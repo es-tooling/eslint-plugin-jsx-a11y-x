@@ -38,7 +38,11 @@ const schema = {
       uniqueItems: true,
       additionalItems: false,
     },
+    allowExpressionValues: {
+      type: 'boolean',
+    },
   },
+  additionalProperties: false,
 };
 
 export default {

@@ -31,6 +31,7 @@ const schema = {
       description: 'An array of events that need to be accompanied by `onBlur`',
     },
   },
+  additionalProperties: false,
 };
 
 // Use `onMouseOver` and `onMouseOut` by default if no config is

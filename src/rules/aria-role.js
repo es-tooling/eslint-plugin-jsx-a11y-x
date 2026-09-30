@@ -31,6 +31,7 @@ const schema = {
       type: 'boolean',
     },
   },
+  additionalProperties: false,
 };
 
 const validRoles = new Set(

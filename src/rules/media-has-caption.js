@@ -39,6 +39,7 @@ const schema = {
       additionalItems: false,
     },
   },
+  additionalProperties: false,
 };
 
 const isMediaType = (context, type) => {

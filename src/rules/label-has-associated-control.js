@@ -57,6 +57,7 @@ const schema = {
       minimum: 0,
     },
   },
+  additionalProperties: false,
 };
 
 const validateHtmlFor = (node, context) => {

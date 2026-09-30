@@ -23,6 +23,7 @@ const schema = {
       type: 'boolean',
     },
   },
+  additionalProperties: false,
 };
 
 export default {

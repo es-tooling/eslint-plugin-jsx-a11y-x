@@ -35,6 +35,7 @@ const schema = {
       additionalItems: false,
     },
   },
+  additionalProperties: false,
 };
 
 const ASCII_REGEXP = /[\x20-\x7F]+/;

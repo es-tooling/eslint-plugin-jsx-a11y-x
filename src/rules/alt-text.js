@@ -50,6 +50,7 @@ const schema = {
       additionalItems: false,
     },
   },
+  additionalProperties: false,
 };
 
 const ariaLabelHasValue = (prop) => {
